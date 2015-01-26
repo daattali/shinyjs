@@ -17,12 +17,12 @@ shinyjs = function() {
       return finalParams;
     },
 
-     show : function (params) {
+    show : function (params) {
       var defaultParams = {
         id : null,
         anim : false,
         animType : "slide",
-        time : 500,
+        time : 0.5,
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -31,19 +31,19 @@ shinyjs = function() {
         el.show();
       } else {
         if (params.animType == "fade") {
-          el.fadeIn(params.time);
+          el.fadeIn(params.time * 1000);
         } else {
-          el.slideDown(params.time);
+          el.slideDown(params.time * 1000);
         }
       }
     },
 
-     hide : function (params) {
+    hide : function (params) {
       var defaultParams = {
         id : null,
         anim : false,
         animType : "slide",
-        time : 500,
+        time : 0.5,
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -52,9 +52,9 @@ shinyjs = function() {
         el.hide();
       } else {
         if (params.animType == "fade") {
-          el.fadeOut(params.time);
+          el.fadeOut(params.time * 1000);
         } else {
-          el.slideUp(params.time);
+          el.slideUp(params.time * 1000);
         }
       }
     },
@@ -64,7 +64,7 @@ shinyjs = function() {
         id : null,
         anim : false,
         animType : "slide",
-        time : 500,
+        time : 0.5,
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -73,9 +73,9 @@ shinyjs = function() {
         el.toggle();
       } else {
         if (params.animType == "fade") {
-          el.fadeToggle(params.time);
+          el.fadeToggle(params.time * 1000);
         } else {
-          el.slideToggle(params.time);
+          el.slideToggle(params.time * 1000);
         }
       }
     },
@@ -126,6 +126,16 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       $("#" + params.id).prop('disabled', true);
+    },
+
+    innerHTML : function (params) {
+      var defaultParams = {
+        id : null,
+        expr : null
+      };
+      params = shinyjs.getParams(params, defaultParams);
+
+      $("#" + params.id)[0].innerHTML = params.expr;
     }
   };
 }();

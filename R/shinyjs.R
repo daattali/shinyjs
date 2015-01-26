@@ -4,10 +4,12 @@ pkgEnv$session <- NULL
 
 shinyjs <- function(...) {
   params <- as.list(match.call()[-1])
-  if (is.null(names(params))) {
-    params <- unlist(params)
+  if (!is.null(names(params)) && any(vapply(names(params), nzchar, 1L) == 0)) {
+    stop("You cannot mix named and unnamed arguments in the same funtion call in shinyjs",
+         call. = FALSE)
   }
-  print(params)
+  parentFrame <- parent.frame(1)
+  params <- lapply(params, function(x){ eval(x, envir = parentFrame) })
   pkgName <- "shinyjs"
   regex <- sprintf("^(%s:{2,3})((\\w)+)$", pkgName)
   fxn <- as.character(as.list(match.call()[1]))
@@ -22,28 +24,40 @@ closeSession <- function() {
 }
 
 #' @export
-setSession <- function(session) {
+setShinyjsSession <- function(session) {
   session$onSessionEnded(closeSession)
   pkgEnv$session <- session
 }
+
+
 
 #' @export
 show <- shinyjs
 #' @export
 hide <- shinyjs
 #' @export
+toggle <- shinyjs
+
+#' @export
+addClass <- shinyjs
+#' @export
+removeClass <- shinyjs
+#' @export
+toggleClass <- shinyjs
+
+#' @export
 enable <- shinyjs
 #' @export
 disable <- shinyjs
 
-
-
-
+#' @export
+innerHTML <- shinyjs
 
 #' @export
 useShinyjs <- function() {
   #includeScript(file.path('www', 'shinyjs-message-handler.js'))
-  supportedMethods <- c("show", "hide", "enable", "disable")
+  supportedMethods <- c("show", "hide", "toggle", "enable", "disable",
+                        "addClass", "removeClass", "toggleClass", "innerHTML")
   tpl <- paste0(
     "Shiny.addCustomMessageHandler('%s', function(params) {console.log(params);",
     " shinyjs.%s(params); ",
