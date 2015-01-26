@@ -1,36 +1,23 @@
-#TODO use jquery show/hide
-# implement jqueyr toggle, slidetoggle, slideup, slidedown, fadein, fadeout
-# enable/disabel should be $("input").prop('disabled', true); / false
-# use jquery addclass/removeclass
-
-#TODO implement useShinyjs
-
-# need to use   shinyjs::setSession(session) in server and shinyjs::useShinyjs() in ui
-
-
 # or should i use options() like devtools does?
 pkgEnv <- new.env()
 pkgEnv$session <- NULL
 
-shinyjs <- function(x, session) {
+shinyjs <- function(...) {
+  params <- as.list(match.call()[-1])
+  if (is.null(names(params))) {
+    params <- unlist(params)
+  }
+  print(params)
   pkgName <- "shinyjs"
   regex <- sprintf("^(%s:{2,3})((\\w)+)$", pkgName)
   fxn <- as.character(as.list(match.call()[1]))
   fxn <- sub(regex, "\\2", fxn)
-  cat(fxn)
-  cat("\n")
-  if (missing(session)) {
-    if (is.null(pkgEnv$session)) {
-      stop("no session is set")
-    }
-    session <- pkgEnv$session
-  }
-  session$sendCustomMessage(type = fxn,
-                            message = list(id = x))
+  pkgEnv$session$sendCustomMessage(
+    type = fxn,
+    message = params)
 }
 
 closeSession <- function() {
-  cat("closing session\n")
   pkgEnv$session <- NULL
 }
 
@@ -53,53 +40,31 @@ disable <- shinyjs
 
 
 
-
+#' @export
 useShinyjs <- function() {
-  cat(getwd())
   #includeScript(file.path('www', 'shinyjs-message-handler.js'))
-  tags$script(HTML(sprintf(
-    "Shiny.addCustomMessageHandler('%s', function(message) {
-    %s(message.id)
-}
-  );
-    Shiny.addCustomMessageHandler('%s', function(message) {
-    %s(message.id)
-    }
-    );",
-    "show","show", "hide", "hide"),
+  supportedMethods <- c("show", "hide", "enable", "disable")
+  tpl <- paste0(
+    "Shiny.addCustomMessageHandler('%s', function(params) {console.log(params);",
+    " shinyjs.%s(params); ",
+    "});")
+  controllers <-
+    lapply(supportedMethods, function(x) {
+      sprintf(tpl, x, x)})
+  controllers <- paste(controllers, collapse = "\n")
 
-    "
-    function hasClass(id, cls) {
-    var e = document.getElementById(id);
-    return (' ' + e.className + ' ').indexOf(' ' + cls + ' ') > -1;
-    }
+  script <- controllers
 
-    function addClass(id, cls) {
-    var e = document.getElementById(id);
-    cls = ' ' + cls;
-    e.className = e.className.replace(cls,'');
-    e.className = e.className + cls;
-    }
+  handler <- try(
+    system.file("templates", "shinyjs-message-handler.js", package = "shinyjs",
+                mustWork = TRUE),
+    silent = TRUE)
+  if (class(handler) == "try-error") {
+    stop("Could not find shinyjs script file")
+  }
 
-    function removeClass(id, cls) {
-    var e = document.getElementById(id);
-    cls = ' ' + cls;
-    e.className = e.className.replace(cls,'');
-    }
-
-    function toggleClass(id, cls) {
-    if (hasClass(id, cls)) {
-    removeClass(id, cls);
-    } else {
-    addClass(id, cls);
-    }
-    }
-    function show(id) {
-    removeClass(id, 'hideme');
-    }
-
-    function hide(id) {
-    addClass(id, 'hideme');
-    }"
-  ))
+  shiny::tags$head(
+    shiny::tags$style(".shinyjs-hide { display: none; }"),
+    shiny::includeScript(handler),
+    shiny::tags$script(shiny::HTML(script)))
 }
