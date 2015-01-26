@@ -1,3 +1,9 @@
+#TODO function like hideOnLoad thatll add "shinyjs-hide" class
+#TODO similar function to add  onfocus="this.select()" to input
+#TODO similar function to add href = "javascript:toggleVisibility('adminTableSection');",
+
+
+
 # or should i use options() like devtools does?
 pkgEnv <- new.env()
 pkgEnv$session <- NULL
