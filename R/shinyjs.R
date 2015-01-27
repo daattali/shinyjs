@@ -85,19 +85,21 @@ useShinyjs <- function() {
 
 #' @export
 hidden <- function(tag) {
-  tag$attribs$class <- paste(c(tag$attribs$class, "shinyjs-hide"), collapse = " ")
+  tag <- shiny::tagAppendAttributes(tag, class = "shinyjs-hide")
   tag
 }
 
 ss <- function(input) {
   # check that input$children[[2]] is <input>
-  input$children[[2]]$attribs$onfocus <- "this.select();"
+  input$children[[2]] <-
+    shiny::tagAppendAttributes(input$children[[2]], onfocus = "this.select();")
   input
 }
 
+#' @export
 toggleElement <- function(a, id) {
   # check that this is an <a>
-  a$attribs$href <- sprintf(
-    "javascript:shinyjs.toggle('%s');", id)
+  a <- shiny::tagAppendAttributes(a,
+        href = sprintf("javascript:shinyjs.toggle('%s');", id))
   a
 }
