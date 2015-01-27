@@ -1,9 +1,3 @@
-#TODO function like hideOnLoad thatll add "shinyjs-hide" class
-#TODO similar function to add  onfocus="this.select()" to input
-#TODO similar function to add href = "javascript:toggleVisibility('adminTableSection');",
-
-
-
 # or should i use options() like devtools does?
 pkgEnv <- new.env()
 pkgEnv$session <- NULL
@@ -87,4 +81,23 @@ useShinyjs <- function() {
     shiny::tags$style(".shinyjs-hide { display: none; }"),
     shiny::includeScript(handler),
     shiny::tags$script(shiny::HTML(script)))
+}
+
+#' @export
+hidden <- function(tag) {
+  tag$attribs$class <- paste(c(tag$attribs$class, "shinyjs-hide"), collapse = " ")
+  tag
+}
+
+ss <- function(input) {
+  # check that input$children[[2]] is <input>
+  input$children[[2]]$attribs$onfocus <- "this.select();"
+  input
+}
+
+toggleElement <- function(a, id) {
+  # check that this is an <a>
+  a$attribs$href <- sprintf(
+    "javascript:shinyjs.toggle('%s');", id)
+  a
 }

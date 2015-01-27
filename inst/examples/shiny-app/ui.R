@@ -30,10 +30,11 @@ shinyUI(fluidPage(
     textInput("expr", "Write an R expression to experiment manipulating HTML with shinyjs:",
               "toggle(\"test\"); toggleClass(\"btn\", \"green\")"),
     actionButton("submitExpr", "Go!"),
-    div(id = "error", class = "shinyjs-hide", style = "color: #FF0000;", br(),
+    shinyjs::hidden(
+      div(id = "error", style = "color: #FF0000;", br(),
         div("Oops, that resulted in an error! Try again."),
         div("Error: ", span(id = "errorMsg"))
-    ),
+    )),
     br(), br(),wellPanel(
     p(id = "test", "This is an HTML element with id \"test\""),
     tags$button(
