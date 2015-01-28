@@ -58,17 +58,22 @@ useShinyjs <- function() {
   #includeScript(file.path('www', 'shinyjs-message-handler.js'))
   supportedMethods <- c("show", "hide", "toggle", "enable", "disable",
                         "addClass", "removeClass", "toggleClass", "innerHTML")
+  supportedMethodsJson <- paste0('["', paste(supportedMethods, collapse = '","'), '"]')
+
   tpl <- paste0(
-    "Shiny.addCustomMessageHandler('%s', function(params) {console.log(params);",
-    " shinyjs.%s(params); ",
-    "});")
-  controllers <-
-    lapply(supportedMethods, function(x) {
-      sprintf(tpl, x, x)})
-  controllers <- paste(controllers, collapse = "\n")
+    "var methods = ", supportedMethodsJson, ";",
+    "for(var i = 0; i < methods.length; i++) {",
+    " (function bindShinyjs(x) {",
+    "  Shiny.addCustomMessageHandler(x, function(params) {",
+    "   console.log(x);console.log(params);",
+    "   window[\"shinyjs\"][x](params);",
+    "  });",
+    " })(methods[i])}")
 
-  script <- controllers
+  script <- tpl
 
+  #TODO look into shiny::addResourcePath
+  #TODO minimize the JS
   handler <- try(
     system.file("templates", "shinyjs-message-handler.js", package = "shinyjs",
                 mustWork = TRUE),

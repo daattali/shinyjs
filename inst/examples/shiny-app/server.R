@@ -17,7 +17,7 @@ shinyServer(function(input, output, session) {
       ),
       error = function(err) {
         innerHTML("errorMsg", err$message)
-        shinyjs::show(id = "error", anim = FALSE, animType = "fade")
+        shinyjs::show(id = "error", anim = TRUE, animType = "fade")
       }
     )
 
