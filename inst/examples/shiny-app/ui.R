@@ -28,7 +28,7 @@ shinyUI(fluidPage(
     "use the functions provided by", strong("shinyjs"), "with regular intuitive R code."),
   wellPanel(
     textInput("expr", "Write an R expression to experiment manipulating HTML with shinyjs:",
-              "toggle(\"test\"); toggleClass(\"btn\", \"green\")"),
+              "toggle(\"test\")"),
     actionButton("submitExpr", "Go!"),
     shinyjs::hidden(
       div(id = "error", style = "color: #FF0000;", br(),

@@ -1,9 +1,23 @@
 Package: shinyjs
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", , "first.last@example.com", role = c("aut",
-    "cre"))
-Description: What the package does (one paragraph)
+Title: Easily Perform Common JavaScript Functions with Shiny in Plain R
+Version: 0.0.1.0
+Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
+    role = c("aut", "cre"))
+Description: Using shinyjs lets you bring the power and flexibility of
+    JavaScript into any Shiny application without requiring any JavaScript
+    knowledge.  Many useful JavaScript functions are made available by
+    shinyjs with a simple R interface so that you don't have to write any
+    JavaScript code. Common functions such as hiding/showing elements,
+    enabling/disabling buttons, and many more are supported by shinyjs.  Even
+    if you do know JavaScript, shinyjs can be used as convenience functions
+    to avoid dealing with message passing and writing JavaScript code.
+URL: https://github.com/daattali/shinyjs
 Depends: R (>= 3.1.2)
-License: What license is it under?
+Imports:
+    shiny (>= 0.11)
+Suggests:
+    knitr (>= 1.7),
+    testthat (>= 0.9.1)
+License: MIT + file LICENSE
 LazyData: true
+VignetteBuilder: knitr
