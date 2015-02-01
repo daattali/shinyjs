@@ -10,7 +10,8 @@ jsFunc <- function(...) {
   regex <- sprintf("^(%s:{2,3})((\\w)+)$", pkgName)
   fxn <- as.character(as.list(match.call()[1]))
   fxn <- sub(regex, "\\2", fxn)
-  shinyjsEnv$session$sendCustomMessage(
+  session <- get(".session", shinyjsGlobals)
+  session$sendCustomMessage(
     type = fxn,
     message = params)
 }
