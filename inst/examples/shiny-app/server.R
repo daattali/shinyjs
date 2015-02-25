@@ -20,6 +20,5 @@ shinyServer(function(input, output, session) {
         shinyjs::show(id = "error", anim = TRUE, animType = "fade")
       }
     )
-
   })
 })

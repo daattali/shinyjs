@@ -2,105 +2,91 @@ library(shiny)
 
 source("helpers.R")
 
+examples <- c(
+  'toggle("test")',
+  'hide("test")',
+  'show("test")',
+  'toggle("test", TRUE)',
+  'toggle("test", TRUE, "fade", 2)',
+  'toggle(id = "test", anim = TRUE, time = 2, animType = "slide")',
+  'disable("btn")',
+  'enable("btn")',
+  'addClass("test", "green")',
+  'removeClass("test", "green")',
+  'toggleClass("test", "green")',
+  'innerHTML("test", "change the text")',
+  'innerHTML("btn", "I am a button!")',
+  'innerHTML("test", paste0("Is 5 > 7? ", 5 > 7))'
+)
+
 shinyUI(fluidPage(
-  titlePanel("Experimenting with shinyjs package"),
+  tags$head(includeCSS(file.path('www', 'style.css'))),
+
+  titlePanel("Experimenting with shinyjs"), br(),
 
   shinyjs::useShinyjs(),
 
-  shiny::tags$style(".green { color: green; }"),
-
+  fluidRow(
   column(6,
-
-  p(
-    strong(a("shinyjs", href = "https://github.com/daattali/shinyjs",
-             target = "_blank")),
-    span("lets you perform common JavaScript operations in Shiny applications"),
-    span("without having to know any JavaScript.")),
-  p("This app has been set up to use", strong("shinyjs"),
-    "with two simple function calls: "),
-  tags$ul(
-    tags$li(
-      code("shinyjs::useShinyjs()"), "was added to", code("ui.R")),
-    tags$li(
-      code("shinyjs::setShinyjsSession(session)"), "was added to", code("server.R"))
-  ),
-  p("After adding these two expressions to your Shiny app, you can now",
-    "use the functions provided by", strong("shinyjs"), "with regular intuitive R code."),
-  wellPanel(
-    textInput("expr", "Write an R expression to experiment manipulating HTML with shinyjs:",
-              "toggle(\"test\")"),
-    actionButton("submitExpr", "Go!"),
-    shinyjs::hidden(
-      div(id = "error", style = "color: #FF0000;", br(),
-        div("Oops, that resulted in an error! Try again."),
-        div("Error: ", span(id = "errorMsg"))
-    )),
-    br(), br(),wellPanel(
-    p(id = "test", "This is an HTML element with id \"test\""),
-    tags$button(
-      id = "btn",
-      "Try enabling/disabling this button. My id is \"btn\"")
-  ))
-  ),
-
-  column(6, div(
-    getExplainText(),
-    div(
-      h4("Supported functions"),
-      p(
-        "Here is a list of supported functions, along with their arguments.",
-        "Note that the arguments can either be passed in order without names,",
-        "or can be named and in any order."
-      ),
-      tags$ul(
-        tags$li(
-          strong("show(), hide(), toggle()"), ": these functions control the visibility",
-          "of an element.", strong("toggle()"), "will alternate between visible",
-          "and hidden. Arguments:",
-          tags$ul(
-            tags$li(strong("id"), ": the id of the HTML element"),
-            tags$li(strong("anim"), ": if TRUE, then animate the effect"),
-            tags$li(strong("animType"), ": animation type, one of \"slide\" or \"fade\""),
-            tags$li(strong("time"), ": the number of seconds for the animation to run")
-          )
-        ),
-        tags$li(
-          strong("addClass(), removeClass(), toggleClass()"), ": these functions",
-          "can be used to add or remove CSS classes from an HTML element. Arguments:",
-          tags$ul(
-            tags$li(strong("id"), ": the id of the HTML element"),
-            tags$li(strong("class"), ": the name of the CSS class to apply/remove")
-          )
-        ),
-        tags$li(
-          strong("enable(), disable()"), ": these functions can be used to enable",
-          "or disable a button from being clicked. Arguments:",
-          tags$ul(
-            tags$li(strong("id"), ": the id of the HTML button")
-          )
-        ),
-        tags$li(
-          strong("innerHTML()"), ": this function is used to set the HTML code inside",
-          "another element. The HTML can be a simple text or actual HTML with",
-          "tags and expressions. Arguments:",
-          tags$ul(
-            tags$li(strong("id"), ": the id of the HTML element"),
-            tags$li(strong("expr"), ": the expression to set the HTML to")
-          )
+    wellPanel(
+      textInput("expr", "Write an R expression to experiment manipulating HTML with shinyjs:",
+                examples[1]),
+      actionButton("submitExpr", "Run", class = "btn-success"),
+      br(),
+      shinyjs::hidden(
+        div(id = "error", br(),
+          div("Oops, that resulted in an error! Try again."),
+          div("Error: ", span(id = "errorMsg"))
         )
       ),
-      h4("Examples to try"),
-      tags$ul(
-        tags$li(code(
-          "innerHTML('btn', paste0('Is 5 > 7? ', 5 > 7))"
-        ))
-      )
-    )
-  )),
+      br(),
+      p("The results will be reflected in the sandbox area below.", br(),
+        "To get you started, try some of the examples to the right.")
+    ),
 
-  em(
-    span("Created by"),
-    a("Dean Attali", href = "https://github.com/daattali", target = "_blank"),
-    span(", January 2015"), br(), br()
+    h3("Sandbox area"),
+    p(id = "test", "This text is an HTML element with id \"test\""),
+    tags$button(
+      id = "btn", class = "btn",
+      "This is a button with id \"btn\"")
+  ),
+
+  column(6,
+    h3("What is shinyjs?"),
+    p(
+      strong(a("shinyjs", href = "https://github.com/daattali/shinyjs",
+               target = "_blank")),
+      span("lets you perform common JavaScript operations in Shiny applications"),
+      span("without having to know any JavaScript.")),
+    p("Setup is minimal: this app has been set up to use", strong("shinyjs"),
+      "with two simple function calls: "),
+    tags$ul(
+      tags$li(
+        code("shinyjs::useShinyjs()"), "was added to the app's", code("ui")),
+      tags$li(
+        code("shinyjs::setShinyjsSession(session)"), "was added to the app's", code("server"))
+    ),
+    p("After adding these two expressions to your Shiny app, you can",
+      "use the functions provided by", strong("shinyjs"), "as regular intuitive R code.",
+      "Usually these functions will be called from the app's",
+      code("server"), "after some user action."),
+    h3("Examples to try"),
+    #p("Click on an example to quickly copy it into the box on the left, then click 'Run'."),
+    p("Copy these examples into the box on the left, then click 'Run'."),
+    tags$ul(id = "examples-list2",
+      lapply(examples, function(ex) tags$li(code(ex)))
+    ),
+    p("The functions ending in", code("Class"), "require basic understading of",
+      a("CSS.", href = "http://www.w3schools.com/css/", target = "_blank"),
+      "The following CSS rule was added to the app in order for their examples to work:",
+      code(".green { color: green }"))
+  )),
+  br(),
+  fluidRow(
+    em(
+      span("Created by"),
+      strong(a("Dean Attali", href = "http://deanattali.com", target = "_blank")),
+      span(", January 2015"), br(), br()
+    )
   )
 ))

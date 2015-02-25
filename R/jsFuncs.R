@@ -1,7 +1,7 @@
 jsFunc <- function(...) {
   params <- as.list(match.call()[-1])
   if (!is.null(names(params)) && any(vapply(names(params), nzchar, 1L) == 0)) {
-    stop("You cannot mix named and unnamed arguments in the same funtion call in shinyjs",
+    stop("shinyjs: You cannot mix named and unnamed arguments in the same function call",
          call. = FALSE)
   }
   parentFrame <- parent.frame(1)

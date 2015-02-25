@@ -1,0 +1,16 @@
+body {
+  padding: 10px 20px;
+}
+
+.green {
+  color: green;
+}
+
+#error {
+  color: #FF0000;
+}
+
+#examples-list .example:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
