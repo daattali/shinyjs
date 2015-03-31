@@ -3,7 +3,7 @@ context("hidden")
 clsName <- "shinyjs-hide"
 
 test_that("hidden fails on plain text", {
-  expect_error(hidden("abc"), "tag must be a Shiny tag")
+  expect_error(hidden("abc"), "must be a Shiny tag")
 })
 
 test_that("hidden works on simple div", {
