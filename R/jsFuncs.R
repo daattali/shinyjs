@@ -1,16 +1,39 @@
-jsFunc <- function(...) {
-  params <- as.list(match.call()[-1])
-  if (!is.null(names(params)) && any(vapply(names(params), nzchar, 1L) == 0)) {
-    stop("shinyjs: You cannot mix named and unnamed arguments in the same function call",
-         call. = FALSE)
+jsFunc <- function(..., session = NULL) {
+  params <- list(...)
+
+  # see if the last parameter is an unnamed shiny session
+  if (missing(session) && length(params) > 0 && isSession(tail(params, 1)[[1]])) {
+    session <- tail(params, 1)[[1]]
+    params <- head(params, -1)
   }
+
+  if (!is.null(names(params)) && any(vapply(names(params), nzchar, 1L) == 0)) {
+    errMsg("you cannot mix named and unnamed arguments in the same function call")
+  }
+
+  # evaluate the parameters in the appropriate environment
   parentFrame <- parent.frame(1)
   params <- lapply(params, function(x){ eval(x, envir = parentFrame) })
+
+  # figure out what function to call
   pkgName <- "shinyjs"
   regex <- sprintf("^(%s:{2,3})((\\w)+)$", pkgName)
   fxn <- as.character(as.list(match.call()[1]))
   fxn <- sub(regex, "\\2", fxn)
-  session <- get(".session", shinyjsGlobals)
+
+  # get the shiny session that should run this expression
+  if (is.null(session)) {
+    if (!exists(".session", shinyjsGlobals)) {
+      errMsg("you need to either provide a session or call shinyjs::setShinyjsSession() first")
+    }
+    session <- get(".session", shinyjsGlobals)
+  } else {
+    if (!isSession(session)) {
+      errMsg("'session' is not a ShinySession object.")
+    }
+  }
+
+  # call the javascript function
   session$sendCustomMessage(
     type = fxn,
     message = params)

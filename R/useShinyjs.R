@@ -20,7 +20,7 @@ useShinyjs <- function() {
                 mustWork = TRUE),
     silent = TRUE)
   if (class(handler) == "try-error") {
-    stop("Could not find shinyjs script file")
+    errMsg("could not find shinyjs script file")
   }
 
   shiny::tags$head(

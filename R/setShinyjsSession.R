@@ -2,8 +2,8 @@
 # if this is an app shared with multiple people, this won't work
 #' @export
 setShinyjsSession <- function(session) {
-  if (!inherits(session, "ShinySession")) {
-    stop("'session' is not a ShinySession object.", call. = FALSE)
+  if (!isSession(session)) {
+    errMsg("'session' is not a ShinySession object.")
   }
   session$onSessionEnded(closeSession)
   assign(".session", session, shinyjsGlobals)
