@@ -1,2 +1,8 @@
 language: r
+
+# R support in Travis CI currently requires sudo http://docs.travis-ci.com/user/languages/r/
 sudo: true
+
+# need features from shiny version 0.11.1.9003 which is not on CRAN yet
+r_github_packages:
+ - rstudio/shiny
