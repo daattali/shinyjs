@@ -2,7 +2,6 @@
 
 export(addClass)
 export(autoselect)
-export(click)
 export(disable)
 export(enable)
 export(hidden)
