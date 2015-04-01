@@ -24,12 +24,12 @@ jsFunc <- function(..., session = NULL) {
   # get the shiny session that should run this expression
   if (is.null(session)) {
     if (!exists(".session", shinyjsGlobals)) {
-      errMsg("you need to either provide a session or call shinyjs::setShinyjsSession() first")
+      errMsg("you need to either provide a session or call shinyjs::setSession() first")
     }
     session <- get(".session", shinyjsGlobals)
   } else {
     if (!isSession(session)) {
-      errMsg("'session' is not a ShinySession object.")
+      errMsg("'session' is not a valid Shiny session")
     }
   }
 

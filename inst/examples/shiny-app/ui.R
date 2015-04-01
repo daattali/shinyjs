@@ -64,7 +64,7 @@ shinyUI(fluidPage(
       tags$li(
         code("shinyjs::useShinyjs()"), "was added to the app's", code("ui")),
       tags$li(
-        code("shinyjs::setShinyjsSession(session)"), "was added to the app's", code("server"))
+        code("shinyjs::setSession(session)"), "was added to the app's", code("server"))
     ),
     p("After adding these two expressions to your Shiny app, you can",
       "use the functions provided by", strong("shinyjs"), "as regular intuitive R code.",

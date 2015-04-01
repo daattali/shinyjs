@@ -2,7 +2,7 @@ library(shiny)
 library(shinyjs)
 
 shinyServer(function(input, output, session) {
-  shinyjs::setShinyjsSession(session)
+  shinyjs::setSession(session)
 
   observe({
     if (input$submitExpr == 0) {

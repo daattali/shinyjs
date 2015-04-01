@@ -1,8 +1,11 @@
 #' @export
 hidden <- function(tag) {
-  if (!is(tag, "shiny.tag")) {
-    errMsg("'tag' must be a Shiny tag")
+  if (!inherits(tag, "shiny.tag")) {
+    errMsg("'tag' is not a valid Shiny tag")
   }
-  tag <- shiny::tagAppendAttributes(tag, class = "shinyjs-hide")
+
+  tag <- shiny::tagAppendAttributes(
+    tag,
+    class = "shinyjs-hide")
   tag
 }
