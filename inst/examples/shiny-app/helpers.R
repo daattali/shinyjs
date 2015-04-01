@@ -1,5 +1,0 @@
-library(shiny)
-
-getExplainText <- function() {
-
-}

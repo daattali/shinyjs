@@ -1,0 +1,66 @@
+/* Used for the example */
+.green {
+  color: green;
+}
+
+/* Rules to make the page nicer */
+
+body {
+  padding: 10px 20px;
+  background: #fcfcfc;
+  color: #333;
+  font-size: 16px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+#page-title {
+  font-weight: bold;
+  font-size: 40px;
+  margin: 15px 0 30px;
+}
+
+#author-name {
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.well {
+  background: #FFFFFF;
+}
+
+#expr {
+  height: auto;
+  font-size: 22px;
+}
+
+#submitExpr {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 20px;
+}
+
+#error {
+  color: #FF0000;
+  font-weight: bold;
+}
+
+#errorMsg {
+  margin-left: 10px;
+}
+
+#test {
+  font-size: 20px;
+  margin: 30px 0;
+}
+
+#btn {
+  font-size: 20px;
+  background: #e0e0e0;
+}

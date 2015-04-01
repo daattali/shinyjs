@@ -18,7 +18,7 @@ useShinyjs <- function() {
 
   # grab the file with all the message handlers (javascript functions)
   handler <- try(
-    system.file("templates", "shinyjs-message-handler.js", package = "shinyjs",
+    system.file("srcjs", "shinyjs-message-handler.js", package = "shinyjs",
                 mustWork = TRUE),
     silent = TRUE)
   if (class(handler) == "try-error") {
