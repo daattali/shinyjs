@@ -146,6 +146,24 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       $("#" + params.id)[0].innerHTML = params.expr;
+    },
+
+    alert : function (params) {
+      var defaultParams = {
+        text : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      alert(JSON.stringify(params.text, null, 4));
+    },
+
+    logjs : function (params) {
+      var defaultParams = {
+        text : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      console.log(params.text);
     }
   };
 }();

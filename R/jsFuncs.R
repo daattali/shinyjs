@@ -64,3 +64,8 @@ disable <- jsFunc
 
 #' @export
 innerHTML <- jsFunc
+
+#' @export
+alert <- jsFunc
+#' @export
+logjs <- jsFunc

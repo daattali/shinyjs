@@ -6,6 +6,7 @@ examples <- c(
   'toggle(id = "test", anim = TRUE, time = 2, animType = "slide")',
   'hide("test")',
   'show("test")',
+  'alert(R.Version())',
   'disable("btn")',
   'enable("btn")',
   'innerHTML("btn", "What a nice button")',
