@@ -1,6 +1,12 @@
 shinyjs = function() {
   return {
 
+    // Helper function to determine the parameters.
+    // Given a set of user-provided parameters and some default parameters,
+    // return a dictionary of key-value parameter pairs.
+    // The user parameters can either be an (unnamed) array, in which case
+    // we assume the order of the parameters, or it can be a dictionary with
+    // key-value parameter pairs.
     getParams : function (params, defaultParams) {
       var finalParams = defaultParams;
       if (typeof params == "string") {
@@ -16,6 +22,10 @@ shinyjs = function() {
 
       return finalParams;
     },
+
+    // -----------------------------------------------------------------
+    // ------ All functions below are exported shinyjs function --------
+    // The documentation for function xyz is available in R via ?shinyjs::xyz
 
     show : function (params) {
       var defaultParams = {

@@ -52,6 +52,7 @@ shinyUI(fluidPage(
        "I'm a button with id \"btn\"")
    )
   ),
+
   column(6, wellPanel(
     h3("What is shinyjs?", class = "section-title"),
     p(

@@ -2,7 +2,7 @@
 #' @export
 useShinyjs <- function() {
   # all the methods that should be forwarded to javascript
-  supportedMethods <- c("show", "hide", "toggle", "enable", "disable",
+  jsFuncs <- c("show", "hide", "toggle", "enable", "disable",
                         "addClass", "removeClass", "toggleClass", "innerHTML")
 
   # add a shiny message handler binding for each supported method
@@ -12,16 +12,14 @@ useShinyjs <- function() {
     " shinyjs.%s(params);",
     "});")
   controllers <-
-    lapply(supportedMethods, function(x) {
+    lapply(jsFuncs, function(x) {
       sprintf(tpl, x, x)})
   controllers <- paste(controllers, collapse = "\n")
 
   # grab the file with all the message handlers (javascript functions)
-  handler <- try(
-    system.file("srcjs", "shinyjs-message-handler.js", package = "shinyjs",
-                mustWork = TRUE),
-    silent = TRUE)
-  if (class(handler) == "try-error") {
+  handler <- system.file("srcjs", "shinyjs-message-handler.js",
+                         package = "shinyjs")
+  if (handler == "") {
     errMsg("could not find shinyjs message handler file")
   }
 

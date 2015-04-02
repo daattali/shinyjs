@@ -21,6 +21,10 @@ jsFunc <- function(..., session = NULL) {
   fxn <- as.character(as.list(match.call()[1]))
   fxn <- sub(regex, "\\2", fxn)
 
+  # TODO can this one little line be the solution to all my problems??
+  # does it reliably always get the correct session object that fired this call?
+  #session <- get("session", parent.frame(1))
+
   # get the shiny session that should run this expression
   if (is.null(session)) {
     if (!exists(".session", shinyjsGlobals)) {

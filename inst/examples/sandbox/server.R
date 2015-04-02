@@ -1,5 +1,4 @@
 library(shiny)
-library(shinyjs)
 
 shinyServer(function(input, output, session) {
   shinyjs::setSession(session)
@@ -16,7 +15,7 @@ shinyServer(function(input, output, session) {
         eval(parse(text = input$expr))
       ),
       error = function(err) {
-        innerHTML("errorMsg", as.character(shiny::tags$i(err$message)))
+        shinyjs::innerHTML("errorMsg", as.character(shiny::tags$i(err$message)))
         shinyjs::show(id = "error", anim = TRUE, animType = "fade")
       }
     )
