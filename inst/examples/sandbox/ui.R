@@ -62,14 +62,8 @@ shinyUI(fluidPage(
       span("lets you perform common JavaScript operations in Shiny applications"),
       span("without having to know any JavaScript.")),
     p("Setup is minimal: this app has been set up to use", strong("shinyjs"),
-      "with two simple function calls: "),
-    tags$ul(
-      tags$li(
-        code("shinyjs::useShinyjs()"), "was added to the app's", code("ui")),
-      tags$li(
-        code("shinyjs::setSession(session)"), "was added to the app's", code("server"))
-    ),
-    p("After adding these two expressions to your Shiny app, you can",
+      "by simply adding", code("shinyjs::useShinyjs()"), "to the app's", code("ui"), "."),
+    p("After adding this call to your Shiny app, you can",
       "use the functions provided by", strong("shinyjs"), "as regular intuitive R code."),
     p("These functions use JavaScript behind the scenes to let you manipulate the",
       "content (HTML) on the page. Usually, you'll want to call these functions from",

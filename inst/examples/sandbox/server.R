@@ -1,8 +1,6 @@
 library(shiny)
 
 shinyServer(function(input, output, session) {
-  shinyjs::setSession(session)
-
   observe({
     if (input$submitExpr == 0) {
       return()
