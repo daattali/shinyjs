@@ -7,6 +7,7 @@ examples <- c(
   'hide("test")',
   'show("test")',
   'alert(R.Version())',
+  'onclick("btn", alert(date()))'
   'disable("btn")',
   'enable("btn")',
   'innerHTML("btn", "What a nice button")',

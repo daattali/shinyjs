@@ -11,6 +11,10 @@ onclick <- function(id, expr) {
   session$sendCustomMessage("onclick", list(id = id,
                                             shinyInputId = shinyInputId))
 
+  # save the unevaluated expression so that it won't have a static value
+  # every time the given element is clicked
+  expr <- deparse(substitute(expr))
+
   observe({
     if (is.null(session$input[[shinyInputId]])) {
       return()
