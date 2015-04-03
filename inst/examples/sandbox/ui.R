@@ -66,7 +66,7 @@ shinyUI(fluidPage(
     p("After adding this call to your Shiny app, you can",
       "use the functions provided by", strong("shinyjs"), "as regular intuitive R code."),
     p("These functions use JavaScript behind the scenes to let you manipulate the",
-      "content (HTML) on the page. Usually, you'll want to call these functions from",
+      "content (HTML) on the page. These functions should be called from",
       "the app's", code("server"), "after some user action."),
     shiny::hr(),
     h3("Examples to try", class = "section-title"),

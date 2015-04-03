@@ -9,7 +9,6 @@ useShinyjs <- function() {
   # add a shiny message handler binding for each supported method
   tpl <- paste0(
     "Shiny.addCustomMessageHandler('%s', function(params) {",
-    " console.log(params);",
     " shinyjs.%s(params);",
     "});")
   controllers <-

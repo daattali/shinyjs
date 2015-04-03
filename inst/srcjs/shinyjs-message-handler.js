@@ -167,3 +167,15 @@ shinyjs = function() {
     }
   };
 }();
+
+// onclick function is more complicated than the rest of the shinyjs functions
+// we attach a click handler to an element and when it's clicked we call Shiny
+Shiny.addCustomMessageHandler("onclick", function(message) {
+  var elId = "#" + message.id;
+  var shinyInputId = message.shinyInputId;
+  $(elId).attr("data-shinyjs-onclick", 0);
+  $(elId).click(function() {
+    $(elId).attr("data-shinyjs-onclick", parseInt($(elId).attr("data-shinyjs-onclick")) + 1)
+    Shiny.onInputChange(shinyInputId, parseInt($(elId).attr("data-shinyjs-onclick")));
+  });
+});
