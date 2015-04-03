@@ -1,0 +1,69 @@
+/* Used for the example */
+.green {
+  color: green;
+}
+
+/* Rules to make the page nicer */
+
+body {
+  padding: 10px 20px;
+  background: #fafafa;
+  color: #333;
+  font-size: 16px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+#page-title {
+  font-weight: bold;
+  font-size: 40px;
+  margin: 15px 0 30px;
+}
+
+#author-name {
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.well {
+  background: #FFFFFF;
+}
+
+#expr-container {
+  margin: 20px 0 25px;
+}
+
+#expr-container .selectize-input {
+  font-size: 26px;
+  line-height: 26px;
+}
+
+#expr-container .selectize-dropdown {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+#expr-container .selectize-dropdown-content {
+  max-height: 300px;
+  padding: 0;
+}
+
+#expr-container .selectize-dropdown-content .option {
+  border-bottom: 1px dotted #ccc;
+}
+
+#submitExpr {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px 20px;
+}
+
+#btn {
+  font-size: 20px;
+  background: #e0e0e0;
+}
