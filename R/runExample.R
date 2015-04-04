@@ -1,3 +1,10 @@
+#' Run shinyjs examples
+#'
+#' Launch a shinyjs example Shiny app that allows you to see how to use easily
+#' use shinyjs in an app.
+#'
+#' @param example The add to launch
+#' @return NULL
 #' @export
 runExample <- function(example = "sandbox") {
 
@@ -15,4 +22,6 @@ runExample <- function(example = "sandbox") {
     errMsg("could not find example app directory")
   }
   shiny::runApp(appDir, display.mode = "normal")
+
+  invisible(NULL)
 }

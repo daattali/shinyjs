@@ -1,5 +1,13 @@
-# This function is more complicated than the rest of the shinyjs functions and
-# does not go through the same workflow since the JS layer needs to call Shiny back
+#' Add an onclick event handler
+#'
+#' Run an R expression when an HTML element is clicked
+#'
+#' @param id The id of the HTML element
+#' @param expr The R expression to run after the element gets clicked
+#' @param add If TRUE, add expr to be executed after any previously set onclick
+#' handlers; otherwise (the default) expr will overwrite any previous onclick
+#' expressions
+#' @return NULL
 #' @export
 onclick <- function(id, expr, add = FALSE) {
   # grab the Shiny session that called us
@@ -17,10 +25,12 @@ onclick <- function(id, expr, add = FALSE) {
   # every time the given element is clicked
   expr <- deparse(substitute(expr))
 
-  observe({
+  shiny::observe({
     if (is.null(session$input[[shinyInputId]])) {
       return()
     }
     eval(parse(text = expr))
   })
+
+  invisible(NULL)
 }
