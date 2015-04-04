@@ -24,12 +24,12 @@ shinyUI(fluidPage(
      h1("Choose an R expression", class = "section-title"),
      div(id = "expr-container",
          selectInput("expr", label = NULL,
-                   choices = examplesNamed, selected = NULL,
+                   choices = examplesNamed, selected = 1,
                    multiple = FALSE, selectize = TRUE, width = "100%"
      )),
      actionButton("submitExpr", "Run", class = "btn-success"),
      shiny::hr(),
-
+     uiOutput("helpText"),
      tags$button(
        id = "btn", class = "btn",
        "I'm a button with id \"btn\"")
@@ -46,10 +46,11 @@ shinyUI(fluidPage(
     p("Setup is minimal: this app has been set up to use", strong("shinyjs"),
       "by simply adding", code("shinyjs::useShinyjs()"), "to the app's", code("ui"), "."),
     p("After adding this call to your Shiny app, you can",
-      "use the functions provided by", strong("shinyjs"), "as regular intuitive R code."),
-    p("These functions use JavaScript behind the scenes to let you manipulate the",
-      "content (HTML) on the page. These functions should be called from",
-      "the app's", code("server"), "after some user action."),
+      "use the functions provided by", strong("shinyjs"), "as regular intuitive R code.",
+      "These functions use JavaScript behind the scenes to let you manipulate the",
+      "content (HTML) on the page."),
+    p(a("shinyjs is available on GitHub", href = "https://github.com/daattali/shinyjs",
+        target = "_blank")),
     shiny::hr(),
     p("Note: This demo only allows you to preselect from one of the given R expressions",
       "and does not allow you to run any arbitrary expression. To have more freedom",

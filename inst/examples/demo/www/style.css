@@ -1,6 +1,6 @@
 /* Used for the example */
 .green {
-  color: green;
+  background: green;
 }
 
 /* Rules to make the page nicer */
@@ -35,7 +35,7 @@ body {
 }
 
 #expr-container {
-  margin: 20px 0 25px;
+  margin: 20px 0 15px;
 }
 
 #expr-container .selectize-input {
@@ -63,7 +63,10 @@ body {
   padding: 5px 20px;
 }
 
+#helpText {
+  font-size: 18px;
+}
+
 #btn {
   font-size: 20px;
-  background: #e0e0e0;
 }
