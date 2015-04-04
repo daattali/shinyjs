@@ -164,18 +164,48 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       console.log(params.text);
+    },
+
+    // onclick function is more complicated than the rest of the shinyjs functions
+    // we attach a click handler to an element and when it's clicked we call Shiny
+    onclick : function (params) {
+      var defaultParams = {
+        id : null,
+        shinyInputId : null,
+        add : false
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      var elId = "#" + params.id;
+      var shinyInputId = params.shinyInputId;
+      var attrName = "data-shinyjs-onclick";
+
+      // if this is the first click handler we attach to this element, initialize
+      // the data attribute and add the onclick event handler
+      var first = !$(elId)[0].hasAttribute(attrName);
+      if (first) {
+        $(elId).attr(attrName, JSON.stringify(Object()));
+
+        $(elId).click(function() {
+          var oldValues = JSON.parse($(elId).attr(attrName));
+          var newValues = Object();
+          $.each(oldValues, function(key, value) {
+            var newValue = value + 1;
+            newValues[key] = newValue;
+            Shiny.onInputChange(key, newValue);
+          });
+          $(elId).attr(attrName, JSON.stringify(newValues));
+        });
+      }
+
+      // if we want this action to overwrite existing ones, unbind click handler
+      if (params.add) {
+        var attrValue = JSON.parse($(elId).attr(attrName));
+      } else {
+        var attrValue = Object();
+      }
+      attrValue[shinyInputId] = 0;
+      $(elId).attr(attrName, JSON.stringify(attrValue));
     }
   };
 }();
-
-// onclick function is more complicated than the rest of the shinyjs functions
-// we attach a click handler to an element and when it's clicked we call Shiny
-Shiny.addCustomMessageHandler("onclick", function(message) {
-  var elId = "#" + message.id;
-  var shinyInputId = message.shinyInputId;
-  $(elId).attr("data-shinyjs-onclick", 0);
-  $(elId).click(function() {
-    $(elId).attr("data-shinyjs-onclick", parseInt($(elId).attr("data-shinyjs-onclick")) + 1)
-    Shiny.onInputChange(shinyInputId, parseInt($(elId).attr("data-shinyjs-onclick")));
-  });
-});
