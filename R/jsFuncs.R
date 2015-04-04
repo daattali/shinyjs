@@ -1,5 +1,5 @@
 jsFunc <- function(...) {
-  params <- list(...)
+  params <- eval(substitute(alist(...)))
 
 #   # This code was used prior to V0.0.2.0 - see 'setSession.R' file for details.
 #   # see if the last parameter is an unnamed shiny session
