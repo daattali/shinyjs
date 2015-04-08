@@ -1,21 +1,6 @@
 library(shiny)
 
-examples <- c(
-  'toggle("test")',
-  'toggle("test", TRUE, "fade", 2)',
-  'toggle(id = "test", anim = TRUE, time = 2, animType = "slide")',
-  'hide("test")',
-  'show("test")',
-  'alert(R.Version())',
-  'onclick("btn", alert(date()))',
-  'disable("btn")',
-  'enable("btn")',
-  'innerHTML("btn", "What a nice button")',
-  'innerHTML("test", paste("The time is", date()))',
-  'addClass("test", "green")',
-  'removeClass("test", "green")',
-  'toggleClass("test", "green")'
-)
+source("helpers.R")
 
 shinyUI(fluidPage(
   title = "Experimenting with shinyjs",
@@ -37,7 +22,7 @@ shinyUI(fluidPage(
   fluidRow(
   column(6, wellPanel(
      h1("Write an R expression", class = "section-title"),
-     textInput("expr", label = NULL, value = examples[1]),
+     textInput("expr", label = NULL, value = as.character(examples[1])),
      actionButton("submitExpr", "Run", class = "btn-success"),
      shinyjs::hidden(
        div(id = "error", br(),
@@ -71,10 +56,15 @@ shinyUI(fluidPage(
       "the app's", code("server"), "after some user action."),
     shiny::hr(),
     h3("Examples to try", class = "section-title"),
-    p("Copy these examples into the box on the left, then click \"Run\"."),
+    p("Click on any of the examples below to quickly copy them into the box on the left,",
+      "then click \"Run\"."),
 
     tags$ul(id = "examples-list",
-      lapply(examples, function(ex) tags$li(code(ex)))
+      lapply(names(examples), function(ex) {
+        ex <- examples[ex]
+        tags$li(a(id = sprintf("example-%s", names(ex)),
+                  (as.character(ex))))
+      })
     ),
 
     p("The functions ending in", code("*Class"), "require basic understading of",

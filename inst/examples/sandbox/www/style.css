@@ -63,3 +63,8 @@ body {
   font-size: 20px;
   background: #e0e0e0;
 }
+
+#examples-list a {
+  cursor: pointer;
+  font-family: monospace;
+}
