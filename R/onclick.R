@@ -10,8 +10,11 @@
 #' @return NULL
 #' @export
 onclick <- function(id, expr, add = FALSE) {
+  # evaluate expressions in the caller's environment
+  parentFrame <- parent.frame(1)
+
   # grab the Shiny session that called us
-  session <- get("session", parent.frame(1))
+  session <- get("session", parentFrame)
 
   # attach an onclick callback from JS to call this function to execute the
   # given expression. To support multiple onclick handlers, each time this
@@ -29,7 +32,7 @@ onclick <- function(id, expr, add = FALSE) {
     if (is.null(session$input[[shinyInputId]])) {
       return()
     }
-    eval(parse(text = expr))
+    eval(parse(text = expr), envir = parentFrame)
   })
 
   invisible(NULL)

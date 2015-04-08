@@ -26,7 +26,7 @@ jsFunc <- function(...) {
   # and correctly get the sessin. If there are cases where this doesn't work,
   # can revert back to the approach pre V0.0.2.0 where the session was set
   # manually
-  session <- get("session", parent.frame(1))
+  session <- get("session", parentFrame)
 
 #   # This code was used prior to V0.0.2.0 - see 'setSession.R' file for details.
 #   # get the shiny session that should run this expression - documented out
