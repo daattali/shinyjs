@@ -97,4 +97,6 @@ innerHTML <- jsFunc
 #' @export
 alert <- jsFunc
 #' @export
+mymsg <- jsFunc
+#' @export
 logjs <- jsFunc

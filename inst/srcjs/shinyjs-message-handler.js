@@ -149,14 +149,22 @@ shinyjs = function() {
     },
 
     alert : function (params) {
-      console.log("YOLO");console.log(params);
       var defaultParams = {
         text : null
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      //alert(JSON.stringify(params.text, null, 4));
-      alert("b");
+      alert(JSON.stringify(params.text, null, 4));
+    },
+
+
+    mymsg : function (params) {
+      var defaultParams = {
+        text : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      alert(JSON.stringify(params.text, null, 4));
     },
 
     logjs : function (params) {
