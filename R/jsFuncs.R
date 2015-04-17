@@ -1,13 +1,6 @@
 jsFunc <- function(...) {
   params <- eval(substitute(alist(...)))
 
-#   # This code was used prior to V0.0.2.0 - see 'setSession.R' file for details.
-#   # see if the last parameter is an unnamed shiny session
-#   if (missing(session) && length(params) > 0 && isSession(tail(params, 1)[[1]])) {
-#     session <- tail(params, 1)[[1]]
-#     params <- head(params, -1)
-#   }
-
   if (!is.null(names(params)) && any(vapply(names(params), nzchar, 1L) == 0)) {
     errMsg("you cannot mix named and unnamed arguments in the same function call")
   }
@@ -27,19 +20,6 @@ jsFunc <- function(...) {
   # can revert back to the approach pre V0.0.2.0 where the session was set
   # manually
   session <- get("session", parentFrame)
-
-#   # This code was used prior to V0.0.2.0 - see 'setSession.R' file for details.
-#   # get the shiny session that should run this expression - documented out
-#   if (is.null(session)) {
-#     if (!exists(".session", shinyjsGlobals)) {
-#       errMsg("you need to either provide a session or call shinyjs::setSession() first")
-#     }
-#     session <- get(".session", shinyjsGlobals)
-#   } else {
-#     if (!isSession(session)) {
-#       errMsg("'session' is not a valid Shiny session")
-#     }
-#   }
 
   # call the javascript function
   session$sendCustomMessage(
@@ -92,6 +72,10 @@ toggle <- jsFunc
 #'     \item{\strong{id}}{id of the Shiny tag}
 #'     \item{class}{CSS class}
 #'   }
+#' \tabular{ll}{
+#'   \code{\strong{first}}         \tab if of the shiny tag \cr
+#'   \code{\strong{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
+#'    }
 #'   \itemize{
 #'     \item \strong{First} item
 #'     \item Second item
