@@ -36,16 +36,17 @@ jsFunc <- function(...) {
 #' show makes an element visible, hide makes an element invisible, toggle
 #' displays the element if it it hidden and hides it if it is visible.
 #'
-#' @param id The id of the Shiny tag
-#' @param anim if TRUE then animate the behaviour
-#' @param animType The type of animation to use, one of 'slide' or 'fade'
-#' @param time The number of seconds to make the animation last.
-#' @usage
-#' show(id, anim = FALSE, animType = "slide", time = 0.5)
-#'
-#' hide(id, anim = FALSE, animType = "slide", time = 0.5)
-#'
-#' toggle(id, anim = FALSE, animType = "slide", time = 0.5)
+#' @param ... The following parameters are available:
+#' \tabular{ll}{
+#'   \strong{\code{id}}         \tab The id of the Shiny tag \cr
+#'   \strong{\code{anim}}       \tab If TRUE then animate the behaviour \cr
+#'   \strong{\code{animType}}   \tab The type of animation to use,
+#'                                   one of 'slide' or 'fade' \cr
+#'   \strong{\code{time}}       \tab The number of seconds to make the
+#'                                   animation last. \cr
+#' }
+#' @section Passing arguments:
+#' The arguments can be passed either named or unnamed
 #' @name visibilityFuncs
 NULL
 
@@ -68,19 +69,10 @@ toggle <- jsFunc
 #' set.
 #'
 #' @param ... The following parameters are available:
-#'   \describe{
-#'     \item{\strong{id}}{id of the Shiny tag}
-#'     \item{class}{CSS class}
-#'   }
 #' \tabular{ll}{
-#'   \code{\strong{first}}         \tab if of the shiny tag \cr
-#'   \code{\strong{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
-#'    }
-#'   \itemize{
-#'     \item \strong{First} item
-#'     \item Second item
-#'   }
-#' @param class The CSS class
+#'   \strong{\code{first}}         \tab if of the shiny tag \cr
+#'   \strong{\code{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
+#' }
 #' @name classFuncs
 NULL
 

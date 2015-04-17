@@ -1,26 +1,43 @@
 #' Run shinyjs examples
 #'
-#' Launch a shinyjs example Shiny app that allows you to see how to use easily
-#' use shinyjs in an app.
+#' Launch a \code{shinyjs} example Shiny app that shows how to
+#' easily use \code{shinyjs} in an app.
 #'
-#' @param example The add to launch
-#' @return NULL
+#' Run without any arguments to see a list of available example apps.
+#'
+#' @param example The app to launch
+#' @examples
+#' ## Only run this example in interactive R sessions
+#' if (interactive()) {
+#'   # List all available example apps
+#'   runExample()
+#'
+#'   runExample("sandbox")
+#'   runExample("demo")
+#' }
 #' @export
-runExample <- function(example = "sandbox") {
+runExample <- function(example) {
 
-  if (missing(example)) {
-    message("No example was explicitly given, using the default 'sandbox'.\n",
-            "Available examples are: '",
-            paste(list.files(system.file("examples", package = "shinyjs")),
-                  collapse = "', '"),
-            "'")
+  validExamples <-
+    paste0(
+      'Valid examples are: "',
+      paste(list.files(system.file("examples", package = "shinyjs")),
+            collapse = '", "'),
+      '"')
+
+  if (missing(example) || !nzchar(example)) {
+    message('Please run `runExample()` with a valid example app as an argument.\n',
+            validExamples)
+    return(invisible(NULL))
   }
 
   appDir <- system.file("examples", example,
                          package = "shinyjs")
   if (appDir == "") {
-    errMsg("could not find example app directory")
+    errMsg(sprintf("could not find example app `%s`\n%s",
+                   example, validExamples))
   }
+
   shiny::runApp(appDir, display.mode = "normal")
 
   invisible(NULL)

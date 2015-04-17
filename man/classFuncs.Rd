@@ -15,20 +15,10 @@ toggleClass(...)
 }
 \arguments{
 \item{...}{The following parameters are available:
-  \describe{
-    \item{\strong{id}}{id of the Shiny tag}
-    \item{class}{CSS class}
-  }
 \tabular{ll}{
-  \code{\strong{first}}         \tab if of the shiny tag \cr
-  \code{\strong{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
-   }
-  \itemize{
-    \item \strong{First} item
-    \item Second item
-  }}
-
-\item{class}{The CSS class}
+  \strong{\code{first}}         \tab if of the shiny tag \cr
+  \strong{\code{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
+}}
 }
 \description{
 Add or remove a CSS class from an HTML element.

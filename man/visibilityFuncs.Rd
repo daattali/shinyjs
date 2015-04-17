@@ -7,12 +7,6 @@
 \alias{visibilityFuncs}
 \title{Display/hide an element}
 \usage{
-show(id, anim = FALSE, animType = "slide", time = 0.5)
-
-hide(id, anim = FALSE, animType = "slide", time = 0.5)
-
-toggle(id, anim = FALSE, animType = "slide", time = 0.5)
-
 show(...)
 
 hide(...)
@@ -20,13 +14,15 @@ hide(...)
 toggle(...)
 }
 \arguments{
-\item{id}{The id of the Shiny tag}
-
-\item{anim}{if TRUE then animate the behaviour}
-
-\item{animType}{The type of animation to use, one of 'slide' or 'fade'}
-
-\item{time}{The number of seconds to make the animation last.}
+\item{...}{The following parameters are available:
+\tabular{ll}{
+  \strong{\code{id}}         \tab The id of the Shiny tag \cr
+  \strong{\code{anim}}       \tab If TRUE then animate the behaviour \cr
+  \strong{\code{animType}}   \tab The type of animation to use,
+                                  one of 'slide' or 'fade' \cr
+  \strong{\code{time}}       \tab The number of seconds to make the
+                                  animation last. \cr
+}}
 }
 \description{
 Display or hide an HTML element.
@@ -34,5 +30,9 @@ Display or hide an HTML element.
 \details{
 show makes an element visible, hide makes an element invisible, toggle
 displays the element if it it hidden and hides it if it is visible.
+}
+\section{Passing arguments}{
+
+The arguments can be passed either named or unnamed
 }
 

@@ -7,11 +7,19 @@
 useShinyjs()
 }
 \value{
-Scripts that shinyjs requires that are automatically inserted
-to the app's head tag
+Scripts that \code{shinyjs} requires that are automatically inserted
+to the app's \code{<head>} tag.
 }
 \description{
-Set up a Shiny app to use shinyjs. This function needs to be called from a
-Shiny app's ui.
+Set up a Shiny application to use \code{shinyjs}. This function needs to be
+called from a Shiny app's UI.
+}
+\examples{
+shiny::shinyUI(
+  useShinyjs()
+)
+}
+\seealso{
+\code{\link[shinyjs]{runExample}}
 }
 

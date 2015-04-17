@@ -4,13 +4,26 @@
 \alias{runExample}
 \title{Run shinyjs examples}
 \usage{
-runExample(example = "sandbox")
+runExample(example)
 }
 \arguments{
-\item{example}{The add to launch}
+\item{example}{The app to launch}
 }
 \description{
-Launch a shinyjs example Shiny app that allows you to see how to use easily
-use shinyjs in an app.
+Launch a \code{shinyjs} example Shiny app that shows how to
+easily use \code{shinyjs} in an app.
+}
+\details{
+Run without any arguments to see a list of available example apps.
+}
+\examples{
+## Only run this example in interactive R sessions
+if (interactive()) {
+  # List all available example apps
+  runExample()
+
+  runExample("sandbox")
+  runExample("demo")
+}
 }
 

@@ -7,7 +7,6 @@
 #' @param add If TRUE, add expr to be executed after any previously set onclick
 #' handlers; otherwise (the default) expr will overwrite any previous onclick
 #' expressions
-#' @return NULL
 #' @export
 onclick <- function(id, expr, add = FALSE) {
   # evaluate expressions in the caller's environment

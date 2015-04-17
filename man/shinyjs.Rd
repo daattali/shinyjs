@@ -6,6 +6,17 @@
 \alias{shinyjs-package}
 \title{shinys}
 \description{
-Easily run JavaScript functions in Shiny applications
+Easily Run Common JavaScript Functions in Shiny using Plain R Code
+}
+\details{
+Using shinyjs lets you bring the power and flexibility of
+JavaScript into any Shiny application without requiring any JavaScript
+knowledge.  Many useful JavaScript functions are made available by
+shinyjs with a simple R interface so that you don't have to write any
+JavaScript code. Even if you do know JavaScript, shinyjs can be used as
+convenience functions to avoid dealing with message passing and writing
+JavaScript code.
+
+See the \href{https://github.com/daattali/shinyjs}{README} on GitHub
 }
 
