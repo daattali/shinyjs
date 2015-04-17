@@ -149,6 +149,7 @@ shinyjs = function() {
     },
 
     alert : function (params) {
+      console.log("YOLO");console.log(params);
       var defaultParams = {
         text : null
       }
