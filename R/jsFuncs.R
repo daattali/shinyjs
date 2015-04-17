@@ -92,11 +92,9 @@ enable <- jsFunc
 disable <- jsFunc
 
 #' @export
-innerHTML <- jsFunc
+text <- jsFunc
 
 #' @export
-alert <- jsFunc
-#' @export
-mymsg <- jsFunc
+message <- jsFunc
 #' @export
 logjs <- jsFunc

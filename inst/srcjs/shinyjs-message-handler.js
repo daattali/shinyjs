@@ -138,7 +138,7 @@ shinyjs = function() {
       $("#" + params.id).prop('disabled', true);
     },
 
-    innerHTML : function (params) {
+    text : function (params) {
       var defaultParams = {
         id : null,
         expr : null
@@ -148,17 +148,7 @@ shinyjs = function() {
       $("#" + params.id)[0].innerHTML = params.expr;
     },
 
-    alert : function (params) {
-      var defaultParams = {
-        text : null
-      }
-      params = shinyjs.getParams(params, defaultParams);
-
-      alert(JSON.stringify(params.text, null, 4));
-    },
-
-
-    mymsg : function (params) {
+    message : function (params) {
       var defaultParams = {
         text : null
       }
