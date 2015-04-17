@@ -155,7 +155,8 @@ shinyjs = function() {
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      alert(JSON.stringify(params.text, null, 4));
+      //alert(JSON.stringify(params.text, null, 4));
+      alert("b");
     },
 
     logjs : function (params) {
