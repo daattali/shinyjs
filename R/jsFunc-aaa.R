@@ -31,9 +31,6 @@ jsFunc <- function(...) {
 }
 
 #' @export
-text <- jsFunc
-
-#' @export
 info <- jsFunc
 #' @export
 logjs <- jsFunc

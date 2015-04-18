@@ -13,7 +13,7 @@
 #'                                   (default: \code{FALSE}) \cr
 #'   \strong{\code{animType}}   \tab The type of animation to use,
 #'                                   either "slide" or "fade"
-#'                                   (default: \code{"slide"})\cr
+#'                                   (default: \code{"slide"}) \cr
 #'   \strong{\code{time}}       \tab The number of seconds to make the
 #'                                   animation last.
 #'                                   (default: \code{0.5}) \cr
