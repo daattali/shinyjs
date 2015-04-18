@@ -27,12 +27,20 @@ Add or remove a CSS class from an HTML element.
 \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
 removes a cssClass,\strong{\code{toggleClass}} adds the class if it is
 not set and removes the class if it is already set.
+
+CSS is a simple way to describe how elements on a web page should be
+displayed (position, colour, size, etc.).  You can learn the basics
+at \href{http://www.w3schools.com/css/}{W3Schools}.
 }
 \examples{
 if (interactive()) {
   shiny::shinyApp(
     ui = shiny::fluidPage(
       useShinyjs(),  # Set up shinyjs
+      # Add a CSS class for red text colour
+      tags$head(tags$style(HTML("
+        .red { background: red; }
+      "))),
       shiny::actionButton("btn", "Click me"),
       shiny::p(id = "element", "Watch what happens to me")
     ),
@@ -42,7 +50,7 @@ if (interactive()) {
           return(NULL)
         }
         # Change the following line for more examples
-        toggle("element")
+        toggleClass("element", "red")
       })
     }
   )
@@ -50,17 +58,16 @@ if (interactive()) {
 \dontrun{
   # The shinyjs function call in the above app can be replaced by
   # any of the following examples to produce similar Shiny apps
-  toggle(id = "element")
-  toggle("element", TRUE)
-  toggle("element", TRUE, "fade", 2)
-  toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
-  show("element")
-  show(id = "element", anim = TRUE)
-  hide("element")
-  hide(id = "element", anim = TRUE)
+  toggleClass(class = "red", id = "element")
+  addClass("element", "red")
+  removeClass("element", "red")
 }
 }
 \seealso{
 \code{\link[shinyjs]{useShinyjs}}
+
+\code{\link[shinyjs]{runExample}}
+
+\code{\link[shinyjs]{hidden}}
 }
 

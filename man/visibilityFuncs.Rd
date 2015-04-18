@@ -69,5 +69,7 @@ if (interactive()) {
 }
 \seealso{
 \code{\link[shinyjs]{useShinyjs}}
+
+\code{\link[shinyjs]{runExample}}
 }
 

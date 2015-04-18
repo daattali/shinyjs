@@ -1,15 +1,14 @@
 Package: shinyjs
-Title: Easily Run Common JavaScript Functions in Shiny using Plain R Code
+Title: Perform Common JavaScript Operations in Shiny apps using Plain R Code
 Version: 0.0.3.0
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
-Description: Using shinyjs lets you bring the power and flexibility of
-    JavaScript into any Shiny application without requiring any JavaScript
-    knowledge.  Many useful JavaScript functions are made available by
-    shinyjs with a simple R interface so that you don't have to write any
-    JavaScript code. Even if you do know JavaScript, shinyjs can be used as
-    convenience functions to avoid dealing with message passing and writing
-    JavaScript code.
+Description: shinyjs lets you perform common JavaScript operations in Shiny
+    applications without having to know any JavaScrippt. Many useful JavaScript
+    functions are made available by shinyjs with a simple R interface so that
+    you don't have to write any JavaScript code. Even if you do know JavaScript,
+    shinyjs can be used as convenience functions to avoid dealing with message
+    passing and writing JavaScript code.
 URL: https://github.com/daattali/shinyjs
 Depends: R (>= 3.1.2)
 Imports:

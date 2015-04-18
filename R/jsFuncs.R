@@ -52,6 +52,7 @@ jsFunc <- function(...) {
 #'                                   (default: \code{0.5}) \cr
 #' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
+#' @seealso \code{\link[shinyjs]{runExample}}
 #' @examples
 #' if (interactive()) {
 #'   shiny::shinyApp(
@@ -104,17 +105,27 @@ toggle <- jsFunc
 #' removes a cssClass,\strong{\code{toggleClass}} adds the class if it is
 #' not set and removes the class if it is already set.
 #'
+#' CSS is a simple way to describe how elements on a web page should be
+#' displayed (position, colour, size, etc.).  You can learn the basics
+#' at \href{http://www.w3schools.com/css/}{W3Schools}.
+#'
 #' @param ... The following parameters are available:
 #' \tabular{ll}{
 #'   \strong{\code{id}}     \tab The id of the element/Shiny tag \cr
 #'   \strong{\code{class}}  \tab The CSS class to add/remove \cr
 #' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
+#' @seealso \code{\link[shinyjs]{runExample}}
+#' @seealso \code{\link[shinyjs]{hidden}}
 #' @examples
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
+#'       # Add a CSS class for red text colour
+#'       tags$head(tags$style(HTML("
+#'         .red { background: red; }
+#'       "))),
 #'       shiny::actionButton("btn", "Click me"),
 #'       shiny::p(id = "element", "Watch what happens to me")
 #'     ),
@@ -124,7 +135,7 @@ toggle <- jsFunc
 #'           return(NULL)
 #'         }
 #'         # Change the following line for more examples
-#'         toggle("element")
+#'         toggleClass("element", "red")
 #'       })
 #'     }
 #'   )
@@ -132,14 +143,9 @@ toggle <- jsFunc
 #' \dontrun{
 #'   # The shinyjs function call in the above app can be replaced by
 #'   # any of the following examples to produce similar Shiny apps
-#'   toggle(id = "element")
-#'   toggle("element", TRUE)
-#'   toggle("element", TRUE, "fade", 2)
-#'   toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
-#'   show("element")
-#'   show(id = "element", anim = TRUE)
-#'   hide("element")
-#'   hide(id = "element", anim = TRUE)
+#'   toggleClass(class = "red", id = "element")
+#'   addClass("element", "red")
+#'   removeClass("element", "red")
 #' }
 #' @name classFuncs
 NULL
@@ -154,10 +160,19 @@ removeClass <- jsFunc
 #' @rdname classFuncs
 toggleClass <- jsFunc
 
+#' Enable/disable an input element
+#' @name stateFuncs
+NULL
+
 #' @export
+#' @rdname stateFuncs
 enable <- jsFunc
 #' @export
+#' @rdname stateFuncs
 disable <- jsFunc
+#' @export
+#' @rdname stateFuncs
+toggleState <- jsFunc
 
 #' @export
 text <- jsFunc

@@ -29,8 +29,9 @@ runExample <- function(example) {
       '"')
 
   if (missing(example) || !nzchar(example)) {
-    message('Please run `runExample()` with a valid example app as an argument.\n',
-            validExamples)
+    base::message(
+      'Please run `runExample()` with a valid example app as,an argument.\n',
+      validExamples)
     return(invisible(NULL))
   }
 

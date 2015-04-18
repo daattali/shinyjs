@@ -138,6 +138,16 @@ shinyjs = function() {
       $("#" + params.id).prop('disabled', true);
     },
 
+    toggleState : function (params) {
+      var defaultParams = {
+        id : null
+      };
+      params = shinyjs.getParams(params, defaultParams);
+
+      var element = $("#" + params.id);
+      element.prop('disabled', element.prop('disabled') !== true);
+    },
+
     text : function (params) {
       var defaultParams = {
         id : null,

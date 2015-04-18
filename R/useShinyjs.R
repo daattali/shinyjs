@@ -9,13 +9,32 @@
 #' shiny::shinyUI(
 #'   useShinyjs()
 #' )
+#'
+#' if (interactive()) {
+#'   shiny::shinyApp(
+#'     ui = shiny::fluidPage(
+#'       useShinyjs(),  # Set up shinyjs
+#'       shiny::actionButton("btn", "Click me"),
+#'       shiny::p(id = "element", "Watch what happens to me")
+#'     ),
+#'     server = function(input, output, session) {
+#'       shiny::observe({
+#'         if (input$btn == 0) {
+#'           return(NULL)
+#'         }
+#'         # Run a simply shinyjs function
+#'         toggle("element")
+#'       })
+#'     }
+#'   )
+#' }
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' @export
 useShinyjs <- function() {
   # all the methods that should be forwarded to javascript
-  jsFuncs <- c("show", "hide", "toggle", "enable", "disable",
+  jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
                "addClass", "removeClass", "toggleClass", "text",
-               "onclick", "message", "mymsg", "logjs")
+               "onclick", "message", "logjs")
 
   # add a shiny message handler binding for each supported method
   tpl <- paste0(

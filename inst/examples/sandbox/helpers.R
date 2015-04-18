@@ -7,6 +7,7 @@ examples <- c(
   'show("test")',
   'message(R.Version())',
   'onclick("btn", message(date()))',
+  'toggleState("btn")',
   'disable("btn")',
   'enable("btn")',
   'text("btn", "What a nice button")',
