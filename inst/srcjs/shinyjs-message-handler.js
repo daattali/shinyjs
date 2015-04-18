@@ -158,7 +158,7 @@ shinyjs = function() {
       $("#" + params.id)[0].innerHTML = params.expr;
     },
 
-    message : function (params) {
+    info : function (params) {
       var defaultParams = {
         text : null
       }
