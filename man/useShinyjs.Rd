@@ -12,7 +12,8 @@ to the app's \code{<head>} tag.
 }
 \description{
 Set up a Shiny application to use \code{shinyjs}. This function needs to be
-called from a Shiny app's UI.
+called from a Shiny app's UI. Most \code{shinyjs} functions will not work
+if \code{useShinyjs()} is not called first.
 }
 \examples{
 shiny::shinyUI(
