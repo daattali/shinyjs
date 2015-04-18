@@ -15,6 +15,9 @@ easily use \code{shinyjs} in an app.
 }
 \details{
 Run without any arguments to see a list of available example apps.
+The "demo" example is also
+\href{http://daattali.com:3838/shinyjs-demo/}{available online}
+to experiment with.
 }
 \examples{
 ## Only run this example in interactive R sessions

@@ -10,7 +10,8 @@
 #' convenience functions to avoid dealing with message passing and writing
 #' JavaScript code.
 #'
-#' See the \href{https://github.com/daattali/shinyjs}{README} on GitHub
+#' View a \href{http://daattali.com:3838/shinyjs-demo/}{demo Shiny app}
+#' or see the \href{https://github.com/daattali/shinyjs}{README} on GitHub.
 #'
 #' @docType package
 #' @name shinyjs

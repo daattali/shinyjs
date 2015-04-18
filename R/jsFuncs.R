@@ -29,24 +29,60 @@ jsFunc <- function(...) {
   invisible(NULL)
 }
 
+# --- Below is only documentation for all functions that are aliased to jsFunc
+
 #' Display/hide an element
 #'
 #' Display or hide an HTML element.
 #'
-#' show makes an element visible, hide makes an element invisible, toggle
-#' displays the element if it it hidden and hides it if it is visible.
+#' \strong{\code{show}} makes an element visible, \strong{\code{hide}} makes
+#' an element invisible, \strong{\code{toggle}} displays the element if it it
+#' hidden and hides it if it is visible.
 #'
 #' @param ... The following parameters are available:
 #' \tabular{ll}{
-#'   \strong{\code{id}}         \tab The id of the Shiny tag \cr
-#'   \strong{\code{anim}}       \tab If TRUE then animate the behaviour \cr
+#'   \strong{\code{id}}         \tab The id of the element/Shiny tag \cr
+#'   \strong{\code{anim}}       \tab If TRUE then animate the behaviour
+#'                                   (default: \code{FALSE}) \cr
 #'   \strong{\code{animType}}   \tab The type of animation to use,
-#'                                   one of 'slide' or 'fade' \cr
+#'                                   either "slide" or "fade"
+#'                                   (default: \code{"slide"})\cr
 #'   \strong{\code{time}}       \tab The number of seconds to make the
-#'                                   animation last. \cr
+#'                                   animation last.
+#'                                   (default: \code{0.5}) \cr
 #' }
-#' @section Passing arguments:
-#' The arguments can be passed either named or unnamed
+#' @seealso \code{\link[shinyjs]{useShinyjs}}
+#' @examples
+#' if (interactive()) {
+#'   shiny::shinyApp(
+#'     ui = shiny::fluidPage(
+#'       useShinyjs(),  # Set up shinyjs
+#'       shiny::actionButton("btn", "Click me"),
+#'       shiny::p(id = "element", "Watch what happens to me")
+#'     ),
+#'     server = function(input, output, session) {
+#'       shiny::observe({
+#'         if (input$btn == 0) {
+#'           return(NULL)
+#'         }
+#'         # Change the following line for more examples
+#'         toggle("element")
+#'       })
+#'     }
+#'   )
+#' }
+#' \dontrun{
+#'   # The shinyjs function call in the above app can be replaced by
+#'   # any of the following examples to produce similar Shiny apps
+#'   toggle(id = "element")
+#'   toggle("element", TRUE)
+#'   toggle("element", TRUE, "fade", 2)
+#'   toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
+#'   show("element")
+#'   show(id = "element", anim = TRUE)
+#'   hide("element")
+#'   hide(id = "element", anim = TRUE)
+#' }
 #' @name visibilityFuncs
 NULL
 
@@ -64,14 +100,46 @@ toggle <- jsFunc
 #'
 #' Add or remove a CSS class from an HTML element.
 #'
-#' addClass adds a CSS class, removeClass removes a cssClass, toggleClass
-#' adds the class if it is not set and removes the class if it is already
-#' set.
+#' \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
+#' removes a cssClass,\strong{\code{toggleClass}} adds the class if it is
+#' not set and removes the class if it is already set.
 #'
 #' @param ... The following parameters are available:
 #' \tabular{ll}{
-#'   \strong{\code{first}}         \tab if of the shiny tag \cr
-#'   \strong{\code{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
+#'   \strong{\code{id}}     \tab The id of the element/Shiny tag \cr
+#'   \strong{\code{class}}  \tab The CSS class to add/remove \cr
+#' }
+#' @seealso \code{\link[shinyjs]{useShinyjs}}
+#' @examples
+#' if (interactive()) {
+#'   shiny::shinyApp(
+#'     ui = shiny::fluidPage(
+#'       useShinyjs(),  # Set up shinyjs
+#'       shiny::actionButton("btn", "Click me"),
+#'       shiny::p(id = "element", "Watch what happens to me")
+#'     ),
+#'     server = function(input, output, session) {
+#'       shiny::observe({
+#'         if (input$btn == 0) {
+#'           return(NULL)
+#'         }
+#'         # Change the following line for more examples
+#'         toggle("element")
+#'       })
+#'     }
+#'   )
+#' }
+#' \dontrun{
+#'   # The shinyjs function call in the above app can be replaced by
+#'   # any of the following examples to produce similar Shiny apps
+#'   toggle(id = "element")
+#'   toggle("element", TRUE)
+#'   toggle("element", TRUE, "fade", 2)
+#'   toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
+#'   show("element")
+#'   show(id = "element", anim = TRUE)
+#'   hide("element")
+#'   hide(id = "element", anim = TRUE)
 #' }
 #' @name classFuncs
 NULL

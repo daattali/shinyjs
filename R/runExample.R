@@ -4,6 +4,9 @@
 #' easily use \code{shinyjs} in an app.
 #'
 #' Run without any arguments to see a list of available example apps.
+#' The "demo" example is also
+#' \href{http://daattali.com:3838/shinyjs-demo/}{available online}
+#' to experiment with.
 #'
 #' @param example The app to launch
 #' @examples

@@ -16,16 +16,51 @@ toggleClass(...)
 \arguments{
 \item{...}{The following parameters are available:
 \tabular{ll}{
-  \strong{\code{first}}         \tab if of the shiny tag \cr
-  \strong{\code{second item}}   \tab asdfdsaf dsadsa fdsa fasfa \cr
+  \strong{\code{id}}     \tab The id of the element/Shiny tag \cr
+  \strong{\code{class}}  \tab The CSS class to add/remove \cr
 }}
 }
 \description{
 Add or remove a CSS class from an HTML element.
 }
 \details{
-addClass adds a CSS class, removeClass removes a cssClass, toggleClass
-adds the class if it is not set and removes the class if it is already
-set.
+\strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
+removes a cssClass,\strong{\code{toggleClass}} adds the class if it is
+not set and removes the class if it is already set.
+}
+\examples{
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(
+      useShinyjs(),  # Set up shinyjs
+      shiny::actionButton("btn", "Click me"),
+      shiny::p(id = "element", "Watch what happens to me")
+    ),
+    server = function(input, output, session) {
+      shiny::observe({
+        if (input$btn == 0) {
+          return(NULL)
+        }
+        # Change the following line for more examples
+        toggle("element")
+      })
+    }
+  )
+}
+\dontrun{
+  # The shinyjs function call in the above app can be replaced by
+  # any of the following examples to produce similar Shiny apps
+  toggle(id = "element")
+  toggle("element", TRUE)
+  toggle("element", TRUE, "fade", 2)
+  toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
+  show("element")
+  show(id = "element", anim = TRUE)
+  hide("element")
+  hide(id = "element", anim = TRUE)
+}
+}
+\seealso{
+\code{\link[shinyjs]{useShinyjs}}
 }
 
