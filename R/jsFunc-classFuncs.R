@@ -3,7 +3,7 @@
 #' Add or remove a CSS class from an HTML element.
 #'
 #' \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
-#' removes a cssClass,\strong{\code{toggleClass}} adds the class if it is
+#' removes a CSS class, \strong{\code{toggleClass}} adds the class if it is
 #' not set and removes the class if it is already set.
 #'
 #' CSS is a simple way to describe how elements on a web page should be
@@ -15,8 +15,8 @@
 #'   \strong{\code{id}}     \tab The id of the element/Shiny tag \cr
 #'   \strong{\code{class}}  \tab The CSS class to add/remove \cr
 #' }
-#' @seealso \code{\link[shinyjs]{useShinyjs}}
-#' @seealso \code{\link[shinyjs]{runExample}}
+#' @seealso \code{\link[shinyjs]{useShinyjs}},
+#' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @examples

@@ -1,8 +1,7 @@
-#' Use shinyjs
+#' Set up a Shiny app to use shinyjs
 #'
-#' Set up a Shiny application to use \code{shinyjs}. This function needs to be
-#' called from a Shiny app's UI. Most \code{shinyjs} functions will not work
-#' if \code{useShinyjs()} is not called first.
+#' This function must be called from a Shiny app's UI in order for all other
+#' \code{shinyjs} functions to work.
 #'
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.

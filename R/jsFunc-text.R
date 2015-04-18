@@ -8,15 +8,15 @@
 #' @param ... The following parameters are available:
 #' \tabular{ll}{
 #'   \strong{\code{id}}    \tab The id of the element/Shiny tag \cr
-#'   \strong{\code{expr}}  \tab The text to place inside the element.
+#'   \strong{\code{text}}  \tab The text to place inside the element.
 #'                                   Can be either simple quoted text,
 #'                                   R expressions, or valid HTML code.\cr
-#'   \strong{\code{add}}   \tab If TRUE, append \code{expr} to the contents
-#'                              of the element; otherwise overwrite it.
+#'   \strong{\code{add}}   \tab If \code{TRUE}, then append \code{text} to the
+#'                              contents of the element; otherwise overwrite it.
 #'                              (default: \code{FALSE}) \cr
 #' }
-#' @seealso \code{\link[shinyjs]{useShinyjs}}
-#' @seealso \code{\link[shinyjs]{runExample}}
+#' @seealso \code{\link[shinyjs]{useShinyjs}},
+#' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @examples
@@ -45,7 +45,7 @@
 #'   text("element", " Hello!", TRUE)
 #'   text("element", "<strong>bold</strong> that was achieved with HTML")
 #'   local({val <- "some text"; text("element", val)})
-#'   text(id = "element", add = TRUE, expr = input$btn)
+#'   text(id = "element", add = TRUE, text = input$btn)
 #' }
 #' @export
 text <- jsFunc

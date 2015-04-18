@@ -29,8 +29,3 @@ jsFunc <- function(...) {
 
   invisible(NULL)
 }
-
-#' @export
-info <- jsFunc
-#' @export
-logjs <- jsFunc

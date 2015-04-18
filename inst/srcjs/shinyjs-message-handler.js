@@ -151,15 +151,15 @@ shinyjs = function() {
     text : function (params) {
       var defaultParams = {
         id : null,
-        expr : null,
+        text : null,
         add : false
       };
       params = shinyjs.getParams(params, defaultParams);
 
       if (params.add) {
-        $("#" + params.id)[0].innerHTML += params.expr;
+        $("#" + params.id)[0].innerHTML += params.text;
       } else {
-        $("#" + params.id)[0].innerHTML = params.expr;
+        $("#" + params.id)[0].innerHTML = params.text;
       }
 
     },

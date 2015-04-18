@@ -25,7 +25,7 @@ Add or remove a CSS class from an HTML element.
 }
 \details{
 \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
-removes a cssClass,\strong{\code{toggleClass}} adds the class if it is
+removes a CSS class, \strong{\code{toggleClass}} adds the class if it is
 not set and removes the class if it is already set.
 
 CSS is a simple way to describe how elements on a web page should be
@@ -68,8 +68,7 @@ if (interactive()) {
 }
 }
 \seealso{
-\code{\link[shinyjs]{useShinyjs}}
-
+\code{\link[shinyjs]{useShinyjs}},
 \code{\link[shinyjs]{runExample}}
 }
 

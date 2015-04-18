@@ -17,13 +17,13 @@ toggle(...)
 \item{...}{The following parameters are available:
 \tabular{ll}{
   \strong{\code{id}}         \tab The id of the element/Shiny tag \cr
-  \strong{\code{anim}}       \tab If TRUE then animate the behaviour
+  \strong{\code{anim}}       \tab If \code{TRUE} then animate the behaviour
                                   (default: \code{FALSE}) \cr
   \strong{\code{animType}}   \tab The type of animation to use,
-                                  either "slide" or "fade"
-                                  (default: \code{"slide"})\cr
+                                  either \code{"slide"} or \code{"fade"}
+                                  (default: \code{"slide"}) \cr
   \strong{\code{time}}       \tab The number of seconds to make the
-                                  animation last.
+                                  animation last
                                   (default: \code{0.5}) \cr
 }}
 }
@@ -72,10 +72,8 @@ if (interactive()) {
 }
 }
 \seealso{
-\code{\link[shinyjs]{useShinyjs}}
-
-\code{\link[shinyjs]{runExample}}
-
+\code{\link[shinyjs]{useShinyjs}},
+\code{\link[shinyjs]{runExample}},
 \code{\link[shinyjs]{hidden}}
 }
 

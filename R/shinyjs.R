@@ -1,8 +1,8 @@
-#' shinys
+#' shinyjs
 #'
-#' Perform common JavaScript operations in Shiny apps using plain R code
+#' Perform common JavaScript operations in Shiny apps using plain R code.
 #'
-#' shinyjs lets you perform common JavaScript operations in Shiny
+#' \code{shinyjs} lets you perform common JavaScript operations in Shiny
 #' applications without having to know any JavaScrippt. Many useful JavaScript
 #' functions are made available by shinyjs with a simple R interface so that
 #' you don't have to write any JavaScript code. Even if you do know JavaScript,
@@ -10,7 +10,7 @@
 #' passing and writing JavaScript code.
 #'
 #' View a \href{http://daattali.com:3838/shinyjs-demo/}{demo Shiny app}
-#' or see the \href{https://github.com/daattali/shinyjs}{README} on GitHub.
+#' or see the full \href{https://github.com/daattali/shinyjs}{README} on GitHub.
 #'
 #' @docType package
 #' @name shinyjs
