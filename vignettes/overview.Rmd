@@ -15,8 +15,13 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 
 # shinyjs
 
-`shinyjs` lets you perform common JavaScript operations in Shiny applications 
-without having to know any JavaScript.
+`shinyjs` lets you perform common useful JavaScript operations in Shiny 
+applications without having to know any JavaScript. You can
+[check out a demo Shiny app](http://daattali.com:3838/shinyjs-demo/) that lets
+you play around with some of the functionality that `shinyjs` makes available,
+or [have a look at a very basic Shiny app](http://daattali.com:3838/shinyjs-basic/)
+that uses `shinyjs` to enhance the user experience with very minimal and 
+simple R code.
 
 ## Installation
 
@@ -27,4 +32,39 @@ install.packages("devtools")
 devtools::install_github("daattali/shinyjs")
 ```
 
-## Usage
+## Motivation
+
+Shiny is a fantastic R package provided by RStudio that lets you turn any R
+code into an interactive webpage.  It's very powerful and one of the most
+useful packages in my opinion. But there are just a few simple pieces of
+functionality that I always find missing and I implement myself in my Shiny apps using
+JavaScript (JS) because it's either not supported natively by Shiny or it's just
+cleaner to do so. Simple things like showing/hiding elements, enabling/disabling
+a button, showing a popup message to the user, manipulating the CSS class or
+HTML content of an element, etc.
+
+After noticing that I'm writing the same JS
+code in all my apps, and since making Shiny talk to JS is a bit tedious
+and annoying with all the message passing, I decided to just package it to make
+it easily reusable.  Now I can simply call `hide("panel")` or `disable("button")`.
+I was lucky enough to have previous experience with JS so I knew how to
+achieve the results that I wanted, but for any Shiny developer who is not
+proficient in JS, hopefully this package will make it easy to extend the power
+of their Shiny apps.
+
+## Overview of main functions
+
+In order to use most `shinyjs` functions, a call to `useShinyjs()` needs to be
+made in the Shiny app's UI. This is required to set up all the JavaScript and a
+few other things.
+
+- `show`/`hide`/`toggle` - display or hide an element. There are arguments
+that control the animation as well, though animation is off by default.
+
+- 
+
+[check out the demo Shiny app](http://daattali.com:3838/shinyjs-demo/)
+
+## Basic use case - working example
+
+## Altenatives using Shiny
