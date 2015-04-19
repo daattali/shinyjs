@@ -5,6 +5,10 @@
 #'
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
+#' @note When initializing the Shiny app's server, you must supply the
+#' \code{session} parameter to the server function, ie. initialize the server
+#' as \code{server = function(input, output, session)} rather than
+#' \code{server = function(input, output)}
 #' @examples
 #' shiny::shinyUI(
 #'   useShinyjs()

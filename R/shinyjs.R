@@ -3,7 +3,7 @@
 #' Perform common JavaScript operations in Shiny apps using plain R code.
 #'
 #' \code{shinyjs} lets you perform common JavaScript operations in Shiny
-#' applications without having to know any JavaScrippt. Many useful JavaScript
+#' applications without having to know any JavaScript. Many useful JavaScript
 #' functions are made available by shinyjs with a simple R interface so that
 #' you don't have to write any JavaScript code. Even if you do know JavaScript,
 #' shinyjs can be used as convenience functions to avoid dealing with message

@@ -8,10 +8,23 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\usepackage[utf8]{inputenc}
 ---
-
+  
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
-## Overview
+# shinyjs
 
+`shinyjs` lets you perform common JavaScript operations in Shiny applications 
+without having to know any JavaScript.
+
+## Installation
+
+`shinyjs` is available through GitHub:
+
+```
+install.packages("devtools")
+devtools::install_github("daattali/shinyjs")
+```
+
+## Usage
