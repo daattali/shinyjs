@@ -21,10 +21,6 @@ as \code{server = function(input, output, session)} rather than
 \code{server = function(input, output)}
 }
 \examples{
-shiny::shinyUI(
-  useShinyjs()
-)
-
 if (interactive()) {
   shiny::shinyApp(
     ui = shiny::fluidPage(

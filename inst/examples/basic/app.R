@@ -4,11 +4,8 @@ library(shinyjs)
 shinyApp(
   ui = fixedPage(
     useShinyjs(),
-    tags$head(tags$style(HTML("
-      .big { font-size: 2em; }
-      a { cursor: pointer; }
-    "))),
-
+    inlineCSS(list(.big = "font-size: 2em",
+                   a = "cursor: pointer")),
     div(id = "myapp", fixedRow(
       column(6,
         h2("shinyjs demo"),

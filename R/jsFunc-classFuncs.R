@@ -16,7 +16,8 @@
 #'   \strong{\code{class}}  \tab The CSS class to add/remove \cr
 #' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
-#' \code{\link[shinyjs]{runExample}}
+#' \code{\link[shinyjs]{runExample}},
+#' \code{\link[shinyjs]{inlineCSS}},
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @examples
@@ -25,9 +26,7 @@
 #'     ui = shiny::fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
 #'       # Add a CSS class for red text colour
-#'       tags$head(tags$style(HTML("
-#'         .red { background: red; }
-#'       "))),
+#'       inlineCSS(list(.red = "background: red")),
 #'       shiny::actionButton("btn", "Click me"),
 #'       shiny::p(id = "element", "Watch what happens to me")
 #'     ),
