@@ -6,23 +6,25 @@ shinyApp(
     useShinyjs(),
     inlineCSS(list(.big = "font-size: 2em",
                    a = "cursor: pointer")),
-    div(id = "myapp", fixedRow(
+    fixedRow(
       column(6,
         h2("shinyjs demo"),
         checkboxInput("big", "Bigger text", FALSE),
-        textInput("name", "Name", ""),
-        a(id = "toggleAdvanced", "Show/hide advanced info"),
-        hidden(
-          div(id = "advanced",
-            numericInput("age", "Age", 30),
-            textInput("company", "Company", "")
-          )
+        div(id = "myapp",
+          textInput("name", "Name", ""),
+          a(id = "toggleAdvanced", "Show/hide advanced info"),
+          hidden(
+            div(id = "advanced",
+              numericInput("age", "Age", 30),
+              textInput("company", "Company", "")
+            )
+          ),
+          p("Timestamp: ",
+            span(id = "time", date()),
+            a(id = "update", "Update")
+          ),
+          actionButton("submit", "Submit")
         ),
-        p("Timestamp: ",
-          span(id = "time", date()),
-          a(id = "update", "Update")
-        ),
-        actionButton("submit", "Submit"),
         br(), br()
       ),
       column(6,
@@ -54,7 +56,7 @@ shinyApp(
         a("Visit GitHub to learn more about shinyjs",
           href = "https://github.com/daattali/shinyjs")
       )
-    ))
+    )
   ),
 
   server = function(input, output, session) {
