@@ -52,9 +52,10 @@ shinyUI(fluidPage(
     p(a("shinyjs is available on GitHub", href = "https://github.com/daattali/shinyjs",
         target = "_blank")),
     shiny::hr(),
-    p("Note: This demo only allows you to preselect from one of the given R expressions",
+    p("Note: This demo only allows you to select from one of the given R expressions",
       "and does not allow you to run any arbitrary expression. To have more freedom",
-      "in playing with shinyjs, install", strong("shinyjs"), "and run the sandbox demo using",
+      "in playing with shinyjs or see what else it can do, install",
+      strong("shinyjs"), "and run the sandbox demo using",
       code("shinyjs::runExample('sandbox')"))
   ))
   )
