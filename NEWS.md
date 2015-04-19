@@ -3,7 +3,7 @@
 2015-04-02
 
 New function: **onclick** - allows the user to run an R expression (including
-*shinyjs* expressions) when a specific element in the Shiny app is clicked.
+*shinyjs* expressions) when a specific element in the Shiny app is clicked. 
 
 
 # shinyjs 0.0.2.0
