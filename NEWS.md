@@ -8,7 +8,9 @@
 - add `add` param to `onclick()`
 - add `add` param to `text()`
 - add documentation to all functions
-- add another example app that provides a safe way to  experiment with shinyjs by providing a predetermined set of functions to run
+- add "demo" example app that provides a safe way to  experiment with shinyjs by providing a predetermined set of functions to run
+- add "basic" example app that shows how some `shinyjs` functions can be used
+together in a real (very simply) Shiny app
 - add vignette and README, get ready for CRAN submission
 
 # shinyjs 0.0.2.1
