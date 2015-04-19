@@ -1,3 +1,16 @@
+# shinyjs 0.0.3.0
+
+2015-04-18
+
+- bugfixes to `onclick()` (evaluate expressions in the correct environment)
+- rename `alert()` to `info()` because when the app was deployed in a Shiny Server (shinyapps.io or my own shiny server), it was printing the alret twice - probably because shiny server somehow intercepts the `alert` call too
+- rename `innerHTML()` to `text()` to make it more understandable for the average user
+- add `add` param to `onclick()`
+- add `add` param to `text()`
+- add documentation to all functions
+- add another example app that provides a safe way to  experiment with shinyjs by providing a predetermined set of functions to run
+- add vignette and README, get ready for CRAN submission
+
 # shinyjs 0.0.2.1
 
 2015-04-02
