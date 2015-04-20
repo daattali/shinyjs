@@ -1,10 +1,5 @@
-<!-- To create this README, I run devtools::build_vignettes(), then
-rmarkdown::render("vignettes/overview.Rmd", output_format = "md_document"),
-copy the contents of vignettes/overview.md here and add the TravisCI status -->
-
-# shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
-
-[![Build Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
+shinyjs
+=======
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 applications without having to know any JavaScript. You can [check out a

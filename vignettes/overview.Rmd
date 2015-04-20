@@ -25,7 +25,15 @@ simple R code.
 
 ## Installation
 
-`shinyjs` is available through GitHub:
+`shinyjs` is available through both CRAN and GitHub:
+
+To install the CRAN version:
+
+```
+install.packages("shinyjs")
+```
+
+To install the latest developmental version from GitHub:
 
 ```
 install.packages("devtools")
@@ -122,16 +130,18 @@ Here is what that app would look like
 ![Demo app](https://raw.githubusercontent.com/daattali/daattali.github.io/master/img/blog/shinyjs/basic-v1.png)
 
 Now suppose we want to add a few features to the app to make it a bit more
-user-friendly. Here are 6 features, each followed with a way to implement
-it using `shinyjs`:
+user-friendly.  First we need to set up the app to use `shinyjs` with two
+small changes
 
-In order to use most `shinyjs` functions, a call to `useShinyjs()` needs to be
-made in the Shiny app's UI. This is required to set up all the JavaScript and a
-few other things.
+1. A call to `useShinyjs()` needs to be made in the Shiny app's UI. This is
+required to set up all the JavaScript and a few other things.
 
-**Note:** for many of the functions to work, the app's server needs to have
-the `session` parameter declared, ie. initialize the server as
-`server(input, output, session)` instead of `server(input, output)`.
+2. The app's server needs to have the `session` parameter declared, ie.
+initialize the server as `server(input, output, session)` instead of
+`server(input, output)`.
+
+Here are 6 features we'll add to the app, each followed with the code to
+implement it using `shinyjs`:
 
 **1. The "Name" field is mandatory and thus the "Submit" button should not be
 enabled if there is no name**
@@ -196,8 +206,11 @@ First, we need to add an "Update" link to click on, and we need to give the
 element showing the time an `id` so that we can refer to it later when we
 want to change its contents.
 
-To do that, replace `p("Timestamp: ", span(date()))` with
-`p("Timestamp: ", span(id = "time", date()), a(id = "update", "Update"))`
+To do that, replace `p("Timestamp: ", span(date()))` with  
+
+```
+p("Timestamp: ", span(id = "time", date()), a(id = "update", "Update"))
+```
 
 Now we need to tell Shiny what to do when "Update" is clicked by adding this
 to the server
@@ -216,10 +229,10 @@ checkboxInput("big", "Bigger text", FALSE)
 ```
 
 In order to make the text bigger, we will use CSS.  So let's add an appropriate
-CSS rule first by adding this code to the UI
+CSS rule by adding this code to the UI
 
 ```
-shinyjs::inlineCSS(list(.big = "font-size: 2em")),
+shinyjs::inlineCSS(list(.big = "font-size: 2em"))
 ```
 
 Lastly, we want the text to be big or small depending on whether the checkbox
@@ -237,7 +250,7 @@ observe({
 
 **6. Give the user a "Thank you" message upon submission**
 
-This one's easy - just add the following to the server
+Simply add the following to the server
 
 ```
 observe({
@@ -247,7 +260,125 @@ observe({
 })
 ```
 
+**The final code looks like this**
 
+```
+library(shiny)
+shinyApp(
+  ui = fluidPage(
+    shinyjs::useShinyjs(),
+    shinyjs::inlineCSS(list(.big = "font-size: 2em")),
+    div(id = "myapp",
+        h2("shinyjs demo"),
+        checkboxInput("big", "Bigger text", FALSE),
+        textInput("name", "Name", ""),
+        a(id = "toggleAdvanced", "Show/hide advanced info", href = "#"),
+        shinyjs::hidden(
+          div(id = "advanced",
+            numericInput("age", "Age", 30),
+            textInput("company", "Company", "")
+          )
+        ),
+        p("Timestamp: ",
+          span(id = "time", date()),
+          a(id = "update", "Update", href = "#")
+        ),
+        actionButton("submit", "Submit")
+    )
+  ),
+  
+  server = function(input, output, session) {
+    observe({
+      if (is.null(input$name) || input$name == "") {
+        shinyjs::disable("submit")
+      } else {
+        shinyjs::enable("submit")
+      }
+    })
+    
+    shinyjs::onclick("toggleAdvanced",
+                     shinyjs::toggle(id = "advanced", anim = TRUE))    
+    
+    shinyjs::onclick("update", shinyjs::text("time", date()))
+    
+    observe({
+      if (input$big) {
+        shinyjs::addClass("myapp", "big")
+      } else {
+        shinyjs::removeClass("myapp", "big")
+      }
+    })
+    
+    observe({
+      if (input$submit > 0) {
+        shinyjs::info("Thank you!")
+      }
+    })    
+  }
+)
+```
 
+You can view the final app [here](http://daattali.com:3838/shinyjs-basic/).
 
-## Altenatives using Shiny
+## Altenatives using native Shiny
+
+### shiny::conditionalPanel vs shinyjs::hide/show/toggle/hidden
+
+It is possible to achieve a similar behaviour to `hide` and `show` by using
+`shiny::conditionalPanel`, though I've experienced that using `conditionalPanel`
+often gets my UI to a messier state. I still use `conditionalPanel` sometimes 
+for basic use cases, but when there is some logic involved in hiding/showing, I 
+find it much easier to move that logic to the server and use `hide`/`show`. 
+I also think it's generally a better idea to keep most of the logic in the server, 
+and using `conditionalPanel` violates that rule.  
+Implementing the `shinyjs::toggle` or `shinyjs::hidden` behaviour with pure Shiny
+is also possible but it also results in messier and less intuitive code.
+
+### shiny::render* and shiny::update* vs shinyjs::text
+
+The `shinyjs::text` function can be used to change the text inside an element
+by either overwriting it or appending to it. I mostly intended for this function
+to be used to change the text, though it can also be used to add HTML elements.
+There are many Shiny functions that allow you to change the text of an element.
+For example, `renderText` is used on a `textOutput` tag and `updateTextInput` is
+used on a `textInput` tag.  These functions are useful, but sometimes I like
+to be able to just cange the text of a tag without having to know/specify
+exactly what it was declared in the UI.  These functions also don't work on
+tags that are not defined as reactive, so if I just have a
+`p(id = "time", date())` it would be impossible to change it. I also don't think
+it's possible to append rather than overwrite with Shiny, and you can't use
+HTML unless the element is declared as `uiOutput` or something similar.
+
+There is something to be said about the fact that the pure Shiny functions
+are safer and more strict, but I personally like having the extra flexibility
+sometimes, even though the `text` function feels like it doesn't really follow
+Shiny's patterns. I still use the Shiny functions often, but I find `text`
+useful as well.
+
+### shiny::observeEvent vs shinyjs::onclick
+
+The `onclick` function was initially written because I wanted a way to click
+on a button that will cause a section to show/hide, like so:
+
+```
+shinyjs::onclick("toggleLink", shinyjs::toggle("section"))
+```
+
+RStudio very recently published an article describing several design patterns for
+using buttons, and from that article I learned that I can do what I wanted
+with `observeEvent`:
+
+```
+observeEvent("input$toggleLink", shinyjs::toggle("section"))
+```
+
+When I first discovered this, I thought of removing the `onclick` function because
+it's not useful anymore, but then I realized there are differences that still
+make it useful.  `observeEvent` responds to "event-like" reactive values,
+while `onclick` responds to a mouse click on an element. This means that
+`observeEvent` can be used for any input element (not only clickable things),
+but `onclick` can be used for responding to a click on any element, even if it
+is not an input tag. Another small feature I wanted to support is the ability
+to overwrite vs add the click handler (= R code to run on a click). This would 
+not be used for most basic apps, but for more complex dynamic apps it might come 
+in handy.
