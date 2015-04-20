@@ -5,3 +5,5 @@
 TODO description
 
 **This package is still under development. Please do not use it yet :)**
+
+<iframe src="http://daattali.com:3838/shinyjs-basic/"></iframe>
