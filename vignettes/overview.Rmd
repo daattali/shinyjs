@@ -54,17 +54,200 @@ of their Shiny apps.
 
 ## Overview of main functions
 
+- `show`/`hide`/`toggle` - display or hide an element. There are arguments
+that control the animation as well, though animation is off by default.
+
+- `hidden` - initialize a Shiny tag as invisible (can be shown later with a call
+to `show`)
+
+- `enable`/`disable`/`toggleState` - enable or disable an input element, such
+as a button or a text input.
+
+- `info` - show a message to the user (using JavaScript's `alert` under the
+hood)
+
+- `text` - change the text/HTML of an element (using JavaScript's `innerHTML`
+under the hood)
+
+- `onclick` - run R code when an element is clicked. Was originally developed
+with the sole purpose of running a `shinyjs` function when an element is
+clicked, though any R code can be used.
+
+- `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class from
+an element
+
+- `inlineCSS` - easily add inline CSS to a Shiny app
+
+- `logjs` - print a message to the JavaScript console (mainly used for
+debugging purposes)
+
+[Check out the demo Shiny app](http://daattali.com:3838/shinyjs-demo/) to see
+some of these in action, or install `shinyjs` and run `shinyjs::runExample()`
+to see more demo apps.
+
+## Basic use case - working example
+
+*You can view the final Shiny app developed in this simple example
+[here](http://daattali.com:3838/shinyjs-basic/).*
+
+Suppose we want to have a simple Shiny app that collects a user's basic
+information (name, age, company) and submits it, along with the time of
+submission.  Here is a very simple implementation of such an app (nothing
+actually happens when the user "submits").
+
+```
+library(shiny)
+shinyApp(
+  ui = fluidPage(
+    div(id = "myapp",
+      h2("shinyjs demo"),
+      textInput("name", "Name", ""),
+      numericInput("age", "Age", 30),
+      textInput("company", "Company", ""),
+      p("Timestamp: ", span(date())),
+      actionButton("submit", "Submit")
+    )
+  ),
+  
+  server = function(input, output) {
+  }
+)
+```
+
+*Note that I generally don't like running Shiny apps like this and prefer to
+declare the UI and server separately, but I do it like this here for brevity.*
+
+Here is what that app would look like
+
+![Demo app](https://raw.githubusercontent.com/daattali/daattali.github.io/master/img/blog/shinyjs/basic-v1.png)
+
+Now suppose we want to add a few features to the app to make it a bit more
+user-friendly. Here are 6 features, each followed with a way to implement
+it using `shinyjs`:
+
 In order to use most `shinyjs` functions, a call to `useShinyjs()` needs to be
 made in the Shiny app's UI. This is required to set up all the JavaScript and a
 few other things.
 
-- `show`/`hide`/`toggle` - display or hide an element. There are arguments
-that control the animation as well, though animation is off by default.
+**Note:** for many of the functions to work, the app's server needs to have
+the `session` parameter declared, ie. initialize the server as
+`server(input, output, session)` instead of `server(input, output)`.
 
-- 
+**1. The "Name" field is mandatory and thus the "Submit" button should not be
+enabled if there is no name**
 
-[check out the demo Shiny app](http://daattali.com:3838/shinyjs-demo/)
+In the server portion, add the following code
 
-## Basic use case - working example
+```
+observe({
+  if (is.null(input$name) || input$name == "") {
+    shinyjs::disable("submit")
+  } else {
+    shinyjs::enable("submit")
+  }
+})
+```
+
+**2. The "Age" and "Company" fields are optional and we want to have the ability
+to hide that section of the form**
+
+First, we need to section off the "Age" and "Company" elements into their own
+section, so we surround them with a `div`
+
+```
+div(id = "advanced",
+  numericInput("age", "Age", 30),
+  textInput("company", "Company", "")
+)
+```
+
+We also need to add a link in the UI that will be used to hide/show the section  
+
+```
+a(id = "toggleAdvanced", "Show/hide advanced info")
+```
+
+Lastly, we need to tell Shiny to show/hide the section when the link is clicked
+by adding this code to the server
+
+```
+shinyjs::onclick("toggleAdvanced",
+                  shinyjs::toggle(id = "advanced", anim = TRUE))
+```
+
+**3. Similarly, since we don't really care about "Age" and "Company" too much, we
+want to hide them initially when the form loads**
+
+Simply surround the section we want to hide initially with `shinyjs::hidden`
+
+```
+shinyjs::hidden(
+  div(id = "advanced",
+    ...
+))
+```
+
+**4. The user should be able to update the "Timestamp" in case he spends way too
+long filling out the form (not very realistic here, and the timestamp should
+ideally be determined when the button is clicked, but it's good enough for
+illustration purposes)**
+
+First, we need to add an "Update" link to click on, and we need to give the
+element showing the time an `id` so that we can refer to it later when we
+want to change its contents.
+
+To do that, replace `p("Timestamp: ", span(date()))` with
+`p("Timestamp: ", span(id = "time", date()), a(id = "update", "Update"))`
+
+Now we need to tell Shiny what to do when "Update" is clicked by adding this
+to the server
+
+```
+shinyjs::onclick("update", shinyjs::text("time", date()))
+```
+
+**5. Some users may find it hard to read the small text in the app, so there should
+be an option to increase the font size**
+
+First, we need to add checkbox to the UI
+
+```
+checkboxInput("big", "Bigger text", FALSE)
+```
+
+In order to make the text bigger, we will use CSS.  So let's add an appropriate
+CSS rule first by adding this code to the UI
+
+```
+shinyjs::inlineCSS(list(.big = "font-size: 2em")),
+```
+
+Lastly, we want the text to be big or small depending on whether the checkbox
+is checked by adding this code to the server
+
+```
+observe({
+  if (input$big) {
+    shinyjs::addClass("myapp", "big")
+  } else {
+    shinyjs::removeClass("myapp", "big")
+  }
+})
+```
+
+**6. Give the user a "Thank you" message upon submission**
+
+This one's easy - just add the following to the server
+
+```
+observe({
+  if (input$submit > 0) {
+    shinyjs::info("Thank you!")
+  }
+})
+```
+
+
+
 
 ## Altenatives using Shiny
