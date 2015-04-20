@@ -1,3 +1,9 @@
+# shinyjs 0.0.3.1
+
+2015-04-20
+
+CRAN resubmission
+
 # shinyjs 0.0.3.0
 
 2015-04-18
