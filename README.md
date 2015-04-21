@@ -8,10 +8,10 @@ copy the contents of vignettes/overview.md here and add the TravisCI status -->
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 applications without having to know any JavaScript. You can [check out a
-demo Shiny app](http://daattali.com:3838/shinyjs-demo) that lets you
+demo Shiny app](http://daattali.com:3838/shinyjs-demo/) that lets you
 play around with some of the functionality that `shinyjs` makes
 available, or [have a look at a very basic Shiny
-app](http://daattali.com:3838/shinyjs-basic) that uses `shinyjs` to
+app](http://daattali.com:3838/shinyjs-basic/) that uses `shinyjs` to
 enhance the user experience with very minimal and simple R code.
 
 Installation
@@ -81,15 +81,15 @@ Overview of main functions
 -   `logjs` - print a message to the JavaScript console (mainly used for
     debugging purposes)
 
-[Check out the demo Shiny app](http://daattali.com:3838/shinyjs-demo) to
-see some of these in action, or install `shinyjs` and run
+[Check out the demo Shiny app](http://daattali.com:3838/shinyjs-demo/)
+to see some of these in action, or install `shinyjs` and run
 `shinyjs::runExample()` to see more demo apps.
 
 Basic use case - working example
 --------------------------------
 
 *You can view the final Shiny app developed in this simple example
-[here](http://daattali.com:3838/shinyjs-basic).*
+[here](http://daattali.com:3838/shinyjs-basic/).*
 
 Suppose we want to have a simple Shiny app that collects a user's basic
 information (name, age, company) and submits it, along with the time of
@@ -290,7 +290,7 @@ Simply add the following to the server
     )
 
 You can view the final app
-[here](http://daattali.com:3838/shinyjs-basic).
+[here](http://daattali.com:3838/shinyjs-basic/).
 
 Altenatives using native Shiny
 ------------------------------
@@ -355,5 +355,3 @@ Another small feature I wanted to support is the ability to overwrite vs
 add the click handler (= R code to run on a click). This would not be
 used for most basic apps, but for more complex dynamic apps it might
 come in handy.
-
-
