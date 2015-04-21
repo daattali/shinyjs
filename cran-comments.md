@@ -24,7 +24,7 @@ File 'LICENSE':
   
 ## Reviewer comments
 
-2015-04-19: Prof Brian Ripley
+2015-04-20: Prof Brian Ripley
 
 Hmm, we see
 
@@ -90,7 +90,7 @@ Found the following (possibly) invalid URLs:
 
 ## Reviewer comments
 
-2015-04-20 Prof Brian Ripley
+2015-04-21 Prof Brian Ripley
 
 Because it is not found!  See the CRAN policies.
 
@@ -108,4 +108,29 @@ pandoc document conversion failed with error 61
 
 
 
+
 # Round 3
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-04-21
+
+Ran check --as-cran with 0 ERROR, 0 WARNING, 1 NOTE
+
+I apologize my previous submission resulted in multiple NOTES; I'm running 
+R3.2.0 and checking --as-cran but for some reason I didn't get the same NOTES as 
+my reviewer.  
+
+Addressed previous note:
+
+- failed processing vignette because URL was https; changed to a http URL
+
+The other NOTE I'm getting is in regards to "potentially invalid URLs" but
+these URLs are valid. http://daattali.com:3838/shinyjs-demo/ and 
+http://daattali.com:3838/shinyjs-basic/
