@@ -89,3 +89,23 @@ Found the following (possibly) invalid URLs:
   Message: Not Found  
 
 ## Reviewer comments
+
+2015-04-20 Prof Brian Ripley
+
+Because it is not found!  See the CRAN policies.
+
+
+and now
+
+* checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Fetching https://raw.githubusercontent.com/daattali/daattali.github.io/master/img/blog/shinyjs/basic-v1.png...
+pandoc: Failed to retrieve https://raw.githubusercontent.com/daattali/daattali.github.io/master/img/blog/shinyjs/basic-v1.png
+user error (https not supported)
+Error: processing vignette 'overview.Rmd' failed with diagnostics:
+pandoc document conversion failed with error 61
+
+
+
+# Round 3

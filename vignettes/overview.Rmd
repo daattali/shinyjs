@@ -127,7 +127,7 @@ declare the UI and server separately, but I do it like this here for brevity.*
 
 Here is what that app would look like
 
-![Demo app](https://raw.githubusercontent.com/daattali/daattali.github.io/master/img/blog/shinyjs/basic-v1.png)
+![Demo app](../inst/img/demo-basic-v1.png)
 
 Now suppose we want to add a few features to the app to make it a bit more
 user-friendly.  First we need to set up the app to use `shinyjs` with two

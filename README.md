@@ -119,8 +119,7 @@ here for brevity.*
 
 Here is what that app would look like
 
-![Demo
-app](https://raw.githubusercontent.com/daattali/daattali.github.io/master/img/blog/shinyjs/basic-v1.png)
+![Demo app](inst/img/demo-basic-v1.png)
 
 Now suppose we want to add a few features to the app to make it a bit
 more user-friendly. First we need to set up the app to use `shinyjs`
@@ -356,3 +355,4 @@ Another small feature I wanted to support is the ability to overwrite vs
 add the click handler (= R code to run on a click). This would not be
 used for most basic apps, but for more complex dynamic apps it might
 come in handy.
+
