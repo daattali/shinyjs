@@ -134,3 +134,34 @@ Addressed previous note:
 The other NOTE I'm getting is in regards to "potentially invalid URLs" but
 these URLs are valid. http://daattali.com:3838/shinyjs-demo/ and 
 http://daattali.com:3838/shinyjs-basic/
+
+## Reviewer comments
+
+2015-04-21 Uwe Ligges
+
+Then please add the final slash:
+
+http://daattali.com:3838/shinyjs-demo/ rather than http://daattali.com:3838/shinyjs-demo
+etc.
+
+
+
+# Round 4
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-04-21
+
+Ran check --as-cran with 0 ERROR, 0 WARNING, 1 NOTE
+
+Addressed previous note: added final slash in URLs of web pages that were redirecting from "http://..." to "http://.../"
+
+The only NOTE I'm getting is in regards to "potentially invalid URLs" but
+these URLs are valid. http://daattali.com:3838/shinyjs-demo/ and 
+http://daattali.com:3838/shinyjs-basic/
