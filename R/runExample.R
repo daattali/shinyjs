@@ -30,7 +30,7 @@ runExample <- function(example) {
 
   if (missing(example) || !nzchar(example)) {
     message(
-      'Please run `runExample()` with a valid example app as,an argument.\n',
+      'Please run `runExample()` with a valid example app as an argument.\n',
       validExamples)
     return(invisible(NULL))
   }
@@ -43,6 +43,4 @@ runExample <- function(example) {
   }
 
   shiny::runApp(appDir, display.mode = "normal")
-
-  invisible(NULL)
 }
