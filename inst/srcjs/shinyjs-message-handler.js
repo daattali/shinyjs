@@ -126,7 +126,14 @@ shinyjs = function() {
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      $("#" + params.id).prop('disabled', false);
+      var element = $("#" + params.id);
+
+      // Special case for selectize inputs
+      if (element.hasClass("selectized")) {
+        element.selectize()[0].selectize.enable();
+      }
+
+      element.prop('disabled', false);
     },
 
     disable : function (params) {
@@ -135,7 +142,14 @@ shinyjs = function() {
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      $("#" + params.id).prop('disabled', true);
+      var element = $("#" + params.id);
+
+      // Special case for selectize inputs
+      if (element.hasClass("selectized")) {
+        element.selectize()[0].selectize.disable();
+      }
+
+      element.prop('disabled', true);
     },
 
     toggleState : function (params) {
@@ -145,7 +159,12 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       var element = $("#" + params.id);
-      element.prop('disabled', element.prop('disabled') !== true);
+      var disabled = (element.prop('disabled') === true);
+      if (disabled) {
+        shinyjs.enable(params);
+      } else {
+        shinyjs.disable(params);
+      }
     },
 
     text : function (params) {

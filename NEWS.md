@@ -1,3 +1,11 @@
+# shinyjs 0.0.4.0
+
+2015-04-24
+
+- using `enable`/`disable`/`toggleState` on a selectize input works
+
+- better implementation of `toggleState`
+
 # shinyjs 0.0.3.3
 
 2015-04-21
