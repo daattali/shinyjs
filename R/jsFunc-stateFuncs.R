@@ -48,7 +48,7 @@
 #'   # input tags, such as the following examples
 #'   shiny::actionButton("element", "I'm a button")
 #'   shiny::fileInput("element", "Choose a file")
-#'   shiny::selectInput("element", "I'm a select box", 1:10, selectize = FALSE)
+#'   shiny::selectInput("element", "I'm a select box", 1:10)
 #' }
 #' @name stateFuncs
 NULL
