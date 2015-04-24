@@ -2,6 +2,11 @@
 
 2015-04-24
 
+- add a `condition` argument to `toggle`/`toggleState`/`toggleClass` that allows
+you to pass a boolean condition to determine if to show/hide (enable/disable, etc)
+based on that condition. Useful to do things like
+`toggleState(id = "submitBtn", condition = nchar(input$text) >= 3)`
+
 - fix `hidden` so that if there are elements created dynamically using `renderUI`,
 shiny will render them when they are made visible
 

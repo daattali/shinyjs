@@ -10,6 +10,7 @@ examples <- c(
   'toggleState("btn")',
   'disable("btn")',
   'enable("btn")',
+  'toggle(id = "btn", condition = (sample(2, 1) == 1))',
   'text("btn", "What a nice button")',
   'text("test", paste("The time is", date()))',
   'addClass("test", "green")',

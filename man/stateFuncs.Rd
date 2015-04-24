@@ -16,7 +16,9 @@ toggleState(...)
 \arguments{
 \item{...}{The following parameters are available:
 \tabular{ll}{
-  \strong{\code{id}}     \tab The id of the input element/Shiny tag \cr
+  \strong{\code{id}}         \tab The id of the input element/Shiny tag \cr
+  \strong{\code{condition}}  \tab An optional argument to \code{toggleState},
+                                  see 'Details' below. \cr
 }}
 }
 \description{
@@ -30,6 +32,10 @@ buttons (\code{shiny::actionButton}) and many others.
 \strong{\code{enable}} enables an input, \strong{\code{disable}} disabled
 an input,\strong{\code{toggleState}} enables an input if it is disabled
 and disables an input if it is already enabled.
+
+If \code{condition} is given to \code{toggleState}, that condition will be used
+to determine if to enable or disable the input. The element will be enabled if
+the condition evalutes to \code{TRUE} and disabled otherwise.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -66,6 +72,23 @@ if (interactive()) {
   shiny::actionButton("element", "I'm a button")
   shiny::fileInput("element", "Choose a file")
   shiny::selectInput("element", "I'm a select box", 1:10)
+}
+
+## toggleState can be given an optional `condition` argument, which
+## determines if to enable or disable the input
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(
+      useShinyjs(),
+      shiny::textInput("text", "Please type at least 3 characters"),
+      shiny::actionButton("element", "Submit")
+    ),
+    server = function(input, output, session) {
+      shiny::observe({
+        toggleState(id = "element", condition = nchar(input$text) >= 3)
+      })
+    }
+  )
 }
 }
 \seealso{

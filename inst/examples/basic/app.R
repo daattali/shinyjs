@@ -66,20 +66,13 @@ shinyApp(
   server = function(input, output, session) {
     onclick("update", text("time", date()))
     onclick("toggleAdvanced", toggle(id = "advanced", anim = TRUE))
+
     observe({
-      if (input$big) {
-        addClass("myapp", "big")
-      } else {
-        removeClass("myapp", "big")
-      }
+      toggleClass("myapp", "big", input$big)
     })
 
     observe({
-      if (is.null(input$name) || input$name == "") {
-        disable("submit")
-      } else {
-        enable("submit")
-      }
+      toggleState("submit", !is.null(input$name) && input$name != "")
     })
 
     observe({

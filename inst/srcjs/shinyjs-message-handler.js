@@ -27,6 +27,10 @@ shinyjs = function() {
       return el.css("display") === "none";
     },
 
+    isDisabled : function(el) {
+      return el.prop('disabled') === true;
+    },
+
     // -----------------------------------------------------------------
     // ------ All functions below are exported shinyjs function --------
     // The documentation for function xyz is available in R via ?shinyjs::xyz
@@ -87,12 +91,16 @@ shinyjs = function() {
         anim : false,
         animType : "slide",
         time : 0.5,
+        condition : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
       var el = $("#" + params.id);
-      var hidden = shinyjs.isHidden(el);
-      if (hidden) {
+
+      if (params.condition === null) {
+        params.condition = shinyjs.isHidden(el);
+      }
+      if (params.condition) {
         shinyjs.show(params);
       } else {
         shinyjs.hide(params);
@@ -122,11 +130,22 @@ shinyjs = function() {
     toggleClass : function (params) {
       var defaultParams = {
         id : null,
-        class : null
+        class : null,
+        condition : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      $("#" + params.id).toggleClass(params.class);
+      var el = $("#" + params.id);
+
+      if (params.condition === null) {
+        params.condition = !el.hasClass(params.class);
+      }
+
+      if (params.condition) {
+        shinyjs.addClass(params);
+      } else {
+        shinyjs.removeClass(params);
+      }
     },
 
     enable : function (params) {
@@ -135,14 +154,14 @@ shinyjs = function() {
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var element = $("#" + params.id);
+      var el = $("#" + params.id);
 
       // Special case for selectize inputs
-      if (element.hasClass("selectized")) {
-        element.selectize()[0].selectize.enable();
+      if (el.hasClass("selectized")) {
+        el.selectize()[0].selectize.enable();
       }
 
-      element.prop('disabled', false);
+      el.prop('disabled', false);
     },
 
     disable : function (params) {
@@ -151,25 +170,28 @@ shinyjs = function() {
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var element = $("#" + params.id);
+      var el = $("#" + params.id);
 
       // Special case for selectize inputs
-      if (element.hasClass("selectized")) {
-        element.selectize()[0].selectize.disable();
+      if (el.hasClass("selectized")) {
+        el.selectize()[0].selectize.disable();
       }
 
-      element.prop('disabled', true);
+      el.prop('disabled', true);
     },
 
     toggleState : function (params) {
       var defaultParams = {
-        id : null
+        id : null,
+        condition : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var element = $("#" + params.id);
-      var disabled = (element.prop('disabled') === true);
-      if (disabled) {
+      var el = $("#" + params.id);
+      if (params.condition === null) {
+        params.condition = shinyjs.isDisabled(el);
+      }
+      if (params.condition) {
         shinyjs.enable(params);
       } else {
         shinyjs.disable(params);
