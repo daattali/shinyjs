@@ -355,3 +355,12 @@ Another small feature I wanted to support is the ability to overwrite vs
 add the click handler (= R code to run on a click). This would not be
 used for most basic apps, but for more complex dynamic apps it might
 come in handy.
+
+
+## Known issues
+
+- For some reason, `shiny` doesn't render any dynamic elements that are not visible when the app starts. This is a bit annoying, and means that if you have `hidden(uiOutput("foo"))` in your UI, and then you use `renderUI` in the server, shiny won't actually render that tag. **A workaround** is to not use `hidden` and instead hide the element as the first thing in server, ie. put `hide("foo")` at the top of your server code. This has almost the same result as using `hidden` in the UI.
+
+- There are some input tags that `shiny` wraps in extra HTML, and this can interfere with `shinyj` functions.  For example, using `selectInput("foo")` by default uses selectize JS, which hides the real select box that has id `foo` and instead makes a more visually appealing box. By this means that now calling `show` or `hide` on `foo` won't work. **A workaround** is to wrap the tag with a div, and call `hide`/`show` on that div instead.
+
+- The previous workaround works for some `shinyjs` functions such as `hide` and `show`, but not all. For example, the `enable` and `disable` functions won't work on fake select boxes (the ones generated with selectize) because they don't follow the normal HTML rules for disabling inputs. This is one instance of the problem that I intend on solving becuase there is indeed a way to disable selectize inputs, but it's important to be aware of the underlying isuee - because `shiny` sometimes adds HTML around an element that you create, trying to retrieve that element by its id might not always work unfortunately.
