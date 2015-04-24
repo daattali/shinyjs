@@ -7,11 +7,15 @@ test_that("hidden fails on plain text", {
 })
 
 test_that("hidden works on simple div", {
-  expect_true(clsName %in% hidden(shiny::div("abc"))$attribs$class)
+  tag <- hidden(shiny::div("abc"))$attribs$class
+  classes <- unlist(strsplit(tag, " "))
+  expect_true(clsName %in% classes)
 })
 
 test_that("hidden works on complex div", {
-  expect_true(clsName %in% hidden(shiny::div(shiny::span("abc")))$attribs$class)
+  tag <- hidden(shiny::div(shiny::span("abc")))$attribs$class
+  classes <- unlist(strsplit(tag, " "))
+  expect_true(clsName %in% classes)
 })
 
 test_that("hidden works when div already contains a class", {
@@ -22,5 +26,7 @@ test_that("hidden works when div already contains a class", {
   # of classes or a string containing all the classes with a space separation.
   # Until that's fixed, I'm not checking for multiple classes because
   # $attribs$class only returns the first class
+  # I sent a pull request to htmltools to fix this, still waiting for them
+  # to incorporate my code
   #expect_true(clsName %in% hidden(div("abc", class = "test"))$attribs$class)
 })
