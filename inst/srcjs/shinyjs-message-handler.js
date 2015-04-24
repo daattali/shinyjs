@@ -23,6 +23,10 @@ shinyjs = function() {
       return finalParams;
     },
 
+    isHidden : function(el) {
+      return el.css("display") === "none";
+    },
+
     // -----------------------------------------------------------------
     // ------ All functions below are exported shinyjs function --------
     // The documentation for function xyz is available in R via ?shinyjs::xyz
@@ -37,6 +41,7 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       var el = $("#" + params.id);
+
       if (!params.anim) {
         el.show();
       } else {
@@ -45,6 +50,13 @@ shinyjs = function() {
         } else {
           el.slideDown(params.time * 1000);
         }
+      }
+
+      // If this was initially hidden when app started, tell shiny that it's
+      // now visible so that it can properly render dynamic elements
+      if (el.hasClass("shinyjs-hidden-init")) {
+        el.trigger("shown");
+        el.removeClass("shinyjs-hidden-init");
       }
     },
 
@@ -79,14 +91,11 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       var el = $("#" + params.id);
-      if (!params.anim) {
-        el.toggle();
+      var hidden = shinyjs.isHidden(el);
+      if (hidden) {
+        shinyjs.show(params);
       } else {
-        if (params.animType == "fade") {
-          el.fadeToggle(params.time * 1000);
-        } else {
-          el.slideToggle(params.time * 1000);
-        }
+        shinyjs.hide(params);
       }
     },
 

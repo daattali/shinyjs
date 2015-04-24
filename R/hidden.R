@@ -39,6 +39,6 @@ hidden <- function(tag) {
 
   tag <- shiny::tagAppendAttributes(
     tag,
-    class = "shinyjs-hide")
+    class = "shinyjs-hide shinyjs-hidden-init")
   tag
 }

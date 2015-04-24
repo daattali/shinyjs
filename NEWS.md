@@ -2,6 +2,11 @@
 
 2015-04-24
 
+- fix `hidden` so that if there are elements created dynamically using `renderUI`,
+shiny will render them when they are made visible
+
+- better implementation of `toggle`
+
 - using `enable`/`disable`/`toggleState` on a selectize input works
 
 - better implementation of `toggleState`
