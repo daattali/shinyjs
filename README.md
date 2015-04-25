@@ -370,8 +370,16 @@ used for most basic apps, but for more complex dynamic apps it might
 come in handy.
 
 
+## Main TODO
+There are several improvements I still want to provide, but the biggest thing on my TODO list is to easily allow users to extend `shinyjs`. This would mean that you could just write a JavaScript function, tell `shinyjs` where to find it, and then `shinyjs` will do some magic to let you call that function as if it was regular R code.
+
 ## Known issues
 
 - There are some input tags that `shiny` wraps in extra HTML, and this can interfere with `shinyj` functions.  For example, using `selectInput("foo")` by default uses selectize JS, which hides the real select box that has id `foo` and instead makes a more visually appealing box. By this means that now calling `show` or `hide` on `foo` won't work. **A workaround** is to wrap the tag with a div, and call `hide`/`show` on that div instead.
 
 - The previous workaround works for some `shinyjs` functions such as `hide` and `show`, but not all. For example, the `enable` and `disable` functions won't work on fake select boxes (the ones generated with selectize) because they don't follow the normal HTML rules for disabling inputs. This is one instance of the problem that I intend on solving becuase there is indeed a way to disable selectize inputs, but it's important to be aware of the underlying isuee - because `shiny` sometimes adds HTML around an element that you create, trying to retrieve that element by its id might not always work unfortunately.
+
+
+## Contributions
+
+If anyone has any suggestions or feedback, I would love to hear about it. If you have improvements, feel free to make a pull request.  I'd like to give a special thanks to the Shiny developers, especially Joe Cheng for always answering all my Shiny
