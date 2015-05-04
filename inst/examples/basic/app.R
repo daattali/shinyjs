@@ -51,8 +51,8 @@ shinyApp(
         ),
         p("These are just a subset of the functions available in shinyjs."),
         p("This app is available at",
-          a("http://daattali.com:3838/shinyjs-basic/",
-            href = "http://daattali.com:3838/shinyjs-basic/"),
+          a("http://daattali.com/shiny/shinyjs-basic/",
+            href = "http://daattali.com/shiny/shinyjs-basic/"),
           "and the source code is",
           a("on GitHub",
             href = "https://github.com/daattali/shinyjs/blob/master/inst/examples/basic/app.R")

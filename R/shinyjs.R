@@ -9,7 +9,7 @@
 #' shinyjs can be used as convenience functions to avoid dealing with message
 #' passing and writing JavaScript code.
 #'
-#' View a \href{http://daattali.com:3838/shinyjs-demo/}{demo Shiny app}
+#' View a \href{http://daattali.com/shiny/shinyjs-demo/}{demo Shiny app}
 #' or see the full \href{https://github.com/daattali/shinyjs}{README} on GitHub.
 #'
 #' @docType package

@@ -32,7 +32,7 @@ Hmm, we see
 Package has a VignetteBuilder field but no prebuilt vignette index.
 
 Found the following (possibly) invalid URLs:
-  URL: http://daattali.com:3838/shinyjs-demo/
+  URL: http://daattali.com/shiny/shinyjs-demo/
     From: man/runExample.Rd
           man/shinyjs.Rd
     Status: 404
@@ -80,7 +80,7 @@ File
   YEAR: 2015  
   COPYRIGHT HOLDER: Dean Attali  
 Found the following (possibly) invalid URLs:  
-  URL: http://daattali.com:3838/shinyjs-demo/  
+  URL: http://daattali.com/shiny/shinyjs-demo/  
   From:  
     man/runExample.Rd  
     man/shinyjs.Rd  
@@ -132,8 +132,8 @@ Addressed previous note:
 - failed processing vignette because URL was https; changed to a http URL
 
 The other NOTE I'm getting is in regards to "potentially invalid URLs" but
-these URLs are valid. http://daattali.com:3838/shinyjs-demo/ and 
-http://daattali.com:3838/shinyjs-basic/
+these URLs are valid. http://daattali.com/shiny/shinyjs-demo/ and 
+http://daattali.com/shiny/shinyjs-basic/
 
 ## Reviewer comments
 
@@ -141,7 +141,7 @@ http://daattali.com:3838/shinyjs-basic/
 
 Then please add the final slash:
 
-http://daattali.com:3838/shinyjs-demo/ rather than http://daattali.com:3838/shinyjs-demo
+http://daattali.com/shiny/shinyjs-demo/ rather than http://daattali.com/shiny/shinyjs-demo
 etc.
 
 
@@ -163,5 +163,5 @@ Ran check --as-cran with 0 ERROR, 0 WARNING, 1 NOTE
 Addressed previous note: added final slash in URLs of web pages that were redirecting from "http://..." to "http://.../"
 
 The only NOTE I'm getting is in regards to "potentially invalid URLs" but
-these URLs are valid. http://daattali.com:3838/shinyjs-demo/ and 
-http://daattali.com:3838/shinyjs-basic/
+these URLs are valid. http://daattali.com/shiny/shinyjs-demo/ and 
+http://daattali.com/shiny/shinyjs-basic/
