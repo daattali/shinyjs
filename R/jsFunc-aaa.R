@@ -20,7 +20,7 @@ jsFunc <- function(...) {
   # and correctly get the sessin. If there are cases where this doesn't work,
   # can revert back to the approach pre V0.0.2.0 where the session was set
   # manually
-  session <- get("session", parentFrame)
+  session <- dynGetCopy("session")
 
   # call the javascript function
   session$sendCustomMessage(
