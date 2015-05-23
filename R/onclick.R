@@ -58,10 +58,7 @@ onclick <- function(id, expr, add = FALSE) {
   # every time the given element is clicked
   expr <- deparse(substitute(expr))
 
-  shiny::observe({
-    if (is.null(session$input[[shinyInputId]])) {
-      return()
-    }
+  shiny::observeEvent(session$input[[shinyInputId]], {
     eval(parse(text = expr), envir = parentFrame)
   })
 
