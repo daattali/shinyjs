@@ -34,7 +34,7 @@ useShinyjs <- function() {
   # all the methods that should be forwarded to javascript
   jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
                "addClass", "removeClass", "toggleClass", "text",
-               "onclick", "info", "logjs")
+               "onclick", "info", "logjs", "reset")
 
   # add a shiny message handler binding for each supported method
   tpl <- paste0(
