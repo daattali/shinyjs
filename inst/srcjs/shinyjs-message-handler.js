@@ -359,6 +359,16 @@ shinyjs = function() {
       console.log(params.text);
     },
 
+    runjs : function (params) {
+      console.log("D");
+      var defaultParams = {
+        code : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      eval(params.code);
+    },
+
     // onclick function is more complicated than the rest of the shinyjs functions
     // we attach a click handler to an element and when it's clicked we call Shiny
     onclick : function (params) {
