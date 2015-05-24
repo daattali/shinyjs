@@ -10,10 +10,9 @@ shinyApp(
                    a = "cursor: pointer")),
     fixedRow(
       column(6, wellPanel(
-        h2("shinyjs demo"),
-        checkboxInput("big", "Bigger text", FALSE),
-        resettable(
-          div(id = "myapp",
+        div(id = "myapp",
+            h2("shinyjs demo"),
+            checkboxInput("big", "Bigger text", FALSE),
             textInput("name", "Name", ""),
             a(id = "toggleAdvanced", "Show/hide advanced info"),
             hidden(
@@ -28,7 +27,6 @@ shinyApp(
             ),
             actionButton("submit", "Submit"),
             actionButton("reset", "Reset form")
-          )
         ),
         br(), br()
       )),

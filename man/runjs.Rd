@@ -7,7 +7,10 @@
 runjs(...)
 }
 \arguments{
-\item{code}{JavaScript code to run.}
+\item{...}{The following parameters are available:
+\tabular{ll}{
+  \strong{\code{code}}  \tab JavaScript code to run.
+}}
 }
 \description{
 Run arbitrary JavaScript code. This is mainly useful when developing and

@@ -28,8 +28,7 @@ shinyjs = function() {
       shinyjs.initResettables();
     },
 
-    // if there are any resettable input elements, find their initial value
-    // and keep track of it
+    // find all shiny input elements and set them up to allow them to be reset
     initResettables : function() {
 
       // helper function to get the initial date from a bootstrap date element
@@ -46,106 +45,96 @@ shinyjs = function() {
         return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
       };
 
-      // go through all the tags that the user wanted to set as "resettable"
-      var resettables = $(".shinyjs-resettable-init");
-      for (var i = 0; i < resettables.length; i++) {
-        var resettable = $(resettables[i]);
-        // the resettable function can be called on either an input element
-        // or on a form with many elements, so we need to grab all the Shiny
-        // input containers
-        var inputContainers =
-          resettable.hasClass("shiny-input-container") ?
-            resettable :
-            resettable.find(".shiny-input-container");
+      // grab all the shiny input containers
+      var inputContainers = $(".shiny-input-container")
 
-        // go through every Shiny input and based on what kind of input it is,
-        // add some information to the HTML tag so that we can know how to
-        // update it back to its original value
-        for (var j = 0; j < inputContainers.length; j++) {
-          var inputContainer = $(inputContainers[j]);
-          var input = inputContainer;
-          var foundInput = true;
-          var inputType = inputValue = inputId = null;
+      // go through every Shiny input and based on what kind of input it is,
+      // add some information to the HTML tag so that we can know how to
+      // update it back to its original value
+      for (var j = 0; j < inputContainers.length; j++) {
+        var inputContainer = $(inputContainers[j]);
+        var input = inputContainer;
+        var foundInput = true;
+        var inputType = inputValue = inputId = null;
 
-          // dateInput
-          if (input.hasClass("shiny-date-input")) {
-            input = input.children("input");
-            inputType = "Date";
-            inputValue = getDate(input);
-            inputId = inputContainer.attr('id');
+        // dateInput
+        if (input.hasClass("shiny-date-input")) {
+          input = input.children("input");
+          inputType = "Date";
+          inputValue = getDate(input);
+          inputId = inputContainer.attr('id');
+        }
+        // dateRangeInput
+        else if (input.hasClass("shiny-date-range-input")) {
+          inputType = "DateRange";
+          inputValue = getDate($(input.find("input")[0])) + "," +
+                       getDate($(input.find("input")[1]));
+        }
+        // checkboxGroupInput
+        else if (input.hasClass("shiny-input-checkboxgroup")) {
+          inputType = "CheckboxGroup";
+          var selected = new Array();
+          var selectedEls = input.find("input[type='checkbox']:checked");
+          selectedEls.each(function() {
+            selected.push($(this).val());
+          })
+          inputValue = selected.join(",");
+        }
+        // radioButtons
+        else if (input.hasClass("shiny-input-radiogroup")) {
+          inputType = "RadioButtons";
+          inputValue = input.find("input[type='radio']:checked").val();
+        }
+        // sliderInput
+        else if (input.children(".js-range-slider").length > 0) {
+          input = input.children(".js-range-slider");
+          inputType = "Slider";
+          inputValue = input.attr('data-from');
+        }
+        // selectInput / selectizeInput
+        else if (input.find("select").length > 0) {
+          input = input.find("select");
+          inputType = "Select";
+          inputValue = input.val();
+          if (inputValue === null) {
+            inputValue = "";
+          } else if (inputValue instanceof Array) {
+            inputValue = inputValue.join(",");
           }
-          // dateRangeInput
-          else if (input.hasClass("shiny-date-range-input")) {
-            inputType = "DateRange";
-            inputValue = getDate($(input.find("input")[0])) + "," +
-                         getDate($(input.find("input")[1]));
+        }
+        // numericInput
+        else if (input.children("input[type='number']").length > 0) {
+          input = input.children("input[type='number']");
+          inputType = "Numeric";
+        }
+        // textInput
+        else if (input.children("input[type='text']").length > 0) {
+          input = input.children("input[type='text']");
+          inputType = "Text";
+        }
+        // checkboxInput
+        else if (input.find("input[type='checkbox']").length > 0) {
+          input = input.find("input[type='checkbox']");
+          inputType = "Checkbox";
+          inputValue = input.prop('checked');
+        }
+        // if none of the above, no supported Shiny input was found
+        else {
+          foundInput = false;
+        }
+
+        // if we found a Shiny input, set all the info on it
+        if (foundInput) {
+          if (inputId === null) {
+            inputId = input.attr('id');
           }
-          // checkboxGroupInput
-          else if (input.hasClass("shiny-input-checkboxgroup")) {
-            inputType = "CheckboxGroup";
-            var selected = new Array();
-            var selectedEls = input.find("input[type='checkbox']:checked");
-            selectedEls.each(function() {
-              selected.push($(this).val());
-            })
-            inputValue = selected.join(",");
-          }
-          // radioButtons
-          else if (input.hasClass("shiny-input-radiogroup")) {
-            inputType = "RadioButtons";
-            inputValue = input.find("input[type='radio']:checked").val();
-          }
-          // sliderInput
-          else if (input.children(".js-range-slider").length > 0) {
-            input = input.children(".js-range-slider");
-            inputType = "Slider";
-            inputValue = input.attr('data-from');
-          }
-          // selectInput / selectizeInput
-          else if (input.find("select").length > 0) {
-            input = input.find("select");
-            inputType = "Select";
+          if (inputValue === null) {
             inputValue = input.val();
-            if (inputValue === null) {
-              inputValue = "";
-            } else if (inputValue instanceof Array) {
-              inputValue = inputValue.join(",");
-            }
           }
-          // numericInput
-          else if (input.children("input[type='number']").length > 0) {
-            input = input.children("input[type='number']");
-            inputType = "Numeric";
-          }
-          // textInput
-          else if (input.children("input[type='text']").length > 0) {
-            input = input.children("input[type='text']");
-            inputType = "Text";
-          }
-          // checkboxInput
-          else if (input.find("input[type='checkbox']").length > 0) {
-            input = input.find("input[type='checkbox']");
-            inputType = "Checkbox";
-            inputValue = input.prop('checked');
-          }
-          // if none of the above, no supported Shiny input was found
-          else {
-            foundInput = false;
-          }
-
-          // if we found a Shiny input, set all the info on it
-          if (foundInput) {
-            if (inputId === null) {
-              inputId = input.attr('id');
-            }
-            if (inputValue === null) {
-              inputValue = input.val();
-            }
-            input.attr('data-shinyjs-resettable-id', inputId).
-                  attr('data-shinyjs-resettable-type', inputType).
-                  attr('data-shinyjs-resettable-value', inputValue).
-                  addClass('shinyjs-resettable');
-          }
+          input.attr('data-shinyjs-resettable-id', inputId).
+                attr('data-shinyjs-resettable-type', inputType).
+                attr('data-shinyjs-resettable-value', inputValue).
+                addClass('shinyjs-resettable');
         }
       }
     },

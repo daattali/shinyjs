@@ -4,7 +4,10 @@
 #' debugging a Shiny app, as it is generally considered dangerous to expose
 #' a way for end users to evaluate arbitrary code.
 #'
-#' @param code JavaScript code to run.
+#' @param ... The following parameters are available:
+#' \tabular{ll}{
+#'   \strong{\code{code}}  \tab JavaScript code to run.
+#' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.

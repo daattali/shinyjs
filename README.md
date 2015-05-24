@@ -260,16 +260,11 @@ Simply add the following to the server
 
 **7. Allow the user to reset the form**
 
-First we need to set the form to be resettable by wrapping its UI in a
-call to `resettable`
-
-    shinyjs::resettable(div(id = "myapp", ...))
-
-Now let's add a button to the UI
+First let's add a button to the UI
 
     actionButton("reset", "Reset form")
 
-And finally, when the button is clicked, reset the form
+And when the button is clicked, reset the form
 
     observeEvent(input$reset, {
       shinyjs::reset("myapp")
@@ -284,7 +279,6 @@ version where possible)
         shinyjs::useShinyjs(),
         shinyjs::inlineCSS(list(.big = "font-size: 2em")),
         div(id = "myapp",
-          shinyjs::resettable(
             h2("shinyjs demo"),
             checkboxInput("big", "Bigger text", FALSE),
             textInput("name", "Name", ""),
@@ -301,7 +295,6 @@ version where possible)
             ),
             actionButton("submit", "Submit"),
             actionButton("reset", "Reset form")
-          )
         )
       ),
       

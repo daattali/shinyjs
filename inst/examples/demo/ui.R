@@ -23,11 +23,9 @@ shinyUI(fluidPage(
   column(6, wellPanel(
      h1("Choose an R expression", class = "section-title"),
      div(id = "expr-container",
-         shinyjs::resettable(
-           selectInput("expr", label = NULL,
-                   choices = examplesNamed, selected = 1,
-                   multiple = FALSE, selectize = TRUE, width = "100%"
-           )
+         selectInput("expr", label = NULL,
+                 choices = examplesNamed, selected = 1,
+                 multiple = FALSE, selectize = TRUE, width = "100%"
          )
      ),
      actionButton("submitExpr", "Run", class = "btn-success"),
