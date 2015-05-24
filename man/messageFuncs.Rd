@@ -36,10 +36,7 @@ if (interactive()) {
       shiny::actionButton("btn", "Click me")
     ),
     server = function(input, output, session) {
-      shiny::observe({
-        if (input$btn == 0) {
-          return(NULL)
-        }
+      shiny::observeEvent(input$btn, {
         # Change the following line for more examples
         info(paste0("The date is ", date()))
       })

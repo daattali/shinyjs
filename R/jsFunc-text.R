@@ -28,10 +28,7 @@
 #'       shiny::p(id = "element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output, session) {
-#'       shiny::observe({
-#'         if (input$btn == 0) {
-#'           return(NULL)
-#'         }
+#'       shiny::observeEvent(input$btn, {
 #'         # Change the following line for more examples
 #'         text("element", paste0("The date is ", date()))
 #'       })
