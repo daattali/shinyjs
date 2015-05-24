@@ -1,3 +1,20 @@
+# shinyjs 0.0.5.0
+
+2015-05-23
+
+- add `reset` function that allows input elements to be reset to their original values
+
+- add function `runjs` to run arbitrary javascript code (not recommended to use in published shiny apps)
+
+- relax R version requirement to 3.1.0
+
+- look for session object in all parent frames, so that shinyjs functions can work from helper functions and not only from within the main server function
+
+- refacor internal code
+
+- update example apps and vignette to include `reset` function and `condition` param in `toggle` functions
+
+
 # shinyjs 0.0.4.0
 
 2015-04-24
