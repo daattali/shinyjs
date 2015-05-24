@@ -65,6 +65,9 @@ Overview of main functions
 -   `logjs` - print a message to the JavaScript console (mainly used for
     debugging purposes).
 
+-   `runjs` - run arbitrary JavaScript code (not recommended to use this
+    in a published Shiny app).
+
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/)
 to see some of these in action, or install `shinyjs` and run
 `shinyjs::runExample()` to see more demo apps.
@@ -244,7 +247,7 @@ Or, again, we can use the `toggleClass` function with the `condition`
 argument:
 
     observe({
-      toggleClass("myapp", "big", input$big)
+      shinyjs::toggleClass("myapp", "big", input$big)
     })
 
 **6. Give the user a "Thank you" message upon submission**
@@ -260,7 +263,7 @@ Simply add the following to the server
 First we need to set the form to be resettable by wrapping its UI in a
 call to `resettable`
 
-    resettable(div(id = "myapp", ...))
+    shinyjs::resettable(div(id = "myapp", ...))
 
 Now let's add a button to the UI
 
@@ -269,7 +272,7 @@ Now let's add a button to the UI
 And finally, when the button is clicked, reset the form
 
     observeEvent(input$reset, {
-      reset("myapp")
+      shinyjs::reset("myapp")
     })
 
 **The final code looks like this** (I'm using the more compact `toggle*`
@@ -304,7 +307,7 @@ version where possible)
       
       server = function(input, output, session) {
         observe({
-          toggleState("submit", !is.null(input$name) && input$name != "")
+          shinyjs::toggleState("submit", !is.null(input$name) && input$name != "")
         })
         
         shinyjs::onclick("toggleAdvanced",
@@ -313,7 +316,7 @@ version where possible)
         shinyjs::onclick("update", shinyjs::text("time", date()))
         
         observe({
-          toggleClass("myapp", "big", input$big)
+          shinyjs::toggleClass("myapp", "big", input$big)
         })
         
         observeEvent(input$submit, {
@@ -321,7 +324,7 @@ version where possible)
         })
         
         observeEvent(input$reset, {
-          reset("myapp")
+          shinyjs::reset("myapp")
         })    
       }
     )
@@ -336,7 +339,6 @@ The initial release of this package was announced [on my
 blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
 this topic.
 
-
 ## Contributions
 
-If anyone has any suggestions or feedback, I would love to hear about it. If you have improvements, feel free to make a pull request.  I'd like to give a special thanks to the Shiny developers, especially Joe Cheng for always answering all my Shiny
+If anyone has any suggestions or feedback, I would love to hear about it. If you have improvements, feel free to make a pull request.  I'd like to give a special thanks to the Shiny developers, especially [Joe Cheng](http://www.joecheng.com/) for always answering all my Shiny questions.

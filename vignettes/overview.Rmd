@@ -72,6 +72,9 @@ an element
 - `logjs` - print a message to the JavaScript console (mainly used for
 debugging purposes).
 
+- `runjs` - run arbitrary JavaScript code (not recommended to use this in a
+published Shiny app).
+
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) to see
 some of these in action, or install `shinyjs` and run `shinyjs::runExample()`
 to see more demo apps.
@@ -266,7 +269,7 @@ Or, again, we can use the `toggleClass` function with the `condition` argument:
 
 ```
 observe({
-  toggleClass("myapp", "big", input$big)
+  shinyjs::toggleClass("myapp", "big", input$big)
 })
 ```
 
@@ -285,7 +288,7 @@ observeEvent(input$submit, {
 First we need to set the form to be resettable by wrapping its UI in a call to `resettable`
 
 ```
-resettable(div(id = "myapp", ...))
+shinyjs::resettable(div(id = "myapp", ...))
 ```
 
 Now let's add a button to the UI
@@ -298,7 +301,7 @@ And finally, when the button is clicked, reset the form
 
 ```
 observeEvent(input$reset, {
-  reset("myapp")
+  shinyjs::reset("myapp")
 })
 ```
 
@@ -335,7 +338,7 @@ shinyApp(
   
   server = function(input, output, session) {
     observe({
-      toggleState("submit", !is.null(input$name) && input$name != "")
+      shinyjs::toggleState("submit", !is.null(input$name) && input$name != "")
     })
     
     shinyjs::onclick("toggleAdvanced",
@@ -344,7 +347,7 @@ shinyApp(
     shinyjs::onclick("update", shinyjs::text("time", date()))
     
     observe({
-      toggleClass("myapp", "big", input$big)
+      shinyjs::toggleClass("myapp", "big", input$big)
     })
     
     observeEvent(input$submit, {
@@ -352,7 +355,7 @@ shinyApp(
     })
     
     observeEvent(input$reset, {
-      reset("myapp")
+      shinyjs::reset("myapp")
     })    
   }
 )

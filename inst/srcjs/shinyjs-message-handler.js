@@ -360,7 +360,6 @@ shinyjs = function() {
     },
 
     runjs : function (params) {
-      console.log("D");
       var defaultParams = {
         code : null
       }
