@@ -9,7 +9,9 @@ and add the TravisCI status -->
 [![Build Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
-applications without having to know any JavaScript. You can [check out a
+applications without having to know any JavaScript. Examples include
+hiding an element, disabling an input, resetting an input back to its
+original value, and many more useful functions. You can [check out a
 demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets you
 play around with some of the functionality that `shinyjs` makes
 available, or [have a look at a very basic Shiny
@@ -29,6 +31,43 @@ To install the latest developmental version from GitHub:
 
     install.packages("devtools")
     devtools::install_github("daattali/shinyjs")
+
+Overview of main functions
+--------------------------
+
+-   `show`/`hide`/`toggle` - display or hide an element. There are
+    arguments that control the animation as well, though animation is
+    off by default.
+
+-   `hidden` - initialize a Shiny tag as invisible (can be shown later
+    with a call to `show`).
+
+-   `reset` - reset a Shiny input widget back to its original value.
+
+-   `enable`/`disable`/`toggleState` - enable or disable an input
+    element, such as a button or a text input.
+
+-   `info` - show a message to the user (using JavaScript's `alert`
+    under the hood).
+
+-   `text` - change the text/HTML of an element (using JavaScript's
+    `innerHTML` under the hood).
+
+-   `onclick` - run R code when an element is clicked. Was originally
+    developed with the sole purpose of running a `shinyjs` function when
+    an element is clicked, though any R code can be used.
+
+-   `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class
+    from an element
+
+-   `inlineCSS` - easily add inline CSS to a Shiny app.
+
+-   `logjs` - print a message to the JavaScript console (mainly used for
+    debugging purposes).
+
+[Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/)
+to see some of these in action, or install `shinyjs` and run
+`shinyjs::runExample()` to see more demo apps.
 
 Motivation
 ----------
@@ -51,41 +90,6 @@ I was lucky enough to have previous experience with JS so I knew how to
 achieve the results that I wanted, but for any Shiny developer who is
 not proficient in JS, hopefully this package will make it easy to extend
 the power of their Shiny apps.
-
-Overview of main functions
---------------------------
-
--   `show`/`hide`/`toggle` - display or hide an element. There are
-    arguments that control the animation as well, though animation is
-    off by default.
-
--   `hidden` - initialize a Shiny tag as invisible (can be shown later
-    with a call to `show`)
-
--   `enable`/`disable`/`toggleState` - enable or disable an input
-    element, such as a button or a text input.
-
--   `info` - show a message to the user (using JavaScript's `alert`
-    under the hood)
-
--   `text` - change the text/HTML of an element (using JavaScript's
-    `innerHTML` under the hood)
-
--   `onclick` - run R code when an element is clicked. Was originally
-    developed with the sole purpose of running a `shinyjs` function when
-    an element is clicked, though any R code can be used.
-
--   `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class
-    from an element
-
--   `inlineCSS` - easily add inline CSS to a Shiny app
-
--   `logjs` - print a message to the JavaScript console (mainly used for
-    debugging purposes)
-
-[Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/)
-to see some of these in action, or install `shinyjs` and run
-`shinyjs::runExample()` to see more demo apps.
 
 Basic use case - working example
 --------------------------------
@@ -135,7 +139,7 @@ with two small changes
     initialize the server as `server(input, output, session)` instead of
     `server(input, output)`.
 
-Here are 6 features we'll add to the app, each followed with the code to
+Here are 7 features we'll add to the app, each followed with the code to
 implement it using `shinyjs`:
 
 **1. The "Name" field is mandatory and thus the "Submit" button should
@@ -247,10 +251,25 @@ argument:
 
 Simply add the following to the server
 
-    observe({
-      if (input$submit > 0) {
-        shinyjs::info("Thank you!")
-      }
+    observeEvent(input$submit, {
+      shinyjs::info("Thank you!")
+    })
+
+**7. Allow the user to reset the form**
+
+First we need to set the form to be resettable by wrapping its UI in a
+call to `resettable`
+
+    resettable(div(id = "myapp", ...))
+
+Now let's add a button to the UI
+
+    actionButton("reset", "Reset form")
+
+And finally, when the button is clicked, reset the form
+
+    observeEvent(input$reset, {
+      reset("myapp")
     })
 
 **The final code looks like this** (I'm using the more compact `toggle*`
@@ -262,6 +281,7 @@ version where possible)
         shinyjs::useShinyjs(),
         shinyjs::inlineCSS(list(.big = "font-size: 2em")),
         div(id = "myapp",
+          shinyjs::resettable(
             h2("shinyjs demo"),
             checkboxInput("big", "Bigger text", FALSE),
             textInput("name", "Name", ""),
@@ -276,7 +296,9 @@ version where possible)
               span(id = "time", date()),
               a(id = "update", "Update", href = "#")
             ),
-            actionButton("submit", "Submit")
+            actionButton("submit", "Submit"),
+            actionButton("reset", "Reset form")
+          )
         )
       ),
       
@@ -294,10 +316,12 @@ version where possible)
           toggleClass("myapp", "big", input$big)
         })
         
-        observe({
-          if (input$submit > 0) {
-            shinyjs::info("Thank you!")
-          }
+        observeEvent(input$submit, {
+          shinyjs::info("Thank you!")
+        })
+        
+        observeEvent(input$reset, {
+          reset("myapp")
         })    
       }
     )
@@ -308,76 +332,9 @@ You can view the final app
 Altenatives using native Shiny
 ------------------------------
 
-### shiny::conditionalPanel vs shinyjs::hide/show/toggle/hidden
-
-It is possible to achieve a similar behaviour to `hide` and `show` by
-using `shiny::conditionalPanel`, though I've experienced that using
-`conditionalPanel` often gets my UI to a messier state. I still use
-`conditionalPanel` sometimes for basic use cases, but when there is some
-logic involved in hiding/showing, I find it much easier to move that
-logic to the server and use `hide`/`show`. I also think it's generally a
-better idea to keep most of the logic in the server, and using
-`conditionalPanel` violates that rule.  
-Implementing the `shinyjs::toggle` or `shinyjs::hidden` behaviour with
-pure Shiny is also possible but it also results in messier and less
-intuitive code.
-
-### shiny::render\* and shiny::update\* vs shinyjs::text
-
-The `shinyjs::text` function can be used to change the text inside an
-element by either overwriting it or appending to it. I mostly intended
-for this function to be used to change the text, though it can also be
-used to add HTML elements. There are many Shiny functions that allow you
-to change the text of an element. For example, `renderText` is used on a
-`textOutput` tag and `updateTextInput` is used on a `textInput` tag.
-These functions are useful, but sometimes I like to be able to just
-cange the text of a tag without having to know/specify exactly what it
-was declared in the UI. These functions also don't work on tags that are
-not defined as reactive, so if I just have a `p(id = "time", date())` it
-would be impossible to change it. I also don't think it's possible to
-append rather than overwrite with Shiny, and you can't use HTML unless
-the element is declared as `uiOutput` or something similar.
-
-There is something to be said about the fact that the pure Shiny
-functions are safer and more strict, but I personally like having the
-extra flexibility sometimes, even though the `text` function feels like
-it doesn't really follow Shiny's patterns. I still use the Shiny
-functions often, but I find `text` useful as well.
-
-### shiny::observeEvent vs shinyjs::onclick
-
-The `onclick` function was initially written because I wanted a way to
-click on a button that will cause a section to show/hide, like so:
-
-    shinyjs::onclick("toggleLink", shinyjs::toggle("section"))
-
-RStudio very recently published an article describing several design
-patterns for using buttons, and from that article I learned that I can
-do what I wanted with `observeEvent`:
-
-    observeEvent("input$toggleLink", shinyjs::toggle("section"))
-
-When I first discovered this, I thought of removing the `onclick`
-function because it's not useful anymore, but then I realized there are
-differences that still make it useful. `observeEvent` responds to
-"event-like" reactive values, while `onclick` responds to a mouse click
-on an element. This means that `observeEvent` can be used for any input
-element (not only clickable things), but `onclick` can be used for
-responding to a click on any element, even if it is not an input tag.
-Another small feature I wanted to support is the ability to overwrite vs
-add the click handler (= R code to run on a click). This would not be
-used for most basic apps, but for more complex dynamic apps it might
-come in handy.
-
-
-## Main TODO
-There are several improvements I still want to provide, but the biggest thing on my TODO list is to easily allow users to extend `shinyjs`. This would mean that you could just write a JavaScript function, tell `shinyjs` where to find it, and then `shinyjs` will do some magic to let you call that function as if it was regular R code.
-
-## Known issues
-
-- There are some input tags that `shiny` wraps in extra HTML, and this can interfere with `shinyj` functions.  For example, using `selectInput("foo")` by default uses selectize JS, which hides the real select box that has id `foo` and instead makes a more visually appealing box. By this means that now calling `show` or `hide` on `foo` won't work. **A workaround** is to wrap the tag with a div, and call `hide`/`show` on that div instead.
-
-- The previous workaround works for some `shinyjs` functions such as `hide` and `show`, but not all. For example, the `enable` and `disable` functions won't work on fake select boxes (the ones generated with selectize) because they don't follow the normal HTML rules for disabling inputs. This is one instance of the problem that I intend on solving becuase there is indeed a way to disable selectize inputs, but it's important to be aware of the underlying isuee - because `shiny` sometimes adds HTML around an element that you create, trying to retrieve that element by its id might not always work unfortunately.
+The initial release of this package was announced [on my
+blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
+this topic.
 
 
 ## Contributions

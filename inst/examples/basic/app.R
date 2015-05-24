@@ -9,26 +9,29 @@ shinyApp(
     inlineCSS(list(.big = "font-size: 2em",
                    a = "cursor: pointer")),
     fixedRow(
-      column(6,
+      column(6, wellPanel(
         h2("shinyjs demo"),
         checkboxInput("big", "Bigger text", FALSE),
-        div(id = "myapp",
-          textInput("name", "Name", ""),
-          a(id = "toggleAdvanced", "Show/hide advanced info"),
-          hidden(
-            div(id = "advanced",
-              numericInput("age", "Age", 30),
-              textInput("company", "Company", "")
-            )
-          ),
-          p("Timestamp: ",
-            span(id = "time", date()),
-            a(id = "update", "Update")
-          ),
-          actionButton("submit", "Submit")
+        resettable(
+          div(id = "myapp",
+            textInput("name", "Name", ""),
+            a(id = "toggleAdvanced", "Show/hide advanced info"),
+            hidden(
+              div(id = "advanced",
+                numericInput("age", "Age", 30),
+                textInput("company", "Company", "")
+              )
+            ),
+            p("Timestamp: ",
+              span(id = "time", date()),
+              a(id = "update", "Update")
+            ),
+            actionButton("submit", "Submit"),
+            actionButton("reset", "Reset form")
+          )
         ),
         br(), br()
-      ),
+      )),
       column(6,
              getHelperText()
       )
@@ -47,10 +50,12 @@ shinyApp(
       toggleState("submit", !is.null(input$name) && input$name != "")
     })
 
-    observe({
-      if (input$submit > 0) {
-        info("Thank you!")
-      }
+    observeEvent(input$submit, {
+      info("Thank you!")
+    })
+
+    observeEvent(input$reset, {
+      reset("myapp")
     })
   }
 )

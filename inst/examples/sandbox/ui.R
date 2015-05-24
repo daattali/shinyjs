@@ -22,7 +22,9 @@ shinyUI(fluidPage(
   fluidRow(
   column(6, wellPanel(
      h1("Write an R expression", class = "section-title"),
-     textInput("expr", label = NULL, value = as.character(examples[1])),
+     shinyjs::resettable(
+       textInput("expr", label = NULL, value = as.character(examples[1]))
+     ),
      actionButton("submitExpr", "Run", class = "btn-success"),
      shinyjs::hidden(
        div(id = "error", br(),
