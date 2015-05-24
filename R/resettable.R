@@ -1,4 +1,72 @@
+#' Reset input elements to their original values
+#'
+#' Reset an input element back to its original value by initializing
+#' it with \code{resettable} and calling \code{reset} whenever you
+#' want to reset the value.
+#'
+#' If the tag given to \code{resettable} is a single Shiny input, then
+#' that input can be reset back to its original value with \code{reset}.
+#' If the tag given to \code{resettable} is a more complex tag, then
+#' you can either reset all inputs together or reset individual input
+#' elements inside the tag.
+#'
+#' Reset can be performed on any traditional Shiny input wiget, which
+#' includes: textInput, numericInput, sliderInput, selectInput,
+#' selectizeInput, radioButtons, dateInput, dateRangeInput,
+#' checkboxInput, checkboxGroupInput.  Note that buttons are not supported,
+#' meaning that you cannot use this function to reset the value of an
+#' action button back to 0.
+#'
+#' Note that this function only works on input widgets that are rendered in
+#' the UI. Any input that is created dynamically using \code{uiOutput} +
+#' \code{renderUI} will not be resettable.
+#'
+#' @param tag Shiny tag that will support every input element within it
+#' to be resettable later.
+#' @param id The id of the input element to reset or the id of an HTML
+#' tag to reset all input elements inside it.
+#' @seealso \code{\link[shinyjs]{useShinyjs}},
+#' \code{\link[shinyjs]{runExample}}
+#' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
+#' in the app's ui.
+#' @examples
+#' if (interactive()) {
+#'   runApp(shinyApp(
+#'     ui = fluidPage(
+#'       useShinyjs(),
+#'       resettable(textInput("name", "Name", "Dean")),
+#'       resettable(
+#'         div(id = "advancedInfo",
+#'             radioButtons("gender", "Gender", c("Male", "Female")),
+#'             selectInput("letter", "Favourite letter", LETTERS)
+#'         )
+#'       ),
+#'       actionButton("resetName", "Reset name"),
+#'       actionButton("resetGender", "Reset Gender"),
+#'       actionButton("resetLetter", "Reset letter"),
+#'       actionButton("resetAdvanced", "Reset both advanced info")
+#'     ),
+#'     server = function(input, output, session) {
+#'       observeEvent(input$resetName, {
+#'         reset("name")
+#'       })
+#'       observeEvent(input$resetGender, {
+#'         reset("gender")
+#'       })
+#'       observeEvent(input$resetLetter, {
+#'         reset("letter")
+#'       })
+#'       observeEvent(input$resetAdvanced, {
+#'         reset("advancedInfo")
+#'       })
+#'     }
+#'   ))
+#' }
+#' @name reset
+NULL
+
 #' @export
+#' @rdname reset
 resettable <- function(tag) {
   if (!inherits(tag, "shiny.tag")) {
     errMsg("'tag' is not a valid Shiny tag")
@@ -11,6 +79,7 @@ resettable <- function(tag) {
 }
 
 #' @export
+#' @rdname reset
 reset <- function(id) {
   # grab the Shiny session that called us
   session <- dynGetCopy("session")
