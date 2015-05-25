@@ -29,36 +29,22 @@
 #'   )
 #' }
 #' @seealso \code{\link[shinyjs]{runExample}}
+#' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
 useShinyjs <- function() {
-  # all the methods that should be forwarded to javascript
+  # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
                "addClass", "removeClass", "toggleClass", "text",
                "onclick", "info", "logjs", "runjs", "reset")
 
-  # add a shiny message handler binding for each supported method
-  tpl <- paste0(
-    "Shiny.addCustomMessageHandler('%s', function(params) {",
-    " shinyjs.%s(params);",
-    "});")
-  controllers <-
-    lapply(jsFuncs, function(x) {
-      sprintf(tpl, x, x)})
-  controllers <- paste(controllers, collapse = "\n")
-
-  # grab the file with all the message handlers (javascript functions)
-  handler <- system.file("srcjs", "shinyjs-message-handler.js",
-                         package = "shinyjs")
-  if (handler == "") {
-    errMsg("could not find shinyjs message handler file")
+  # grab the file with all the default shinyjs javascript functions
+  jsFile <- system.file("srcjs", "shinyjs-default-funcs.js",
+                        package = "shinyjs")
+  if (jsFile == "") {
+    errMsg("could not find shinyjs JavaScript file")
   }
 
-  shiny::tags$head(
-    # add custom CSS for hiding elements
-    shiny::tags$style(".shinyjs-hide { display: none; }"),
-    # add the message handler bindings
-    shiny::tags$script(shiny::HTML(controllers)),
-    # add the message handlers
-    shiny::includeScript(handler)
-  )
+  # set up the message handlers for all functions and add custom CSS for hiding elements
+  setupJS(jsFile, jsFuncs,
+          inlineCSS(".shinyjs-hide { display: none; }"))
 }

@@ -10,11 +10,12 @@ jsFunc <- function(...) {
   parentFrame <- parent.frame(1)
   params <- lapply(params, function(x){ eval(x, envir = parentFrame) })
 
-  # figure out what function to call, make sure to work with namespacing as well
+  # figure out what JS function to call, make sure to work with namespacing as well
   pkgName <- "shinyjs"
-  regex <- sprintf("^(%s:{2,3})((\\w)+)$", pkgName)
+  extensionName <- "js"
+  regex <- sprintf("^(%s:{2,3})?(%s\\$)?((\\w)+)$", pkgName, extensionName)
   fxn <- as.character(as.list(match.call()[1]))
-  fxn <- sub(regex, "\\2", fxn)
+  fxn <- sub(regex, "\\3", fxn)
 
   # grab the Shiny session from the caller - I'm assuming this will always work
   # and correctly get the sessin. If there are cases where this doesn't work,

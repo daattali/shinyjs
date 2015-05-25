@@ -20,3 +20,23 @@ dynGetCopy <- function (x) {
   }
   stop(gettextf("%s not found", sQuote(x)))
 }
+
+setupJS <- function(script, jsFuncs, ...) {
+  # add a shiny message handler binding for each supported method
+  tpl <- paste0(
+    "Shiny.addCustomMessageHandler('%s', function(params) {",
+    " shinyjs.%s(params);",
+    "});")
+  controllers <-
+    lapply(jsFuncs, function(x) {
+      sprintf(tpl, x, x)})
+  controllers <- paste(controllers, collapse = "\n")
+
+  shiny::tags$head(
+    # add the message handler bindings
+    shiny::tags$script(shiny::HTML(controllers)),
+    # add the message handlers
+    shiny::includeScript(script),
+    ...
+  )
+}
