@@ -272,9 +272,17 @@ shinyjs = function() {
 
       var el = $("#" + params.id);
 
-      // Special case for selectize inputs
+      // selectize inputs need special javascript
       if (el.hasClass("selectized")) {
         el.selectize()[0].selectize.enable();
+      }
+      // date inputs need to enable the inputs inside the main tag
+      else if (el.hasClass("shiny-date-input") || el.hasClass("shiny-date-range-input")) {
+        el = $(el.toArray().concat(el.find("input").toArray()));
+      }
+      // slider inputs need special javascript
+      else if (el.hasClass("js-range-slider")) {
+        el.data("ionRangeSlider").update({ disable : false })
       }
 
       el.prop('disabled', false);
@@ -288,9 +296,17 @@ shinyjs = function() {
 
       var el = $("#" + params.id);
 
-      // Special case for selectize inputs
+      // selectize inputs need special javascript
       if (el.hasClass("selectized")) {
         el.selectize()[0].selectize.disable();
+      }
+      // date inputs need to disable the inputs inside the main tag
+      else if (el.hasClass("shiny-date-input") || el.hasClass("shiny-date-range-input")) {
+        el = $(el.toArray().concat(el.find("input").toArray()));
+      }
+      // slider inputs need special javascript
+      else if (el.hasClass("js-range-slider")) {
+        el.data("ionRangeSlider").update({ disable : true })
       }
 
       el.prop('disabled', true);
@@ -307,6 +323,7 @@ shinyjs = function() {
       if (params.condition === null) {
         params.condition = shinyjs.isDisabled(el);
       }
+
       if (params.condition) {
         shinyjs.enable(params);
       } else {
