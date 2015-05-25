@@ -2,14 +2,12 @@
 #'
 #' Enable or disable an input element. A disabled element is not usable and
 #' not clickable, while an enabled element (default) can receive user input.
-#' Many input tags can be used with these functions, such as text inputs
+#' Any shiny input tag can be used with these functions, such as text inputs
 #' (\code{shiny::textInput}), select lists (\code{shiny::selectInput}),
-#' buttons (\code{shiny::actionButton}) and many others.
-#'
+#' buttons (\code{shiny::actionButton}) and all others.\cr\cr
 #' \strong{\code{enable}} enables an input, \strong{\code{disable}} disabled
 #' an input,\strong{\code{toggleState}} enables an input if it is disabled
-#' and disables an input if it is already enabled.
-#'
+#' and disables an input if it is already enabled.\cr\cr
 #' If \code{condition} is given to \code{toggleState}, that condition will be used
 #' to determine if to enable or disable the input. The element will be enabled if
 #' the condition evalutes to \code{TRUE} and disabled otherwise.

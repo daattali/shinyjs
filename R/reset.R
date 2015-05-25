@@ -2,9 +2,8 @@
 #'
 #' Reset any input element back to its original value. You can either reset
 #' one specific input at a time by providing the id of a shiny input, or reset
-#' all inputs within an HTML tag by providing the id of an HTML tag.
-#'
-#' Reset can be performed on any traditional Shiny input wiget, which
+#' all inputs within an HTML tag by providing the id of an HTML tag.\cr\cr
+#' Reset can be performed on any traditional Shiny input widget, which
 #' includes: textInput, numericInput, sliderInput, selectInput,
 #' selectizeInput, radioButtons, dateInput, dateRangeInput,
 #' checkboxInput, checkboxGroupInput.  Buttons are not supported,

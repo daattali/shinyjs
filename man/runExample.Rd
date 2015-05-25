@@ -11,9 +11,7 @@ runExample(example)
 }
 \description{
 Launch a \code{shinyjs} example Shiny app that shows how to
-easily use \code{shinyjs} in an app.
-}
-\details{
+easily use \code{shinyjs} in an app.\cr\cr
 Run without any arguments to see a list of available example apps.
 The "demo" example is also
 \href{http://daattali.com/shiny/shinyjs-demo/}{available online}

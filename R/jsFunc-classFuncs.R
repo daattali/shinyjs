@@ -1,15 +1,12 @@
 #' Add/remove CSS class
 #'
-#' Add or remove a CSS class from an HTML element.
-#'
+#' Add or remove a CSS class from an HTML element.\cr\cr
 #' \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
 #' removes a CSS class, \strong{\code{toggleClass}} adds the class if it is
-#' not set and removes the class if it is already set.
-#'
+#' not set and removes the class if it is already set.\cr\cr
 #' If \code{condition} is given to \code{toggleClass}, that condition will be used
 #' to determine if to add or remove the class. The class will be added if the
-#' condition evalutes to \code{TRUE} and removed otherwise.
-#'
+#' condition evalutes to \code{TRUE} and removed otherwise.\cr\cr
 #' CSS is a simple way to describe how elements on a web page should be
 #' displayed (position, colour, size, etc.).  You can learn the basics
 #' at \href{http://www.w3schools.com/css/}{W3Schools}.

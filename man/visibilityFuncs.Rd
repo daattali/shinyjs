@@ -30,13 +30,10 @@ toggle(...)
 }}
 }
 \description{
-Display or hide an HTML element.
-}
-\details{
+Display or hide an HTML element.\cr\cr
 \strong{\code{show}} makes an element visible, \strong{\code{hide}} makes
 an element invisible, \strong{\code{toggle}} displays the element if it it
-hidden and hides it if it is visible.
-
+hidden and hides it if it is visible.\cr\cr
 If \code{condition} is given to \code{toggle}, that condition will be used
 to determine if to show or hide the element. The element will be shown if the
 condition evalutes to \code{TRUE} and hidden otherwise.

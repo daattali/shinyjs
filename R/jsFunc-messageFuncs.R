@@ -1,6 +1,6 @@
 #' Show a message
 #'
-#' \code{info} shows a message to the user as a simple popup.
+#' \code{info} shows a message to the user as a simple popup.\cr
 #' \code{logjs} writes a message to the JavaScript console. \code{logjs} is
 #' mainly used for debugging purposes as a way to non-intrusively print
 #' messages, but it is also visible to the user if they choose to inspect the
