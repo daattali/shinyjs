@@ -162,6 +162,12 @@ shinyjs = function() {
 
       var el = $("#" + params.id);
 
+      // for input elements, show the whole container, not just the input
+      var inputContainer = el.closest(".shiny-input-container");
+      if (inputContainer.length > 0) {
+        el = inputContainer;
+      }
+
       if (!params.anim) {
         el.show();
       } else {
@@ -190,6 +196,13 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       var el = $("#" + params.id);
+
+      // for input elements, hide the whole container, not just the input
+      var inputContainer = el.closest(".shiny-input-container");
+      if (inputContainer.length > 0) {
+        el = inputContainer;
+      }
+
       if (!params.anim) {
         el.hide();
       } else {
@@ -212,6 +225,12 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       var el = $("#" + params.id);
+
+      // for input elements, toggle the whole container, not just the input
+      var inputContainer = el.closest(".shiny-input-container");
+      if (inputContainer.length > 0) {
+        el = inputContainer;
+      }
 
       if (params.condition === null) {
         params.condition = shinyjs.isHidden(el);
