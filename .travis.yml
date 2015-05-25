@@ -3,5 +3,8 @@ language: r
 # R support in Travis CI currently requires sudo http://docs.travis-ci.com/user/languages/r/
 sudo: true
 
+apt_packages:
+ - libv8-dev
+
 r_github_packages:
  - jeroenooms/v8
