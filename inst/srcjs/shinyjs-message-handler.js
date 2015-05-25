@@ -139,13 +139,26 @@ shinyjs = function() {
       }
     },
 
+    // is an element currently hidden?
     isHidden : function(el) {
       return el.css("display") === "none";
     },
 
+    // is an element currently disabled?
     isDisabled : function(el) {
       return el.prop('disabled') === true;
     },
+
+    // if the given HTML tag is a shiny input, return the input container.
+    // otherwise, return the original tag
+    getContainer : function(el) {
+      var inputContainer = el.closest(".shiny-input-container");
+      if (inputContainer.length > 0) {
+        el = inputContainer;
+      }
+      return el;
+    },
+
 
     // -----------------------------------------------------------------
     // ------ All functions below are exported shinyjs function --------
@@ -163,10 +176,7 @@ shinyjs = function() {
       var el = $("#" + params.id);
 
       // for input elements, show the whole container, not just the input
-      var inputContainer = el.closest(".shiny-input-container");
-      if (inputContainer.length > 0) {
-        el = inputContainer;
-      }
+      el = shinyjs.getContainer(el);
 
       if (!params.anim) {
         el.show();
@@ -198,10 +208,7 @@ shinyjs = function() {
       var el = $("#" + params.id);
 
       // for input elements, hide the whole container, not just the input
-      var inputContainer = el.closest(".shiny-input-container");
-      if (inputContainer.length > 0) {
-        el = inputContainer;
-      }
+      el = shinyjs.getContainer(el);
 
       if (!params.anim) {
         el.hide();
@@ -227,10 +234,7 @@ shinyjs = function() {
       var el = $("#" + params.id);
 
       // for input elements, toggle the whole container, not just the input
-      var inputContainer = el.closest(".shiny-input-container");
-      if (inputContainer.length > 0) {
-        el = inputContainer;
-      }
+      el = shinyjs.getContainer(el);
 
       if (params.condition === null) {
         params.condition = shinyjs.isHidden(el);
@@ -291,19 +295,16 @@ shinyjs = function() {
 
       var el = $("#" + params.id);
 
-      // selectize inputs need special javascript
+      // selectize and slider inputs need special javascript
       if (el.hasClass("selectized")) {
         el.selectize()[0].selectize.enable();
-      }
-      // date inputs need to enable the inputs inside the main tag
-      else if (el.hasClass("shiny-date-input") || el.hasClass("shiny-date-range-input")) {
-        el = $(el.toArray().concat(el.find("input").toArray()));
-      }
-      // slider inputs need special javascript
-      else if (el.hasClass("js-range-slider")) {
+      } else if (el.hasClass("js-range-slider")) {
         el.data("ionRangeSlider").update({ disable : false })
       }
 
+      // enable the container as well as all individual inputs inside
+      // (this is needed for grouped inputs such as radio and checkbox groups)
+      el = $(el.toArray().concat(el.find("input").toArray()));
       el.prop('disabled', false);
     },
 
@@ -315,19 +316,16 @@ shinyjs = function() {
 
       var el = $("#" + params.id);
 
-      // selectize inputs need special javascript
+      // selectize and slider inputs need special javascript
       if (el.hasClass("selectized")) {
         el.selectize()[0].selectize.disable();
-      }
-      // date inputs need to disable the inputs inside the main tag
-      else if (el.hasClass("shiny-date-input") || el.hasClass("shiny-date-range-input")) {
-        el = $(el.toArray().concat(el.find("input").toArray()));
-      }
-      // slider inputs need special javascript
-      else if (el.hasClass("js-range-slider")) {
+      } else if (el.hasClass("js-range-slider")) {
         el.data("ionRangeSlider").update({ disable : true })
       }
 
+      // disable the container as well as all individual inputs inside
+      // (this is needed for grouped inputs such as radio and checkbox groups)
+      el = $(el.toArray().concat(el.find("input").toArray()));
       el.prop('disabled', true);
     },
 
@@ -403,36 +401,41 @@ shinyjs = function() {
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      var elId = "#" + params.id;
+      var el = $("#" + params.id);
+
+      // for shiny inputs, perform the action when any section of the input
+      // widget is clicked
+      el = shinyjs.getContainer(el);
+
       var shinyInputId = params.shinyInputId;
       var attrName = "data-shinyjs-onclick";
 
       // if this is the first click handler we attach to this element, initialize
       // the data attribute and add the onclick event handler
-      var first = !$(elId)[0].hasAttribute(attrName);
+      var first = !(el[0].hasAttribute(attrName));
       if (first) {
-        $(elId).attr(attrName, JSON.stringify(Object()));
+        el.attr(attrName, JSON.stringify(Object()));
 
-        $(elId).click(function() {
-          var oldValues = JSON.parse($(elId).attr(attrName));
+        el.click(function() {
+          var oldValues = JSON.parse(el.attr(attrName));
           var newValues = Object();
           $.each(oldValues, function(key, value) {
             var newValue = value + 1;
             newValues[key] = newValue;
             Shiny.onInputChange(key, newValue);
           });
-          $(elId).attr(attrName, JSON.stringify(newValues));
+          el.attr(attrName, JSON.stringify(newValues));
         });
       }
 
       // if we want this action to overwrite existing ones, unbind click handler
       if (params.add) {
-        var attrValue = JSON.parse($(elId).attr(attrName));
+        var attrValue = JSON.parse(el.attr(attrName));
       } else {
         var attrValue = Object();
       }
       attrValue[shinyInputId] = 0;
-      $(elId).attr(attrName, JSON.stringify(attrValue));
+      el.attr(attrName, JSON.stringify(attrValue));
     },
 
     // the reset function is also complicated because we need R to tell us
