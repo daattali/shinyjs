@@ -59,11 +59,13 @@
 #' For example, if a JavaScript function expects an id parameter and a length
 #' parameter (in that order), then these could be the first few lines of the function:
 #'
-#' \code{shinyjs.myfunc(params) \{}\cr
-#'   \code{  var defaultParams = { id : null, length : 5 };}\cr
-#'   \code{  params = shinyjs.getParams(params, defaultParams);}\cr
-#'   \code{  // function body}\cr
-#' \code{\}}
+#' \preformatted{
+#'   shinyjs.myfunc(params) \{
+#'     var defaultParams = { id : null, length : 5 };
+#'     params = shinyjs.getParams(params, defaultParams);
+#'     // function body
+#'   \}
+#' }
 #'
 #' This function could be called either with \code{js$myfunc('test')} or
 #' \code{js$myfunc('test', 10)} or \code{js$myfunc(length = 10, id = 'test')}
@@ -153,6 +155,9 @@ extendShinyjs <- function(script) {
   setupJS(script, jsFuncs)
 }
 
+
+#' Call user-defined JavaScript functions from R
+#' @seealso \code{\link[shinyjs]{extendShinyjs}}
 #' @export
 #' @keywords internal
 js <- new.env()
