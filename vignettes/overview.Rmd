@@ -18,7 +18,9 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 `shinyjs` lets you perform common useful JavaScript operations in Shiny 
 applications without having to know any JavaScript. Examples include hiding an 
 element, disabling an input, resetting an input back to its original value,
-and many more useful functions. You can [check out a demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets
+and many more useful functions.
+
+You can [check out a demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets
 you play around with some of the functionality that `shinyjs` makes available,
 or [have a look at a very basic Shiny app](http://daattali.com/shiny/shinyjs-basic/)
 that uses `shinyjs` to enhance the user experience with very minimal and 
@@ -78,6 +80,10 @@ published Shiny app).
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) to see
 some of these in action, or install `shinyjs` and run `shinyjs::runExample()`
 to see more demo apps.
+
+You can also write your own JavaScript functions and use `shinyjs` to call
+them as if they were regular R code - read more about that in the section 
+"Calling your own JavaScript functions from R".
 
 ## Motivation
 
@@ -354,6 +360,51 @@ shinyApp(
 ```
 
 You can view the final app [here](http://daattali.com/shiny/shinyjs-basic/).
+
+## Calling your own JavaScript functions from R
+
+You can also use `shinyjs` to simplify calling your own JavaScript functions
+from R, using `extendShinyjs`.
+
+For example, suppose you wanted to define a JavaScript function that will change
+the colour of some text. You might know that Shiny allows you 
+to send a message to the client using the `session$sendCustomMessage` interface.
+That works perfectly well, but using `extendShinyjs` has two main benefits: it
+makes you write a lot less code by taking care of all the message passing, and
+it can help you with normalizing the parameter passing from R to JavaScript.
+
+Using `extendShinyjs` in order to use your own functions as shinyjs functions
+is easy. Any JavaScript function you define that begins with `shinyjs.` will
+be available to run from R through the `js$` variable. For example, if you write
+a JavaScript function called `shinyjs.colour`, then you can call it in R with
+`js$colour()`.
+
+### `extendShinyjs` example
+
+To continue with the previous example, here are the steps required to add your
+own function that you can call to change the colour of an HTML element:
+
+#### Create JavaScript file
+TODO documentation not finished
+
+      library(shiny)
+      library(shinyjs)
+      runApp(shinyApp(
+        ui = fluidPage(
+          useShinyjs(),
+          extendShinyjs("tests/test-success.js"),
+          p(id = "text", "Paragraph 1"),
+          actionButton("btn", "Change colour")
+        ),
+        server = function(input,output,session) {
+          observeEvent(input$btn, {
+            js$colour("text")
+          })
+        }
+      ))
+
+You can read more about this feature with `?shinyjs::extendShinyjs`.
+
 
 ## Altenatives using native Shiny
 

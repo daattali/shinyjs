@@ -18,5 +18,5 @@ test_that("extendShinyjs throws error when gives a bad JavaScript file", {
 test_that("extendShinyjs finds the correct JS functions", {
   file <- file.path("..", "test-success.js")
   extendShinyjs(file)
-  expect_identical(names(js), c("increment", "noop"))
+  expect_identical(names(js), c("colour", "increment", "noop"))
 })
