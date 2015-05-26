@@ -9,7 +9,7 @@ shinyjs.increment = function(params) {
   el.text(parseInt(el.text()) + params.num);
 }
 
-shinyjs.noop = function(params) {};
+shinyjs.noop = function(params) {}
 
 shinyjs.colour = function(params) {
   var defaultParams = {

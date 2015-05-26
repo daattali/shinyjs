@@ -18,8 +18,9 @@ functions as if they were R code.
 \description{
 Add your own JavaScript functions that can be called from R as if they were
 regular R functions. This is a more advanced technique and can only
-be used if you know JavaScript. See 'Basic Usage' below for more information on
-how to use this.
+be used if you know JavaScript. See 'Basic Usage' below for more information
+or \href{https://github.com/daattali/shinyjs}{view the full README} to learn
+more.
 }
 \note{
 You still need to call \code{useShinyjs()} as usual, and you need to

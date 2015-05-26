@@ -6,7 +6,9 @@
 #' not set and removes the class if it is already set.\cr\cr
 #' If \code{condition} is given to \code{toggleClass}, that condition will be used
 #' to determine if to add or remove the class. The class will be added if the
-#' condition evalutes to \code{TRUE} and removed otherwise.\cr\cr
+#' condition evalutes to \code{TRUE} and removed otherwise. If you find
+#' yourself writing code such as \code{if (test()) addClass(id, cl) else removeClass(id, cl)}
+#' then you can use \code{toggleClass} instead: \code{toggleClass(id, cl, test())}.\cr\cr
 #' CSS is a simple way to describe how elements on a web page should be
 #' displayed (position, colour, size, etc.).  You can learn the basics
 #' at \href{http://www.w3schools.com/css/}{W3Schools}.

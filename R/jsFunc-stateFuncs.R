@@ -10,7 +10,9 @@
 #' and disables an input if it is already enabled.\cr\cr
 #' If \code{condition} is given to \code{toggleState}, that condition will be used
 #' to determine if to enable or disable the input. The element will be enabled if
-#' the condition evalutes to \code{TRUE} and disabled otherwise.
+#' the condition evalutes to \code{TRUE} and disabled otherwise. If you find
+#' yourself writing code such as \code{if (test()) enable(id) else disable(id)}
+#' then you can use \code{toggleState} instead: \code{toggleState(id, test())}.
 #'
 #' @param ... The following parameters are available:
 #' \tabular{ll}{

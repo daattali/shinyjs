@@ -36,7 +36,9 @@ an element invisible, \strong{\code{toggle}} displays the element if it it
 hidden and hides it if it is visible.\cr\cr
 If \code{condition} is given to \code{toggle}, that condition will be used
 to determine if to show or hide the element. The element will be shown if the
-condition evalutes to \code{TRUE} and hidden otherwise.
+condition evalutes to \code{TRUE} and hidden otherwise. If you find
+yourself writing code such as \code{if (test()) show(id) else hide(id)}
+then you can use \code{toggle} instead: \code{toggle(id = id, condition = test())}.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
