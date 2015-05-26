@@ -25,7 +25,7 @@ File 'LICENSE':
 
 ## Reviewer comments
 
-2015-04-20: Prof Brian Ripley
+2015-04-20 Prof Brian Ripley
 
 Hmm, we see
 
@@ -120,7 +120,7 @@ pandoc document conversion failed with error 61
 
 ## Submission comments
 
-2015-04-21
+2015-04-21 
 
 Ran check --as-cran with 0 ERROR, 0 WARNING, 1 NOTE
 
@@ -166,3 +166,51 @@ Addressed previous note: added final slash in URLs of web pages that were redire
 The only NOTE I'm getting is in regards to "potentially invalid URLs" but
 these URLs are valid. http://daattali.com/shiny/shinyjs-demo/ and 
 http://daattali.com/shiny/shinyjs-basic/
+
+## Reviewer comments
+
+2015-04-21 Prof Brian Ripley
+
+On CRAN now
+
+---
+
+# Version 0.0.6.0
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-05-25
+
+R CMD check has no ERRORs or WARNINGs, and 2 NOTEs: one is about the license and one about potentially invalid URL (it's a valid URL).
+
+## Reviewer comments
+
+2015-05-25 Prof Brian Ripley
+
+I suppose you are talking about
+
+Found the following (possibly) invalid URLs:
+  URL: http://daattali.com/shiny/shinyjs-basic/
+    From: inst/doc/overview.html
+          README.md
+    Status: 404
+    Message: Not Found
+  URL: http://daattali.com/shiny/shinyjs-demo/
+    From: man/runExample.Rd
+          man/shinyjs.Rd
+          inst/doc/overview.html
+          README.md
+    Status: 404
+    Message: Not Found
+
+It seems it is misconfigured site (it does not say 'invalid').  In future comply with policies when you report!
+
+On its way to CRAN.
