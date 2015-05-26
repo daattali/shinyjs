@@ -1,3 +1,20 @@
+# shinyjs 0.0.6.0
+
+2015-05-25
+
+- add `extendShinyjs` function - allow users to add their own JavaScript functions
+that can be called as if they are regular R code
+
+- `disable` and `enable` now work for ALL shiny input types
+
+- `show` and `hide` now work for any HTML tag including all shiny input types
+
+- better `onclick` behaviour - when set on a shiny input, trigger the event
+when any part of the input is clicked
+
+- improve implementation of `reset` and simplify function call to it
+
+
 # shinyjs 0.0.5.0
 
 2015-05-23
