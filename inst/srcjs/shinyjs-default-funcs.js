@@ -1,3 +1,6 @@
+// shinyjs by Dean Attal
+// Perform common JavaScript operations in Shiny apps using plain R code
+
 shinyjs = function() {
   return {
 
@@ -170,6 +173,7 @@ shinyjs = function() {
         anim : false,
         animType : "slide",
         time : 0.5,
+        delay : 0
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -178,8 +182,11 @@ shinyjs = function() {
       // for input elements, show the whole container, not just the input
       el = shinyjs.getContainer(el);
 
+      // set the delayed reaction if one was given
+      el.delay(params.delay * 1000);
+
       if (!params.anim) {
-        el.show();
+        el.show(0);
       } else {
         if (params.animType == "fade") {
           el.fadeIn(params.time * 1000);
@@ -202,6 +209,7 @@ shinyjs = function() {
         anim : false,
         animType : "slide",
         time : 0.5,
+        delay : 0
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -209,9 +217,12 @@ shinyjs = function() {
 
       // for input elements, hide the whole container, not just the input
       el = shinyjs.getContainer(el);
+      
+      // set the delayed reaction if one was given
+      el.delay(params.delay * 1000);
 
       if (!params.anim) {
-        el.hide();
+        el.hide(0);
       } else {
         if (params.animType == "fade") {
           el.fadeOut(params.time * 1000);
@@ -227,6 +238,7 @@ shinyjs = function() {
         anim : false,
         animType : "slide",
         time : 0.5,
+        delay : 0,
         condition : null
       };
       params = shinyjs.getParams(params, defaultParams);

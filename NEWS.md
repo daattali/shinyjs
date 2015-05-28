@@ -1,3 +1,11 @@
+# shinyjs 0.0.6.3
+
+2015-05-28
+
+- added `delay` argument to `hide`/`show`/`toggle` so that you can now hide
+or show an element after a short delay instead of immediately. Useful for 
+showing a message for a few seconds and then fading it away.
+
 # shinyjs 0.0.6.2
 
 2015-05-27

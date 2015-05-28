@@ -25,6 +25,9 @@ toggle(...)
   \strong{\code{time}}       \tab The number of seconds to make the
                                   animation last
                                   (default: \code{0.5}) \cr
+  \strong{\code{delay}}      \tab The number of seconds to wait before
+                                  hiding/showing the element
+                                  (default: \code{0}) \cr
   \strong{\code{condition}}  \tab An optional argument to \code{toggle}, see
                                   'Details' below. \cr
 }}
@@ -66,6 +69,7 @@ if (interactive()) {
   toggle(id = "element")
   toggle("element", TRUE)
   toggle("element", TRUE, "fade", 2)
+  toggle(id = "element", delay = 1)
   toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
   show("element")
   show(id = "element", anim = TRUE)
