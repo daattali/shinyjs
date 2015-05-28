@@ -175,7 +175,7 @@ On CRAN now
 
 ---
 
-# Version 0.0.6.0
+# Version 0.0.6.2
 
 # Round 1
 
@@ -214,3 +214,63 @@ Found the following (possibly) invalid URLs:
 It seems it is misconfigured site (it does not say 'invalid').  In future comply with policies when you report!
 
 On its way to CRAN.
+
+---
+
+2015-05-27 Prof Brian Ripley
+
+Actually, it also fails under Roldrelease on Windows.  
+So please fix and declare version depenndencies if needed.  
+http://cran.r-project.org/web/checks/check_results_shinyjs.html
+
+# Round 2
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-05-27
+
+Package accepted 2 days ago but today I got an email
+  saying that my tests failed on windows Roldrelease.
+  The issue is fixed
+  
+## Reviewer comments
+
+2015-05-27 Prof Brian Ripley
+
+You also got an email about Sparc Solaris results, and that issue is not corrected:
+
+ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  testthat results ================================================================
+  OK: 4 SKIPPED: 0 FAILED: 8
+  1. Failure (at test-extendShinyjs.R#5): extendShinyjs throws error when gives a non-existent JS file
+  2. Failure (at test-extendShinyjs.R#10): extendShinyjs throws error when JS file doesn't have proper shinyjs functions
+  3. Failure (at test-extendShinyjs.R#15): extendShinyjs throws error when given a bad JavaScript file
+  4. Error: extendShinyjs finds the correct JS functions from script file
+  5. Failure (at test-extendShinyjs.R#26): extendShinyjs throws error when inline code doesn't have proper shinyjs functions
+  6. Failure (at test-extendShinyjs.R#31): extendShinyjs throws error when given bad inline code
+  7. Error: extendShinyjs finds the correct JS functions from inline code
+  8. Error: extendShinyjs finds the correct functions when both file and text are given
+
+  Error: testthat unit tests failed
+  
+## My comments
+
+Right, you did mention that, one of my functions requires V8 which is not available on very few platforms.  Inside the function I do use the recommended check using `requireNamespace` and if the package isn't available then I throw an error. I believe that's the correct thing to do.  The tests are failing on that platform because they expect output but they get an error - and I think that's correct behaviour.   The only fix I can think of is to check for the package availability inside the test suite itself -- is that right?  I thought it'd be ok to leave it as-is since the tests that are failing are tests that should fail on that platform.
+
+## Reviewer comments
+
+They should not fail if they rely on things not available on the platform.
+
+And you are *STILL* not respecting
+
+'All correspondence with CRAN must be sent to CRAN@R-project.org (not members of the team) and be in plain text ASCII (and not HTML).'
+
+in two ways.
