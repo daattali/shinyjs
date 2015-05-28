@@ -1,6 +1,12 @@
 context("extendShinyjs")
 
-test_that("extendShinyjs throws error when gives a non-existent JS file", {
+# some platforms don't have V8 library available, so extendShinyjs won't
+# work on them. If it's not available, don't run the tests
+if (!requireNamespace("V8", quietly = TRUE)) {
+  return()
+}
+
+test_that("extendShinyjs throws error when given a non-existent JS file", {
   file <- file.path("..", "nofile.js")
   expect_error(extendShinyjs(file), "Could not find JavaScript file")
 })
