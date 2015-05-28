@@ -29,6 +29,8 @@ more.
 \note{
 You still need to call \code{useShinyjs()} as usual, and you need to
 call \code{useShinyjs()} before calling \code{extendShinyjs()}.
+
+The \code{V8} package is required to use this function.
 }
 \section{Basic Usage}{
 
@@ -88,7 +90,6 @@ To assist with normalizing the parameters, you can call the
 
   \item \code{defaults} is an Object with key-value pairs of parameters,
     where each key is a parameter name and each value is a default value.
-    \code{shinyjs.myfunc = function(params) { alert(params); }}
 }
 The order of the parameters in this \code{defaults} object should match the
 order of the parameters that users should use if they choose not to use
@@ -111,7 +112,7 @@ This function could be called either with \code{js$myfunc('test')} or
 \examples{
 \dontrun{
   Example 1:
-  Change the page background to red when a button is clicked.
+  Change the page background to a certain colour when a button is clicked.
   This example uses the `text` argument to provide short JavaScript code inline.
 
       library(shiny)
@@ -119,12 +120,12 @@ This function could be called either with \code{js$myfunc('test')} or
         ui = fluidPage(
           useShinyjs(),
           extendShinyjs(text =
-            "shinyjs.red = function(){$('body').css('background', 'red');}"),
+            "shinyjs.pageCol = function(params){$('body').css('background', params);}"),
           actionButton("btn", "Click me")
         ),
         server = function(input, output, session) {
           observeEvent(input$btn, {
-            js$red()
+            js$pageCol("red")
           })
         }
       ))
