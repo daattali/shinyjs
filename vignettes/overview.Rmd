@@ -384,7 +384,7 @@ a JavaScript function called `shinyjs.colour`, then you can call it in R with
 ### Basic example of `extendShinyjs` using inline JavaScript code
 
 As an extremely basic example, here is a shiny app that adds a function called
-`paegCol` that will simply change the background of the page to a certain colour.
+`pageCol` that will simply change the background of the page to a certain colour.
 It isn't very useful, but it shows how easy it can be to call custom
 JavaScript code.
 
