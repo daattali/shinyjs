@@ -1,3 +1,11 @@
+# shinyjs 0.0.6.1
+
+2015-05-27
+
+- added `text` argument to `extendShinyjs` so that JavaScript code can be provided
+as a string instead of in a separate file. Useful if your JS code is very short
+and simple and you don't want to create a new file
+
 # shinyjs 0.0.6.0
 
 2015-05-25
