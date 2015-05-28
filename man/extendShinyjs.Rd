@@ -4,12 +4,16 @@
 \alias{extendShinyjs}
 \title{Extend shinyjs with your own JavaScript functions}
 \usage{
-extendShinyjs(script)
+extendShinyjs(script, text)
 }
 \arguments{
 \item{script}{Path to a JavaScript file that contains all the functions.
 Each function name must begin with `shinyjs.`, for example
 `shinyjs.myfunc`. See 'Basic Usage' below.}
+
+\item{text}{Inline JavaScript code to use. If your JavaScript function is very
+short and you don't want to create a separate file for it, you can provide the
+code as a string. See 'Basic Usage' below.}
 }
 \value{
 Scripts that \code{shinyjs} requires in order to run your JavaScript
@@ -33,6 +37,12 @@ will be available to run from R through the `js$` variable. For example,
 if you write a JavaScript function called `shinyjs.myfunc`, then you can
 call it in R with `js$myfunc()`.
 
+It's recommended to write JavaScript code in a separate file and provide the
+filename as the `script` argument, but it's also possible to use the `text`
+argument to provide a string containing valid JavaScript code. Using the
+`text` argument is meant to be used when your JavaScript code is very short
+and simple.
+
 As a simple example, here are the steps required to add a
 JavaScript function that shows a message to the user (similar to
 \code{\link[shinyjs]{info}}):
@@ -47,6 +57,10 @@ JavaScript function that shows a message to the user (similar to
   \item In your Shiny app's UI, add a call to
 
     \code{shinyjs::extendShinyjs("www/js/shinyjs-ext.js")}
+  \item Alternatively, instead of the previous three steps you can
+  provide the JavaScript code inline since it's fairly short:
+
+    \code{shinyjs::extendShinyjs(text = "shinyjs.myfunc = function(params) { alert(params); }")}
   \item Now in your Shiny app's server you can call
     \code{js$myfunc("Hello!")} and you will get a JavaScript message.
 }
@@ -96,6 +110,28 @@ This function could be called either with \code{js$myfunc('test')} or
 }
 \examples{
 \dontrun{
+  Example 1:
+  Change the page background to red when a button is clicked.
+  This example uses the `text` argument to provide short JavaScript code inline.
+
+      library(shiny)
+      runApp(shinyApp(
+        ui = fluidPage(
+          useShinyjs(),
+          extendShinyjs(text =
+            "shinyjs.red = function(){$('body').css('background', 'red');}"),
+          actionButton("btn", "Click me")
+        ),
+        server = function(input, output, session) {
+          observeEvent(input$btn, {
+            js$red()
+          })
+        }
+      ))
+
+  ==============
+
+  Example 2:
   Create an `increment` function that increments the number inside an HTML
   tag (increment by 1 by default, with an optional parameter).
 

@@ -45,6 +45,6 @@ useShinyjs <- function() {
   }
 
   # set up the message handlers for all functions and add custom CSS for hiding elements
-  setupJS(jsFile, jsFuncs,
+  setupJS(jsFuncs, jsFile, NULL,
           inlineCSS(".shinyjs-hide { display: none; }"))
 }
