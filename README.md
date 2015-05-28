@@ -353,48 +353,75 @@ functions is easy. Any JavaScript function you define that begins with
 For example, if you write a JavaScript function called `shinyjs.colour`,
 then you can call it in R with `js$colour()`.
 
-### Basic example of `extendShinyjs`
+### Basic example of `extendShinyjs` using inline JavaScript code
 
-As an extremely simple example, here are the steps required to add your
-own JavaScript function that shows a message to the user (similar to
-`shinyjs::info`):
+As an extremely basic example, here is a shiny app that adds a function
+called `pageCol` that will simply change the background of the page to a
+certain colour. It isn't very useful, but it shows how easy it can be to
+call custom JavaScript code.
 
-#### 1. Create a JavaScript file
-
-Create a JavaScript file `www/js/shinyjs-ext.js` and define a function
-named `shinyjs.message` that will simply show an alert box with the
-given message.
-
-    shinyjs.message = function(params) { alert(params); }
-
-#### 2. Create a shiny app
-
-In order to use the new function we created, we need to call
-`extendShinyjs()` in the UI with the script as an argument. We also
-still need to call `useShinyjs()` as usual.
-
-Any function defined inside the script file we provided in the UI will
-now be accessible in the server, so we can call `js$message(text)`.
+We need to make a call to `extendShinyjs(text = code)`, where `code` is
+JavaScript code that defines a function named `shinyjs.pageCol` which
+changes the page colour. Then we can call that function from the server
+using `js$pageCol()`.
 
     library(shiny)
-    library(shinyjs)
     runApp(shinyApp(
       ui = fluidPage(
         useShinyjs(),
-        extendShinyjs("www/js/shinyjs-ext.js"),
-        textInput("text", "Message:", "Hello!"),
+        extendShinyjs(text =
+          "shinyjs.pageCol = function(params){$('body').css('background', params);}"),
         actionButton("btn", "Click me")
       ),
-      server = function(input,output,session) {
+      server = function(input, output, session) {
         observeEvent(input$btn, {
-          js$message(input$text)
+          js$pageCol("red")
         })
       }
     ))
 
-This example shows the most basic use of extending `shinyjs`: you can
-define functions in a JavaScript file, call `extendShinyjs()`, and then
-use the `js$` object to call those functions from R.
+As you can see, the JavaScript function named `shinyjs.pageCol` gets
+called from R with `js$pageCol()`. This is the way any custom JavaScript
+function works with `extendShinyjs`.
+
+### Basic example of `extendShinyjs` using a separate JavaScript file
+
+The previous example used the `text` argument to give `extendShinyjs`
+the JavaScript code as a string. That generally works well for very
+short JS functions, but when the code is more complex it's recommended
+to place it in a separate file. Here are the steps to create a similar
+app, but this time we'll place the JavaScript code in a separate file.
+
+#### 1. Create a JavaScript file
+
+Create a JavaScript file `www/js/shinyjs-ext.js` and define the same
+function as before.
+
+    shinyjs.pageCol = function(params) {
+      $('body').css('background', params);
+    }
+
+#### 2. Create a shiny app
+
+In order to use the new function we created, we need to call
+`extendShinyjs()` in the UI with the script as an argument.
+
+Any function defined inside the script file we provided in the UI will
+now be accessible in the server, so we can call `js$pageCol("red")`.
+
+    library(shiny)
+    runApp(shinyApp(
+      ui = fluidPage(
+        useShinyjs(),
+        extendShinyjs("www/js/shinyjs-ext.js"),
+        actionButton("btn", "Click me")
+      ),
+      server = function(input, output, session) {
+        observeEvent(input$btn, {
+          js$pageCol("red")
+        })
+      }
+    ))
 
 ### More complex example of `extendShinyjs` with parameter passing
 
