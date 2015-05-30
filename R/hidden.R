@@ -10,7 +10,7 @@
 #' \code{\link[shinyjs]{hide}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
-#' @return The tag that was given as an argument in a hidden state.
+#' @return The tag (or tags) that was given as an argument in a hidden state.
 #' @examples
 #' if (interactive()) {
 #'   shiny::shinyApp(

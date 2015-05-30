@@ -1,3 +1,9 @@
+# shinyjs 0.0.6.4
+
+2015-05-30
+
+- `hidden` can now accept multiple tags or a tagList or a list of tags (previously only a single tags was allowed)
+
 # shinyjs 0.0.6.3
 
 2015-05-28

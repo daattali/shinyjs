@@ -4,13 +4,13 @@
 \alias{hidden}
 \title{Initialize a Shiny tag as hidden}
 \usage{
-hidden(tag)
+hidden(...)
 }
 \arguments{
-\item{tag}{Shiny tag to make invisible}
+\item{...}{Shiny tag (or tagList or list of of tags) to make invisible}
 }
 \value{
-The tag that was given as an argument in a hidden state.
+The tag (or tags) that was given as an argument in a hidden state.
 }
 \description{
 Create a Shiny tag that is invisible when the Shiny app starts. The tag can
@@ -37,6 +37,10 @@ if (interactive()) {
     }
   )
 }
+
+hidden(span(id = "a"), div(id = "b"))
+hidden(shiny::tagList(span(id = "a"), div(id = "b")))
+hidden(list(span(id = "a"), div(id = "b")))
 }
 \seealso{
 \code{\link[shinyjs]{useShinyjs}},
