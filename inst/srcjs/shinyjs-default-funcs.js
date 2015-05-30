@@ -173,34 +173,37 @@ shinyjs = function() {
         anim : false,
         animType : "slide",
         time : 0.5,
-        delay : 0
+        delay : 0,
+        selector : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      if (params.id !== null) {
+        params.selector = "#" + params.id;
+      }
+      var el = $(params.selector);
 
       // for input elements, show the whole container, not just the input
       el = shinyjs.getContainer(el);
 
-      // set the delayed reaction if one was given
-      el.delay(params.delay * 1000);
-
-      if (!params.anim) {
-        el.show(0);
-      } else {
-        if (params.animType == "fade") {
-          el.fadeIn(params.time * 1000);
+      setTimeout(function() {
+        if (!params.anim) {
+          el.show();
         } else {
-          el.slideDown(params.time * 1000);
+          if (params.animType == "fade") {
+            el.fadeIn(params.time * 1000);
+          } else {
+            el.slideDown(params.time * 1000);
+          }
         }
-      }
 
-      // If this was initially hidden when app started, tell shiny that it's
-      // now visible so that it can properly render dynamic elements
-      if (el.hasClass("shinyjs-hidden-init")) {
-        el.trigger("shown");
-        el.removeClass("shinyjs-hidden-init");
-      }
+        // If this was initially hidden when app started, tell shiny that it's
+        // now visible so that it can properly render dynamic elements
+        if (el.hasClass("shinyjs-hidden-init")) {
+          el.trigger("shown");
+          el.removeClass("shinyjs-hidden-init");
+        }
+      }, params.delay * 1000);
     },
 
     hide : function (params) {
@@ -209,27 +212,30 @@ shinyjs = function() {
         anim : false,
         animType : "slide",
         time : 0.5,
-        delay : 0
+        delay : 0,
+        selector : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      if (params.id !== null) {
+        params.selector = "#" + params.id;
+      }
+      var el = $(params.selector);
 
       // for input elements, hide the whole container, not just the input
       el = shinyjs.getContainer(el);
-      
-      // set the delayed reaction if one was given
-      el.delay(params.delay * 1000);
 
-      if (!params.anim) {
-        el.hide(0);
-      } else {
-        if (params.animType == "fade") {
-          el.fadeOut(params.time * 1000);
+      setTimeout(function() {
+        if (!params.anim) {
+          el.hide();
         } else {
-          el.slideUp(params.time * 1000);
+          if (params.animType == "fade") {
+            el.fadeOut(params.time * 1000);
+          } else {
+            el.slideUp(params.time * 1000);
+          }
         }
-      }
+      }, params.delay * 1000);
     },
 
     toggle : function (params) {
@@ -239,11 +245,15 @@ shinyjs = function() {
         animType : "slide",
         time : 0.5,
         delay : 0,
+        selector : null,
         condition : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      if (params.id !== null) {
+        params.selector = "#" + params.id;
+      }
+      var el = $(params.selector);
 
       // for input elements, toggle the whole container, not just the input
       el = shinyjs.getContainer(el);

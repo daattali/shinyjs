@@ -6,7 +6,7 @@ examples <- c(
   'reset("expr")',
   'info(R.Version())',
   'onclick("btn", info(date()))',
-  'toggle(id = "btn", delay = 0.5)',
+  'toggle(delay = 0.5, selector = "a")',
   'toggle("btn", TRUE, "fade", 2)',
   'toggle(id = "btn", condition = (sample(2, 1) == 1))',
   'toggle(id = "btn", anim = TRUE, time = 1, animType = "slide")',

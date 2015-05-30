@@ -1,7 +1,7 @@
 # some sample R expressions to try
 examples <- c(
   'toggle("test")',
-  'toggle(id = "test", delay = 0.5)',
+  'toggle(delay = 0.5, selector = "a")',
   'toggle("test", TRUE, "fade", 2)',
   'toggle(id = "test", anim = TRUE, time = 2, animType = "slide")',
   'hide("test")',

@@ -28,6 +28,10 @@ toggle(...)
   \strong{\code{delay}}      \tab The number of seconds to wait before
                                   hiding/showing the element
                                   (default: \code{0}) \cr
+  \strong{\code{selector}}   \tab JQuery selector of the elements to show/hide.
+                                  Ignored if the \code{id} argument is given.
+                                  For example, to select all span elements with
+                                  class x, use \code{selector = "span.x"}\cr
   \strong{\code{condition}}  \tab An optional argument to \code{toggle}, see
                                   'Details' below. \cr
 }}

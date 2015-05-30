@@ -4,6 +4,8 @@
 
 - `hidden` can now accept multiple tags or a tagList or a list of tags (previously only a single tags was allowed)
 
+- allow `hide`/`show`/`toggle` to be run on any JQuery selector, not only on a single ID
+
 # shinyjs 0.0.6.3
 
 2015-05-28
