@@ -29,9 +29,9 @@
 #'   )
 #' }
 #'
-#' hidden(span(id = "a"), div(id = "b"))
-#' hidden(shiny::tagList(span(id = "a"), div(id = "b")))
-#' hidden(list(span(id = "a"), div(id = "b")))
+#' hidden(shiny::span(id = "a"), shiny::div(id = "b"))
+#' hidden(shiny::tagList(shiny::span(id = "a"), shiny::div(id = "b")))
+#' hidden(list(shiny::span(id = "a"), shiny::div(id = "b")))
 #' @export
 hidden <- function(...) {
   tags <- list(...)
