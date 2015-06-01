@@ -40,15 +40,15 @@ if you write a JavaScript function called `shinyjs.myfunc`, then you can
 call it in R with `js$myfunc()`.
 
 It's recommended to write JavaScript code in a separate file and provide the
-filename as the `script` argument, but it's also possible to use the `text`
-argument to provide a string containing valid JavaScript code. Using the
-`text` argument is meant to be used when your JavaScript code is very short
+filename as the \code{script} argument, but it's also possible to use the
+\code{text} argument to provide a string containing valid JavaScript code. Using the
+\code{text} argument is meant to be used when your JavaScript code is very short
 and simple.
 
 As a simple example, here is a basic example of using \code{extendShinyjs}
 to define a function that changes the colour of the page.
 
-\code{
+\preformatted{
 library(shiny)
 library(shinyjs)
 
@@ -87,11 +87,11 @@ called with unnamed arguments, then it will pass an Array of the arguments;
 if the R arguments are named then it will pass an Object with key-value pairs.
 For example, calling \code{js$foo("bar", 5)} in R will call \code{shinyjs.foo(["bar", 5])}
 in JS, while calling \code{js$foo(num = 5, id = "bar")} in R will call
-\code{shinyjs.foo({num : 5, id : "bar"})} in JS. This means the the
+\code{shinyjs.foo({num : 5, id : "bar"})} in JS. This means that the
 \code{shinyjs.foo} function needs to be able to deal with both types of
 parameters.
 
-To assist in normalizing the parameters, \\code{shinyjs} provides a
+To assist in normalizing the parameters, \code{shinyjs} provides a
 \code{shinyjs.getParams()} function which serves two purposes. First of all,
 it ensures that all arguments are named (even if the R function was called
 without names). Secondly, it allows you to define default values for arguments.
@@ -200,9 +200,9 @@ that uses this JS function.
       el.text(parseInt(el.text()) + params.num);
     }
 
-    And a shiny app that uses the custom function we just defined. Note how
-    the arguments can be either passed as named or unnamed, and how default
-    values are set if no value is given to a parameter.
+  And a shiny app that uses the custom function we just defined. Note how
+  the arguments can be either passed as named or unnamed, and how default
+  values are set if no value is given to a parameter.
 
       library(shiny)
       runApp(shinyApp(
