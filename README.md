@@ -366,7 +366,9 @@ colour of the page.
       }
     ))
 
-Running the code above produces this shiny app: ![Extendshinyjs
+Running the code above produces this shiny app:
+
+![Extendshinyjs
 demo](http://deanattali.com/img/blog/shinyjs-improvements/extendshinyjs-demo.gif)
 
 See how easy that was? All I had to do was make the JavaScript function
@@ -463,7 +465,9 @@ how to use `extendShinyjs` with parameters):
       }
     ))
 
-And the resulting app: ![Extendshinyjs params
+And the resulting app:
+
+![Extendshinyjs params
 demo](http://deanattali.com/img/blog/shinyjs-improvements/extendshinyjs-params.gif)
 
 Note that I chose to define the JS code as a string for illustration
