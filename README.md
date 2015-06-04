@@ -7,6 +7,8 @@ and add the TravisCI status -->
 # shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
 
 [![Build Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
+[![Number of downloads](http://cranlogs.r-pkg.org/badges/shinyjs?color=brightgreen)](http://cran.r-project.org/web/packages/shinyjs/index.html)
+[![CRAN version](http://www.r-pkg.org/badges/version/shinyjs)](http://cran.r-project.org/web/packages/shinyjs/index.html)
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 applications without having to know any JavaScript. Examples include
