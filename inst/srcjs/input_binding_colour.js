@@ -18,7 +18,7 @@ $.extend(colourBinding, {
   subscribe: function(el, callback) {
     // I'm using "shinychange" instead of "change" to not get into an infinite loop
     $(el).on("shinychange.colourBinding", function(e) {
-    callback(true);
+      callback(true);
     });
   },
     unsubscribe: function(el) {
@@ -26,7 +26,7 @@ $.extend(colourBinding, {
     },
     initialize : function(el) {
     $el = $("#" + el.id);  // for some reason using $(el) doesn't work
-    
+
     var opts = {
       opacity : false,    // don't allow transparency control
       animationSpeed : 0, // don't animate
@@ -36,10 +36,10 @@ $.extend(colourBinding, {
         $el.trigger("shinychange");
       },
     };
-    
+
     // initialize the colour picker
     $el.colorPicker(opts);
-    
+
     // set default value
     this.setValue(el, $el.attr('data-init-col'));
     this._setShowColour($el, $el.attr('data-show-colour'));
@@ -47,7 +47,7 @@ $.extend(colourBinding, {
   // update the colour input
   receiveMessage: function(el, data) {
     var $el = $(el);
-    
+
     if (data.hasOwnProperty('value')) {
       this.setValue(el, data.value);
     }
@@ -55,9 +55,9 @@ $.extend(colourBinding, {
       $el.parent().find('label[for="' + el.id + '"]').text(data.label);
     }
     if (data.hasOwnProperty('showColour')) {
-      this._setShowColour($el, data.showColour);    
+      this._setShowColour($el, data.showColour);
     }
-    
+
     $el.trigger("shinychange");
   },
   getRatePolicy : function() {

@@ -1,3 +1,9 @@
+# shinyjs 0.0.6.5
+
+2015-06-17
+
+- added `colourInput` that can be used as an input element to select colours, and its corresponding `updateColourInput`. This doesn't really fit the `shinyjs` model of running JS functions, this feels like something very different from the rest of the functions in this package, it might move somewhere else in the future.
+
 # shinyjs 0.0.6.4
 
 2015-05-30
