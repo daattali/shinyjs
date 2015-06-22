@@ -12,14 +12,19 @@
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(
-#'       colourInput("col", "Colour", "red"),
+#'       colourInput("col", "Choose colour", "red"),
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
-#'       shiny::actionButton("btn", "Update")
+#'       shiny::selectInput("showColour", "Show colour",
+#'         c("both", "text", "background")),
+#'       shiny::actionButton("btn", "Update"),
+#'       shiny::textOutput("value")
 #'     ),
 #'     server = function(input, output, session) {
 #'       shiny::observeEvent(input$btn, {
-#'         updateColourInput(session, "col", value = input$text)
+#'         updateColourInput(session, "col",
+#'           value = input$text, showColour = input$showColour)
 #'       })
+#'       output$value <- shiny::renderText(input$col)
 #'     }
 #'   )
 #' }
@@ -31,15 +36,18 @@ colourInput <- function(inputId, label, value = "white",
   value <- formatHEX(value)
   showColour <- match.arg(showColour)
 
-  css <- ".nobg { background-color: transparent !important; color: #222 !important; }
-          .notext { color: transparent !important; }"
-  jsPath <- system.file("srcjs", package = "shinyjs")
+  jsInputBinding <- system.file("srcjs", "input_binding_colour.js",
+                                package = "shinyjs")
+  jsCP <- system.file("www", "shared", "colourpicker", "js", "colourpicker.min.js",
+                      package = "shinyjs")
+  cssCP <- system.file("www", "shared", "colourpicker", "css", "colourpicker.min.css",
+                       package = "shinyjs")
 
   shiny::tagList(
     shiny::singleton(shiny::tags$head(
-      shiny::includeScript(file.path(jsPath, "jqColorPicker.min.js")),
-      shiny::includeScript(file.path(jsPath, "input_binding_colour.js")),
-      shiny::tags$style(shiny::HTML(css))
+      shiny::includeScript(jsCP),
+      shiny::includeCSS(cssCP),
+      shiny::includeScript(jsInputBinding)
     )),
     shiny::div(class = "form-group shiny-input-container",
         `data-shiny-input-type` = "colour",
@@ -47,7 +55,7 @@ colourInput <- function(inputId, label, value = "white",
         shiny::tags$input(
           id = inputId, type = "text",
           class = "form-control shiny-colour-input",
-          `data-init-col` = value,
+          value = value,
           `data-show-colour` = showColour
         )
     )
@@ -73,24 +81,24 @@ colourInput <- function(inputId, label, value = "white",
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(
-#'       colourInput("col", "Colour", "red"),
+#'       colourInput("col", "Choose colour", "red"),
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
-#'       shiny::actionButton("btn", "Update")
+#'       shiny::selectInput("showColour", "Show colour",
+#'         c("both", "text", "background")),
+#'       shiny::actionButton("btn", "Update"),
+#'       shiny::textOutput("value")
 #'     ),
 #'     server = function(input, output, session) {
 #'       shiny::observeEvent(input$btn, {
-#'         updateColourInput(session, "col", value = input$text)
+#'         updateColourInput(session, "col",
+#'           value = input$text, showColour = input$showColour)
 #'       })
+#'       output$value <- shiny::renderText(input$col)
 #'     }
 #'   )
 #' }
 #' @note Unlike the rest of the \code{shinyjs} functions, this function does
 #' not require you to call \code{useShinyjs()} first.
-#' @note There seems to be a bug with the JavaScript plugin that results in
-#' the following behaviour: if you change the value of a colour input after
-#' you have set the colour manually at least once and your next mouse click
-#' is not on the colour input, then the colour input will not retain the
-#' updated colour from this function call.
 #' @export
 updateColourInput <- function(session, inputId, label = NULL, value = NULL,
                               showColour = NULL) {
