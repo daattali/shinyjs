@@ -43,6 +43,9 @@ $.extend(colourBinding, {
   receiveMessage: function(el, data) {
     var $el = $(el);
 
+    if (data.hasOwnProperty('allowTransparent')) {
+      $el.colourpicker('settings', { 'allowTransparent' : data.allowTransparent });
+    }
     if (data.hasOwnProperty('value')) {
       this.setValue(el, data.value);
     }
@@ -52,9 +55,8 @@ $.extend(colourBinding, {
     if (data.hasOwnProperty('showColour')) {
       $el.colourpicker('settings', { 'showColour' : data.showColour });
     }
-    if (data.hasOwnProperty('allowTransparent')) {
-      $el.colourpicker('settings', { 'allowTransparent' : data.allowTransparent });
-    }
+
+    $el.trigger("change");
   },
   getRatePolicy : function() {
     return {

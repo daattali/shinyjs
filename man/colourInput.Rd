@@ -31,13 +31,15 @@ not require you to call \code{useShinyjs()} first.
 if (interactive()) {
   shiny::shinyApp(
     ui = shiny::fluidPage(
+      shiny::div("Selected colour:",
+                 shiny::textOutput("value", inline = TRUE)),
       colourInput("col", "Choose colour", "red"),
+      shiny::h3("Update colour input"),
       shiny::textInput("text", "New colour: (colour name or HEX value)"),
       shiny::selectInput("showColour", "Show colour",
         c("both", "text", "background")),
       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
-      shiny::actionButton("btn", "Update"),
-      shiny::textOutput("value")
+      shiny::actionButton("btn", "Update")
     ),
     server = function(input, output, session) {
       shiny::observeEvent(input$btn, {

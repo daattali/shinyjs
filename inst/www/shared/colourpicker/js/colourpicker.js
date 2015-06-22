@@ -83,7 +83,8 @@
           case 'value':
             if( data === undefined ) {
               // Getter
-              if ($(this).data('transparent')) {
+              if ($(this).data('allow-transparent') &&
+                  $(this).data('transparent')) {
                 return "transparent";
               }
               if (!parseHex($(this).val())) {
@@ -94,8 +95,13 @@
             } else {
               // Setter
               $(this).each( function() {
-                if ($(this).data('allow-transparent') && data == "transparent") {
-                  $(this).data('transparent', true);
+                if (data == "transparent") {
+                  if ( $(this).data('allow-transparent') ) {
+                    $(this).data('transparent', true);
+                  } else {
+                    $(this).data('transparent', false);
+                    $(this).val(getLastVal($(this)));
+                  }
                 } else {
                   $(this).data('transparent', false);
                   $(this).val(data);
@@ -137,10 +143,8 @@
         });
       }
 
-      // If we want to add transparent button, make an input group
-      if ( settings.allowTransparent ) {
+      if( settings.allowTransparent ) {
         colourpicker.addClass('input-group');
-        colourpicker.data('allow-transparent', true);
       }
 
       // The input
@@ -172,6 +176,9 @@
             ' Transparent' +
           '</label>'
         );
+        input.data('allow-transparent', true);
+      } else {
+        input.data('allow-transparent', false);
       }
 
       // Prevent text selection in IE
@@ -180,7 +187,6 @@
       updateFromInput(input, false);
 
       input.data('colourpicker-initialized', true);
-
     }
 
     // Returns the input back to its original state
@@ -388,11 +394,7 @@
       // Determine hex/HSB values
       hex = parseHex(input.val(), true).toUpperCase();
       if( !hex ){
-        if (input.data('colourpicker-lastChange')) {
-          hex = input.data('colourpicker-lastChange');
-        } else {
-          hex = "#FFFFFF";
-        }
+        hex = getLastVal(input);
       }
       hsb = hex2hsb(hex);
 
@@ -440,6 +442,8 @@
         colourpicker.find('.colourpicker-istransparent').prop('checked', false);
         colourpicker.removeClass('istransparent');
       }
+
+      input.trigger('change').trigger('input');
     }
 
     // Runs the change and changeDelay callbacks
@@ -601,6 +605,15 @@
       return luminance;
     }
 
+
+    function getLastVal(input) {
+      if (input.data('colourpicker-lastChange')) {
+        return input.data('colourpicker-lastChange');
+      } else {
+        return "#FFFFFF";
+      }
+    }
+
     // Handle events
     $(document)
     // Hide on clicks outside of the control
@@ -644,11 +657,7 @@
 
       // Is it blank?
       if( input.val() === '' ) {
-        if (input.data('colourpicker-lastChange')) {
-          input.val(input.data('colourpicker-lastChange'));
-        } else {
-          input.val("#FFFFFF");
-        }
+        input.val(getLastVal(input));
       }
 
       // Adjust case
@@ -689,14 +698,8 @@
       var colourpicker = input.parent();
       var checkbox = $(this).find(".colourpicker-istransparent");
       hide();
-      if (checkbox.is(":checked")) {
-        input.data('transparent', true);
-        colourpicker.addClass('istransparent');
-      } else {
-        input.data('transparent', false);
-        colourpicker.removeClass('istransparent');
-      }
-      input.trigger('change').trigger('input');
+      input.data('transparent', checkbox.is(":checked"));
+      updateFromInput(input);
     });
 
   }));

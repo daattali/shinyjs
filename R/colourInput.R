@@ -14,13 +14,15 @@
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(
+#'       shiny::div("Selected colour:",
+#'                  shiny::textOutput("value", inline = TRUE)),
 #'       colourInput("col", "Choose colour", "red"),
+#'       shiny::h3("Update colour input"),
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
 #'       shiny::selectInput("showColour", "Show colour",
 #'         c("both", "text", "background")),
 #'       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
-#'       shiny::actionButton("btn", "Update"),
-#'       shiny::textOutput("value")
+#'       shiny::actionButton("btn", "Update")
 #'     ),
 #'     server = function(input, output, session) {
 #'       shiny::observeEvent(input$btn, {
@@ -43,15 +45,16 @@ colourInput <- function(inputId, label, value = "white",
 
   jsInputBinding <- system.file("srcjs", "input_binding_colour.js",
                                 package = "shinyjs")
-  jsCP <- system.file("www", "shared", "colourpicker", "js", "colourpicker.js",
+  jsCP <- system.file("www", "shared", "colourpicker", "js", "colourpicker.min.js",
                       package = "shinyjs")
-  cssCP <- system.file("www", "shared", "colourpicker", "css", "colourpicker.css",
+  cssCP <- system.file("www", "shared", "colourpicker", "css", "colourpicker.min.css",
                        package = "shinyjs")
 
   inputTag <-
     shiny::tags$input(
       id = inputId, type = "text",
       class = "form-control shiny-colour-input",
+      spellcheck = "false",
       `data-init-value` = value,
       `data-show-colour` = showColour
     )
@@ -95,13 +98,15 @@ colourInput <- function(inputId, label, value = "white",
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(
+#'       shiny::div("Selected colour:",
+#'                  shiny::textOutput("value", inline = TRUE)),
 #'       colourInput("col", "Choose colour", "red"),
+#'       shiny::h3("Update colour input"),
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
 #'       shiny::selectInput("showColour", "Show colour",
 #'         c("both", "text", "background")),
 #'       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
-#'       shiny::actionButton("btn", "Update"),
-#'       shiny::textOutput("value")
+#'       shiny::actionButton("btn", "Update")
 #'     ),
 #'     server = function(input, output, session) {
 #'       shiny::observeEvent(input$btn, {
