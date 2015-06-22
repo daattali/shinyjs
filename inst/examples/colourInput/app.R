@@ -7,17 +7,17 @@ shinyApp(
     titlePanel(tags$strong("Demo of colourInput"),
                "Demo of colourInput"
     ),
-    h4(p(
-      tags$strong("colourInput"),
-      "is an input control that allows users to select colours in Shiny apps"
-    ),
-    p("It is available as part of the",
-      tags$a("shinyjs package", href = "https://github.com/daattali/shinyjs", target = "_blank")
-    ),
-    p("shinyjs::colourInput() behaves just like any other built-in Shiny input"),
-    p("The code for this demo is avaiable",
-      a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")
-    )
+    h4(
+      p(
+        tags$strong("colourInput"),
+        "is an input control available in",
+        tags$a("shinyjs", href = "https://github.com/daattali/shinyjs", target = "_blank"),
+        "that allows users to select colours in Shiny apps"
+      ),
+      p("shinyjs::colourInput() behaves just like any other built-in Shiny input and is trivially easy to use"),
+      p("The code for this demo is available",
+        a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")
+      )
     ),
     tags$hr(),
 
@@ -26,7 +26,8 @@ shinyApp(
       div(class = "title", "Simple"),
       div(class = "output", "Selected colour:",
           textOutput("valueSimple", inline = TRUE)),
-      colourInput("colSimple", NULL, "blue")
+      colourInput("colSimple", NULL, "blue"),
+      tags$pre('colourInput("col", NULL, "blue")')
     ),
 
     div(
@@ -34,7 +35,12 @@ shinyApp(
       div(class = "title", "Only show background"),
       div(class = "output", "Selected colour:",
           textOutput("valueBg", inline = TRUE)),
-      colourInput("colBg", NULL, "red", showColour = "background")
+      colourInput("colBg", NULL, "red", showColour = "background"),
+      tags$pre(HTML(paste0(
+        'colourInput(<br>',
+        '  "col", NULL, "red",<br>',
+        '  showColour = "background")'
+      )))
     ),
 
     div(
@@ -42,7 +48,12 @@ shinyApp(
       div(class = "title", "Only show text"),
       div(class = "output", "Selected colour:",
           textOutput("valueText", inline = TRUE)),
-      colourInput("colText", NULL, "#ABC123", showColour = "text")
+      colourInput("colText", NULL, "#ABC123", showColour = "text"),
+      tags$pre(HTML(paste0(
+        'colourInput(<br>',
+        '  "col", NULL, "#ABC123",<br>',
+        '  showColour = "text")'
+      )))
     ),
 
     div(
@@ -50,7 +61,12 @@ shinyApp(
       div(class = "title", "Allow \"transparent\""),
       div(class = "output", "Selected colour:",
           textOutput("valueTransparent", inline = TRUE)),
-      colourInput("colTransparent", NULL, "orange", allowTransparent = TRUE)
+      colourInput("colTransparent", NULL, "orange", allowTransparent = TRUE),
+      tags$pre(HTML(paste0(
+        'colourInput(<br>',
+        '  "col", NULL, "orange",<br>',
+        '  allowTransparent = TRUE)'
+      )))
     ),
 
     div(

@@ -2,6 +2,10 @@ body {
   background-color: #FAFAFA;
 }
 
+pre {
+  width: 300px;
+}
+
 .section {
   border: 1px solid #ccc;
   box-shadow: 0 0 5px #ddd;
