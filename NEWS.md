@@ -1,3 +1,9 @@
+# shinyjs 0.0.6.6
+
+2015-06-21
+
+- including multiple `useShinyjs()` or `extendShinyjs()` will not result in duplicated HTML anymore. This can be useful if the UI is including a few external UI pieces and they independently make a call to `useShinyjs()`.
+
 # shinyjs 0.0.6.5
 
 2015-06-17

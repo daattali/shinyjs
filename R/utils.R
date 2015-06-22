@@ -31,15 +31,18 @@ setupJS <- function(jsFuncs, script, text, ...) {
     lapply(jsFuncs, function(x) {
       sprintf(tpl, x, x)})
   controllers <- paste(controllers, collapse = "\n")
-  
-  shiny::tags$head(
-    # add the message handlers
-    shiny::tags$script(shiny::HTML(controllers)),
-    # add the actual javascript code
-    shinyjsInlcudeScript(script),
-    shinyjsInlineScript(text),
-    # add any extra tags
-    ...
+
+  # ensure the same scripts don't get added to the HTML twice
+  shiny::singleton(
+    shiny::tags$head(
+      # add the message handlers
+      shiny::tags$script(shiny::HTML(controllers)),
+      # add the actual javascript code
+      shinyjsInlcudeScript(script),
+      shinyjsInlineScript(text),
+      # add any extra tags
+      ...
+    )
   )
 }
 
