@@ -26,6 +26,9 @@ Create an input control to select a colour.
 \note{
 Unlike the rest of the \code{shinyjs} functions, this function does
 not require you to call \code{useShinyjs()} first.
+
+See \href{http://daattali.com/shiny/colourInput/}{http://daattali.com/shiny/colourInput/}
+for a live demo.
 }
 \examples{
 if (interactive()) {
@@ -53,6 +56,6 @@ if (interactive()) {
 }
 }
 \seealso{
-\code{\link[shinyjs]{colourInput}}
+\code{\link[shinyjs]{updateColourInput}}
 }
 

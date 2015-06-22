@@ -27,6 +27,9 @@ or [have a look at a very basic Shiny app](http://daattali.com/shiny/shinyjs-bas
 that uses `shinyjs` to enhance the user experience with very minimal and 
 simple R code.
 
+`shinyjs` also includes a `colourInput` which is an input control that allows
+users to select colours. You can see a live demo [here](http://daattali.com/shiny/colourInput/).
+
 ## Installation
 
 `shinyjs` is available through both CRAN and GitHub:
@@ -81,6 +84,8 @@ published Shiny app).
 - `extendShinyjs` - allows you to write your own JavaScript functions and use
 `shinyjs` to call them as if they were regular R code. More information is
 available in the section "Calling your own JavaScript functions from R".
+
+- `colourInput` and `updateColourInput` - input widget that allows users to select colours.
 
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) to see
 some of these in action, or install `shinyjs` and run `shinyjs::runExample()`

@@ -9,7 +9,7 @@
 #' as the background colour of the input, or both (default).
 #' @param allowTransparent If \code{TRUE}, then add a checkbox that allows the
 #' user to select the \code{transparent} colour.
-#' @seealso \code{\link[shinyjs]{colourInput}}
+#' @seealso \code{\link[shinyjs]{updateColourInput}}
 #' @examples
 #' if (interactive()) {
 #'   shiny::shinyApp(
@@ -36,6 +36,8 @@
 #' }
 #' @note Unlike the rest of the \code{shinyjs} functions, this function does
 #' not require you to call \code{useShinyjs()} first.
+#' @note See \href{http://daattali.com/shiny/colourInput/}{http://daattali.com/shiny/colourInput/}
+#' for a live demo.
 #' @export
 colourInput <- function(inputId, label, value = "white",
                         showColour = c("both", "text", "background"),
@@ -120,6 +122,8 @@ colourInput <- function(inputId, label, value = "white",
 #' }
 #' @note Unlike the rest of the \code{shinyjs} functions, this function does
 #' not require you to call \code{useShinyjs()} first.
+#' @note See \href{http://daattali.com/shiny/colourInput/}{http://daattali.com/shiny/colourInput/}
+#' for a live demo.
 #' @export
 updateColourInput <- function(session, inputId, label = NULL, value = NULL,
                               showColour = NULL, allowTransparent = NULL) {

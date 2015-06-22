@@ -23,6 +23,10 @@ a look at a very basic Shiny
 app](http://daattali.com/shiny/shinyjs-basic/) that uses `shinyjs` to
 enhance the user experience with very minimal and simple R code.
 
+`shinyjs` also includes a `colourInput` which is an input control that
+allows users to select colours. You can see a live demo
+[here](http://daattali.com/shiny/colourInput/).
+
 Installation
 ------------
 
@@ -77,6 +81,9 @@ Overview of main functions
     and use `shinyjs` to call them as if they were regular R code. More
     information is available in the section "Calling your own JavaScript
     functions from R".
+
+-   `colourInput` and `updateColourInput` - input widget that allows
+    users to select colours.
 
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/)
 to see some of these in action, or install `shinyjs` and run
@@ -145,8 +152,8 @@ more user-friendly. First we need to set up the app to use `shinyjs`
 with two small changes
 
 1.  A call to `useShinyjs()` needs to be made in the Shiny app's UI.
-    This is required to set up all the JavaScript and a few other
-    things.
+    This is required to set up all the JavaScript and a few
+    other things.
 
 2.  The app's server needs to have the `session` parameter declared, ie.
     initialize the server as `server(input, output, session)` instead of
@@ -485,4 +492,4 @@ this topic.
 
 ## Contributions
 
-If anyone has any suggestions or feedback, I would love to hear about it. If you have improvements, feel free to make a pull request.  I'd like to give a special thanks to the Shiny developers, especially [Joe Cheng](http://www.joecheng.com/) for always answering all my Shiny questions.
+If you have any suggestions or feedback, I would love to hear about it. You can either [message me directly](http://deanattali.com/aboutme#contact), [open an issue](https://github.com/daattali/shinyjs/issues) if you want to request a feature/report a bug, or make a pull request if you can contribute.  I'd like to give a special thanks to the Shiny developers, especially [Joe Cheng](http://www.joecheng.com/) for always answering all my Shiny questions.

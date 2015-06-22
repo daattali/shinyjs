@@ -33,6 +33,9 @@ Any argument with \code{NULL} values will be ignored.
 \note{
 Unlike the rest of the \code{shinyjs} functions, this function does
 not require you to call \code{useShinyjs()} first.
+
+See \href{http://daattali.com/shiny/colourInput/}{http://daattali.com/shiny/colourInput/}
+for a live demo.
 }
 \examples{
 if (interactive()) {
