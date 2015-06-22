@@ -38,6 +38,7 @@
 #' not require you to call \code{useShinyjs()} first.
 #' @note See \href{http://daattali.com/shiny/colourInput/}{http://daattali.com/shiny/colourInput/}
 #' for a live demo.
+#' @note \code{colourInput} will not work properly on Internet Explorer 9 or earlier.
 #' @export
 colourInput <- function(inputId, label, value = "white",
                         showColour = c("both", "text", "background"),
