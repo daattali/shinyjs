@@ -2,6 +2,7 @@
 
 2015-06-22
 
+- add a transparency option to `colourInput`
 - complete refactor of `colourInput` using a better library that I modified to work well with shiny inputs
 - including multiple `useShinyjs()` or `extendShinyjs()` will not result in duplicated HTML anymore. This can be useful if the UI is including a few external UI pieces and they independently make a call to `useShinyjs()`.
 

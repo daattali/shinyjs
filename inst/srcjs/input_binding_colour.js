@@ -7,7 +7,7 @@ $.extend(colourBinding, {
     return $(scope).find('input.shiny-colour-input');
   },
   getValue: function(el) {
-    return $(el).val();
+    return $(el).colourpicker('value');
   },
   setValue: function(el, value) {
     $(el).colourpicker('value', value);
@@ -26,11 +26,15 @@ $.extend(colourBinding, {
     var opts = {
       changeDelay : 0,
       position : 'bottom left',
-      showColour : $el.attr('data-show-colour')
+      defaultValue : $el.attr('data-init-value'),
+      showColour : $el.attr('data-show-colour'),
+      allowTransparent : $el.attr('data-allow-transparent')
     };
 
     // initialize the colour picker
     $el.colourpicker(opts);
+
+    this.setValue(el, $el.attr('data-init-value'));
 
     // save the initial settings so that we can restore them later
     $el.data('init-opts', $.extend(true, {}, $el.colourpicker('settings')));
@@ -43,11 +47,13 @@ $.extend(colourBinding, {
       this.setValue(el, data.value);
     }
     if (data.hasOwnProperty('label')) {
-      $el.closest(".shiny-input-container").
-        find('label[for="' + el.id + '"]').text(data.label);
+      this._getContainer(el).find('label[for="' + el.id + '"]').text(data.label);
     }
     if (data.hasOwnProperty('showColour')) {
       $el.colourpicker('settings', { 'showColour' : data.showColour });
+    }
+    if (data.hasOwnProperty('allowTransparent')) {
+      $el.colourpicker('settings', { 'allowTransparent' : data.allowTransparent });
     }
   },
   getRatePolicy : function() {
@@ -55,6 +61,10 @@ $.extend(colourBinding, {
       policy: 'debounce',
       delay: 250
     };
+  },
+  // Get the shiny input container
+  _getContainer : function(el) {
+    return $(el).closest(".shiny-input-container");
   }
 });
 

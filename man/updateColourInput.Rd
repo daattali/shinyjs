@@ -5,7 +5,7 @@
 \title{Change the value of a colour input}
 \usage{
 updateColourInput(session, inputId, label = NULL, value = NULL,
-  showColour = NULL)
+  showColour = NULL, allowTransparent = NULL)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
@@ -17,6 +17,9 @@ updateColourInput(session, inputId, label = NULL, value = NULL,
 \item{value}{The value to set for the input object.}
 
 \item{showColour}{Whether to shoW the chosen colour via text, background, or both.}
+
+\item{allowTransparent}{If \code{TRUE}, then add a checkbox that allows the
+user to select the \code{transparent} colour.}
 }
 \description{
 Change the value of a colour input on the client.
@@ -30,25 +33,26 @@ Any argument with \code{NULL} values will be ignored.
 \note{
 Unlike the rest of the \code{shinyjs} functions, this function does
 not require you to call \code{useShinyjs()} first.
-
-There seems to be a bug with the JavaScript plugin that results in
-the following behaviour: if you change the value of a colour input after
-you have set the colour manually at least once and your next mouse click
-is not on the colour input, then the colour input will not retain the
-updated colour from this function call.
 }
 \examples{
 if (interactive()) {
   shiny::shinyApp(
     ui = shiny::fluidPage(
-      colourInput("col", "Colour", "red"),
+      colourInput("col", "Choose colour", "red"),
       shiny::textInput("text", "New colour: (colour name or HEX value)"),
-      shiny::actionButton("btn", "Update")
+      shiny::selectInput("showColour", "Show colour",
+        c("both", "text", "background")),
+      shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
+      shiny::actionButton("btn", "Update"),
+      shiny::textOutput("value")
     ),
     server = function(input, output, session) {
       shiny::observeEvent(input$btn, {
-        updateColourInput(session, "col", value = input$text)
+        updateColourInput(session, "col",
+          value = input$text, showColour = input$showColour,
+          allowTransparent = input$allowTransparent)
       })
+      output$value <- shiny::renderText(input$col)
     }
   )
 }

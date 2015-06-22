@@ -5,7 +5,7 @@
 \title{Create a colour input control}
 \usage{
 colourInput(inputId, label, value = "white", showColour = c("both", "text",
-  "background"))
+  "background"), allowTransparent = FALSE)
 }
 \arguments{
 \item{inputId}{The \code{input} slot that will be used to access the value.}
@@ -16,6 +16,9 @@ colourInput(inputId, label, value = "white", showColour = c("both", "text",
 
 \item{showColour}{Whether to show the chosen colour as text inside the input,
 as the background colour of the input, or both (default).}
+
+\item{allowTransparent}{If \code{TRUE}, then add a checkbox that allows the
+user to select the \code{transparent} colour.}
 }
 \description{
 Create an input control to select a colour.
@@ -28,14 +31,21 @@ not require you to call \code{useShinyjs()} first.
 if (interactive()) {
   shiny::shinyApp(
     ui = shiny::fluidPage(
-      colourInput("col", "Colour", "red"),
+      colourInput("col", "Choose colour", "red"),
       shiny::textInput("text", "New colour: (colour name or HEX value)"),
-      shiny::actionButton("btn", "Update")
+      shiny::selectInput("showColour", "Show colour",
+        c("both", "text", "background")),
+      shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
+      shiny::actionButton("btn", "Update"),
+      shiny::textOutput("value")
     ),
     server = function(input, output, session) {
       shiny::observeEvent(input$btn, {
-        updateColourInput(session, "col", value = input$text)
+        updateColourInput(session, "col",
+          value = input$text, showColour = input$showColour,
+          allowTransparent = input$allowTransparent)
       })
+      output$value <- shiny::renderText(input$col)
     }
   )
 }

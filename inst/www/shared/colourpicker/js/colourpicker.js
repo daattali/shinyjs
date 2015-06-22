@@ -37,7 +37,8 @@
         position: 'bottom left',
         show: null,
         showSpeed: 100,
-        showColour: 'both'
+        showColour: 'both',
+        allowTransparent: false
       }
     };
 
@@ -82,11 +83,24 @@
           case 'value':
             if( data === undefined ) {
               // Getter
-              return $(this).val();
+              if ($(this).data('transparent')) {
+                return "transparent";
+              }
+              if (!parseHex($(this).val())) {
+                return $(this).data('colourpicker-lastChange');
+              }
+
+              return parseHex($(this).val(), true);
             } else {
               // Setter
               $(this).each( function() {
-                updateFromInput($(this).val(data));
+                if ($(this).data('allow-transparent') && data == "transparent") {
+                  $(this).data('transparent', true);
+                } else {
+                  $(this).data('transparent', false);
+                  $(this).val(data);
+                }
+                updateFromInput($(this));
               });
             }
           return $(this);
@@ -123,6 +137,12 @@
         });
       }
 
+      // If we want to add transparent button, make an input group
+      if ( settings.allowTransparent ) {
+        colourpicker.addClass('input-group');
+        colourpicker.data('allow-transparent', true);
+      }
+
       // The input
       input
       .addClass('colourpicker-input')
@@ -133,14 +153,26 @@
       .after(
         '<div class="colourpicker-panel">' +
           '<div class="colourpicker-slider colourpicker-sprite">' +
-          '<div class="colourpicker-slider-picker"></div>' +
+            '<div class="colourpicker-slider-picker"></div>' +
           '</div>' +
           '<div class="colourpicker-grid colourpicker-sprite">' +
-          '<div class="colourpicker-grid-inner"></div>' +
-          '<div class="colourpicker-picker"><div></div></div>' +
+            '<div class="colourpicker-grid-inner"></div>' +
+            '<div class="colourpicker-picker">' +
+              '<div></div>' +
+            '</div>' +
           '</div>' +
-          '</div>'
+        '<div>'
       );
+
+      // If we want to add transparent button, make an input group
+      if ( settings.allowTransparent ) {
+        input.parent().find('.colourpicker-panel').after(
+          '<label class="input-group-addon">' +
+            '<input type="checkbox" class="colourpicker-istransparent">' +
+            ' Transparent' +
+          '</label>'
+        );
+      }
 
       // Prevent text selection in IE
       input.parent().find('.colourpicker-panel').on('selectstart', function() { return false; }).end();
@@ -330,7 +362,7 @@
       }
 
       // Handle change event
-      doChange(input, hex);
+      doChange(input, hex, input.data('transparent'));
 
     }
 
@@ -356,7 +388,11 @@
       // Determine hex/HSB values
       hex = parseHex(input.val(), true).toUpperCase();
       if( !hex ){
-        hex = parseHex(settings.defaultValue, true).toUpperCase();
+        if (input.data('colourpicker-lastChange')) {
+          hex = input.data('colourpicker-lastChange');
+        } else {
+          hex = "#FFFFFF";
+        }
       }
       hsb = hex2hsb(hex);
 
@@ -395,24 +431,30 @@
 
       // Fire change event, but only if colourpicker is fully initialized
       if( input.data('colourpicker-initialized') ) {
-        doChange(input, hex);
+        doChange(input, hex, input.data('transparent'));
       }
-
+      if( input.data('transparent') ) {
+        colourpicker.find('.colourpicker-istransparent').prop('checked', true);
+        colourpicker.addClass('istransparent');
+      } else {
+        colourpicker.find('.colourpicker-istransparent').prop('checked', false);
+        colourpicker.removeClass('istransparent');
+      }
     }
 
     // Runs the change and changeDelay callbacks
-    function doChange(input, hex) {
+    function doChange(input, hex, transparent) {
 
       var settings = input.data('colourpicker-settings'),
-      lastChange = input.data('colourpicker-lastChange');
+      lastChange = input.data('colourpicker-lastChange'),
+      lastTransparent = input.data('colourpicker-lastTransparent');
 
       // Only run if it actually changed
-      if( !lastChange || lastChange.hex !== hex ) {
+      if( !lastChange || lastChange !== hex || lastTransparent !== transparent ) {
 
         // Remember last-changed value
-        input.data('colourpicker-lastChange', {
-          hex: hex
-        });
+        input.data('colourpicker-lastChange', hex);
+        input.data('colourpicker-lastTransparent', transparent);
 
         // Fire change event
         if( settings.change ) {
@@ -587,7 +629,9 @@
     .on('focus.colourpicker', '.colourpicker-input', function() {
       var input = $(this);
       if( !input.data('colourpicker-initialized') ) return;
+      input.data('transparent', false);
       show(input);
+      updateFromInput($(this));
     })
     // Fix hex on blur
     .on('blur.colourpicker', '.colourpicker-input', function() {
@@ -599,11 +643,16 @@
       input.val(parseHex(input.val(), true));
 
       // Is it blank?
-      if( input.val() === '' ) input.val(parseHex(settings.defaultValue, true));
+      if( input.val() === '' ) {
+        if (input.data('colourpicker-lastChange')) {
+          input.val(input.data('colourpicker-lastChange'));
+        } else {
+          input.val("#FFFFFF");
+        }
+      }
 
       // Adjust case
       input.val(input.val().toUpperCase());
-
     })
     // Handle keypresses
     .on('keydown.colourpicker', '.colourpicker-input', function(event) {
@@ -633,6 +682,21 @@
       setTimeout( function() {
         updateFromInput(input, true);
       }, 1);
+    })
+    // Update when setting transparent option
+    .on('change.colourpicker-istransparent', '.input-group-addon', function(event) {
+      var input = $(this).siblings(".colourpicker-input");
+      var colourpicker = input.parent();
+      var checkbox = $(this).find(".colourpicker-istransparent");
+      hide();
+      if (checkbox.is(":checked")) {
+        input.data('transparent', true);
+        colourpicker.addClass('istransparent');
+      } else {
+        input.data('transparent', false);
+        colourpicker.removeClass('istransparent');
+      }
+      input.trigger('change').trigger('input');
     });
 
   }));

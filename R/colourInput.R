@@ -7,6 +7,8 @@
 #' @param value Initial value (can be a colour name or HEX code)
 #' @param showColour Whether to show the chosen colour as text inside the input,
 #' as the background colour of the input, or both (default).
+#' @param allowTransparent If \code{TRUE}, then add a checkbox that allows the
+#' user to select the \code{transparent} colour.
 #' @seealso \code{\link[shinyjs]{colourInput}}
 #' @examples
 #' if (interactive()) {
@@ -16,13 +18,15 @@
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
 #'       shiny::selectInput("showColour", "Show colour",
 #'         c("both", "text", "background")),
+#'       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
 #'       shiny::actionButton("btn", "Update"),
 #'       shiny::textOutput("value")
 #'     ),
 #'     server = function(input, output, session) {
 #'       shiny::observeEvent(input$btn, {
 #'         updateColourInput(session, "col",
-#'           value = input$text, showColour = input$showColour)
+#'           value = input$text, showColour = input$showColour,
+#'           allowTransparent = input$allowTransparent)
 #'       })
 #'       output$value <- shiny::renderText(input$col)
 #'     }
@@ -32,16 +36,29 @@
 #' not require you to call \code{useShinyjs()} first.
 #' @export
 colourInput <- function(inputId, label, value = "white",
-                        showColour = c("both", "text", "background")) {
+                        showColour = c("both", "text", "background"),
+                        allowTransparent = FALSE) {
   value <- formatHEX(value)
   showColour <- match.arg(showColour)
 
   jsInputBinding <- system.file("srcjs", "input_binding_colour.js",
                                 package = "shinyjs")
-  jsCP <- system.file("www", "shared", "colourpicker", "js", "colourpicker.min.js",
+  jsCP <- system.file("www", "shared", "colourpicker", "js", "colourpicker.js",
                       package = "shinyjs")
-  cssCP <- system.file("www", "shared", "colourpicker", "css", "colourpicker.min.css",
+  cssCP <- system.file("www", "shared", "colourpicker", "css", "colourpicker.css",
                        package = "shinyjs")
+
+  inputTag <-
+    shiny::tags$input(
+      id = inputId, type = "text",
+      class = "form-control shiny-colour-input",
+      `data-init-value` = value,
+      `data-show-colour` = showColour
+    )
+  if (allowTransparent) {
+    inputTag <- shiny::tagAppendAttributes(inputTag,
+                                           `data-allow-transparent` = "true")
+  }
 
   shiny::tagList(
     shiny::singleton(shiny::tags$head(
@@ -52,12 +69,7 @@ colourInput <- function(inputId, label, value = "white",
     shiny::div(class = "form-group shiny-input-container",
         `data-shiny-input-type` = "colour",
         label %AND% shiny::tags$label(label, `for` = inputId),
-        shiny::tags$input(
-          id = inputId, type = "text",
-          class = "form-control shiny-colour-input",
-          value = value,
-          `data-show-colour` = showColour
-        )
+        inputTag
     )
   )
 }
@@ -76,6 +88,8 @@ colourInput <- function(inputId, label, value = "white",
 #' @param label The label to set for the input object.
 #' @param value The value to set for the input object.
 #' @param showColour Whether to shoW the chosen colour via text, background, or both.
+#' @param allowTransparent If \code{TRUE}, then add a checkbox that allows the
+#' user to select the \code{transparent} colour.
 #' @seealso \code{\link[shinyjs]{colourInput}}
 #' @examples
 #' if (interactive()) {
@@ -85,13 +99,15 @@ colourInput <- function(inputId, label, value = "white",
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
 #'       shiny::selectInput("showColour", "Show colour",
 #'         c("both", "text", "background")),
+#'       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
 #'       shiny::actionButton("btn", "Update"),
 #'       shiny::textOutput("value")
 #'     ),
 #'     server = function(input, output, session) {
 #'       shiny::observeEvent(input$btn, {
 #'         updateColourInput(session, "col",
-#'           value = input$text, showColour = input$showColour)
+#'           value = input$text, showColour = input$showColour,
+#'           allowTransparent = input$allowTransparent)
 #'       })
 #'       output$value <- shiny::renderText(input$col)
 #'     }
@@ -101,14 +117,19 @@ colourInput <- function(inputId, label, value = "white",
 #' not require you to call \code{useShinyjs()} first.
 #' @export
 updateColourInput <- function(session, inputId, label = NULL, value = NULL,
-                              showColour = NULL) {
+                              showColour = NULL, allowTransparent = NULL) {
   message <- shiny:::dropNulls(list(label = label, value = formatHEX(value),
-                                    showColour = showColour))
+                                    showColour = showColour,
+                                    allowTransparent = allowTransparent))
   session$sendInputMessage(inputId, message)
 }
 
 formatHEX <- function(x) {
   if (is.null(x) || x == "") return()
+
+  if (x == "transparent") {
+    return(x)
+  }
 
   # ensure x is a valid HEX colour or a valid named colour
   if (x %in% colors()) {
