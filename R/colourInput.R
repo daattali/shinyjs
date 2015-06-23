@@ -57,7 +57,6 @@ colourInput <- function(inputId, label, value = "white",
     shiny::tags$input(
       id = inputId, type = "text",
       class = "form-control shiny-colour-input",
-      spellcheck = "false",
       `data-init-value` = value,
       `data-show-colour` = showColour
     )
