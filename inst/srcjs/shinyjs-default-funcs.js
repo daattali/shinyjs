@@ -515,7 +515,7 @@ shinyjs = function() {
 
       // for shiny inputs, perform the action when any section of the input
       // widget is clicked
-      el = shinyjs.getContainer(el);
+      el = $(shinyjs.getContainer(el)[0]);
 
       var shinyInputId = params.shinyInputId;
       var attrName = "data-shinyjs-onclick";

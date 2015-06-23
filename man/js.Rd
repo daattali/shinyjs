@@ -4,7 +4,7 @@
 \name{js}
 \alias{js}
 \title{Call user-defined JavaScript functions from R}
-\format{\preformatted{<environment: 0x0000000006a5e938> 
+\format{\preformatted{<environment: 0x00000000091305a0> 
 }}
 \usage{
 js

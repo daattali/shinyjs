@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Perform Common JavaScript Operations in Shiny Apps using Plain R Code
-Version: 0.0.6.6
+Version: 0.0.7.0
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Perform common JavaScript operations in Shiny
