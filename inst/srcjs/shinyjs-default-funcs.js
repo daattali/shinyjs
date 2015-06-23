@@ -329,6 +329,10 @@ shinyjs = function() {
       } else if (el.hasClass("js-range-slider")) {
         el.data("ionRangeSlider").update({ disable : false })
       }
+      // for colour inputs, we want to enable all input fields
+      else if (el.hasClass("shiny-colour-input")) {
+        el = shinyjs.getContainer(el);
+      }
 
       // enable the container as well as all individual inputs inside
       // (this is needed for grouped inputs such as radio and checkbox groups)
@@ -349,6 +353,10 @@ shinyjs = function() {
         el.selectize()[0].selectize.disable();
       } else if (el.hasClass("js-range-slider")) {
         el.data("ionRangeSlider").update({ disable : true })
+      }
+      // for colour inputs, we want to disable all input fields
+      else if (el.hasClass("shiny-colour-input")) {
+        el = shinyjs.getContainer(el);
       }
 
       // disable the container as well as all individual inputs inside
