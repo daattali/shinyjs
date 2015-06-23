@@ -151,7 +151,7 @@ colourInput <- function(inputId, label, value = "white",
 updateColourInput <- function(session, inputId, label = NULL, value = NULL,
                               showColour = NULL, allowTransparent = NULL,
                               transparentText = NULL) {
-  message <- shiny:::dropNulls(list(
+  message <- dropNulls(list(
     label = label, value = formatHEX(value),
     showColour = showColour, allowTransparent = allowTransparent,
     transparentText = transparentText
@@ -190,6 +190,12 @@ formatHEX <- function(x) {
   toupper(x)
 }
 
+# copied from shiny since it's not exported
+dropNulls <- function(x) {
+  x[!vapply(x, is.null, FUN.VALUE=logical(1))]
+}
+
+# copied from shiny since it's not exported
 `%AND%` <- function(x, y) {
   if (!is.null(x) && !is.na(x))
     if (!is.null(y) && !is.na(y))
