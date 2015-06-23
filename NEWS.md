@@ -2,7 +2,9 @@
 
 2015-06-23
 
-- 
+- add `selector` param to the `disable`/`enable`/`toggleState` functions and the
+`addClass`/`removeClass`/`toggleClass` functions so that multiple elements can
+be targeted in batch
 - added `transparentText` param to `colourInput`
 
 # shinyjs 0.0.6.6

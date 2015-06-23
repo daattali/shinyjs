@@ -49,7 +49,7 @@ shinyjs = function() {
       };
 
       // grab all the shiny input containers
-      var inputContainers = $(".shiny-input-container")
+      var inputContainers = $(".shiny-input-container");
 
       // go through every Shiny input and based on what kind of input it is,
       // add some information to the HTML tag so that we can know how to
@@ -58,7 +58,9 @@ shinyjs = function() {
         var inputContainer = $(inputContainers[j]);
         var input = inputContainer;
         var foundInput = true;
-        var inputType = inputValue = inputId = null;
+        var inputType = null,
+            inputValue = null,
+            inputId = null;
 
         // dateInput
         if (input.hasClass("shiny-date-input")) {
@@ -76,11 +78,11 @@ shinyjs = function() {
         // checkboxGroupInput
         else if (input.hasClass("shiny-input-checkboxgroup")) {
           inputType = "CheckboxGroup";
-          var selected = new Array();
+          var selected = [];
           var selectedEls = input.find("input[type='checkbox']:checked");
           selectedEls.each(function() {
             selected.push($(this).val());
-          })
+          });
           inputValue = selected.join(",");
         }
         // radioButtons
@@ -377,7 +379,7 @@ shinyjs = function() {
       if (el.hasClass("selectized")) {
         el.selectize()[0].selectize.enable();
       } else if (el.hasClass("js-range-slider")) {
-        el.data("ionRangeSlider").update({ disable : false })
+        el.data("ionRangeSlider").update({ disable : false });
       }
       // for colour inputs, we want to enable all input fields
       else if (el.hasClass("shiny-colour-input")) {
@@ -402,7 +404,7 @@ shinyjs = function() {
       if (el.hasClass("selectized")) {
         el.selectize()[0].selectize.disable();
       } else if (el.hasClass("js-range-slider")) {
-        el.data("ionRangeSlider").update({ disable : true })
+        el.data("ionRangeSlider").update({ disable : true });
       }
       // for colour inputs, we want to disable all input fields
       else if (el.hasClass("shiny-colour-input")) {
