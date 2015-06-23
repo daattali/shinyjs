@@ -105,6 +105,12 @@ shinyjs = function() {
             inputValue = inputValue.join(",");
           }
         }
+        // colourInput
+        else if (input.children("input.shiny-colour-input").length > 0) {
+          input = input.children("input.shiny-colour-input");
+          inputType = "Colour";
+          inputValue = input.attr('data-init-value');
+        }
         // numericInput
         else if (input.children("input[type='number']").length > 0) {
           input = input.children("input[type='number']");
