@@ -2,9 +2,7 @@
 #'
 #' Enable or disable an input element. A disabled element is not usable and
 #' not clickable, while an enabled element (default) can receive user input.
-#' Any shiny input tag can be used with these functions, such as text inputs
-#' (\code{shiny::textInput}), select lists (\code{shiny::selectInput}),
-#' buttons (\code{shiny::actionButton}) and all others.\cr\cr
+#' Any shiny input tag can be used with these functions.\cr\cr
 #' \strong{\code{enable}} enables an input, \strong{\code{disable}} disabled
 #' an input,\strong{\code{toggleState}} enables an input if it is disabled
 #' and disables an input if it is already enabled.\cr\cr
@@ -19,6 +17,10 @@
 #'   \strong{\code{id}}         \tab The id of the input element/Shiny tag \cr
 #'   \strong{\code{condition}}  \tab An optional argument to \code{toggleState},
 #'                                   see 'Details' below. \cr
+#'   \strong{\code{selector}}   \tab JQuery selector of the elements to target.
+#'                                   Ignored if the \code{id} argument is given.
+#'                                   For example, to disable all text inputs,
+#'                                   use \code{selector = "input[type='text']"}\cr
 #' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}

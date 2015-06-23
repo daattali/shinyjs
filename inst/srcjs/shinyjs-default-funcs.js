@@ -317,7 +317,8 @@ shinyjs = function() {
       var defaultParams = {
         id       : null,
         class    : null,
-        selector : null
+        selector : null,
+        elements : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -331,7 +332,8 @@ shinyjs = function() {
       var defaultParams = {
         id       : null,
         class    : null,
-        selector : null
+        selector : null,
+        elements : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
@@ -369,67 +371,87 @@ shinyjs = function() {
 
     enable : function (params) {
       var defaultParams = {
-        id : null
+        id       : null,
+        selector : null,
+        elements : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      var $els = shinyjs.getElements(params);
+      if ($els === null) return;
 
-      // selectize and slider inputs need special javascript
-      if (el.hasClass("selectized")) {
-        el.selectize()[0].selectize.enable();
-      } else if (el.hasClass("js-range-slider")) {
-        el.data("ionRangeSlider").update({ disable : false });
-      }
-      // for colour inputs, we want to enable all input fields
-      else if (el.hasClass("shiny-colour-input")) {
-        el = shinyjs.getContainer(el);
-      }
+      $.map($els, function(el) {
+        var $el = $(el);
 
-      // enable the container as well as all individual inputs inside
-      // (this is needed for grouped inputs such as radio and checkbox groups)
-      el = $(el.toArray().concat(el.find("input").toArray()));
-      el.prop('disabled', false);
+        // selectize and slider inputs need special javascript
+        if ($el.hasClass("selectized")) {
+          $el.selectize()[0].selectize.enable();
+        } else if ($el.hasClass("js-range-slider")) {
+          $el.data("ionRangeSlider").update({ disable : false });
+        }
+        // for colour inputs, we want to enable all input fields
+        else if ($el.hasClass("shiny-colour-input")) {
+          $el = $(shinyjs.getContainer($el)[0]);
+        }
+
+        // enable the container as well as all individual inputs inside
+        // (this is needed for grouped inputs such as radio and checkbox groups)
+        $el = $($el.toArray().concat($el.find("input").toArray()));
+        $el.prop('disabled', false);
+      });
     },
 
     disable : function (params) {
       var defaultParams = {
-        id : null
+        id       : null,
+        selector : null,
+        elements : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      var $els = shinyjs.getElements(params);
+      if ($els === null) return;
 
-      // selectize and slider inputs need special javascript
-      if (el.hasClass("selectized")) {
-        el.selectize()[0].selectize.disable();
-      } else if (el.hasClass("js-range-slider")) {
-        el.data("ionRangeSlider").update({ disable : true });
-      }
-      // for colour inputs, we want to disable all input fields
-      else if (el.hasClass("shiny-colour-input")) {
-        el = shinyjs.getContainer(el);
-      }
+      $.map($els, function(el) {
+        var $el = $(el);
 
-      // disable the container as well as all individual inputs inside
-      // (this is needed for grouped inputs such as radio and checkbox groups)
-      el = $(el.toArray().concat(el.find("input").toArray()));
-      el.prop('disabled', true);
+        // selectize and slider inputs need special javascript
+        if ($el.hasClass("selectized")) {
+          $el.selectize()[0].selectize.disable();
+        } else if ($el.hasClass("js-range-slider")) {
+          $el.data("ionRangeSlider").update({ disable : true });
+        }
+        // for colour inputs, we want to disable all input fields
+        else if ($el.hasClass("shiny-colour-input")) {
+          $el = $(shinyjs.getContainer($el)[0]);
+        }
+
+        // disable the container as well as all individual inputs inside
+        // (this is needed for grouped inputs such as radio and checkbox groups)
+        $el = $($el.toArray().concat($el.find("input").toArray()));
+        $el.prop('disabled', true);
+      });
     },
 
     toggleState : function (params) {
       var defaultParams = {
-        id : null,
-        condition : null
+        id        : null,
+        condition : null,
+        selector  : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      // it there is no condition, enable/disable based on current state
       if (params.condition === null) {
-        params.condition = shinyjs.isDisabled(el);
-      }
+        var $els = shinyjs.getElements(params);
+        if ($els === null) return;
 
-      if (params.condition) {
+        $.map($els, function(el) {
+          params.elements = $(el);
+          shinyjs.isDisabled($(el)) ? shinyjs.enable(params) : shinyjs.disable(params);
+        });
+      }
+      else if (params.condition) {
         shinyjs.enable(params);
       } else {
         shinyjs.disable(params);
