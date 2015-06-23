@@ -313,39 +313,52 @@ shinyjs = function() {
 
     addClass : function (params) {
       var defaultParams = {
-        id : null,
-        class : null
+        id       : null,
+        class    : null,
+        selector : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      $("#" + params.id).addClass(params.class);
+      var $els = shinyjs.getElements(params);
+      if ($els === null) return;
+
+      $els.addClass(params.class);
     },
 
     removeClass : function (params) {
       var defaultParams = {
-        id : null,
-        class : null
+        id       : null,
+        class    : null,
+        selector : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      $("#" + params.id).removeClass(params.class);
+      var $els = shinyjs.getElements(params);
+      if ($els === null) return;
+
+      $els.removeClass(params.class);
     },
 
     toggleClass : function (params) {
       var defaultParams = {
-        id : null,
-        class : null,
-        condition : null
+        id        : null,
+        class     : null,
+        condition : null,
+        selector  : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
-
+      // it there is no condition, add/remove class based on current state
       if (params.condition === null) {
-        params.condition = !el.hasClass(params.class);
-      }
+        var $els = shinyjs.getElements(params);
+        if ($els === null) return;
 
-      if (params.condition) {
+        $.map($els, function(el) {
+          params.elements = $(el);
+          $(el).hasClass(params.class) ? shinyjs.removeClass(params) : shinyjs.addClass(params);
+        });
+      }
+      else if (params.condition) {
         shinyjs.addClass(params);
       } else {
         shinyjs.removeClass(params);

@@ -20,6 +20,10 @@ toggleClass(...)
   \strong{\code{class}}     \tab The CSS class to add/remove \cr
   \strong{\code{condition}} \tab An optional argument to \code{toggleClass},
                                  see 'Details' below. \cr
+  \strong{\code{selector}}   \tab JQuery selector of the elements to target.
+                                  Ignored if the \code{id} argument is given.
+                                  For example, to add a certain class to all
+                                  inputs with class x, use \code{selector = "input.x"}\cr
 }}
 }
 \description{
