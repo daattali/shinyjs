@@ -29,8 +29,6 @@ not require you to call \code{useShinyjs()} first.
 
 See \href{http://daattali.com/shiny/colourInput/}{http://daattali.com/shiny/colourInput/}
 for a live demo.
-
-\code{colourInput} will not work properly on Internet Explorer 9 or earlier.
 }
 \examples{
 if (interactive()) {
