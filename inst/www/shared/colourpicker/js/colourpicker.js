@@ -39,7 +39,7 @@
         showSpeed: 100,
         showColour: 'both',
         allowTransparent: false,
-		transparentText: 'Transparent'
+		    transparentText: 'Transparent'
       }
     };
 

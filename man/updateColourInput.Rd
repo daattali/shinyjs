@@ -5,7 +5,7 @@
 \title{Change the value of a colour input}
 \usage{
 updateColourInput(session, inputId, label = NULL, value = NULL,
-  showColour = NULL, allowTransparent = NULL)
+  showColour = NULL, allowTransparent = NULL, transparentText = NULL)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
@@ -20,6 +20,9 @@ updateColourInput(session, inputId, label = NULL, value = NULL,
 
 \item{allowTransparent}{If \code{TRUE}, then add a checkbox that allows the
 user to select the \code{transparent} colour.}
+
+\item{transparentText}{The text to show beside the transparency checkbox
+when \code{allowTransparent} is \code{TRUE}}
 }
 \description{
 Change the value of a colour input on the client.

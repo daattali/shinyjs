@@ -5,7 +5,7 @@
 \title{Create a colour input control}
 \usage{
 colourInput(inputId, label, value = "white", showColour = c("both", "text",
-  "background"), allowTransparent = FALSE)
+  "background"), allowTransparent = FALSE, transparentText)
 }
 \arguments{
 \item{inputId}{The \code{input} slot that will be used to access the value.}
@@ -19,9 +19,27 @@ as the background colour of the input, or both (default).}
 
 \item{allowTransparent}{If \code{TRUE}, then add a checkbox that allows the
 user to select the \code{transparent} colour.}
+
+\item{transparentText}{The text to show beside the transparency checkbox
+when \code{allowTransparent} is \code{TRUE}. The default value is
+"Transparent", but you can change it to "None" or any other string. This has
+no effect on the return value from the input; when the checkbox is checked,
+the input will always return the string "transparent".}
 }
 \description{
 Create an input control to select a colour.
+}
+\details{
+A colour input allows users to select a colour by clicking on the desired
+colour, or by entering a valid HEX colour in the input box. The input can
+be initialized with either a colour name or a HEX value, but the value
+returned from the input will be an uppercase HEX value in both cases.
+
+Since most functions in R that accept colours can also accept the value
+"transparent", \code{colourInput} has an option to allow selecting the
+"transparent" colour. When the user checks the checkbox for this special
+colour, the returned value form the input is "transpanrent", otherwise the
+return value is always a HEX value.
 }
 \note{
 Unlike the rest of the \code{shinyjs} functions, this function does

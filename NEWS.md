@@ -1,3 +1,10 @@
+# shinyjs 0.0.7.0
+
+2015-06-23
+
+- 
+- added `transparentText` param to `colourInput`
+
 # shinyjs 0.0.6.6
 
 2015-06-22
