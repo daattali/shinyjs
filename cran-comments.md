@@ -274,3 +274,76 @@ And you are *STILL* not respecting
 'All correspondence with CRAN must be sent to CRAN@R-project.org (not members of the team) and be in plain text ASCII (and not HTML).'
 
 in two ways.
+
+---
+
+# Version 0.0.7.0
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-06-23
+
+R CMD check has no ERRORs or WARNINGs, and 2 NOTEs: one is about "possibly" invalid URLs - this is because the URLs are shiny apps on a shiny server and shiny server doesn't support returning headers, the other NOTE is about having NEWS.md
+
+## Reviewer comments
+
+2015-06-24 Kurt Hornik
+
+```
+We get
+
+Possibly mis-spelled words in DESCRIPTION:
+  shinyjs (11:5, 12:42)
+
+Pls use single quotes, or write "This package".
+
+Found the following (possibly) invalid URLs:
+  URL: http://daattali.com/shiny/colourInput/
+    From: man/colourInput.Rd
+          man/updateColourInput.Rd
+          inst/doc/overview.html
+    Status: 404
+    Message: Not Found
+  URL: http://daattali.com/shiny/shinyjs-basic/
+    From: inst/doc/overview.html
+    Status: 404
+    Message: Not Found
+  URL: http://daattali.com/shiny/shinyjs-demo/
+    From: man/runExample.Rd
+          man/shinyjs.Rd
+          inst/doc/overview.html
+    Status: 404
+    Message: Not Found
+
+Pls fix.
+
+Best
+-k
+```
+
+# Round 2
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-06-24
+
+```
+Addressed previous comment: wrapped package name in single quotes in DESCRIPTION file.  
+R CMD check has no ERRORs or WARNINGs, and the same 2 NOTEs: one is about having a NEWS.md file and one is about "possibly" invalid URLs. The URLs can't be fixed because they are shiny apps on a shiny server and shiny server doesn't support returning headers from curl
+```
+
+## Reviewer comments
