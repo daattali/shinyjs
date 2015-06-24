@@ -347,3 +347,7 @@ R CMD check has no ERRORs or WARNINGs, and the same 2 NOTEs: one is about having
 ```
 
 ## Reviewer comments
+
+2015-06-24 Uwe Ligges
+
+Thanks, on CRAN now.
