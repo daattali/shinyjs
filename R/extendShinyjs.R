@@ -212,7 +212,8 @@
 #' @export
 extendShinyjs <- function(script, text) {
   if (!requireNamespace("V8", quietly = TRUE)) {
-    errMsg("V8 package is required to use `extendShinyjs`. Please install it.")
+    errMsg(paste0("V8 package is required to use `extendShinyjs`. Please install it ",
+                  "with `install.packages(\"V8\")`."))
   }
 
   if (missing(script) && missing(text)) {

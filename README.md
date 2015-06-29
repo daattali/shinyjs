@@ -393,6 +393,8 @@ a separate file is generally prefered over writing the code inline, but
 in these examples I will always use the `text` argument to keep it
 simple.
 
+Note: in order to use `extendShinyjs`, you must have the `V8` package installed. You can install it with `install.packages("V8")`.
+
 #### Passing arguments from R to JavaScript
 
 Any `shinyjs` function that is called will pass a single array-like
