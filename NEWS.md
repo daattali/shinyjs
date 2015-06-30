@@ -1,3 +1,9 @@
+# shinyjs 0.0.8.0
+
+2015-06-30
+
+- added an option to allow only a predefined list of colours to select from in `colourInput` (feature request from Hadley and other Twitter users)
+
 # shinyjs 0.0.7.0
 
 2015-06-23

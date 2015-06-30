@@ -24,12 +24,12 @@ $.extend(colourBinding, {
     var $el = $("#" + el.id);  // for some reason using $(el) doesn't work
 
     var opts = {
-      changeDelay : 0,
-      position : 'bottom left',
-      defaultValue : $el.attr('data-init-value'),
-      showColour : $el.attr('data-show-colour'),
+      changeDelay      : 0,
+      showColour       : $el.attr('data-show-colour'),
       allowTransparent : $el.attr('data-allow-transparent'),
-      transparentText : $el.attr('data-transparent-text')
+      transparentText  : $el.attr('data-transparent-text'),
+      palette          : $el.attr('data-palette'),
+      allowedCols      : $el.attr('data-allowed-cols')
     };
 
     // initialize the colour picker
@@ -44,6 +44,12 @@ $.extend(colourBinding, {
   receiveMessage: function(el, data) {
     var $el = $(el);
 
+    if (data.hasOwnProperty('palette')) {
+      $el.colourpicker('settings', { 'palette' : data.palette });
+    }
+    if (data.hasOwnProperty('allowedCols')) {
+      $el.colourpicker('settings', { 'allowedCols' : data.allowedCols.join(" ") });
+    }
     if (data.hasOwnProperty('allowTransparent')) {
       $el.colourpicker('settings', { 'allowTransparent' : data.allowTransparent });
     }

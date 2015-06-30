@@ -18,6 +18,13 @@
 #' @param value Initial value (can be a colour name or HEX code)
 #' @param showColour Whether to show the chosen colour as text inside the input,
 #' as the background colour of the input, or both (default).
+#' @param palette The type of colour palette to allow the user to select colours
+#' from. \code{square} (default) shows a square colour palette that allows the
+#' user to choose any colour, while \code{limited} only gives the user a
+#' predefined list of colours to choose from.
+#' @param allowedCols A list of colours that the user can choose from. Only
+#' applicable when \code{palette == "limited"}. The \code{limited} palette
+#' uses a default list of 40 colours if \code{allowedCols} is not defined.
 #' @param allowTransparent If \code{TRUE}, then add a checkbox that allows the
 #' user to select the \code{transparent} colour.
 #' @param transparentText The text to show beside the transparency checkbox
@@ -30,13 +37,15 @@
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(
-#'       shiny::div("Selected colour:",
+#'       shiny::strong("Selected colour:",
 #'                  shiny::textOutput("value", inline = TRUE)),
 #'       colourInput("col", "Choose colour", "red"),
 #'       shiny::h3("Update colour input"),
 #'       shiny::textInput("text", "New colour: (colour name or HEX value)"),
 #'       shiny::selectInput("showColour", "Show colour",
 #'         c("both", "text", "background")),
+#'       shiny::selectInput("palette", "Colour palette",
+#'         c("square", "limited")),
 #'       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
 #'       shiny::actionButton("btn", "Update")
 #'     ),
@@ -44,7 +53,8 @@
 #'       shiny::observeEvent(input$btn, {
 #'         updateColourInput(session, "col",
 #'           value = input$text, showColour = input$showColour,
-#'           allowTransparent = input$allowTransparent)
+#'           allowTransparent = input$allowTransparent,
+#'           palette = input$palette)
 #'       })
 #'       output$value <- shiny::renderText(input$col)
 #'     }
@@ -57,9 +67,12 @@
 #' @export
 colourInput <- function(inputId, label, value = "white",
                         showColour = c("both", "text", "background"),
+                        palette = c("square", "limited"),
+                        allowedCols,
                         allowTransparent = FALSE, transparentText) {
   value <- formatHEX(value)
   showColour <- match.arg(showColour)
+  palette <- match.arg(palette)
 
   jsInputBinding <- system.file("srcjs", "input_binding_colour.js",
                                 package = "shinyjs")
@@ -73,7 +86,8 @@ colourInput <- function(inputId, label, value = "white",
       id = inputId, type = "text",
       class = "form-control shiny-colour-input",
       `data-init-value` = value,
-      `data-show-colour` = showColour
+      `data-show-colour` = showColour,
+      `data-palette` = palette
     )
   if (allowTransparent) {
     inputTag <- shiny::tagAppendAttributes(
@@ -84,6 +98,13 @@ colourInput <- function(inputId, label, value = "white",
     inputTag <- shiny::tagAppendAttributes(
                   inputTag,
                   `data-transparent-text` = transparentText)
+  }
+  if (!missing(allowedCols)) {
+    allowedCols <- formatHEX(allowedCols)
+    allowedCols <- paste(allowedCols, collapse = " ")
+    inputTag <- shiny::tagAppendAttributes(
+      inputTag,
+      `data-allowed-cols` = allowedCols)
   }
 
   shiny::tagList(
@@ -114,6 +135,9 @@ colourInput <- function(inputId, label, value = "white",
 #' @param label The label to set for the input object.
 #' @param value The value to set for the input object.
 #' @param showColour Whether to shoW the chosen colour via text, background, or both.
+#' @param palette The type of colour palette to allow the user to select colours
+#' from.
+#' @param allowedCols A list of colours that the user can choose from.
 #' @param allowTransparent If \code{TRUE}, then add a checkbox that allows the
 #' user to select the \code{transparent} colour.
 #' @param transparentText The text to show beside the transparency checkbox
@@ -149,17 +173,22 @@ colourInput <- function(inputId, label, value = "white",
 #' for a live demo.
 #' @export
 updateColourInput <- function(session, inputId, label = NULL, value = NULL,
-                              showColour = NULL, allowTransparent = NULL,
-                              transparentText = NULL) {
+                              showColour = NULL, palette = NULL, allowedCols = NULL,
+                              allowTransparent = NULL, transparentText = NULL) {
   message <- dropNulls(list(
     label = label, value = formatHEX(value),
-    showColour = showColour, allowTransparent = allowTransparent,
-    transparentText = transparentText
+    showColour = showColour, palette = palette,
+    allowedCols = formatHEX(allowedCols),
+    allowTransparent = allowTransparent, transparentText = transparentText
   ))
   session$sendInputMessage(inputId, message)
 }
 
 formatHEX <- function(x) {
+  unlist(lapply(x, formatHEXsingle))
+}
+
+formatHEXsingle <- function(x) {
   if (is.null(x) || x == "") return()
 
   if (x == "transparent") {

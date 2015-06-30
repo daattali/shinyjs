@@ -5,7 +5,8 @@
 \title{Change the value of a colour input}
 \usage{
 updateColourInput(session, inputId, label = NULL, value = NULL,
-  showColour = NULL, allowTransparent = NULL, transparentText = NULL)
+  showColour = NULL, palette = NULL, allowedCols = NULL,
+  allowTransparent = NULL, transparentText = NULL)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
@@ -17,6 +18,11 @@ updateColourInput(session, inputId, label = NULL, value = NULL,
 \item{value}{The value to set for the input object.}
 
 \item{showColour}{Whether to shoW the chosen colour via text, background, or both.}
+
+\item{palette}{The type of colour palette to allow the user to select colours
+from.}
+
+\item{allowedCols}{A list of colours that the user can choose from.}
 
 \item{allowTransparent}{If \code{TRUE}, then add a checkbox that allows the
 user to select the \code{transparent} colour.}
