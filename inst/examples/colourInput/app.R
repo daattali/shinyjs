@@ -12,7 +12,8 @@ shinyApp(
         tags$strong("colourInput"),
         "is an input control available in",
         tags$a("shinyjs", href = "https://github.com/daattali/shinyjs", target = "_blank"),
-        "that allows users to select colours in Shiny apps"
+        "that allows users to select colours in Shiny apps",
+        HTML("(<a target='_blank' href='http://deanattali.com/2015/06/28/introducing-shinyjs-colourinput/'>announcement blog post</a>)")
       ),
       p("shinyjs::colourInput() behaves just like any other built-in Shiny input and is trivially easy to use"),
       p("The code for this demo is available",
