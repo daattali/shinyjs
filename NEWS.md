@@ -1,3 +1,9 @@
+# shinyjs 0.0.8.1
+
+2015-07-17
+
+- Fix bug where periods in element names weren't working for some shinyjs functions
+
 # shinyjs 0.0.8.0
 
 2015-06-30

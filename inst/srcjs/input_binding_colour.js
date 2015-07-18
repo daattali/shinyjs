@@ -21,7 +21,7 @@ $.extend(colourBinding, {
     $(el).off(".colourBinding");
   },
   initialize : function(el) {
-    var $el = $("#" + el.id);  // for some reason using $(el) doesn't work
+    var $el = this._jqid(el.id);  // for some reason using $(el) doesn't work
 
     var opts = {
       changeDelay      : 0,
@@ -77,6 +77,9 @@ $.extend(colourBinding, {
   // Get the shiny input container
   _getContainer : function(el) {
     return $(el).closest(".shiny-input-container");
+  },
+  _jqid : function(id) {
+    return $("#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" ));
   }
 });
 

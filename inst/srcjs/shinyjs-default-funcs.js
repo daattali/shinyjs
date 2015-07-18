@@ -173,6 +173,10 @@ shinyjs = function() {
       });
     },
 
+    jqid : function(id) {
+      return $("#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" ));
+    },
+
     // given a function parameters with several different ways to get DOM
     // elements, retrieve the correct ones
     getElements : function(params) {
@@ -180,7 +184,7 @@ shinyjs = function() {
       if (params.elements !== null && typeof params.elements !== "undefined") {
         $els = params.elements;
       } else if (params.id !== null && typeof params.id !== "undefined") {
-        $els = $("#" + params.id);
+        $els = shinyjs.jqid(params.id);
       } else if (params.selector !== null && typeof params.selector !== "undefined") {
         $els = $(params.selector);
       }
@@ -467,9 +471,9 @@ shinyjs = function() {
       params = shinyjs.getParams(params, defaultParams);
 
       if (params.add) {
-        $("#" + params.id)[0].innerHTML += params.text;
+        shinyjs.jqid(params.id)[0].innerHTML += params.text;
       } else {
-        $("#" + params.id)[0].innerHTML = params.text;
+        shinyjs.jqid(params.id)[0].innerHTML = params.text;
       }
 
     },
@@ -511,7 +515,7 @@ shinyjs = function() {
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      var el = shinyjs.jqid(params.id);
 
       // for shiny inputs, perform the action when any section of the input
       // widget is clicked
@@ -559,7 +563,7 @@ shinyjs = function() {
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = $("#" + params.id);
+      var el = shinyjs.jqid(params.id);
 
       // find all the resettable input elements
       var resettables;
