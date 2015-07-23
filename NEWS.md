@@ -1,3 +1,9 @@
+# shinyjs 0.0.8.2
+
+2015-07-23
+
+- More useful error message if you forget to define the Shiny server function with the `session` parameter
+
 # shinyjs 0.0.8.1
 
 2015-07-17

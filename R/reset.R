@@ -55,7 +55,7 @@
 #' @export
 reset <- function(id) {
   # grab the Shiny session that called us
-  session <- dynGetCopy("session")
+  session <- getSession()
 
   # send a call to JavaScript to figure out what elements to reset and what
   # values to reset them to

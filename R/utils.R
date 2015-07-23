@@ -2,13 +2,22 @@ errMsg <- function(x) {
   stop(sprintf("shinyjs: %s", x), call. = FALSE)
 }
 
-# try grabbing the session var from the parent frame, which should almost
-# always work, assuming the shinyServer function defines a "session"
-# param and that the shinyjs function was called from the shinyServer
-# function rather than from a helper function. If called from a helper
-# function, we need to climb up the parent frames until we find session.
-# We can use the dynGet function for that, but it's new since R 3.2.0
-# so instead I'm copying dynGet's code.
+# try grabbing the session var from a parent frame, which should work
+# assuming the shinyServer function defines a "session" param
+getSession <- function(x) {
+  session <- dynGetCopy("session")
+  if (is.null(session)) {
+    errMsg(paste(
+      "could not find `session` object in the server function.",
+      "Are you sure you defined the Shiny server function as",
+      "`server = function(input, output, session)`?"
+    ))
+  }
+  session
+}
+
+# This is a copy of the base::dynGet function, but since it's new in R3.2.0
+# I want to include this copy so that users of older R can still use it
 dynGetCopy <- function (x) {
   n <- sys.nframe()
   while (n > 1L) {
@@ -18,7 +27,7 @@ dynGetCopy <- function (x) {
       return(get(x, envir = env))
     }
   }
-  stop(gettextf("%s not found", sQuote(x)))
+  return(NULL)
 }
 
 setupJS <- function(jsFuncs, script, text, ...) {
