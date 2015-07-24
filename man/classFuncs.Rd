@@ -54,7 +54,7 @@ if (interactive()) {
       shiny::actionButton("btn", "Click me"),
       shiny::p(id = "element", "Watch what happens to me")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       shiny::observeEvent(input$btn, {
         # Change the following line for more examples
         toggleClass("element", "red")
@@ -80,7 +80,7 @@ if (interactive()) {
       shiny::checkboxInput("checkbox", "Make it red"),
       shiny::p(id = "element", "Watch what happens to me")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       shiny::observe({
         toggleClass(id = "element", class = "red",
                     condition = input$checkbox)

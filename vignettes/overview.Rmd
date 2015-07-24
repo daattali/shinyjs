@@ -21,6 +21,8 @@ element, disabling an input, resetting an input back to its original value,
 and many more useful functions. `shinyjs` can also be used to
 easily run your own custom JavaScript functions from R.
 
+# Live demos
+
 You can [check out a demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets
 you play around with some of the functionality that `shinyjs` makes available,
 or [have a look at a very basic Shiny app](http://daattali.com/shiny/shinyjs-basic/)
@@ -149,15 +151,8 @@ Here is what that app would look like
 ![Demo app](../inst/img/demo-basic-v1.png)
 
 Now suppose we want to add a few features to the app to make it a bit more
-user-friendly.  First we need to set up the app to use `shinyjs` with two
-small changes
-
-1. A call to `useShinyjs()` needs to be made in the Shiny app's UI. This is
-required to set up all the JavaScript and a few other things.
-
-2. The app's server needs to have the `session` parameter declared, ie.
-initialize the server as `server(input, output, session)` instead of
-`server(input, output)`.
+user-friendly.  First we need to set up the app to use `shinyjs` by making a call to `useShinyjs()` anywhere in the Shiny app's UI. This is
+required in order to set up all the JavaScript and a few other things for `shinyjs` to work properly.
 
 Here are 7 features we'll add to the app, each followed with the code to
 implement it using `shinyjs`:
@@ -341,7 +336,7 @@ shinyApp(
     )
   ),
   
-  server = function(input, output, session) {
+  server = function(input, output) {
     observe({
       shinyjs::toggleState("submit", !is.null(input$name) && input$name != "")
     })
@@ -389,7 +384,7 @@ runApp(shinyApp(
     selectInput("col", "Colour:",
                 c("white", "yellow", "red", "blue", "purple"))
   ),
-  server = function(input,output,session) {
+  server = function(input, output) {
     observeEvent(input$col, {
       js$pageCol(input$col)
     })
@@ -455,7 +450,7 @@ runApp(shinyApp(
     textInput("selector", "Element", ""),
     actionButton("btn", "Go")
   ),
-  server = function(input,output,session) {
+  server = function(input, output) {
     observeEvent(input$btn, {
       js$backgroundCol(input$selector, input$col)
     })

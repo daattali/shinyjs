@@ -2,7 +2,7 @@
 
 2015-07-23
 
-- More useful error message if you forget to define the Shiny server function with the `session` parameter
+- You no longer need to define the server function with the `session` parameter! A shiny server function defined as `server = function(input, output) {...}` can work with `shinyjs`
 
 # shinyjs 0.0.8.1
 

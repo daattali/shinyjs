@@ -34,7 +34,7 @@
 #'     selectInput("col", "Colour:",
 #'                 c("white", "yellow", "red", "blue", "purple"))
 #'   ),
-#'   server = function(input,output,session) {
+#'   server = function(input, output) {
 #'     observeEvent(input$col, {
 #'       js$pageCol(input$col)
 #'     })
@@ -103,9 +103,14 @@
 #' code as a string. See 'Basic Usage' below.
 #' @return Scripts that \code{shinyjs} requires in order to run your JavaScript
 #' functions as if they were R code.
-#' @note You still need to call \code{useShinyjs()} as usual, and you need to
-#' call \code{useShinyjs()} before calling \code{extendShinyjs()}.
+#' @note You still need to call \code{useShinyjs()} as usual, and the call to
+#' \code{useShinyjs()} must come before the call to \code{extendShinyjs()}.
 #' @note The \code{V8} package is required to use this function.
+#' @note If you are deploying your app to shinyapps.io and are using \code{extendShinyjs()},
+#' then you need to let shinyapps.io know that the \code{V8} package is required.
+#' The easiest way to do this is by simply including \code{library(V8)} somewhere.
+#' This is an issue with shinyapps.io that might be resolved by them in the future --
+#' see \href{https://github.com/daattali/shinyjs/issues/20}{here} for more details.
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' @examples
 #' \dontrun{
@@ -121,7 +126,7 @@
 #'         selectInput("col", "Colour:",
 #'                     c("white", "yellow", "red", "blue", "purple"))
 #'       ),
-#'       server = function(input,output,session) {
+#'       server = function(input, output) {
 #'         observeEvent(input$col, {
 #'           js$pageCol(input$col)
 #'         })
@@ -156,7 +161,7 @@
 #'         textInput("selector", "Element", "sport"),
 #'         actionButton("btn", "Go")
 #'       ),
-#'       server = function(input,output,session) {
+#'       server = function(input, output) {
 #'         observeEvent(input$btn, {
 #'           js$backgroundCol(input$selector, input$col)
 #'         })
@@ -196,7 +201,7 @@
 #'           actionButton("add5", "js$increment('number', 5)"),
 #'           actionButton("add10", "js$increment(num = 10, id = 'number')")
 #'         ),
-#'         server = function(input,output,session) {
+#'         server = function(input, output) {
 #'           observeEvent(input$add, {
 #'             js$increment('number')
 #'           })

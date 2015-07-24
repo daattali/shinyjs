@@ -30,7 +30,7 @@ if (interactive()) {
         shiny::p(id = "element", "I was born invisible")
       )
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       shiny::observeEvent(input$btn, {
         show("element")
       })

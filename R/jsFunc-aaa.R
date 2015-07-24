@@ -17,10 +17,7 @@ jsFunc <- function(...) {
   fxn <- as.character(as.list(match.call()[1]))
   fxn <- sub(regex, "\\3", fxn)
 
-  # grab the Shiny session from the caller - I'm assuming this will always work
-  # and correctly get the sessin. If there are cases where this doesn't work,
-  # can revert back to the approach pre V0.0.2.0 where the session was set
-  # manually
+  # get the Shiny session
   session <- getSession()
 
   # call the javascript function

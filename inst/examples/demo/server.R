@@ -3,7 +3,7 @@ library(shinyjs)
 
 source("helpers.R")
 
-shinyServer(function(input, output, session) {
+shinyServer(function(input, output) {
 
   # show helper text for each selected function
   output$helpText <- renderUI({

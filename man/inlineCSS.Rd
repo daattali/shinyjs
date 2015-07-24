@@ -35,7 +35,7 @@ if (interactive()) {
       p(id = "big", "This will be big"),
       p(class = "red", "This will be red and bordered")
     ),
-    server = function(input, output, session) {}
+    server = function(input, output) {}
   )
 
   # Method 2 - passing a list of CSS selectors/declarations
@@ -49,7 +49,7 @@ if (interactive()) {
       p(id = "big", "This will be big"),
       p(class = "red", "This will be red and bordered")
     ),
-    server = function(input, output, session) {}
+    server = function(input, output) {}
   )
 
   # Method 3 - passing a list of CSS selectors/declarations
@@ -63,7 +63,7 @@ if (interactive()) {
       p(id = "big", "This will be big"),
       p(class = "red", "This will be red and bordered")
     ),
-    server = function(input, output, session) {}
+    server = function(input, output) {}
   )
 }
 }

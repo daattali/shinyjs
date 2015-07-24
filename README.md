@@ -150,16 +150,10 @@ Here is what that app would look like
 ![Demo app](inst/img/demo-basic-v1.png)
 
 Now suppose we want to add a few features to the app to make it a bit
-more user-friendly. First we need to set up the app to use `shinyjs`
-with two small changes
-
-1.  A call to `useShinyjs()` needs to be made in the Shiny app's UI.
-    This is required to set up all the JavaScript and a few
-    other things.
-
-2.  The app's server needs to have the `session` parameter declared, ie.
-    initialize the server as `server(input, output, session)` instead of
-    `server(input, output)`.
+more user-friendly. First we need to set up the app to use `shinyjs` by
+making a call to `useShinyjs()` anywhere in the Shiny app's UI. This is
+required in order to set up all the JavaScript and a few other things
+for `shinyjs` to work properly.
 
 Here are 7 features we'll add to the app, each followed with the code to
 implement it using `shinyjs`:
@@ -317,7 +311,7 @@ version where possible)
         )
       ),
       
-      server = function(input, output, session) {
+      server = function(input, output) {
         observe({
           shinyjs::toggleState("submit", !is.null(input$name) && input$name != "")
         })
@@ -370,7 +364,7 @@ colour of the page.
         selectInput("col", "Colour:",
                     c("white", "yellow", "red", "blue", "purple"))
       ),
-      server = function(input,output,session) {
+      server = function(input, output) {
         observeEvent(input$col, {
           js$pageCol(input$col)
         })
@@ -393,7 +387,8 @@ a separate file is generally prefered over writing the code inline, but
 in these examples I will always use the `text` argument to keep it
 simple.
 
-Note: in order to use `extendShinyjs`, you must have the `V8` package installed. You can install it with `install.packages("V8")`.
+Note: in order to use `extendShinyjs`, you must have the `V8` package
+installed. You can install it with `install.packages("V8")`.
 
 #### Passing arguments from R to JavaScript
 
@@ -471,7 +466,7 @@ how to use `extendShinyjs` with parameters):
         textInput("selector", "Element", ""),
         actionButton("btn", "Go")
       ),
-      server = function(input,output,session) {
+      server = function(input, output) {
         observeEvent(input$btn, {
           js$backgroundCol(input$selector, input$col)
         })

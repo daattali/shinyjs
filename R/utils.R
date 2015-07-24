@@ -2,33 +2,16 @@ errMsg <- function(x) {
   stop(sprintf("shinyjs: %s", x), call. = FALSE)
 }
 
-# try grabbing the session var from a parent frame, which should work
-# assuming the shinyServer function defines a "session" param
+# get the shiny session object
 getSession <- function() {
-  sessionName <- "session"
-  session <- dynGetCopy(sessionName)
+  session <- getDefaultReactiveDomain()
   if (is.null(session)) {
-    errMsg(paste0(
-      "could not find `", sessionName, "` object in the server function. ",
-      "Are you sure you defined the Shiny server function as ",
-      "`server = function(input, output, ", sessionName, ")`?"
+    errMsg(paste(
+      "could not find the Shiny session object. This usually happens when a",
+      "shinyjs function is called from a context that wasn't set up by a Shiny session."
     ))
   }
   session
-}
-
-# This is a copy of the base::dynGet function, but since it's new in R3.2.0
-# I want to include this copy so that users of older R can still use it
-dynGetCopy <- function (x) {
-  n <- sys.nframe()
-  while (n > 1L) {
-    n <- n - 1L
-    env <- sys.frame(n)
-    if (exists(x, envir = env)) {
-      return(get(x, envir = env))
-    }
-  }
-  return(NULL)
 }
 
 setupJS <- function(jsFuncs, script, text, ...) {

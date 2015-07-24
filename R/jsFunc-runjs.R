@@ -18,7 +18,7 @@
 #'       useShinyjs(),  # Set up shinyjs
 #'       shiny::actionButton("btn", "Click me")
 #'     ),
-#'     server = function(input, output, session) {
+#'     server = function(input, output) {
 #'       shiny::observeEvent(input$btn, {
 #'         # Run JS code that simply shows a message
 #'         runjs("var today = new Date(); alert(today);")

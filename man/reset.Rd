@@ -46,7 +46,7 @@ if (interactive()) {
       actionButton("resetGender", "Reset Gender"),
       actionButton("resetLetter", "Reset letter")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       observeEvent(input$resetName, {
         reset("name")
       })

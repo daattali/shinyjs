@@ -50,7 +50,7 @@ if (interactive()) {
       shiny::actionButton("btn", "Click me"),
       shiny::textInput("element", "Watch what happens to me")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       shiny::observeEvent(input$btn, {
         # Change the following line for more examples
         toggleState("element")
@@ -81,7 +81,7 @@ if (interactive()) {
       shiny::textInput("text", "Please type at least 3 characters"),
       shiny::actionButton("element", "Submit")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       shiny::observe({
         toggleState(id = "element", condition = nchar(input$text) >= 3)
       })

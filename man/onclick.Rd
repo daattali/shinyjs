@@ -35,7 +35,7 @@ if (interactive()) {
       shiny::actionButton("btn", "Click me"),
       shiny::p(id = "element", "Click me to change my text")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       # Change the following lines for more examples
       onclick("btn", info(date()))
       onclick("element", text("element", "Hello!"))

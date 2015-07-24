@@ -36,7 +36,7 @@
 #'       actionButton("resetGender", "Reset Gender"),
 #'       actionButton("resetLetter", "Reset letter")
 #'     ),
-#'     server = function(input, output, session) {
+#'     server = function(input, output) {
 #'       observeEvent(input$resetName, {
 #'         reset("name")
 #'       })
@@ -54,7 +54,7 @@
 #' }
 #' @export
 reset <- function(id) {
-  # grab the Shiny session that called us
+  # get the Shiny session
   session <- getSession()
 
   # send a call to JavaScript to figure out what elements to reset and what

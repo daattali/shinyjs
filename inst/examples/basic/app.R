@@ -36,7 +36,7 @@ shinyApp(
     )
   ),
 
-  server = function(input, output, session) {
+  server = function(input, output) {
     onclick("update", text("time", date()))
     onclick("toggleAdvanced", toggle(id = "advanced", anim = TRUE))
 

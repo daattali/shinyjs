@@ -35,7 +35,7 @@ if (interactive()) {
       useShinyjs(),  # Set up shinyjs
       shiny::actionButton("btn", "Click me")
     ),
-    server = function(input, output, session) {
+    server = function(input, output) {
       shiny::observeEvent(input$btn, {
         # Change the following line for more examples
         info(paste0("The date is ", date()))
