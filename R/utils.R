@@ -4,7 +4,7 @@ errMsg <- function(x) {
 
 # get the shiny session object
 getSession <- function() {
-  session <- getDefaultReactiveDomain()
+  session <- shiny::getDefaultReactiveDomain()
   if (is.null(session)) {
     errMsg(paste(
       "could not find the Shiny session object. This usually happens when a",
