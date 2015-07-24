@@ -4,13 +4,14 @@ errMsg <- function(x) {
 
 # try grabbing the session var from a parent frame, which should work
 # assuming the shinyServer function defines a "session" param
-getSession <- function(x) {
-  session <- dynGetCopy("session")
+getSession <- function() {
+  sessionName <- "session"
+  session <- dynGetCopy(sessionName)
   if (is.null(session)) {
-    errMsg(paste(
-      "could not find `session` object in the server function.",
-      "Are you sure you defined the Shiny server function as",
-      "`server = function(input, output, session)`?"
+    errMsg(paste0(
+      "could not find `", sessionName, "` object in the server function. ",
+      "Are you sure you defined the Shiny server function as ",
+      "`server = function(input, output, ", sessionName, ")`?"
     ))
   }
   session

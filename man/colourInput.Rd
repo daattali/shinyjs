@@ -62,13 +62,15 @@ for a live demo.
 if (interactive()) {
   shiny::shinyApp(
     ui = shiny::fluidPage(
-      shiny::div("Selected colour:",
+      shiny::strong("Selected colour:",
                  shiny::textOutput("value", inline = TRUE)),
       colourInput("col", "Choose colour", "red"),
       shiny::h3("Update colour input"),
       shiny::textInput("text", "New colour: (colour name or HEX value)"),
       shiny::selectInput("showColour", "Show colour",
         c("both", "text", "background")),
+      shiny::selectInput("palette", "Colour palette",
+        c("square", "limited")),
       shiny::checkboxInput("allowTransparent", "Allow transparent", FALSE),
       shiny::actionButton("btn", "Update")
     ),
@@ -76,7 +78,8 @@ if (interactive()) {
       shiny::observeEvent(input$btn, {
         updateColourInput(session, "col",
           value = input$text, showColour = input$showColour,
-          allowTransparent = input$allowTransparent)
+          allowTransparent = input$allowTransparent,
+          palette = input$palette)
       })
       output$value <- shiny::renderText(input$col)
     }

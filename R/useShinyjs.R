@@ -1,14 +1,15 @@
 #' Set up a Shiny app to use shinyjs
 #'
 #' This function must be called from a Shiny app's UI in order for all other
-#' \code{shinyjs} functions to work.
+#' \code{shinyjs} functions to work.\cr\cr
+#' When defining the Shiny app's server function, you must supply the \code{session}
+#' parameter to the server function; i.e. define the server as
+#' \code{server = function(input, output, session)} rather than
+#' \code{server = function(input, output)}.\cr\cr
+#' You can call \code{useShinyjs()} anywhere inside the UI.
 #'
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
-#' @note When initializing the Shiny app's server, you must supply the
-#' \code{session} parameter to the server function, ie. initialize the server
-#' as \code{server = function(input, output, session)} rather than
-#' \code{server = function(input, output)}
 #' @examples
 #' if (interactive()) {
 #'   shiny::shinyApp(
