@@ -1,3 +1,9 @@
+# shinyjs 0.0.8.3
+
+2015-07-30
+
+- `disable`/`enable` now work for `downloadButton` elements
+
 # shinyjs 0.0.8.2
 
 2015-07-23
