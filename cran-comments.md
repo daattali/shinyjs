@@ -372,3 +372,55 @@ Thanks, on CRAN now.
 R CMD check has no ERRORs or WARNINGs, and 2 NOTEs: one is about "possibly" invalid URLs - this is because the URLs are shiny apps on a shiny server and shiny server doesn't support returning headers from the curl tool, the other NOTE is about having NEWS.md as a top-level file.
 
 ## Reviewer comments
+
+2015-07-30 Kurt Hornik
+
+```
+There's also
+
+* checking R code for possible problems ... NOTE
+formatHEXsingle: no visible global function definition for ‘colors’
+formatHEXsingle: no visible binding for global variable ‘rgb’
+formatHEXsingle: no visible global function definition for ‘col2rgb’
+Undefined global functions or variables:
+  col2rgb colors rgb
+Consider adding
+  importFrom("grDevices", "col2rgb", "colors", "rgb")
+to your NAMESPACE.
+
+Pls fix.
+
+Re
+
+Found the following (possibly) invalid URLs:
+  URL: http://daattali.com/shiny/colourInput/
+    From: man/colourInput.Rd
+          man/updateColourInput.Rd
+          inst/doc/overview.html
+    Status: 404
+    Message: Not Found
+  URL: http://daattali.com/shiny/shinyjs-basic/
+    From: inst/doc/overview.html
+    Status: 404
+    Message: Not Found
+  URL: http://daattali.com/shiny/shinyjs-demo/
+    From: man/runExample.Rd
+          man/shinyjs.Rd
+          inst/doc/overview.html
+    Status: 404
+    Message: Not Found
+
+I thought that new versions of shiny would honor HEAD requests?  (May
+stil be devel only ...)
+
+Best
+-k
+```
+
+# Round 2
+
+## Submission comments
+
+2015-07-30
+
+2 comments were made on previous submission: 1. I had to namespace all non-base functions, 2. Shiny does not yet honour HEAD requests (there's an open pull request for it)
