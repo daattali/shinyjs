@@ -351,3 +351,24 @@ R CMD check has no ERRORs or WARNINGs, and the same 2 NOTEs: one is about having
 2015-06-24 Uwe Ligges
 
 Thanks, on CRAN now.
+
+
+---
+
+# Version 0.0.8.3
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.0 (local)
+* ubuntu 12.04, R 3.2.0 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-07-30
+
+R CMD check has no ERRORs or WARNINGs, and 2 NOTEs: one is about "possibly" invalid URLs - this is because the URLs are shiny apps on a shiny server and shiny server doesn't support returning headers from the curl tool, the other NOTE is about having NEWS.md as a top-level file.
+
+## Reviewer comments
