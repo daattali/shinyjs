@@ -424,3 +424,14 @@ Best
 2015-07-30
 
 2 comments were made on previous submission: 1. I had to namespace all non-base functions, 2. Shiny does not yet honour HEAD requests (there's an open pull request for it)
+
+## Reviewer comments
+
+2015-07-30 Kurt Hornik
+
+Thanks, on CRAN now.
+
+I'll follow up with the shiny maintainer re HEAD.
+
+Best
+-k
