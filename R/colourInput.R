@@ -196,8 +196,8 @@ formatHEXsingle <- function(x) {
   }
 
   # ensure x is a valid HEX colour or a valid named colour
-  if (x %in% colors()) {
-    x <- do.call(rgb, as.list(col2rgb(x) / 255))
+  if (x %in% grDevices::colors()) {
+    x <- do.call(grDevices::rgb, as.list(grDevices::col2rgb(x) / 255))
   }
   if (!grepl("^#?([[:xdigit:]]{3}|[[:xdigit:]]{6})$", x)) {
     stop(sprintf("%s is not a valid colour", x), call. = FALSE)
