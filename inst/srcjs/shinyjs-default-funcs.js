@@ -162,7 +162,6 @@ shinyjs = function() {
           }
         }
       );
-      shinyjs.disable({ selector : '.shinyjs-disabled' });
     },
 
     // is an element currently hidden?
