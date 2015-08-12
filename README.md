@@ -16,7 +16,7 @@ original value, and many more useful functions. `shinyjs` can also be
 used to easily run your own custom JavaScript functions from R.
 
 Live demos
------
+==========
 
 You can [check out a demo Shiny
 app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
@@ -57,6 +57,8 @@ Overview of main functions
 
 -   `enable`/`disable`/`toggleState` - enable or disable an input
     element, such as a button or a text input.
+
+-   `disabled` - initialize a Shiny input as disabled.
 
 -   `info` - show a message to the user (using JavaScript's `alert`
     under the hood).

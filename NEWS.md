@@ -1,3 +1,9 @@
+# shinyjs 0.0.9
+
+2015-08-12
+
+- add `disabled` function that initializes a Shiny input in a disabled state
+
 # shinyjs 0.0.8.3
 
 2015-07-30

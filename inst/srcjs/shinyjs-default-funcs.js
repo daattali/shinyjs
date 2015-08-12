@@ -1,4 +1,4 @@
-// shinyjs by Dean Attal
+// shinyjs 0.0.8.3 by Dean Attal
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -29,6 +29,7 @@ shinyjs = function() {
     // call this function once (automatically) to initialize some stuff
     initShinyjs : function() {
       shinyjs.initResettables();
+      shinyjs.initDisabled();
     },
 
     // find all shiny input elements and set them up to allow them to be reset
@@ -148,6 +149,20 @@ shinyjs = function() {
                 addClass('shinyjs-resettable');
         }
       }
+    },
+
+    // disable all the elements that were initialized as disabled
+    initDisabled : function() {
+      $.each(
+        $(".shinyjs-disabled"),
+        function(key, el) {
+          var input = $(el).find("[id]");
+          if (input.length > 0) {
+            shinyjs.disable({ elements : input })
+          }
+        }
+      );
+      shinyjs.disable({ selector : '.shinyjs-disabled' });
     },
 
     // is an element currently hidden?

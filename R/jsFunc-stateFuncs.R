@@ -24,6 +24,7 @@
 #' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
+#' \code{\link[shinyjs]{disabled}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @examples

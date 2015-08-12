@@ -62,6 +62,8 @@ to `show`).
 - `enable`/`disable`/`toggleState` - enable or disable an input element, such
 as a button or a text input.
 
+- `disabled` - initialize a Shiny input as disabled.
+
 - `info` - show a message to the user (using JavaScript's `alert` under the
 hood).
 

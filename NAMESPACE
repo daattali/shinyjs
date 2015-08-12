@@ -3,6 +3,7 @@
 export(addClass)
 export(colourInput)
 export(disable)
+export(disabled)
 export(enable)
 export(extendShinyjs)
 export(hidden)
