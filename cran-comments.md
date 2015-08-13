@@ -435,3 +435,24 @@ I'll follow up with the shiny maintainer re HEAD.
 
 Best
 -k
+
+
+---
+
+# Version 0.1.0
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.1 (local)
+* ubuntu 12.04, R 3.2.1 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-08-12
+
+R CMD check has no ERRORs or WARNINGs, and 2 NOTEs: one is about having NEWS.md as a top-level file and the other is the generic NOTE informing me who the maintainer of the package is.
+
+## Reviewer comments
