@@ -66,5 +66,5 @@ inlineCSS <- function(rules) {
                }),
         collapse = "")
   }
-  shiny::tags$head(shiny::tags$style(shiny::HTML(rules)))
+  insertHead(shiny::tags$style(shiny::HTML(rules)))
 }

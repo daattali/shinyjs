@@ -4,7 +4,12 @@
 \alias{useShinyjs}
 \title{Set up a Shiny app to use shinyjs}
 \usage{
-useShinyjs()
+useShinyjs(rmd = FALSE)
+}
+\arguments{
+\item{rmd}{Set this to \code{TRUE} if you are using \code{shinyjs} inside an
+interactive R markdown document. For regular Shiny apps use the
+default value of \code{FALSE}.}
 }
 \value{
 Scripts that \code{shinyjs} requires that are automatically inserted

@@ -4,6 +4,9 @@
 #' \code{shinyjs} functions to work.\cr\cr
 #' You can call \code{useShinyjs()} from anywhere inside the UI.
 #'
+#' @param rmd Set this to \code{TRUE} if you are using \code{shinyjs} inside an
+#' interactive R markdown document. For regular Shiny apps use the
+#' default value of \code{FALSE}.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
 #' @examples
@@ -28,7 +31,10 @@
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
-useShinyjs <- function() {
+useShinyjs <- function(rmd = FALSE) {
+  stopifnot(rmd == TRUE || rmd == FALSE)
+  .globals$rmd <- rmd
+
   # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
                "addClass", "removeClass", "toggleClass", "text",
