@@ -70,17 +70,28 @@ colourInput <- function(inputId, label, value = "white",
                         palette = c("square", "limited"),
                         allowedCols,
                         allowTransparent = FALSE, transparentText) {
+  # sanitize the arguments
   value <- formatHEX(value)
   showColour <- match.arg(showColour)
   palette <- match.arg(palette)
 
-  jsInputBinding <- system.file("srcjs", "input_binding_colour.js",
-                                package = "shinyjs")
-  jsCP <- system.file("www", "shared", "colourpicker", "js", "colourpicker.min.js",
-                      package = "shinyjs")
-  cssCP <- system.file("www", "shared", "colourpicker", "css", "colourpicker.min.css",
-                       package = "shinyjs")
+  # declare dependencies
+  shiny::addResourcePath("colourpickerbinding",
+                         system.file("srcjs", package = "shinyjs"))
+  shiny::addResourcePath("colourpicker",
+                         system.file("www", "shared", "colourpicker", package = "shinyjs"))
+  deps <- list(
+    htmltools::htmlDependency(
+      "colourpickerbinding", "0.1.0", c(href = "colourpickerbinding"),
+      script = "input_binding_colour.js"),
+    htmltools::htmlDependency(
+      "colourpicker", "0.1.0", c(href = "colourpicker"),
+      script = "js/colourpicker.min.js",
+      stylesheet = "css/colourpicker.min.css"
+    )
+  )
 
+  # build the colour input tag
   inputTag <-
     shiny::tags$input(
       id = inputId, type = "text",
@@ -107,18 +118,15 @@ colourInput <- function(inputId, label, value = "white",
       `data-allowed-cols` = allowedCols)
   }
 
-  shiny::tagList(
-    shiny::singleton(shiny::tags$head(
-      shiny::includeScript(jsCP),
-      shiny::includeCSS(cssCP),
-      shiny::includeScript(jsInputBinding)
-    )),
-    shiny::div(class = "form-group shiny-input-container",
-        `data-shiny-input-type` = "colour",
-        label %AND% shiny::tags$label(label, `for` = inputId),
-        inputTag
+  inputTag <-
+    shiny::div(
+      class = "form-group shiny-input-container",
+      `data-shiny-input-type` = "colour",
+      label %AND% shiny::tags$label(label, `for` = inputId),
+      inputTag
     )
-  )
+
+  htmltools::attachDependencies(inputTag, deps)
 }
 
 #' Change the value of a colour input

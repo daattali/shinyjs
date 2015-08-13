@@ -6,6 +6,7 @@
 - add `disabled` function that initializes a Shiny input in a disabled state
 - add a `rmd` parameter to `useShinyjs` that lets you use shinyjs inside interactive R markdown documents (default is FALSE to favour regular Shiny apps)
 - the bulk of the shinyjs JavaScript code is no longer embeded in the HTML as text and is instead linked to as a file. This makes the Shiny app's HTML much cleaner and smaller
+- use htmltools dependency system for handling javascript/css dependencies
 
 # shinyjs 0.0.8.3
 
