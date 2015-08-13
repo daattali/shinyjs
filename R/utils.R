@@ -57,7 +57,9 @@ shinyjsInlcudeScript <- function(script) {
   if (missing(script) || is.null(script)) {
     return(NULL)
   } else {
-    shiny::includeScript(script)
+    resourcePrefix <- sprintf("shinyjs-%s", digest::digest(script, algo = "md5"))
+    shiny::addResourcePath(resourcePrefix, dirname(script))
+    shiny::tags$script(src = file.path(resourcePrefix, basename(script)))
   }
 }
 
