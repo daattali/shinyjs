@@ -30,7 +30,13 @@ shinyjs = function() {
     initShinyjs : function() {
       shinyjs.initResettables();
       shinyjs.initDisabled();
+      shinyjs.init();
     },
+
+    // the init function should not be implemented here, it is a placeholder
+    // so that users can define their own `shinyjs.init` function (using extendShinyjs)
+    // that will be run when the page is initialized
+    init : function() {},
 
     // find all shiny input elements and set them up to allow them to be reset
     initResettables : function() {

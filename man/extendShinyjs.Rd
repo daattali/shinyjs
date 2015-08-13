@@ -85,6 +85,34 @@ function you want to use in R has to have a name beginning with
 for more information on how to write effective functions.
 }
 
+\section{Running JavaScript code on page load}{
+
+If there is any JavaScript code that you want to run immediately when the page loads
+rather than having to call it from the server, you can place it inside a
+\code{shinyjs.init} function. The function \code{shinyjs.init}
+will automatically be called when the Shiny app's HTML is initialized. A common
+use for this is when registering event handlers or initializing JavaScript objects,
+as these usually just need to run once when the page loads.
+
+For example, the following example uses \code{shinyjs.init} to register an event
+handler so that every keypress will print its corresponding key code:
+
+\preformatted{
+jscode <- "
+shinyjs.init = function() {
+  $(document).keypress(function(e) { alert('Key pressed: ' + e.which); });
+}"
+runApp(shinyApp(
+  ui = fluidPage(
+    useShinyjs(),
+    extendShinyjs(text = jscode),
+    "Press any key"
+  ),
+  server = function(input, output) {}
+))
+}
+}
+
 \section{Passing arguments from R to JavaScript}{
 
 Any \code{shinyjs} function that is called will pass a single array-like

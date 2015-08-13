@@ -392,6 +392,34 @@ simple.
 Note: in order to use `extendShinyjs`, you must have the `V8` package
 installed. You can install it with `install.packages("V8")`.
 
+#### Running JavaScript code on page load
+
+If there is any JavaScript code that you want to run immediately when
+the page loads rather than having to call it from the server, you can
+place it inside a `shinyjs.init` function. The function `shinyjs.init`
+will automatically be called when the Shiny app's HTML is initialized. A
+common use for this is when registering event handlers or initializing
+JavaScript objects, as these usually just need to run once when the page
+loads.
+
+For example, the following example uses `shinyjs.init` to register an
+event handler so that every keypress will print its corresponding key
+code:
+
+    jscode <- "
+    shinyjs.init = function() {
+      $(document).keypress(function(e) { alert('Key pressed: ' + e.which); });
+    }"
+
+    runApp(shinyApp(
+      ui = fluidPage(
+        useShinyjs(),
+        extendShinyjs(text = jscode),
+        "Press any key"
+      ),
+      server = function(input, output) {}
+    ))
+
 #### Passing arguments from R to JavaScript
 
 Any `shinyjs` function that is called will pass a single array-like
