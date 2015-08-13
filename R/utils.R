@@ -45,7 +45,7 @@ setupJS <- function(jsFuncs, script, text, ...) {
 # Shiny app, but if it's inside an interactive Rmarkdown document then don't
 # use <head> as it won't work
 insertHead <- function(...) {
-  if (.globals$rmd) {
+  if (is.null(.globals$rmd) || .globals$rmd) {
     shiny::tagList(...)
   } else {
     shiny::tags$head(...)
