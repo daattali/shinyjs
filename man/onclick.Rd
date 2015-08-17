@@ -22,6 +22,13 @@ when an element is clicked.  The most sensible use case is to run code after
 clicking a button or a link, but this function can be used on any other
 HTML element as well.
 }
+\details{
+Note that this function only works on HTML tags that are rendered in
+the UI. Any tag that is created dynamically using \code{uiOutput} +
+\code{renderUI} will not be able to register an \code{onclick} handler.
+For more details and a discussion of possible workarounds,
+\href{https://github.com/daattali/shinyjs/issues/25}{see the issue on GitHub}.
+}
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 in the app's ui.
