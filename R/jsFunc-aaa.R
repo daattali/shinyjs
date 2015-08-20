@@ -3,7 +3,8 @@ jsFunc <- function(...) {
   params <- eval(substitute(alist(...)))
 
   if (!is.null(names(params)) && any(vapply(names(params), nzchar, 1L) == 0)) {
-    errMsg("you cannot mix named and unnamed arguments in the same function call")
+    errMsg(paste0("you cannot mix named and unnamed arguments in the same function call",
+                  " (function: ", as.character(match.call()[1]), ")"))
   }
 
   # evaluate the parameters in the appropriate environment
