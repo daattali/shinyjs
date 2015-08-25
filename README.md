@@ -20,10 +20,7 @@ Live demos
 
 You can [check out a demo Shiny
 app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
-with some of the functionality that `shinyjs` makes available, or [have
-a look at a very basic Shiny
-app](http://daattali.com/shiny/shinyjs-basic/) that uses `shinyjs` to
-enhance the user experience with very minimal and simple R code.
+with some of the functionality that `shinyjs` makes available.
 
 `shinyjs` also includes a `colourInput` which is an input control that
 allows users to select colours. You can see a live demo
@@ -34,7 +31,7 @@ Installation
 
 `shinyjs` is available through both CRAN and GitHub:
 
-To install the CRAN version:
+To install the stable CRAN version:
 
     install.packages("shinyjs")
 
@@ -45,6 +42,10 @@ To install the latest developmental version from GitHub:
 
 Overview of main functions
 --------------------------
+
+In order to use any `shinyjs` function in a Shiny app, you must first
+call `useShinyjs()` anywhere in the Shiny app's UI. The following is a
+list of the common functions:
 
 -   `show`/`hide`/`toggle` - display or hide an element. There are
     arguments that control the animation as well, though animation is
@@ -93,27 +94,119 @@ Overview of main functions
 to see some of these in action, or install `shinyjs` and run
 `shinyjs::runExample()` to see more demo apps.
 
-Motivation
-----------
+Usage
+-----
 
-Shiny is a fantastic R package provided by RStudio that lets you turn
-any R code into an interactive webpage. It's very powerful and one of
-the most useful packages in my opinion. But there are just a few simple
-pieces of functionality that I always find missing and I implement
-myself in my Shiny apps using JavaScript (JS) because it's either not
-supported natively by Shiny or it's just cleaner to do so. Simple things
-like showing/hiding elements, enabling/disabling a button, showing a
-popup message to the user, manipulating the CSS class or HTML content of
-an element, etc.
+A typical Shiny app has a UI portion and a server portion. As mentioned
+above, `useShinyjs()` must be called in the Shiny app's UI, and it's
+best to include it near the top as a convention. For example, here is a
+minimal Shiny app that uses `shinyjs`:
 
-After noticing that I'm writing the same JS code in all my apps, and
-since making Shiny talk to JS is a bit tedious and annoying with all the
-message passing, I decided to just package it to make it easily
-reusable. Now I can simply call `hide("panel")` or `disable("button")`.
-I was lucky enough to have previous experience with JS so I knew how to
-achieve the results that I wanted, but for any Shiny developer who is
-not proficient in JS, hopefully this package will make it easy to extend
-the power of their Shiny apps.
+    library(shiny)
+    library(shinyjs)
+
+    ui <- fluidPage(
+      useShinyjs(),
+      actionButton("button", "Click me"),
+      div(id = "hello", "Hello!")
+    )
+
+    server <- function(input, output) {
+      observeEvent(input$button, {
+        toggle("hello")
+      })
+    }
+
+    shinyApp(ui, server)
+
+This is how most Shiny apps should initialize `shinyjs`, but there are a
+few common scenarios that should be treated a little differently: using
+`shinyjs` in interactive documents, using `shinyjs` in Shiny dashboards,
+and using `shinyjs` in Shiny apps that use a `navbarPage` layout.
+
+### Using shinyjs in interactive R Markdown documents
+
+It is possible to embed Shiny components in an R Markdown document,
+resulting in interactive R Markdown documents. Interactive documents
+don't explicitly specify a UI and a server, but using `shinyjs` is still
+easy; simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE`
+argument). For example, the following code can be used inside an R
+Markdown code chunk:
+
+    library(shinyjs)
+
+    useShinyjs(rmd = TRUE)
+    actionButton("button", "Click me")
+    div(id = "hello", "Hello!")
+
+    observeEvent(input$button, {
+     toggle("hello")
+    })
+
+### Using shinyjs in Shiny Dashboards
+
+`shinydashboard` is an R package that lets you create nice dashboards
+with Shiny. Since it's fairly popular and has a different structure than
+typical Shiny apps, it can be unclear where to include the call to
+`useShinyjs()` in these apps. It is recommended to place the call to
+`useShinyjs()` in the beginning of `dashboardBody()`. For example, here
+is a minimal Shiny dashboard that uses `shinyjs`:
+
+    library(shiny)
+    library(shinydashboard)
+    library(shinyjs)
+
+    ui <- dashboardPage(
+      dashboardHeader(),
+      dashboardSidebar(),
+      dashboardBody(
+        useShinyjs(),
+        actionButton("button", "Click me"),
+        div(id = "hello", "Hello!")
+      )
+    )
+
+    server <- function(input, output) {
+      observeEvent(input$button, {
+        toggle("hello")
+      })
+    }
+
+    shinyApp(ui, server)
+
+### Using shinyjs with navbarPage
+
+When creating a Shiny app that uses a `navbarPage` layout, the call to
+`useShinyjs()` can be placed inside any of the tabs (since the only real
+requirement is that it will be present *somewhere* in the UI). While
+having `useShinyjs()` inside the contents of any tab will work, there is
+another method that is preferred. You can wrap the `navbarPage` in a
+`tagList`, and call `useShinyjs()` within the `tagList`. This way,
+`shinyjs` gets set up in a way that is independent of each of the tabs.
+For example, here is a minimal Shiny app that uses this technique to use
+`shinyjs` in a Shiny app with `navbarPage` layout:
+
+    library(shiny)
+    library(shinyjs)
+
+    ui <- tagList(
+      useShinyjs(),
+      navbarPage(
+        "shinyjs with navbarPage",
+        tabPanel("tab1",
+                 actionButton("button", "Click me"),
+                 div(id = "hello", "Hello!")),
+        tabPanel("tab2")
+      )
+    )
+
+    server <- function(input, output, session) {
+      observeEvent(input$button, {
+        toggle("hello")
+      })
+    }
+
+    shinyApp(ui, server)
 
 Basic use case - complete working example
 -----------------------------------------
@@ -153,9 +246,7 @@ Here is what that app would look like
 
 Now suppose we want to add a few features to the app to make it a bit
 more user-friendly. First we need to set up the app to use `shinyjs` by
-making a call to `useShinyjs()` anywhere in the Shiny app's UI. This is
-required in order to set up all the JavaScript and a few other things
-for `shinyjs` to work properly.
+making a call to `useShinyjs()` in the Shiny app's UI.
 
 Here are 7 features we'll add to the app, each followed with the code to
 implement it using `shinyjs`:
@@ -512,12 +603,12 @@ Note that I chose to define the JS code as a string for illustration
 purposes, but in reality I would prefer to place the code in a separate
 file and use the `script` argument instead of `text`.
 
-Altenatives using native Shiny
-------------------------------
+Motivation & alternatives using native Shiny
+-------------------------------------------
 
 The initial release of this package was announced [on my
 blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
-this topic.
+these topics.
 
 ## Contributions
 

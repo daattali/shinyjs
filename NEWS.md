@@ -4,6 +4,7 @@
 
 - better debugging: when a shinyjs JavaScript function is called with a mix of both named and unnamed arguments (which is not allowed), tell the user what function exactly was called. This is done because sometimes a different package doesn't properly namespace its function calls and end up accidentally calling shinyjs functions, which results in weird bugs.
 - add comments to the `onclick` documentation, to make it clear that it can't work with dynamic UIs
+- improved documentation
 
 # shinyjs 0.1.0
 
