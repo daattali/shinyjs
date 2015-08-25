@@ -146,11 +146,11 @@ Markdown code chunk:
 ### Using shinyjs in Shiny Dashboards
 
 `shinydashboard` is an R package that lets you create nice dashboards
-with Shiny. Since it's fairly popular and has a different structure than
-typical Shiny apps, it can be unclear where to include the call to
-`useShinyjs()` in these apps. It is recommended to place the call to
-`useShinyjs()` in the beginning of `dashboardBody()`. For example, here
-is a minimal Shiny dashboard that uses `shinyjs`:
+with Shiny. Since it has a different structure than typical Shiny apps,
+it can be unclear where to include the call to `useShinyjs()` in these
+apps. It is recommended to place the call to `useShinyjs()` in the
+beginning of `dashboardBody()`. For example, here is a minimal Shiny
+dashboard that uses `shinyjs`:
 
     library(shiny)
     library(shinydashboard)
@@ -183,8 +183,8 @@ having `useShinyjs()` inside the contents of any tab will work, there is
 another method that is preferred. You can wrap the `navbarPage` in a
 `tagList`, and call `useShinyjs()` within the `tagList`. This way,
 `shinyjs` gets set up in a way that is independent of each of the tabs.
-For example, here is a minimal Shiny app that uses this technique to use
-`shinyjs` in a Shiny app with `navbarPage` layout:
+For example, here is a minimal Shiny app that uses `shinyjs` inside a
+`navbarPage` layout:
 
     library(shiny)
     library(shinyjs)
@@ -604,7 +604,7 @@ purposes, but in reality I would prefer to place the code in a separate
 file and use the `script` argument instead of `text`.
 
 Motivation & alternatives using native Shiny
--------------------------------------------
+--------------------------------------------
 
 The initial release of this package was announced [on my
 blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses

@@ -137,7 +137,7 @@ observeEvent(input$button, {
 
 ### Using shinyjs in Shiny Dashboards
 
-`shinydashboard` is an R package that lets you create nice dashboards with Shiny. Since it's fairly popular and has a different structure than typical Shiny apps, it can be unclear where to include the call to `useShinyjs()` in these apps. It is recommended to place the call to `useShinyjs()` in the beginning of `dashboardBody()`. For example, here is a minimal Shiny dashboard that uses `shinyjs`:
+`shinydashboard` is an R package that lets you create nice dashboards with Shiny. Since it has a different structure than typical Shiny apps, it can be unclear where to include the call to `useShinyjs()` in these apps. It is recommended to place the call to `useShinyjs()` in the beginning of `dashboardBody()`. For example, here is a minimal Shiny dashboard that uses `shinyjs`:
 
 ```
 library(shiny)
@@ -165,7 +165,7 @@ shinyApp(ui, server)
 
 ### Using shinyjs with navbarPage
 
-When creating a Shiny app that uses a `navbarPage` layout, the call to `useShinyjs()` can be placed inside any of the tabs (since the only real requirement is that it will be present *somewhere* in the UI). While having `useShinyjs()` inside the contents of any tab will work, there is another method that is preferred. You can wrap the `navbarPage` in a `tagList`, and call `useShinyjs()` within the `tagList`. This way, `shinyjs` gets set up in a way that is independent of each of the tabs. For example, here is a minimal Shiny app that uses this technique to use `shinyjs` in a Shiny app with `navbarPage` layout:
+When creating a Shiny app that uses a `navbarPage` layout, the call to `useShinyjs()` can be placed inside any of the tabs (since the only real requirement is that it will be present *somewhere* in the UI). While having `useShinyjs()` inside the contents of any tab will work, there is another method that is preferred. You can wrap the `navbarPage` in a `tagList`, and call `useShinyjs()` within the `tagList`. This way, `shinyjs` gets set up in a way that is independent of each of the tabs. For example, here is a minimal Shiny app that uses `shinyjs` inside a `navbarPage` layout:
 
 ```
 library(shiny)
