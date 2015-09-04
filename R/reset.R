@@ -110,15 +110,3 @@ reset <- function(id) {
 
   invisible(NULL)
 }
-
-#' Resettable (deprecated)
-#'
-#' Do not use this function - it is not needed.
-#'
-#' @param tag Shiny tag.
-#' @export
-resettable <- function(tag) {
-  message("You do not need to call `resettable`, any input can be reset without",
-          "initialization")
-  tag
-}
