@@ -10,6 +10,8 @@
 #' yourself writing code such as \code{if (test()) show(id) else hide(id)}
 #' then you can use \code{toggle} instead: \code{toggle(id = id, condition = test())}.
 #'
+#' If you want to hide/show an element in a few seconds rather than immediately,
+#' you can use the \code{\link[shinyjs]{delay}} function.
 #'
 #' @param ... The following parameters are available:
 #' \tabular{ll}{
@@ -22,9 +24,6 @@
 #'   \strong{\code{time}}       \tab The number of seconds to make the
 #'                                   animation last
 #'                                   (default: \code{0.5}) \cr
-#'   \strong{\code{delay}}      \tab The number of seconds to wait before
-#'                                   hiding/showing the element
-#'                                   (default: \code{0}) \cr
 #'   \strong{\code{selector}}   \tab JQuery selector of the elements to show/hide.
 #'                                   Ignored if the \code{id} argument is given.
 #'                                   For example, to select all span elements with
@@ -34,7 +33,8 @@
 #' }
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
-#' \code{\link[shinyjs]{hidden}}
+#' \code{\link[shinyjs]{hidden}},
+#' \code{\link[shinyjs]{delay}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @examples
@@ -57,9 +57,9 @@
 #'   # The shinyjs function call in the above app can be replaced by
 #'   # any of the following examples to produce similar Shiny apps
 #'   toggle(id = "element")
+#'   delay(1000, toggle(id = "element")) # toggle in 1 second
 #'   toggle("element", TRUE)
 #'   toggle("element", TRUE, "fade", 2)
-#'   toggle(id = "element", delay = 1)
 #'   toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
 #'   show("element")
 #'   show(id = "element", anim = TRUE)
