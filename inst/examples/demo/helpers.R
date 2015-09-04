@@ -1,12 +1,13 @@
 # the allowed expressions to let the user run
 examples <- c(
   'toggle("btn")',
+  'delay(500, toggle("btn"))',
   'hide("btn")',
   'show("btn")',
   'reset("expr")',
   'info(R.Version())',
   'onclick("btn", info(date()))',
-  'toggle(delay = 0.5, selector = "a")',
+  'toggle(selector = "a")',
   'toggle("btn", TRUE, "fade", 2)',
   'toggle(id = "btn", condition = (sample(2, 1) == 1))',
   'toggle(id = "btn", anim = TRUE, time = 1, animType = "slide")',
@@ -28,17 +29,18 @@ names(examplesNamed) <- examples
 
 # show some help text explaining each function
 helpText <- list(
-  "toggle" = "will alternate between showing and hiding the button below",
-  "hide" = "will hide the button below",
-  "show" = "will make the button below visible",
-  "reset" = "will reset an input widget (in this case - the select box) to its original value",
-  "info" = "will show a message to the user",
-  "onclick" = "will run the given R expression when the button is clicked",
+  "toggle"      = "will alternate between showing and hiding the button below",
+  "delay"       = "will run the given R expression after the specified number of milliseconds has elapsed",
+  "hide"        = "will hide the button below",
+  "show"        = "will make the button below visible",
+  "reset"       = "will reset an input widget (in this case - the select box) to its original value",
+  "info"        = "will show a message to the user",
+  "onclick"     = "will run the given R expression when the button is clicked",
   "toggleState" = "will alternate between enabling and disabling the button below",
-  "disable" = "will disable the button below from being clicked",
-  "enable" = "will allow the button below to be clicked",
-  "text" = "will change the HTML content of an element",
-  "addClass" = "will add a CSS class to an element",
+  "disable"     = "will disable the button below from being clicked",
+  "enable"      = "will allow the button below to be clicked",
+  "text"        = "will change the HTML content of an element",
+  "addClass"    = "will add a CSS class to an element",
   "removeClass" = "will remove a CSS class from an element",
   "toggleClass" = "will alternate between adding and removing a class from an element"
 )

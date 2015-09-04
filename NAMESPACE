@@ -2,6 +2,7 @@
 
 export(addClass)
 export(colourInput)
+export(delay)
 export(disable)
 export(disabled)
 export(enable)

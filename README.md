@@ -59,6 +59,9 @@ list of the common functions:
 -   `enable`/`disable`/`toggleState` - enable or disable an input
     element, such as a button or a text input.
 
+-   `delay` - execute R code (including any `shinyjs` functions) after a
+    specified amount of time.
+
 -   `disabled` - initialize a Shiny input as disabled.
 
 -   `info` - show a message to the user (using JavaScript's `alert`

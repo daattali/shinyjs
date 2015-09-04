@@ -1,3 +1,10 @@
+# shinyjs 0.1.2
+
+2015-09-04
+
+- added `delay` function, which allows you to run code after a specified amount of time has elapsed
+- removed defunc `resettable` function
+
 # shinyjs 0.1.1
 
 2015-08-19

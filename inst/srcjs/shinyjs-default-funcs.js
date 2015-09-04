@@ -1,4 +1,4 @@
-// shinyjs 0.0.8.3 by Dean Attal
+// shinyjs 0.1.2 by Dean Attal
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -609,7 +609,21 @@ shinyjs = function() {
 
       // send a message back to R with the info for each input element
       Shiny.onInputChange(params.shinyInputId, messages);
-    }
+    },
+
+   // run an R function after an asynchronous delay
+   delay : function(params) {
+      var defaultParams = {
+        ms : null,
+        shinyInputId : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      // send a message back to R when the delay is up
+      setTimeout(function() {
+        Shiny.onInputChange(params.shinyInputId, params.ms);
+      }, params.ms);
+   }
   };
 }();
 
