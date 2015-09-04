@@ -3,7 +3,7 @@ library(shiny)
 source("helpers.R")
 
 shinyUI(fluidPage(
-  title = "Experimenting with shinyjs",
+  title = paste0("Experimenting with shinyjs ", as.character(packageVersion("shinyjs"))),
   tags$head(includeCSS(file.path('www', 'style.css'))),
 
   shinyjs::useShinyjs(),
@@ -11,7 +11,7 @@ shinyUI(fluidPage(
   fluidRow(
   column(9,
     h1(id = "page-title", class = "section-title",
-       "Experimenting with", tags$i("shinyjs"))
+       "Experimenting with", tags$i("shinyjs", as.character(packageVersion("shinyjs"))))
   ),
   column(3,
     div(id = "author-name",
