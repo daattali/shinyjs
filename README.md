@@ -10,10 +10,11 @@ and add the TravisCI status -->
 [![CRAN version](http://www.r-pkg.org/badges/version/shinyjs)](http://cran.r-project.org/web/packages/shinyjs/index.html)
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
-applications without having to know any JavaScript. Examples include
+applications without having to know any JavaScript. Examples include:
 hiding an element, disabling an input, resetting an input back to its
-original value, and many more useful functions. `shinyjs` can also be
-used to easily run your own custom JavaScript functions from R.
+original value, delaying code execution by a few seconds, and many more
+useful functions. `shinyjs` can also be used to easily run your own
+custom JavaScript functions from R.
 
 Live demos
 ==========
@@ -73,6 +74,9 @@ list of the common functions:
 -   `onclick` - run R code when an element is clicked. Was originally
     developed with the sole purpose of running a `shinyjs` function when
     an element is clicked, though any R code can be used.
+
+-   `onevent` - similar to `onclick`, but can be used with many other
+    events instead of click.
 
 -   `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class
     from an element
@@ -612,6 +616,7 @@ Motivation & alternatives using native Shiny
 The initial release of this package was announced [on my
 blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
 these topics.
+
 
 ## Contributions
 
