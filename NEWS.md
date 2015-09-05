@@ -1,3 +1,9 @@
+# shinyjs 0.1.3
+
+2015-09-05
+
+- `onclick` and `onevent` now work with dynamically generated elements. Not a trivial fix, but enough people requested it that it was important
+
 # shinyjs 0.1.2
 
 2015-09-04

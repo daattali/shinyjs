@@ -29,13 +29,6 @@ when an element is clicked.\cr\cr
 not only a mouse click. See below for a list of possible event types. Using "click"
 results in the same behaviour as calling \code{onclick}.
 }
-\details{
-Note that this function only works on HTML tags that are rendered in
-the UI. Any tag that is created dynamically using \code{uiOutput} +
-\code{renderUI} will not be able to register an \code{onclick} or \code{onevent} handler.
-For more details and a discussion of possible workarounds,
-\href{https://github.com/daattali/shinyjs/issues/25}{see the issue on GitHub}.
-}
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 in the app's ui.

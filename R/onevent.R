@@ -6,12 +6,6 @@
 #' not only a mouse click. See below for a list of possible event types. Using "click"
 #' results in the same behaviour as calling \code{onclick}.
 #'
-#' Note that this function only works on HTML tags that are rendered in
-#' the UI. Any tag that is created dynamically using \code{uiOutput} +
-#' \code{renderUI} will not be able to register an \code{onclick} or \code{onevent} handler.
-#' For more details and a discussion of possible workarounds,
-#' \href{https://github.com/daattali/shinyjs/issues/25}{see the issue on GitHub}.
-#'
 #' @param event The event that needs to be triggered to run the code. See below
 #' for a list of possible event types.
 #' @param id The id of the element/Shiny tag
