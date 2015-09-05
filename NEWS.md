@@ -2,6 +2,7 @@
 
 2015-09-05
 
+- bug fix: `disabled` now works with all input types
 - bug fix: `enable`/`disable` did not work on `selectInput`, `sliderInput`, and `actionButton`
 - bug fix: resetting a slider input with a range did not reset the end point, only the start point
 

@@ -65,15 +65,12 @@ shinyjs = function() {
   };
 
   var _initDisabledHelper = function(els) {
-    // disable elements
-    $.each(els,
-      function(key, el) {
-        var input = $(el).find("[id]");
-        if (input.length > 0) {
-          shinyjs.disable({ elements : input })
-        }
-      }
-    );
+    // use a tiny delay because some input elements (sliders, selectize) need
+    // to first be initialized, and I don't know how to tell when they're ready
+    setTimeout(function() {
+      // disable elements
+      shinyjs.disable({ elements : els });
+    }, 10);
   };
 
   // find all shiny input elements and set them up to allow them to be reset
