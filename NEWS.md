@@ -1,3 +1,9 @@
+# shinyjs 0.2.0
+
+2015-09-05
+
+- version bump for CRAN submission
+
 # shinyjs 0.1.4
 
 2015-09-05
