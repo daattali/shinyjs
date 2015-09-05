@@ -21,11 +21,6 @@ checkboxInput, checkboxGroupInput.  Buttons are not supported,
 meaning that you cannot use this function to reset the value of an
 action button back to 0.
 }
-\details{
-Note that this function only works on input widgets that are rendered in
-the UI. Any input that is created dynamically using \code{uiOutput} +
-\code{renderUI} will not be resettable.
-}
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 in the app's ui.

@@ -10,10 +10,6 @@
 #' meaning that you cannot use this function to reset the value of an
 #' action button back to 0.
 #'
-#' Note that this function only works on input widgets that are rendered in
-#' the UI. Any input that is created dynamically using \code{uiOutput} +
-#' \code{renderUI} will not be resettable.
-#'
 #' @param id The id of the input element to reset or the id of an HTML
 #' tag to reset all input elements inside it.
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
