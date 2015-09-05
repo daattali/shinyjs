@@ -523,6 +523,11 @@ shinyjs = function() {
       var $els = _getElements(params);
       if ($els === null) return;
 
+      // make sure we take special care of elements that need to be specifically
+      // enabled with special javascript
+      var toadd = $els.find(".selectized, .js-range-slider");
+      $els = $($els.toArray().concat(toadd.toArray()));
+
       $.map($els, function(el) {
         var $el = $(el);
 
@@ -539,7 +544,8 @@ shinyjs = function() {
 
         // enable the container as well as all individual inputs inside
         // (this is needed for grouped inputs such as radio and checkbox groups)
-        $el = $($el.toArray().concat($el.find("input").toArray()));
+        var toadd = $el.find("input, button");
+        $el = $($el.toArray().concat(toadd.toArray()));
         $el.attr('disabled', false);
         $el.prop('disabled', false);
       });
@@ -555,6 +561,11 @@ shinyjs = function() {
 
       var $els = _getElements(params);
       if ($els === null) return;
+
+      // make sure we take special care of elements that need to be specifically
+      // enabled with special javascript
+      var toadd = $els.find(".selectized, .js-range-slider");
+      $els = $($els.toArray().concat(toadd.toArray()));
 
       $.map($els, function(el) {
         var $el = $(el);
@@ -572,7 +583,8 @@ shinyjs = function() {
 
         // disable the container as well as all individual inputs inside
         // (this is needed for grouped inputs such as radio and checkbox groups)
-        $el = $($el.toArray().concat($el.find("input").toArray()));
+        var toadd = $el.find("input, button");
+        $el = $($el.toArray().concat(toadd.toArray()));
         $el.attr('disabled', true);
         $el.prop('disabled', true);
       });
