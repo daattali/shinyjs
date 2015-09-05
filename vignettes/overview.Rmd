@@ -76,6 +76,8 @@ under the hood).
 with the sole purpose of running a `shinyjs` function when an element is
 clicked, though any R code can be used.
 
+- `onevent` - similar to `onclick`, but can be used with many other events instead of click. 
+
 - `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class from
 an element
 

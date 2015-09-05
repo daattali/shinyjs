@@ -519,32 +519,34 @@ shinyjs = function() {
       eval(params.code);
     },
 
-    // onclick function is more complicated than the rest of the shinyjs functions
-    // we attach a click handler to an element and when it's clicked we call Shiny
-    onclick : function (params) {
+    // onevent function is more complicated than the rest of the shinyjs functions
+    // we attach an event handler (onclick/onkeydown/onmouseup/etc) to an element
+    // and when it happens we call Shiny
+    onevent : function (params) {
       var defaultParams = {
-        id : null,
+        event        : null,
+        id           : null,
         shinyInputId : null,
-        add : false
+        add          : false
       }
       params = shinyjs.getParams(params, defaultParams);
 
       var el = shinyjs.jqid(params.id);
 
-      // for shiny inputs, perform the action when any section of the input
-      // widget is clicked
+      // for shiny inputs, perform the action when the event happens in any
+      // section of the input widget
       el = $(shinyjs.getContainer(el)[0]);
 
       var shinyInputId = params.shinyInputId;
-      var attrName = "data-shinyjs-onclick";
+      var attrName = "data-shinyjs-" + params.event;
 
-      // if this is the first click handler we attach to this element, initialize
-      // the data attribute and add the onclick event handler
+      // if this is the first event handler of this event type we attach to this
+      // element, initialize the data attribute and add the event handler
       var first = !(el[0].hasAttribute(attrName));
       if (first) {
         el.attr(attrName, JSON.stringify(Object()));
 
-        el.click(function() {
+        el[params.event](function() {
           var oldValues = JSON.parse(el.attr(attrName));
           var newValues = Object();
           $.each(oldValues, function(key, value) {
@@ -556,7 +558,7 @@ shinyjs = function() {
         });
       }
 
-      // if we want this action to overwrite existing ones, unbind click handler
+      // if we want this action to overwrite existing ones, unbind event handler
       if (params.add) {
         var attrValue = JSON.parse(el.attr(attrName));
       } else {

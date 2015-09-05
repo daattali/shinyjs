@@ -52,4 +52,6 @@ delay <- function(ms, expr) {
   shiny::observeEvent(session$input[[shinyInputId]], {
     expr
   })
+
+  invisible(NULL)
 }

@@ -4,6 +4,7 @@
 
 - added `delay` function, which allows you to run code after a specified amount of time has elapsed
 - **BREAKING CHANGE** - removed `delay` parameter from `hide`/`show`/`toggle` because the same behaviour can now be achieved using the `delay` function (if you previously used `show(id = "text", delay = 2)`, you can now use `delay(2000, show("text"))`)
+- added `onevent` function, which is similar to `onclick` but can be used for many other different events
 - removed defunc `resettable` function
 
 # shinyjs 0.1.1
