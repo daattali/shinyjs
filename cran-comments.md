@@ -456,3 +456,27 @@ Best
 R CMD check has no ERRORs or WARNINGs, and 2 NOTEs: one is about having NEWS.md as a top-level file and the other is the generic NOTE informing me who the maintainer of the package is.
 
 ## Reviewer comments
+
+2015-08-13 Kurt Hornik
+
+Thanks, on CRAN now.
+
+---
+
+# Version 0.2.0
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.2 (local)
+* ubuntu 12.04, R 3.2.2 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-09-05
+
+Tested on Windows and 7 and Ubuntu 12.04. There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer and what the license is.
+
+## Reviewer comments
