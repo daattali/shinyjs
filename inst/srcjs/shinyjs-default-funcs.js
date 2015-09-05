@@ -24,8 +24,31 @@ shinyjs = function() {
 
   // disable all the elements that were initialized as disabled
   var initDisabled = function() {
-    $.each(
-      $(".shinyjs-disabled"),
+    // disable elements on page load
+    initDisabledHelper($(".shinyjs-disabled"));
+
+    // observe new elements being added to the document so they can be disabled
+    // as well
+    var canObserveMutation = 'MutationObserver' in window;
+    if (canObserveMutation) {
+      var mutationCallback = function(mutations) {
+        mutations.forEach(function(mutation) {
+          $.each(mutation.addedNodes, function(idx, node) {
+            initDisabledHelper($(node).find(".shinyjs-disabled"));
+            if ($(node).hasClass("shinyjs-disabled")) {
+              initDisabledHelper($(node));
+            }
+          });
+        });
+      };
+      var observer = new MutationObserver(mutationCallback);
+      observer.observe(document.body, { childList : true, subtree : true });
+    }
+  };
+
+  var initDisabledHelper = function(els) {
+    // disable elements on page load
+    $.each(els,
       function(key, el) {
         var input = $(el).find("[id]");
         if (input.length > 0) {
@@ -38,8 +61,7 @@ shinyjs = function() {
   // find all shiny input elements and set them up to allow them to be reset
   var initResettables = function() {
     // grab all the shiny input containers that exist when the app loads
-    var inputContainers = $(".shiny-input-container");
-    initResettable(inputContainers);
+    initResettablesHelper($(".shiny-input-container"));
 
     // observer new elements added to the document so that dynamically generated
     // elements can also be resettable
@@ -48,27 +70,22 @@ shinyjs = function() {
       var mutationCallback = function(mutations) {
         mutations.forEach(function(mutation) {
           $.each(mutation.addedNodes, function(idx, node) {
-            initResettable($(node).find(".shiny-input-container"));
+            initResettablesHelper($(node).find(".shiny-input-container"));
             if ($(node).hasClass("shiny-input-container")) {
-              initResettable($(node));
+              initResettablesHelper($(node));
             }
           });
         });
       };
       var observer = new MutationObserver(mutationCallback);
-      observer.observe(
-        document.body,
-        { childList : true,
-          subtree : true
-        }
-      );
+      observer.observe(document.body, { childList : true, subtree : true });
     }
   };
 
   // go through every Shiny input and based on what kind of input it is,
   // add some information to the HTML tag so that we can know how to
   // update it back to its original value
-  var initResettable = function(els) {
+  var initResettablesHelper = function(els) {
      for (var j = 0; j < els.length; j++) {
         var inputContainer = $(els[j]);
         var input = inputContainer;
