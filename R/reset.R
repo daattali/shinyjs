@@ -84,9 +84,12 @@ reset <- function(id) {
         if (type == "CheckboxGroup" ||
             type == "RadioButtons" ||
             type == "Select") {
-          funcParams[['selected']] <- strsplit(value, ",")[[1]]
+          funcParams[['selected']] <- unlist(strsplit(value, ","))
+        } else if (type == "Slider") {
+          value <- unlist(strsplit(value, ","))
+          funcParams[['value']] <- value
         } else if (type == "DateRange") {
-          dates <- strsplit(value, ",")[[1]]
+          dates <- unlist(strsplit(value, ","))
           funcParams[['start']] <- dates[1]
           funcParams[['end']] <- dates[2]
         } else {

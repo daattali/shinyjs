@@ -1,4 +1,4 @@
-// shinyjs 0.1.3 by Dean Attal
+// shinyjs 0.1.4 by Dean Attal
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -136,6 +136,9 @@ shinyjs = function() {
           input = input.children(".js-range-slider");
           inputType = "Slider";
           inputValue = input.attr('data-from');
+          if (typeof input.attr('data-to') !== "undefined") {
+            inputValue = inputValue + "," + input.attr('data-to');
+          }
         }
         // selectInput / selectizeInput
         else if (input.find("select").length > 0) {

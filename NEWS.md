@@ -1,3 +1,9 @@
+# shinyjs 0.1.4
+
+2015-09-05
+
+- bug fix: resetting a slider input with a range did not reset the end point, only the start point
+
 # shinyjs 0.1.3
 
 2015-09-05
