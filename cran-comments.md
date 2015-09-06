@@ -480,3 +480,38 @@ Thanks, on CRAN now.
 Tested on Windows and 7 and Ubuntu 12.04. There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer and what the license is.
 
 ## Reviewer comments
+
+2015-09-06 Uwe Ligges
+
+```
+Thanks, we see:
+
+
+* checking R code for possible problems ... NOTE
+delay: no visible global function definition for 'runif'
+oneventHelper: no visible global function definition for 'runif'
+Undefined global functions or variables:
+  runif
+Consider adding
+  importFrom("stats", "runif")
+to your NAMESPACE.
+* checking Rd files ... OK
+
+Please fix.
+```
+
+# Round 2
+
+## Test environments
+
+* local Windows 7, R 3.2.2
+* ubuntu 12.04 (on travis-ci), R 3.2.2
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments:
+
+2015-09-06
+
+addressed previous comment: namespaced stats::runif
+
+## Reviewer comments:
