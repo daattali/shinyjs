@@ -71,7 +71,7 @@ oneventHelper <- function(event, id, expr, add) {
   # attach the event callback from JS to call this function to execute the
   # given expression. To support multiple event handlers, each time this
   # is called, a random number is attached to the Shiny input id
-  shinyInputId <- paste0("shinyjs-", id, "-", as.integer(runif(1, 0, 1e7)), "-input-", event)
+  shinyInputId <- paste0("shinyjs-", id, "-", as.integer(stats::runif(1, 0, 1e9)), "-input-", event)
   session$sendCustomMessage("onevent", list(event = event,
                                             id = id,
                                             shinyInputId = shinyInputId,

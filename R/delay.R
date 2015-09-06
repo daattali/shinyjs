@@ -39,7 +39,7 @@ delay <- function(ms, expr) {
   hashable <- sprintf("%s_%s_%s_%s",
                       ms,
                       as.integer(Sys.time()),
-                      as.integer(runif(1, 0, 1e7)),
+                      as.integer(stats::runif(1, 0, 1e9)),
                       deparse(substitute(expr)))
   hash <- digest::digest(hashable, algo = "md5")
 
