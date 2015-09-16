@@ -76,16 +76,16 @@ colourInput <- function(inputId, label, value = "white",
   palette <- match.arg(palette)
 
   # declare dependencies
-  shiny::addResourcePath("colourpickerbinding",
+  shiny::addResourcePath("shinyjs-colourpickerbinding",
                          system.file("srcjs", package = "shinyjs"))
-  shiny::addResourcePath("colourpicker",
+  shiny::addResourcePath("shinyjs-colourpicker",
                          system.file("www", "shared", "colourpicker", package = "shinyjs"))
   deps <- list(
     htmltools::htmlDependency(
-      "colourpickerbinding", "0.1.0", c(href = "colourpickerbinding"),
+      "shinyjs-colourpickerbinding", "0.1.0", c(href = "shinyjs-colourpickerbinding"),
       script = "input_binding_colour.js"),
     htmltools::htmlDependency(
-      "colourpicker", "0.1.0", c(href = "colourpicker"),
+      "shinyjs-colourpicker", "0.1.0", c(href = "shinyjs-colourpicker"),
       script = "js/colourpicker.min.js",
       stylesheet = "css/colourpicker.min.css"
     )
