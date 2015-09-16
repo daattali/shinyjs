@@ -126,17 +126,20 @@ minimal Shiny app that uses `shinyjs`:
 
     shinyApp(ui, server)
 
-This is how most Shiny apps should initialize `shinyjs`, but there are a
-few common scenarios that should be treated a little differently: using
+This is how most Shiny apps should initialize `shinyjs`, but there are
+four common scenarios that should be treated a little differently: using
 `shinyjs` in interactive documents, in Shiny dashboards, in Shiny apps
 that use a `navbarPage` layout, or in Shiny apps that manually build the
 user interface with an HTML file instead of using Shiny's UI functions.
+If your Shiny app doesn't fall into any of these categories (most Shiny
+apps don't), then you can skip the next 4 sections that describe how to
+tackle these cases, and scroll down to the "Basic use case" section.
 
 ### Using shinyjs in interactive R Markdown documents
 
 It is possible to embed Shiny components in an R Markdown document,
 resulting in interactive R Markdown documents. More information on how
-to use these documents [is avaiable on the R Markdown
+to use these documents is available [on the R Markdown
 website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though
 interactive documents don't explicitly specify a UI and a server, using
 `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the
@@ -234,11 +237,15 @@ to use `shinyjs` in these apps:
 
 -   create a `global.R` file in the same directory as your `server.R`,
     and add the following line to the file:
-    `shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))`
+
+        shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+
 -   in the `index.html` file you need to load a special JavaScript file
     named `shinyjs/inject.js`. You do this by adding the following line
     to the HTML's `<head>` tag:
-    `<script src="shinyjs/inject.js"></script>`
+
+        `<script src="shinyjs/inject.js"></script>`
+
 -   in your server function (the `shinyServer` function) you need to
     call `useShinyjs(html = TRUE)`
 
@@ -646,7 +653,6 @@ Motivation & alternatives using native Shiny
 The initial release of this package was announced [on my
 blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
 these topics.
-
 
 ## Contributions
 

@@ -123,11 +123,11 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-This is how most Shiny apps should initialize `shinyjs`, but there are a few common scenarios that should be treated a little differently: using `shinyjs` in interactive documents, in Shiny dashboards, in Shiny apps that use a `navbarPage` layout, or in Shiny apps that manually build the user interface with an HTML file instead of using Shiny's UI functions. 
+This is how most Shiny apps should initialize `shinyjs`, but there are four common scenarios that should be treated a little differently: using `shinyjs` in interactive documents, in Shiny dashboards, in Shiny apps that use a `navbarPage` layout, or in Shiny apps that manually build the user interface with an HTML file instead of using Shiny's UI functions. If your Shiny app doesn't fall into any of these categories (most Shiny apps don't), then you can skip the next 4 sections that describe how to tackle these cases, and scroll down to the "Basic use case" section.
 
 ### Using shinyjs in interactive R Markdown documents
 
-It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents [is avaiable on the R Markdown website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the document is set up as a Shiny document as the link above describes):
+It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the document is set up as a Shiny document as the link above describes):
 
 ```
 library(shinyjs)
@@ -201,8 +201,14 @@ shinyApp(ui, server)
 
 While most Shiny apps use Shiny's functions to build a user interface to the app, it is possible to build the entire UI with custom HTML, [as RStudio shows in this article](http://shiny.rstudio.com/articles/html-ui.html). Building Shiny apps like this is much more complicated and should only be used if you're very comfortable with HTML. Using `shinyjs` in these apps is possible but it works a little differently since there is no `ui.R` to call `useShinyjs()` from.  There are three simple steps to take in order to use `shinyjs` in these apps:
 
-- create a `global.R` file in the same directory as your `server.R`, and add the following line to the file: `shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))`
-- in the `index.html` file you need to load a special JavaScript file named `shinyjs/inject.js`. You do this by adding the following line to the HTML's `<head>` tag: `<script src="shinyjs/inject.js"></script>`
+- create a `global.R` file in the same directory as your `server.R`, and add the following line to the file:
+
+        shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+        
+- in the `index.html` file you need to load a special JavaScript file named `shinyjs/inject.js`. You do this by adding the following line to the HTML's `<head>` tag:
+
+        `<script src="shinyjs/inject.js"></script>`
+        
 - in your server function (the `shinyServer` function) you need to call `useShinyjs(html = TRUE)`
 
 After adding these three lines to your code, you can use all `shinyjs` functions as normal.
