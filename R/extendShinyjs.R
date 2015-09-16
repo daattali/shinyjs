@@ -261,8 +261,11 @@ extendShinyjs <- function(script, text) {
     if (!file.exists(script)) {
       errMsg(sprintf("Could not find JavaScript file `%s`.", script))
     }
+
     tryCatch({
       ct$source(script)
+      shiny::addResourcePath("shinyjs-extend", dirname(script))
+      script <- file.path("shinyjs-extend", basename(script))      
     }, error = function(err) {
       errMsg(sprintf("Error parsing the JavaScript file: %s.", err$message))
     })

@@ -4,16 +4,22 @@
 \alias{useShinyjs}
 \title{Set up a Shiny app to use shinyjs}
 \usage{
-useShinyjs(rmd = FALSE, debug = FALSE)
+useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE)
 }
 \arguments{
-\item{rmd}{Set this to \code{TRUE} if you are using \code{shinyjs} inside an
-interactive R markdown document. For regular Shiny apps use the
-default value of \code{FALSE}.}
+\item{rmd}{Set this to \code{TRUE} only if you are using \code{shinyjs} inside an
+interactive R markdown document. If using this option, view the
+\href{https://github.com/daattali/shinyjs}{README} online to learn how to
+use shinyjs in R markdown documents.}
 
 \item{debug}{Set this to \code{TRUE} if you want to see detailed debugging
 statements in the JavaScript console. Can be useful when filing bug reports
 to get more information about what is going on.}
+
+\item{html}{Set this to \code{TRUE} only if you are using \code{shinyjs} in a Shiny
+app that builds the entire user interface with a custom HTML file. If using this
+option, view the \href{https://github.com/daattali/shinyjs}{README} online to learn
+how to use shinyjs in these apps.}
 }
 \value{
 Scripts that \code{shinyjs} requires that are automatically inserted

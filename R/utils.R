@@ -15,7 +15,7 @@ getSession <- function() {
   session
 }
 
-# set up some javascript functions to work with shinyjs
+# set up some javascript functions to work with shinyjs and any other resources
 setupJS <- function(jsFuncs, script, text, ...) {
   # add a shiny message handler binding for each supported method
   tpl <- paste0(
@@ -30,24 +30,34 @@ setupJS <- function(jsFuncs, script, text, ...) {
   controllers <- paste(controllers, collapse = "\n")
 
   # ensure the same scripts don't get added to the HTML twice
-  shiny::singleton(
-    insertHead(
-      # add the message handlers
-      shiny::tags$script(shiny::HTML(controllers)),
-      # add the actual javascript code
-      shinyjsInlcudeScript(script),
-      shinyjsInlineScript(text),
-      # add any extra tags
-      ...
+  shinyjsContent <- 
+    shiny::singleton(
+      insertHead(
+        # add the message handlers
+        shiny::tags$script(shiny::HTML(controllers)),
+        # add the actual javascript code
+        shinyjsInlcudeScript(script),
+        shinyjsInlineScript(text),
+        # add any extra tags
+        ...
+      )
     )
-  )
+  
+  # inject the content via JavaScript if necessary
+  if (!is.null(.globals$inject) && .globals$inject) {
+    shinyjsContent <- as.character(shinyjsContent)
+    session <- getSession()
+    session$sendCustomMessage('shinyjs-inject', shinyjsContent)
+  } else {
+    shinyjsContent
+  }
 }
 
 # insert content into the <head> tag of the document if this is a proper HTML
 # Shiny app, but if it's inside an interactive Rmarkdown document then don't
 # use <head> as it won't work
 insertHead <- function(...) {
-  if (is.null(.globals$rmd) || .globals$rmd) {
+  if (is.null(.globals$astext) || .globals$astext) {
     shiny::tagList(...)
   } else {
     shiny::tags$head(...)
@@ -59,9 +69,7 @@ shinyjsInlcudeScript <- function(script) {
   if (missing(script) || is.null(script)) {
     return(NULL)
   } else {
-    resourcePrefix <- sprintf("shinyjs-%s", digest::digest(script, algo = "md5"))
-    shiny::addResourcePath(resourcePrefix, dirname(script))
-    shiny::tags$script(src = file.path(resourcePrefix, basename(script)))
+    shiny::tags$script(src = script)
   }
 }
 
