@@ -1,13 +1,10 @@
-<!-- To create this README, I run devtools::build_vignettes(), then
-rmarkdown::render("vignettes/overview.Rmd", output_format = "md_document"),
-copy the contents of vignettes/overview.md here,
-fix the image path (remove the ".."),
-and add the TravisCI status -->
+shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
+===============================================================================
 
-# shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
-
-[![Build Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
-[![CRAN version](http://www.r-pkg.org/badges/version/shinyjs)](http://cran.r-project.org/web/packages/shinyjs/index.html)
+[![Build
+Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
+[![CRAN
+version](http://www.r-pkg.org/badges/version/shinyjs)](http://cran.r-project.org/web/packages/shinyjs/index.html)
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 applications without having to know any JavaScript. Examples include:
@@ -654,6 +651,14 @@ The initial release of this package was announced [on my
 blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
 these topics.
 
-## Contributions
+Contributions
+-------------
 
-If you have any suggestions or feedback, I would love to hear about it. You can either [message me directly](http://deanattali.com/aboutme#contact), [open an issue](https://github.com/daattali/shinyjs/issues) if you want to request a feature/report a bug, or make a pull request if you can contribute.  I'd like to give a special thanks to the Shiny developers, especially [Joe Cheng](http://www.joecheng.com/) for always answering all my Shiny questions.
+If you have any suggestions or feedback, I would love to hear about it.
+You can either [message me
+directly](http://deanattali.com/aboutme#contact), [open an
+issue](https://github.com/daattali/shinyjs/issues) if you want to
+request a feature/report a bug, or make a pull request if you can
+contribute. I'd like to give a special thanks to the Shiny developers,
+especially [Joe Cheng](http://www.joecheng.com/) for always answering
+all my Shiny questions.
