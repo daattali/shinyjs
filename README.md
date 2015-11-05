@@ -20,18 +20,18 @@ Table of contents
 -   [Installation](#install)
 -   [Overview of main functions](#overview-main)
 -   [How to use](#usage)
--   [Using shinyjs in interactive R Markdown
-    documents](#usage-interactive)
--   [Using shinyjs in Shiny Dashboards](#usage-dashboard)
--   [Using shinyjs with navbarPage layout](#usage-navbarpage)
--   [Using shinyjs when the user interface is built using an HTML
-    file](#usage-html)  
+    -   [Using shinyjs in interactive R Markdown
+        documents](#usage-interactive)
+    -   [Using shinyjs in Shiny Dashboards](#usage-dashboard)
+    -   [Using shinyjs with navbarPage layout](#usage-navbarpage)
+    -   [Using shinyjs when the user interface is built using an HTML
+        file](#usage-html)  
 -   [Basic use case - complete working example](#usecase)
 -   [Calling your own JavaScript functions from R](#extendshinyjs)
--   [Simple example](#extendshinyjs-simple)
--   [Running JavaScript code on page load](#extendshinyjs-onload)
--   [Passing arguments from R to JavaScript](#extendshinyjs-args)
--   [Note about V8 prerequisite](#extendshinyjs-v8)
+    -   [Simple example](#extendshinyjs-simple)
+    -   [Running JavaScript code on page load](#extendshinyjs-onload)
+    -   [Passing arguments from R to JavaScript](#extendshinyjs-args)
+    -   [Note about V8 prerequisite](#extendshinyjs-v8)
 
 <h2 id="demos">
 Live demos
