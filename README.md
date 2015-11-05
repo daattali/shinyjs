@@ -13,20 +13,40 @@ original value, delaying code execution by a few seconds, and many more
 useful functions. `shinyjs` can also be used to easily run your own
 custom JavaScript functions from R.
 
-Live demos
-==========
+Table of contents
+=================
 
+-   [Live demos](#demos)
+-   [Installation](#install)
+-   [Overview of main functions](#overview-main)
+-   [How to use](#usage)
+-   [Using shinyjs in interactive R Markdown
+    documents](#usage-interactive)
+-   [Using shinyjs in Shiny Dashboards](#usage-dashboard)
+-   [Using shinyjs with navbarPage layout](#usage-navbarpage)
+-   [Using shinyjs when the user interface is built using an HTML
+    file](#usage-html)  
+-   [Basic use case - complete working example](#usecase)
+-   [Calling your own JavaScript functions from R](#extendshinyjs)
+-   [Simple example](#extendshinyjs-simple)
+-   [Running JavaScript code on page load](#extendshinyjs-onload)
+-   [Passing arguments from R to JavaScript](#extendshinyjs-args)
+-   [Note about V8 prerequisite](#extendshinyjs-v8)
+
+<h2 id="demos">
+Live demos
+</h2>
 You can [check out a demo Shiny
 app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
 with some of the functionality that `shinyjs` makes available.
 
 `shinyjs` also includes a `colourInput` which is an input control that
-allows users to select colours. You can see a live demo
-[here](http://daattali.com/shiny/colourInput/).
+allows users to select colours. You can see a [live demo
+here](http://daattali.com/shiny/colourInput/).
 
+<h2 id="install">
 Installation
-------------
-
+</h2>
 `shinyjs` is available through both CRAN and GitHub:
 
 To install the stable CRAN version:
@@ -38,9 +58,9 @@ To install the latest developmental version from GitHub:
     install.packages("devtools")
     devtools::install_github("daattali/shinyjs")
 
+<h2 id="overview-main">
 Overview of main functions
---------------------------
-
+</h2>
 In order to use any `shinyjs` function in a Shiny app, you must first
 call `useShinyjs()` anywhere in the Shiny app's UI. The following is a
 list of the common functions:
@@ -98,9 +118,9 @@ list of the common functions:
 to see some of these in action, or install `shinyjs` and run
 `shinyjs::runExample()` to see more demo apps.
 
-Usage
------
-
+<h2 id="usage">
+How to use
+</h2>
 A typical Shiny app has a UI portion and a server portion. As mentioned
 above, `useShinyjs()` must be called in the Shiny app's UI, and it's
 best to include it near the top as a convention. For example, here is a
@@ -130,10 +150,12 @@ that use a `navbarPage` layout, or in Shiny apps that manually build the
 user interface with an HTML file instead of using Shiny's UI functions.
 If your Shiny app doesn't fall into any of these categories (most Shiny
 apps don't), then you can skip the next 4 sections that describe how to
-tackle these cases, and scroll down to the "Basic use case" section.
+tackle these cases, and scroll down to the [Basic use case](#usage)
+section.
 
-### Using shinyjs in interactive R Markdown documents
-
+<h3 id="usage-interactive">
+Using shinyjs in interactive R Markdown documents
+</h3>
 It is possible to embed Shiny components in an R Markdown document,
 resulting in interactive R Markdown documents. More information on how
 to use these documents is available [on the R Markdown
@@ -154,8 +176,9 @@ Shiny document as the link above describes):
      toggle("hello")
     })
 
-### Using shinyjs in Shiny Dashboards
-
+<h3 id="usage-dashboard">
+Using shinyjs in Shiny Dashboards
+</h3>
 `shinydashboard` is an R package that lets you create nice dashboards
 with Shiny. Since it has a different structure than typical Shiny apps,
 it can be unclear where to include the call to `useShinyjs()` in these
@@ -185,8 +208,9 @@ dashboard that uses `shinyjs`:
 
     shinyApp(ui, server)
 
-### Using shinyjs with navbarPage
-
+<h3 id="usage-navbarpage">
+Using shinyjs with navbarPage layout
+</h3>
 When creating a Shiny app that uses a `navbarPage` layout, the call to
 `useShinyjs()` can be placed inside any of the tabs (since the only real
 requirement is that it will be present *somewhere* in the UI). While
@@ -219,9 +243,9 @@ For example, here is a minimal Shiny app that uses `shinyjs` inside a
 
     shinyApp(ui, server)
 
+<h3 id="usage-html">
 Using shinyjs when the user interface is built using an HTML file
------------------------------------------------------------------
-
+</h3>
 While most Shiny apps use Shiny's functions to build a user interface to
 the app, it is possible to build the entire UI with custom HTML, [as
 RStudio shows in this
@@ -249,9 +273,9 @@ to use `shinyjs` in these apps:
 After adding these three lines to your code, you can use all `shinyjs`
 functions as normal.
 
+<h2 id="usecase">
 Basic use case - complete working example
------------------------------------------
-
+</h2>
 *You can view the final Shiny app developed in this simple example
 [here](http://daattali.com/shiny/shinyjs-basic/).*
 
@@ -278,12 +302,14 @@ actually happens when the user "submits").
     )
 
 *Note that I generally don't like running Shiny apps like this and
-prefer to declare the UI and server separately, but I do it like this
+prefer to declare the UI and server separately, but this style is used
 here for brevity.*
 
 Here is what that app would look like
 
 ![Demo app](inst/img/demo-basic-v1.png)
+
+### Add shinyjs features
 
 Now suppose we want to add a few features to the app to make it a bit
 more user-friendly. First we need to set up the app to use `shinyjs` by
@@ -417,8 +443,9 @@ And when the button is clicked, reset the form
       shinyjs::reset("myapp")
     })
 
-**The final code looks like this** (I'm using the more compact `toggle*`
-version where possible)
+### Final code
+
+The final code looks like this
 
     library(shiny)
     shinyApp(
@@ -472,15 +499,16 @@ version where possible)
 You can view the final app
 [here](http://daattali.com/shiny/shinyjs-basic/).
 
+<h2 id="extendshinyjs">
 Calling your own JavaScript functions from R
---------------------------------------------
-
+</h2>
 You can also use `shinyjs` to add your own JavaScript functions that can
 be called from R as if they were regular R functions using
 `extendShinyjs`.
 
-### Very simple example
-
+<h3 id="extendshinyjs-simple">
+Simple example
+</h3>
 Using `extendShinyjs` is very simple and makes defining and calling
 JavaScript functions painless. Here is a very basic example of using
 `extendShinyjs` to define a (fairly useless) function that changes the
@@ -521,11 +549,9 @@ a separate file is generally prefered over writing the code inline, but
 in these examples I will always use the `text` argument to keep it
 simple.
 
-Note: in order to use `extendShinyjs`, you must have the `V8` package
-installed. You can install it with `install.packages("V8")`.
-
-#### Running JavaScript code on page load
-
+<h3 id="extendshinyjs-onload">
+Running JavaScript code on page load
+</h3>
 If there is any JavaScript code that you want to run immediately when
 the page loads rather than having to call it from the server, you can
 place it inside a `shinyjs.init` function. The function `shinyjs.init`
@@ -552,8 +578,9 @@ code:
       server = function(input, output) {}
     ))
 
-#### Passing arguments from R to JavaScript
-
+<h3 id="extendshinyjs-args">
+Passing arguments from R to JavaScript
+</h3>
 Any `shinyjs` function that is called will pass a single array-like
 parameter to its corresponding JavaScript function. If the function in R
 was called with unnamed arguments, then it will pass an Array of the
@@ -644,6 +671,19 @@ Note that I chose to define the JS code as a string for illustration
 purposes, but in reality I would prefer to place the code in a separate
 file and use the `script` argument instead of `text`.
 
+<h3 id="extendshinyjs-v8">
+Note about V8 prerequisite
+</h3>
+In order to use `extendShinyjs`, you must have the `V8` package
+installed. You can install it with `install.packages("V8")`.
+
+If you are deplying your app that uses `extendShinyjs` to
+[*shinyapps.io*](http://www.shinyapps.io/) then you need to add a call
+to `library(V8)` somewhere in your code. This is necessary because the
+shinyapps.io server needs to know that it should install the `V8`
+package. If you do not do this then you will simply see an error saying
+the package is missing.
+
 Motivation & alternatives using native Shiny
 --------------------------------------------
 
@@ -659,6 +699,6 @@ You can either [message me
 directly](http://deanattali.com/aboutme#contact), [open an
 issue](https://github.com/daattali/shinyjs/issues) if you want to
 request a feature/report a bug, or make a pull request if you can
-contribute. I'd like to give a special thanks to the Shiny developers,
+contribute. I'd like to give special thanks to the Shiny developers,
 especially [Joe Cheng](http://www.joecheng.com/) for always answering
 all my Shiny questions.

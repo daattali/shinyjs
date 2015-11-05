@@ -1,4 +1,4 @@
-// shinyjs 0.2.2 by Dean Attal
+// shinyjs 0.2.3 by Dean Attal
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -22,7 +22,7 @@ shinyjs = function() {
   var _jqid = function(id) {
     return $("#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" ));
   };
-  
+
   // listen to DOM changes and whenever there are new nodes added, let all
   // the mutation subscribers know about the new elements
   var _initMutations = function() {
@@ -110,7 +110,7 @@ shinyjs = function() {
 
   var _initDisabledHelper = function(els) {
     if (els.length == 0) return;
-    
+
     // use a tiny delay because some input elements (sliders, selectize) need
     // to first be initialized, and I don't know how to tell when they're ready
     setTimeout(function() {
@@ -446,12 +446,12 @@ shinyjs = function() {
   };
 
   return {
-    
+
     // by default, debug mode is off. If shinyjs is initialized with debug mode,
     // then debugging messages will be printed to the console
     debug : false,
-    
-    // write a message to the console for debugging purposes if debug mode is on 
+
+    // write a message to the console for debugging purposes if debug mode is on
     debugMessage : function(text) {
       if (shinyjs.debug) {
         console.log(text);

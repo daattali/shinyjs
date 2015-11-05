@@ -1,3 +1,10 @@
+# shinyjs 0.2.3
+
+2015-11-05
+
+- Updated README
+
+
 # shinyjs 0.2.2
 
 2015-09-15
