@@ -150,7 +150,7 @@ that use a `navbarPage` layout, or in Shiny apps that manually build the
 user interface with an HTML file instead of using Shiny's UI functions.
 If your Shiny app doesn't fall into any of these categories (most Shiny
 apps don't), then you can skip the next 4 sections that describe how to
-tackle these cases, and scroll down to the [Basic use case](#usage)
+tackle these cases, and scroll down to the [Basic use case](#usecase)
 section.
 
 <h3 id="usage-interactive">
