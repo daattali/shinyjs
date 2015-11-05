@@ -612,7 +612,7 @@ Note that I chose to define the JS code as a string for illustration purposes, b
 
 In order to use `extendShinyjs`, you must have the `V8` package installed. You can install it with `install.packages("V8")`.
 
-If you are deplying your app that uses `extendShinyjs` to [*shinyapps.io*](http://www.shinyapps.io/) then you need to add a call to `library(V8)` somewhere in your code. This is necessary because the shinyapps.io server needs to know that it should install the `V8` package. If you do not do this then you will simply see an error saying the package is missing.
+If you are deploying an app that uses `extendShinyjs` to [*shinyapps.io*](http://www.shinyapps.io/) then you need to add a call to `library(V8)` somewhere in your code. This is necessary because the shinyapps.io server needs to know that it should install the `V8` package. If you do not do this then you will simply see an error saying the package is missing.
 
 ## Motivation & alternatives using native Shiny
 
