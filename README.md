@@ -4,7 +4,7 @@ shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
 [![Build
 Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
 [![CRAN
-version](http://www.r-pkg.org/badges/version/shinyjs)](http://cran.r-project.org/web/packages/shinyjs/index.html)
+version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.org/package=shinyjs)
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 applications without having to know any JavaScript. Examples include:
