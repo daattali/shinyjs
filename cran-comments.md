@@ -540,3 +540,39 @@ Thanks, on CRAN now.
 Tested on Windows and 7 and Ubuntu 12.04. There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer is and what the license is.
 
 ## Reviewer comments
+
+2015-11-05 Kurt Hornik
+
+```
+We get
+
+Found the following (possibly) invalid URLs:
+  URL: http://cran.r-project.org/web/packages/shinyjs/index.html
+    From: inst/doc/overview.html
+    Status: 200
+    Message: OK
+    CRAN URL not in canonical form
+  The canonical URL of the CRAN page for a package is
+  https://cran.r-project.org/package=pkgname
+
+Can you pls fix?
+
+Best
+-k
+```
+
+# Round 2
+
+## Test environments
+
+* local Windows 7, R 3.2.2
+* ubuntu 12.04 (on travis-ci), R 3.2.2
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments:
+
+2015-11-05
+
+addressed previous comment: changed URL of CRAN package to canonical form
+
+## Reviewer comments:
