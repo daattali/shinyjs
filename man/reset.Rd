@@ -27,7 +27,7 @@ in the app's ui.
 }
 \examples{
 if (interactive()) {
-  runApp(shinyApp(
+  shinyApp(
     ui = fluidPage(
       useShinyjs(),
       div(
@@ -55,7 +55,7 @@ if (interactive()) {
         reset("form")
       })
     }
-  ))
+  )
 }
 }
 \seealso{

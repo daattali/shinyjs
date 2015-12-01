@@ -60,7 +60,7 @@ library(shinyjs)
 
 jsCode <- "shinyjs.pageCol = function(params){$('body').css('background', params);}"
 
-runApp(shinyApp(
+shinyApp(
   ui = fluidPage(
     useShinyjs(),
     extendShinyjs(text = jsCode),
@@ -72,7 +72,7 @@ runApp(shinyApp(
       js$pageCol(input$col)
     })
   }
-))
+)
 }
 
 As the example above shows, after defining the JavaScript function
@@ -102,14 +102,14 @@ jscode <- "
 shinyjs.init = function() {
   $(document).keypress(function(e) { alert('Key pressed: ' + e.which); });
 }"
-runApp(shinyApp(
+shinyApp(
   ui = fluidPage(
     useShinyjs(),
     extendShinyjs(text = jscode),
     "Press any key"
   ),
   server = function(input, output) {}
-))
+)
 }
 }
 
@@ -166,7 +166,7 @@ that uses this JS function.
 
     jsCode <- "shinyjs.pageCol = function(params){$('body').css('background', params);}"
 
-    runApp(shinyApp(
+    shinyApp(
       ui = fluidPage(
         useShinyjs(),
         extendShinyjs(text = jsCode),
@@ -178,7 +178,7 @@ that uses this JS function.
           js$pageCol(input$col)
         })
       }
-    ))
+    )
 
   ==============
 
@@ -197,7 +197,7 @@ that uses this JS function.
       el.css("background-color", params.col);
     }'
 
-    runApp(shinyApp(
+    shinyApp(
       ui = fluidPage(
         useShinyjs(),
         extendShinyjs(text = jsCode),
@@ -213,7 +213,7 @@ that uses this JS function.
           js$backgroundCol(input$selector, input$col)
         })
       }
-    ))
+    )
 
   ==============
 
@@ -239,7 +239,7 @@ that uses this JS function.
   values are set if no value is given to a parameter.
 
       library(shiny)
-      runApp(shinyApp(
+      shinyApp(
         ui = fluidPage(
           useShinyjs(),
           extendShinyjs("myfuncs.js"),
@@ -259,7 +259,7 @@ that uses this JS function.
             js$increment(num = 10, id = 'number')
           })
         }
-      ))
+      )
 }
 }
 \seealso{

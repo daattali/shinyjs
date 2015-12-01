@@ -25,7 +25,7 @@ in the app's ui.
 }
 \examples{
 if (interactive()) {
-  runApp(shinyApp(
+  shinyApp(
     ui = fluidPage(
       useShinyjs(),
       p(id = "text", "This text will disappear after 3 seconds"),
@@ -37,7 +37,7 @@ if (interactive()) {
         delay(500, stopApp())
       })
     }
-  ))
+  )
 }
 }
 \seealso{

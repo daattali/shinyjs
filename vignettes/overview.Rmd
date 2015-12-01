@@ -500,7 +500,7 @@ library(shinyjs)
 
 jsCode <- "shinyjs.pageCol = function(params){$('body').css('background', params);}"
 
-runApp(shinyApp(
+shinyApp(
   ui = fluidPage(
     useShinyjs(),
     extendShinyjs(text = jsCode),
@@ -512,7 +512,7 @@ runApp(shinyApp(
       js$pageCol(input$col)
     })
   }
-))
+}
 ```
 
 Running the code above produces this shiny app:
@@ -534,14 +534,14 @@ shinyjs.init = function() {
   $(document).keypress(function(e) { alert('Key pressed: ' + e.which); });
 }"
 
-runApp(shinyApp(
+shinyApp(
   ui = fluidPage(
     useShinyjs(),
     extendShinyjs(text = jscode),
     "Press any key"
   ),
   server = function(input, output) {}
-))
+)
 ```
 
 <h3 id="extendshinyjs-args">Passing arguments from R to JavaScript</h3>
@@ -583,7 +583,7 @@ shinyjs.backgroundCol = function(params) {
   el.css("background-color", params.col);
 }'
 
-runApp(shinyApp(
+shinyApp(
   ui = fluidPage(
     useShinyjs(),
     extendShinyjs(text = jsCode),
@@ -599,7 +599,7 @@ runApp(shinyApp(
       js$backgroundCol(input$selector, input$col)
     })
   }
-))
+)
 ```
 
 And the resulting app:

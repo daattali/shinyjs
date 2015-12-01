@@ -27,7 +27,7 @@
 #'
 #' jsCode <- "shinyjs.pageCol = function(params){$('body').css('background', params);}"
 #'
-#' runApp(shinyApp(
+#' shinyApp(
 #'   ui = fluidPage(
 #'     useShinyjs(),
 #'     extendShinyjs(text = jsCode),
@@ -39,7 +39,7 @@
 #'       js$pageCol(input$col)
 #'     })
 #'   }
-#' ))
+#' )
 #' }
 #'
 #' As the example above shows, after defining the JavaScript function
@@ -67,14 +67,14 @@
 #' shinyjs.init = function() {
 #'   $(document).keypress(function(e) { alert('Key pressed: ' + e.which); });
 #' }"
-#' runApp(shinyApp(
+#' shinyApp(
 #'   ui = fluidPage(
 #'     useShinyjs(),
 #'     extendShinyjs(text = jscode),
 #'     "Press any key"
 #'   ),
 #'   server = function(input, output) {}
-#' ))
+#' )
 #' }
 #'
 #' @section Passing arguments from R to JavaScript:
@@ -145,7 +145,7 @@
 #'
 #'     jsCode <- "shinyjs.pageCol = function(params){$('body').css('background', params);}"
 #'
-#'     runApp(shinyApp(
+#'     shinyApp(
 #'       ui = fluidPage(
 #'         useShinyjs(),
 #'         extendShinyjs(text = jsCode),
@@ -157,7 +157,7 @@
 #'           js$pageCol(input$col)
 #'         })
 #'       }
-#'     ))
+#'     )
 #'
 #'   ==============
 #'
@@ -176,7 +176,7 @@
 #'       el.css("background-color", params.col);
 #'     }'
 #'
-#'     runApp(shinyApp(
+#'     shinyApp(
 #'       ui = fluidPage(
 #'         useShinyjs(),
 #'         extendShinyjs(text = jsCode),
@@ -192,7 +192,7 @@
 #'           js$backgroundCol(input$selector, input$col)
 #'         })
 #'       }
-#'     ))
+#'     )
 #'
 #'   ==============
 #'
@@ -218,7 +218,7 @@
 #'   values are set if no value is given to a parameter.
 #'
 #'       library(shiny)
-#'       runApp(shinyApp(
+#'       shinyApp(
 #'         ui = fluidPage(
 #'           useShinyjs(),
 #'           extendShinyjs("myfuncs.js"),
@@ -238,7 +238,7 @@
 #'             js$increment(num = 10, id = 'number')
 #'           })
 #'         }
-#'       ))
+#'       )
 #' }
 #' @export
 extendShinyjs <- function(script, text) {
@@ -265,7 +265,7 @@ extendShinyjs <- function(script, text) {
     tryCatch({
       ct$source(script)
       shiny::addResourcePath("shinyjs-extend", dirname(script))
-      script <- file.path("shinyjs-extend", basename(script))      
+      script <- file.path("shinyjs-extend", basename(script))
     }, error = function(err) {
       errMsg(sprintf("Error parsing the JavaScript file: %s.", err$message))
     })

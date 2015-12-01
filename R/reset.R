@@ -18,7 +18,7 @@
 #' in the app's ui.
 #' @examples
 #' if (interactive()) {
-#'   runApp(shinyApp(
+#'   shinyApp(
 #'     ui = fluidPage(
 #'       useShinyjs(),
 #'       div(
@@ -46,7 +46,7 @@
 #'         reset("form")
 #'       })
 #'     }
-#'   ))
+#'   )
 #' }
 #' @export
 reset <- function(id) {
