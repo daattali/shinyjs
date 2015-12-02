@@ -1,3 +1,9 @@
+# shinyjs 0.2.4
+
+2015-12-01
+
+- Support `extendShinyjs()` for users that cannot install the `V8` package
+
 # shinyjs 0.2.3
 
 2015-11-05

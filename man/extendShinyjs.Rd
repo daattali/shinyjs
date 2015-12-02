@@ -4,7 +4,7 @@
 \alias{extendShinyjs}
 \title{Extend shinyjs by calling your own JavaScript functions}
 \usage{
-extendShinyjs(script, text)
+extendShinyjs(script, text, functions)
 }
 \arguments{
 \item{script}{Path to a JavaScript file that contains all the functions.
@@ -14,6 +14,12 @@ Each function name must begin with `shinyjs.`, for example
 \item{text}{Inline JavaScript code to use. If your JavaScript function is very
 short and you don't want to create a separate file for it, you can provide the
 code as a string. See 'Basic Usage' below.}
+
+\item{functions}{The names of the shinyjs JavaScript functions which you defined and
+want to be able to call using \code{shinyjs}. Only use this argument if you cannot
+install \code{V8} on your machine. I repeat: do not use this argument if you're
+able to install \code{V8} on your machine. For example, if you defined JavaScript functions
+named \code{shinyjs.foo} and \code{shinyjs.bar}, then use \code{functions = c("foo", "bar")}.}
 }
 \value{
 Scripts that \code{shinyjs} requires in order to run your JavaScript
@@ -30,7 +36,7 @@ to learn more.
 You still need to call \code{useShinyjs()} as usual, and the call to
 \code{useShinyjs()} must come before the call to \code{extendShinyjs()}.
 
-The \code{V8} package is required to use this function.
+The \code{V8} package is strongly recommended if you use this function.
 
 If you are deploying your app to shinyapps.io and are using \code{extendShinyjs()},
 then you need to let shinyapps.io know that the \code{V8} package is required.
@@ -179,6 +185,10 @@ that uses this JS function.
         })
       }
     )
+
+    # If you do not have `V8` package installed, you will need to add another
+    # argument to the `extendShinyjs()` function:
+    # extendShinyjs(text = jsCode, functions = c("pageCol"))
 
   ==============
 
