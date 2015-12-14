@@ -1,3 +1,9 @@
+# shinyjs 0.2.5
+
+2015-12-14
+
+- small UI change to colourInput demo shiny app
+
 # shinyjs 0.2.4
 
 2015-12-01

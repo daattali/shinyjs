@@ -15,10 +15,13 @@ shinyApp(
         "that allows users to select colours in Shiny apps",
         HTML("(<a target='_blank' href='http://deanattali.com/2015/06/28/introducing-shinyjs-colourinput/'>announcement blog post</a>)")
       ),
-      p("shinyjs::colourInput() behaves just like any other built-in Shiny input and is trivially easy to use"),
-      p("The code for this demo is available",
-        a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")
-      )
+      p("shinyjs::colourInput() behaves just like any other built-in Shiny input and is trivially easy to use")
+    ),
+    div(
+      "Created by",
+      a("Dean Attali", href = "http://deanattali.com", target = "_blank"),
+      HTML("&bull;"),
+      "Code", a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")
     ),
     tags$hr(),
 
