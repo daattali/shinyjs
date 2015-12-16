@@ -488,7 +488,7 @@ You can view the final app [here](http://daattali.com/shiny/shinyjs-basic/).
 
 <h2 id="extendshinyjs">Calling your own JavaScript functions from R</h2>
 
-You can also use `shinyjs` to add your own JavaScript functions that can be called from R as if they were regular R functions using `extendShinyjs`.
+You can also use `shinyjs` to add your own JavaScript functions that can be called from R as if they were regular R functions using `extendShinyjs`. Note that you have to install the `V8` package in order to use this function.
 
 <h3 id="extendshinyjs-simple">Simple example</h3>
 
@@ -512,7 +512,7 @@ shinyApp(
       js$pageCol(input$col)
     })
   }
-}
+)
 ```
 
 Running the code above produces this shiny app:

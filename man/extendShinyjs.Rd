@@ -30,7 +30,8 @@ Add your own JavaScript functions that can be called from R as if they were
 regular R functions. This is a more advanced technique and can only
 be used if you know JavaScript. See 'Basic Usage' below for more information
 or \href{https://github.com/daattali/shinyjs}{view the full README and demos}
-to learn more.
+to learn more. Note that you have to install the `V8` package in order to
+use this function.
 }
 \note{
 You still need to call \code{useShinyjs()} as usual, and the call to

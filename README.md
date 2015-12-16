@@ -504,7 +504,8 @@ Calling your own JavaScript functions from R
 </h2>
 You can also use `shinyjs` to add your own JavaScript functions that can
 be called from R as if they were regular R functions using
-`extendShinyjs`.
+`extendShinyjs`. Note that you have to install the `V8` package in order
+to use this function.
 
 <h3 id="extendshinyjs-simple">
 Simple example
@@ -531,7 +532,7 @@ colour of the page.
           js$pageCol(input$col)
         })
       }
-    }
+    )
 
 Running the code above produces this shiny app:
 
