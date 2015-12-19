@@ -1,3 +1,9 @@
+# shinyjs 0.2.6
+
+2015-12-14
+
+- bug fix: `show`/`hide` always trigger shown/hidden events
+
 # shinyjs 0.2.5
 
 2015-12-14

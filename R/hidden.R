@@ -41,7 +41,7 @@ hidden <- function(...) {
     tags[[1]] <-
       shiny::tagAppendAttributes(
         tags[[1]],
-        class = "shinyjs-hide shinyjs-hidden-init"
+        class = "shinyjs-hide"
       )
     return( tags[[1]] )
   } else if (length(tags) == 1 && is.list(tags[[1]])) {

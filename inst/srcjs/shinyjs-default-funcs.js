@@ -1,4 +1,4 @@
-// shinyjs 0.2.5 by Dean Attali
+// shinyjs 0.2.6 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -163,14 +163,9 @@ shinyjs = function() {
 
     // If an element was initially hidden when app started, tell shiny that
     // it's now visible so that it can properly render dynamic elements
-    if (method == "show") {
-      $.map($els, function(el) {
-        if ($(el).hasClass("shinyjs-hidden-init")) {
-          $(el).trigger("shown");
-          $(el).removeClass("shinyjs-hidden-init");
-        }
-      });
-    }
+    $.map($els, function(el) {
+      $(el).trigger(method == "show" ? "shown" : "hidden");
+    });
   };
 
   // ---------------------------------------------------
