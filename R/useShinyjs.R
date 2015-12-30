@@ -5,7 +5,7 @@
 #' You can call \code{useShinyjs()} from anywhere inside the UI.
 #'
 #' @param rmd Set this to \code{TRUE} only if you are using \code{shinyjs} inside an
-#' interactive R markdown document. If using this option, view the 
+#' interactive R markdown document. If using this option, view the
 #' \href{https://github.com/daattali/shinyjs}{README} online to learn how to
 #' use shinyjs in R markdown documents.
 #' @param debug Set this to \code{TRUE} if you want to see detailed debugging
@@ -13,7 +13,7 @@
 #' to get more information about what is going on.
 #' @param html Set this to \code{TRUE} only if you are using \code{shinyjs} in a Shiny
 #' app that builds the entire user interface with a custom HTML file. If using this
-#' option, view the \href{https://github.com/daattali/shinyjs}{README} online to learn 
+#' option, view the \href{https://github.com/daattali/shinyjs}{README} online to learn
 #' how to use shinyjs in these apps.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
@@ -43,14 +43,14 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   stopifnot(rmd == TRUE || rmd == FALSE)
   stopifnot(debug == TRUE || debug == FALSE)
   stopifnot(html == TRUE || html == FALSE)
-  
+
   # `astext` is FALSE in normal shiny apps where the shinyjs content is returned
-  # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive 
+  # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive
   # Rmarkdown documents or in Shiny apps where the user builds the entire UI
   # manually with HTML, because in those cases the content of shinyjs needs to
   # be returned as plain text that can be added to the HTML
   .globals$astext <- rmd || html
-  
+
   # inject is TRUE when the user builds the entire UI manually with HTML,
   # because in that case the shinyjs content needs to be injected into the page
   # using JavaScript
@@ -64,17 +64,17 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   # grab the file with all the default shinyjs javascript functions
   shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
   jsFile <- file.path("shinyjs", "shinyjs-default-funcs.js")
-  
+
   # JavaScript to include to turn debug mode on/off (used for seeing more messages)
   if (debug) {
-    initJS <- "shinyjs.debug = true;" 
+    initJS <- "shinyjs.debug = true;"
   } else {
     initJS <- "shinyjs.debug = false;"
   }
-  
+
   # include CSS for hiding elements
-  initCSS <- inlineCSS(".shinyjs-hide { display: none; }")
-  
+  initCSS <- inlineCSS(".shinyjs-hide { display: none !important; }")
+
   # set up the message handlers and add some initial JS and CSS
   setupJS(jsFuncs, jsFile, initJS, initCSS)
 }

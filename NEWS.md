@@ -1,3 +1,10 @@
+# shinyjs 0.3.0
+
+2015-12-30
+
+- bug fix: `hidden()` now works when used on an element with a `display` CSS property
+
+
 # shinyjs 0.2.6
 
 2015-12-14

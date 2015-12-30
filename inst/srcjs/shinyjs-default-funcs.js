@@ -1,4 +1,4 @@
-// shinyjs 0.2.6 by Dean Attali
+// shinyjs 0.3.0 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -138,6 +138,11 @@ shinyjs = function() {
 
     // for input elements, hide the whole container, not just the input
     $els = _getContainer($els);
+
+    // if an element was hidden on page load, remove that flag
+    $.map($els, function(el) {
+      $(el).removeClass("shinyjs-hide");
+    });
 
     if (!params.anim) {
       $.map($els, function(el) {
