@@ -580,3 +580,23 @@ addressed previous comment: changed URL of CRAN package to canonical form
 2015-11-08 Kurt Hornik
 
 Thanks, on CRAN now.
+
+---
+
+# Version 0.3.0
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.2 (local)
+* ubuntu 12.04, R 3.2.2 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-12-30
+
+Tested on Windows and 7 and Ubuntu 12.04. There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer is and what the license is.
+
+## Reviewer comments
