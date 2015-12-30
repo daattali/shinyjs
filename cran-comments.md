@@ -600,3 +600,12 @@ Thanks, on CRAN now.
 Tested on Windows and 7 and Ubuntu 12.04. There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer is and what the license is.
 
 ## Reviewer comments
+
+2015-12-30 Uwe Ligges
+
+Thanks, on CRAN now.
+
+Although, I could not check the vignettes on Windows due to missing https support in my version of pandoc.
+
+Best,
+Uwe Ligges
