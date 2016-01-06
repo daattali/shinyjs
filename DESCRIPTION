@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Perform Common JavaScript Operations in Shiny Apps using Plain R Code
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Perform common JavaScript operations in Shiny applications without
@@ -22,6 +22,7 @@ Suggests:
     testthat (>= 0.9.1),
     V8 (>= 0.6)
 License: MIT + file LICENSE
+SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
