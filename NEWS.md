@@ -1,3 +1,9 @@
+# shinyjs 0.3.2
+
+2016-01-08
+
+- When retrieving the shiny session object, ensure it's valid
+
 # shinyjs 0.3.0
 
 2015-12-30
