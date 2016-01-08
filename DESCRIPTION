@@ -19,6 +19,7 @@ Imports:
     stats
 Suggests:
     knitr (>= 1.7),
+    rmarkdown,
     testthat (>= 0.9.1),
     V8 (>= 0.6)
 License: MIT + file LICENSE
