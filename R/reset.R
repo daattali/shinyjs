@@ -55,9 +55,9 @@ reset <- function(id) {
 
   # send a call to JavaScript to figure out what elements to reset and what
   # values to reset them to
-  shinyInputId <- paste0("shinyjs-resettable-", id)
-  session$sendCustomMessage("reset", list(id = id,
-                                          shinyInputId = shinyInputId))
+  shinyInputId <- paste0("shinyjs-resettable-", session$ns(id))
+  session$sendCustomMessage("reset", list(id = session$ns(id),
+                                          shinyInputId = session$ns(shinyInputId)))
 
   # listen for a response from javascript
   shiny::observeEvent(session$input[[shinyInputId]], {
@@ -72,7 +72,14 @@ reset <- function(id) {
         value <- messages[[x]][['value']]
 
         updateFunc <- sprintf("update%sInput", type)
-        funcParams <- list(session, x)
+
+        # Make sure reset works with namespecing (shiny modules)
+        id <- x
+        if (substring(id, 1, nchar(session$ns(""))) == session$ns("")) {
+          id <- substring(id, nchar(session$ns("")) + 1)
+        }
+
+        funcParams <- list(session, id)
 
         # checkbox values need to be manually converted to TRUE/FALSE
         if (type == "Checkbox") {
