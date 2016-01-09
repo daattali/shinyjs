@@ -2,7 +2,7 @@
 
 2016-01-08
 
-- When retrieving the shiny session object, ensure it's valid
+- Show warning when using Shiny modules because they aren't supported yet
 
 # shinyjs 0.3.0
 
