@@ -4,19 +4,16 @@
 \alias{text}
 \title{Change the text inside an element}
 \usage{
-text(...)
+text(id, text, add)
 }
 \arguments{
-\item{...}{The following parameters are available:
-\tabular{ll}{
-  \strong{\code{id}}    \tab The id of the element/Shiny tag \cr
-  \strong{\code{text}}  \tab The text to place inside the element.
-                                  Can be either simple quoted text,
-                                  R expressions, or valid HTML code.\cr
-  \strong{\code{add}}   \tab If \code{TRUE}, then append \code{text} to the
-                             contents of the element; otherwise overwrite it.
-                             (default: \code{FALSE}) \cr
-}}
+\item{id}{The id of the element/Shiny tag}
+
+\item{text}{The text to place inside the element. Can be either simple quoted text,
+R expressions, or valid HTML code.}
+
+\item{add}{If \code{TRUE}, then append \code{text} to the contents of the element;
+otherwise overwrite it. (default: \code{FALSE})}
 }
 \description{
 Change the text or HTML inside an element.  The given text can be any

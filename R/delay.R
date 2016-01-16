@@ -45,7 +45,7 @@ delay <- function(ms, expr) {
 
   # send a call to JavaScript to let us know when the delay is up
   shinyInputId <- paste0("shinyjs-delay-", hash)
-  session$sendCustomMessage("delay", list(ms = ms,
+  session$sendCustomMessage("shinyjs-delay", list(ms = ms,
                                           shinyInputId = session$ns(shinyInputId)))
 
   # listen for a response from javascript when the delay is up

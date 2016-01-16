@@ -7,24 +7,22 @@
 \alias{toggleClass}
 \title{Add/remove CSS class}
 \usage{
-addClass(...)
+addClass(id, class, selector)
 
-removeClass(...)
+removeClass(id, class, selector)
 
-toggleClass(...)
+toggleClass(id, class, condition, selector)
 }
 \arguments{
-\item{...}{The following parameters are available:
-\tabular{ll}{
-  \strong{\code{id}}        \tab The id of the element/Shiny tag \cr
-  \strong{\code{class}}     \tab The CSS class to add/remove \cr
-  \strong{\code{condition}} \tab An optional argument to \code{toggleClass},
-                                 see 'Details' below. \cr
-  \strong{\code{selector}}   \tab JQuery selector of the elements to target.
-                                  Ignored if the \code{id} argument is given.
-                                  For example, to add a certain class to all
-                                  inputs with class x, use \code{selector = "input.x"}\cr
-}}
+\item{id}{The id of the element/Shiny tag}
+
+\item{class}{The CSS class to add/remove}
+
+\item{selector}{JQuery selector of the elements to target. Ignored if the \code{id}
+argument is given. For example, to add a certain class to all inputs with class x,
+use \code{selector = "input.x"}}
+
+\item{condition}{An optional argument to \code{toggleClass}, see 'Details' below.}
 }
 \description{
 Add or remove a CSS class from an HTML element.\cr\cr

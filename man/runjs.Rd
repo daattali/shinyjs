@@ -4,13 +4,10 @@
 \alias{runjs}
 \title{Run JavaScript code}
 \usage{
-runjs(...)
+runjs(code)
 }
 \arguments{
-\item{...}{The following parameters are available:
-\tabular{ll}{
-  \strong{\code{code}}  \tab JavaScript code to run.
-}}
+\item{code}{JavaScript code to run.}
 }
 \description{
 Run arbitrary JavaScript code. This is mainly useful when developing and

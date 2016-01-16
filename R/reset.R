@@ -56,7 +56,7 @@ reset <- function(id) {
   # send a call to JavaScript to figure out what elements to reset and what
   # values to reset them to
   shinyInputId <- paste0("shinyjs-resettable-", session$ns(id))
-  session$sendCustomMessage("reset", list(id = session$ns(id),
+  session$sendCustomMessage("shinyjs-reset", list(id = session$ns(id),
                                           shinyInputId = session$ns(shinyInputId)))
 
   # listen for a response from javascript
