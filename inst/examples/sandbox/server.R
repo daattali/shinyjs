@@ -28,8 +28,8 @@ shinyServer(function(input, output, session) {
         eval(parse(text = input$expr), envir = sessionEnv)
       ),
       error = function(err) {
-        shinyjs::text("errorMsg", as.character(shiny::tags$i(err$message)))
-        shinyjs::show(id = "error", anim = TRUE, animType = "fade")
+        shinyjs::html("errorMsg", as.character(shiny::tags$i(err$message)))
+        shinyjs::show(id = "error", anim = TRUE)
       }
     )
   })

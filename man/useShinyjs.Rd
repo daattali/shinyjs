@@ -8,7 +8,7 @@ useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE)
 }
 \arguments{
 \item{rmd}{Set this to \code{TRUE} only if you are using \code{shinyjs} inside an
-interactive R markdown document. If using this option, view the 
+interactive R markdown document. If using this option, view the
 \href{https://github.com/daattali/shinyjs}{README} online to learn how to
 use shinyjs in R markdown documents.}
 
@@ -18,7 +18,7 @@ to get more information about what is going on.}
 
 \item{html}{Set this to \code{TRUE} only if you are using \code{shinyjs} in a Shiny
 app that builds the entire user interface with a custom HTML file. If using this
-option, view the \href{https://github.com/daattali/shinyjs}{README} online to learn 
+option, view the \href{https://github.com/daattali/shinyjs}{README} online to learn
 how to use shinyjs in these apps.}
 }
 \value{

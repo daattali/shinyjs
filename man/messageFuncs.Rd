@@ -11,8 +11,7 @@ info(text)
 logjs(text)
 }
 \arguments{
-\item{text}{The message to show.  Can be either simple quoted text or an R
-variable or expression.}
+\item{text}{The message to show.  Can be either simple text or an R object.}
 }
 \description{
 \code{info} shows a message to the user as a simple popup.\cr

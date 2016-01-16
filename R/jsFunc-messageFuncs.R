@@ -6,8 +6,7 @@
 #' messages, but it is also visible to the user if they choose to inspect the
 #' console.
 #'
-#' @param text The message to show.  Can be either simple quoted text or an R
-#' variable or expression.
+#' @param text The message to show.  Can be either simple text or an R object.
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}

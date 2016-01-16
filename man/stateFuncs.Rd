@@ -20,7 +20,7 @@ toggleState(id, condition, selector)
 argument is given. For example, to disable all text inputs, use
 \code{selector = "input[type='text']"}}
 
-\item{condition}{n optional argument to \code{toggleState}, see 'Details' below.}
+\item{condition}{An optional argument to \code{toggleState}, see 'Details' below.}
 }
 \description{
 Enable or disable an input element. A disabled element is not usable and
