@@ -12,16 +12,11 @@
 #' yourself writing code such as \code{if (test()) enable(id) else disable(id)}
 #' then you can use \code{toggleState} instead: \code{toggleState(id, test())}.
 #'
-#' @param ... The following parameters are available:
-#' \tabular{ll}{
-#'   \strong{\code{id}}         \tab The id of the input element/Shiny tag \cr
-#'   \strong{\code{condition}}  \tab An optional argument to \code{toggleState},
-#'                                   see 'Details' below. \cr
-#'   \strong{\code{selector}}   \tab JQuery selector of the elements to target.
-#'                                   Ignored if the \code{id} argument is given.
-#'                                   For example, to disable all text inputs,
-#'                                   use \code{selector = "input[type='text']"}\cr
-#' }
+#' @param id The id of the input element/Shiny tag
+#' @param condition An optional argument to \code{toggleState}, see 'Details' below.
+#' @param selector Query selector of the elements to target.  Ignored if the \code{id}
+#' argument is given. For example, to disable all text inputs, use
+#' \code{selector = "input[type='text']"}
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{disabled}}
@@ -78,10 +73,24 @@ NULL
 
 #' @export
 #' @rdname stateFuncs
-enable <- jsFunc
+enable <- function(id, selector) {
+  fxn <- "enable"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
 #' @export
 #' @rdname stateFuncs
-disable <- jsFunc
+disable <- function(id, selector) {
+  fxn <- "disable"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
 #' @export
 #' @rdname stateFuncs
-toggleState <- jsFunc
+toggleState <- function(id, condition, selector) {
+  fxn <- "toggleState"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}

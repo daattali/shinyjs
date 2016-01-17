@@ -1,3 +1,15 @@
+# shinyjs 0.4.0
+
+2016-01-16
+
+- **BREAKING CHANGE**: the `text` function has been renamed to `html` (#42)
+
+- shinyjs now works with the new modules feature of Shiny (#50)
+
+- Refactor how shinyjs R engine works: instead of using cool meta programming that minimizes code and sends each shinyjs function request straight to JS, add a thin layer or R code for each function. This allows us to check the arguments, run custom code for each function, it allows the documentation to show the arguments instead of them being `...`, and it fixes a few edge cases of calling shinyjs functions, such as calling shinyjs using `do.call()` (#51)
+
+- Change internally the name of shinyjs functions to make the JavaScript function names more unique to avoid potential conflicts with user-defined JS functions
+
 # shinyjs 0.3.2
 
 2016-01-08

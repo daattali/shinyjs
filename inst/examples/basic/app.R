@@ -37,7 +37,7 @@ shinyApp(
   ),
 
   server = function(input, output) {
-    onclick("update", text("time", date()))
+    onclick("update", html("time", date()))
     onclick("toggleAdvanced", toggle(id = "advanced", anim = TRUE))
 
     observe({

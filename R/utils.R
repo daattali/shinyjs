@@ -25,7 +25,7 @@ getSession <- function() {
 setupJS <- function(jsFuncs, script, text, ...) {
   # add a shiny message handler binding for each supported method
   tpl <- paste0(
-    "Shiny.addCustomMessageHandler('%s', function(params) {",
+    "Shiny.addCustomMessageHandler('shinyjs-%s', function(params) {",
     " shinyjs.debugMessage('shinyjs: calling function \"%s\" with parameters:');",
     " shinyjs.debugMessage(params);",
     " shinyjs.%s(params);",

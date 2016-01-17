@@ -15,7 +15,7 @@ getHelperText <- function() {
         "hiding the advanced info section when the link is clicked"),
       tags$li(
         "Clicking 'Update' uses", code("shinyjs::onclick()"), "and",
-        code("shinyjs::text()"), "to update the text in the timestamp when",
+        code("shinyjs::html()"), "to update the HTML in the timestamp when",
         "the link is clicked"),
       tags$li(
         "Clicking 'Submit' uses", code("shinyjs::info()"), "to show a",

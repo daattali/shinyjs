@@ -13,24 +13,15 @@
 #' If you want to hide/show an element in a few seconds rather than immediately,
 #' you can use the \code{\link[shinyjs]{delay}} function.
 #'
-#' @param ... The following parameters are available:
-#' \tabular{ll}{
-#'   \strong{\code{id}}         \tab The id of the element/Shiny tag \cr
-#'   \strong{\code{anim}}       \tab If \code{TRUE} then animate the behaviour
-#'                                   (default: \code{FALSE}) \cr
-#'   \strong{\code{animType}}   \tab The type of animation to use,
-#'                                   either \code{"slide"} or \code{"fade"}
-#'                                   (default: \code{"slide"}) \cr
-#'   \strong{\code{time}}       \tab The number of seconds to make the
-#'                                   animation last
-#'                                   (default: \code{0.5}) \cr
-#'   \strong{\code{selector}}   \tab JQuery selector of the elements to show/hide.
-#'                                   Ignored if the \code{id} argument is given.
-#'                                   For example, to select all span elements with
-#'                                   class x, use \code{selector = "span.x"}\cr
-#'   \strong{\code{condition}}  \tab An optional argument to \code{toggle}, see
-#'                                   'Details' below. \cr
-#' }
+#' @param id The id of the element/Shiny tag
+#' @param anim If \code{TRUE} then animate the behaviour (default: \code{FALSE})
+#' @param animType The type of animation to use, either \code{"slide"} or \code{"fade"}
+#' (default: \code{"slide"})
+#' @param time The number of seconds to make the animation last (default: \code{0.5})
+#' @param selector JQuery selector of the elements to show/hide. Ignored if the
+#' \code{id} argument is given. For example, to select all span elements with
+#' class x, use \code{selector = "span.x"}
+#' @param condition An optional argument to \code{toggle}, see 'Details' below.
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
 #' \code{\link[shinyjs]{hidden}},
@@ -88,10 +79,24 @@ NULL
 
 #' @export
 #' @rdname visibilityFuncs
-show <- jsFunc
+show <- function(id, anim, animType, time, selector) {
+  fxn <- "show"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
 #' @export
 #' @rdname visibilityFuncs
-hide <- jsFunc
+hide <- function(id, anim, animType, time, selector) {
+  fxn <- "hide"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
 #' @export
 #' @rdname visibilityFuncs
-toggle <- jsFunc
+toggle <- function(id, anim, animType, time, selector, condition) {
+  fxn <- "toggle"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}

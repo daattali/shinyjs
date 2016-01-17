@@ -6,16 +6,12 @@
 \alias{messageFuncs}
 \title{Show a message}
 \usage{
-info(...)
+info(text)
 
-logjs(...)
+logjs(text)
 }
 \arguments{
-\item{...}{The following parameters are available:
-\tabular{ll}{
-  \strong{\code{text}}  \tab The message to show.  Can be either simple
-                             quoted text or an R variable or expression. \cr
-}}
+\item{text}{The message to show.  Can be either simple text or an R object.}
 }
 \description{
 \code{info} shows a message to the user as a simple popup.\cr

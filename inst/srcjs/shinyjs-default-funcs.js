@@ -1,4 +1,4 @@
-// shinyjs 0.3.2 by Dean Attali
+// shinyjs 0.4.0 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -141,7 +141,10 @@ shinyjs = function() {
 
     // if an element was hidden on page load, remove that flag
     $.map($els, function(el) {
-      $(el).removeClass("shinyjs-hide");
+      if ($(el).hasClass("shinyjs-hide")) {
+        $(el).removeClass("shinyjs-hide");
+        $(el).hide();
+      }
     });
 
     if (!params.anim) {
@@ -604,18 +607,18 @@ shinyjs = function() {
       }
     },
 
-    text : function (params) {
+    html : function (params) {
       var defaultParams = {
         id : null,
-        text : null,
+        html : null,
         add : false
       };
       params = shinyjs.getParams(params, defaultParams);
 
       if (params.add) {
-        _jqid(params.id)[0].innerHTML += params.text;
+        _jqid(params.id)[0].innerHTML += params.html;
       } else {
-        _jqid(params.id)[0].innerHTML = params.text;
+        _jqid(params.id)[0].innerHTML = params.html;
       }
 
     },

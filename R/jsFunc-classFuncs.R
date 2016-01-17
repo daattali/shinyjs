@@ -13,17 +13,12 @@
 #' displayed (position, colour, size, etc.).  You can learn the basics
 #' at \href{http://www.w3schools.com/css/}{W3Schools}.
 #'
-#' @param ... The following parameters are available:
-#' \tabular{ll}{
-#'   \strong{\code{id}}        \tab The id of the element/Shiny tag \cr
-#'   \strong{\code{class}}     \tab The CSS class to add/remove \cr
-#'   \strong{\code{condition}} \tab An optional argument to \code{toggleClass},
-#'                                  see 'Details' below. \cr
-#'   \strong{\code{selector}}   \tab JQuery selector of the elements to target.
-#'                                   Ignored if the \code{id} argument is given.
-#'                                   For example, to add a certain class to all
-#'                                   inputs with class x, use \code{selector = "input.x"}\cr
-#' }
+#' @param id The id of the element/Shiny tag
+#' @param class The CSS class to add/remove
+#' @param condition An optional argument to \code{toggleClass}, see 'Details' below.
+#' @param selector JQuery selector of the elements to target. Ignored if the \code{id}
+#' argument is given. For example, to add a certain class to all inputs with class x,
+#' use \code{selector = "input.x"}
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
 #' \code{\link[shinyjs]{inlineCSS}},
@@ -78,10 +73,22 @@ NULL
 
 #' @export
 #' @rdname classFuncs
-addClass <- jsFunc
+addClass <- function(id, class, selector) {
+  fxn <- "addClass"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
 #' @export
 #' @rdname classFuncs
-removeClass <- jsFunc
+removeClass <- function(id, class, selector) {
+  fxn <- "removeClass"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
 #' @export
 #' @rdname classFuncs
-toggleClass <- jsFunc
+toggleClass <- function(id, class, condition, selector) {
+  fxn <- "toggleClass"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}

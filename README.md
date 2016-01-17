@@ -85,7 +85,7 @@ list of the common functions:
 -   `info` - show a message to the user (using JavaScript's `alert`
     under the hood).
 
--   `text` - change the text/HTML of an element (using JavaScript's
+-   `html` - change the text/HTML of an element (using JavaScript's
     `innerHTML` under the hood).
 
 -   `onclick` - run R code when an element is clicked. Was originally
@@ -391,7 +391,7 @@ To do that, replace `p("Timestamp: ", span(date()))` with
 Now we need to tell Shiny what to do when "Update" is clicked by adding
 this to the server
 
-    shinyjs::onclick("update", shinyjs::text("time", date()))
+    shinyjs::onclick("update", shinyjs::html("time", date()))
 
 **5. Some users may find it hard to read the small text in the app, so
 there should be an option to increase the font size**
@@ -480,7 +480,7 @@ The final code looks like this
         shinyjs::onclick("toggleAdvanced",
                          shinyjs::toggle(id = "advanced", anim = TRUE))    
         
-        shinyjs::onclick("update", shinyjs::text("time", date()))
+        shinyjs::onclick("update", shinyjs::html("time", date()))
         
         observe({
           shinyjs::toggleClass("myapp", "big", input$big)

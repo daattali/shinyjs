@@ -7,23 +7,20 @@
 \alias{toggleState}
 \title{Enable/disable an input element}
 \usage{
-enable(...)
+enable(id, selector)
 
-disable(...)
+disable(id, selector)
 
-toggleState(...)
+toggleState(id, condition, selector)
 }
 \arguments{
-\item{...}{The following parameters are available:
-\tabular{ll}{
-  \strong{\code{id}}         \tab The id of the input element/Shiny tag \cr
-  \strong{\code{condition}}  \tab An optional argument to \code{toggleState},
-                                  see 'Details' below. \cr
-  \strong{\code{selector}}   \tab JQuery selector of the elements to target.
-                                  Ignored if the \code{id} argument is given.
-                                  For example, to disable all text inputs,
-                                  use \code{selector = "input[type='text']"}\cr
-}}
+\item{id}{The id of the input element/Shiny tag}
+
+\item{selector}{Query selector of the elements to target.  Ignored if the \code{id}
+argument is given. For example, to disable all text inputs, use
+\code{selector = "input[type='text']"}}
+
+\item{condition}{An optional argument to \code{toggleState}, see 'Details' below.}
 }
 \description{
 Enable or disable an input element. A disabled element is not usable and
