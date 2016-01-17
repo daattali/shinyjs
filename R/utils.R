@@ -14,13 +14,6 @@ getSession <- function() {
     ))
   }
 
-  # Make sure we have a proper shiny session object
-  if (utils::packageVersion("shiny") > "0.12.0") {
-    if (!inherits(session , "ShinySession")) {
-      errMsg("Could not find a valid Shiny session object.")
-    }
-  }
-
   session
 }
 

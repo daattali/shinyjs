@@ -68,20 +68,24 @@ oneventHelper <- function(event, id, expr, add) {
   # get the Shiny session
   session <- getSession()
 
-  #################################
-  # TODO only do this if shiny version is at least xxx
-  #################################
-
-  # Make sure reset works with namespecing (shiny modules)
-  id <- session$ns(id)
+  # Make sure reset works with namespaces (shiny modules)
+  if (inherits(session, "session_proxy")) {
+    id <- session$ns(id)
+  }
 
   # attach the event callback from JS to call this function to execute the
   # given expression. To support multiple event handlers, each time this
   # is called, a random number is attached to the Shiny input id
-  shinyInputId <- paste0("shinyjs-", id, "-", as.integer(stats::runif(1, 0, 1e9)), "-input-", event)
-  session$sendCustomMessage("shinyjs-onevent", list(event = event,
+  shinyInputId <- sprintf("shinyjs-%s-%s-input-%s",
+                          id, as.integer(stats::runif(1, 0, 1e9)), event)
+  shinyInputIdJs <- shinyInputId
+  if (inherits(session, "session_proxy")) {
+    shinyInputIdJs <- session$ns(shinyInputIdJs)
+  }
+  session$sendCustomMessage("shinyjs-onevent", list(
+                                            event = event,
                                             id = id,
-                                            shinyInputId = session$ns(shinyInputId),
+                                            shinyInputId = shinyInputIdJs,
                                             add = add))
 
   # save the unevaluated expression so that it won't have a static value

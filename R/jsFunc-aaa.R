@@ -40,6 +40,13 @@ jsFuncHelper <- function(fxn, params) {
   parentFrame <- parent.frame(2)
   params <- lapply(params, function(x){ eval(x, envir = parentFrame) })
 
+  # respect Shiny modules/namespaces
+  if (inherits(session , "session_proxy")) {
+    if ("id" %in% names(params)) {
+      params[['id']] <- session$ns(params[['id']])
+    }
+  }
+
   # call the javascript function
   session$sendCustomMessage(
     type = fxn,

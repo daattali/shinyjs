@@ -53,11 +53,22 @@ reset <- function(id) {
   # get the Shiny session
   session <- getSession()
 
+  # Make sure reset works with namespaces (shiny modules)
+  nsName <- ""
+  if (inherits(session, "session_proxy")) {
+    id <- session$ns(id)
+    nsName <- session$ns("")
+  }
+
   # send a call to JavaScript to figure out what elements to reset and what
   # values to reset them to
-  shinyInputId <- paste0("shinyjs-resettable-", session$ns(id))
-  session$sendCustomMessage("shinyjs-reset", list(id = session$ns(id),
-                                          shinyInputId = session$ns(shinyInputId)))
+  shinyInputId <- paste0("shinyjs-resettable-", id)
+  shinyInputIdJs <- shinyInputId
+  if (inherits(session, "session_proxy")) {
+    shinyInputIdJs <- session$ns(shinyInputIdJs)
+  }
+  session$sendCustomMessage("shinyjs-reset", list(id = id,
+                                          shinyInputId = shinyInputIdJs))
 
   # listen for a response from javascript
   shiny::observeEvent(session$input[[shinyInputId]], {
@@ -75,8 +86,8 @@ reset <- function(id) {
 
         # Make sure reset works with namespecing (shiny modules)
         id <- x
-        if (substring(id, 1, nchar(session$ns(""))) == session$ns("")) {
-          id <- substring(id, nchar(session$ns("")) + 1)
+        if (substring(id, 1, nchar(nsName)) == nsName) {
+          id <- substring(id, nchar(nsName) + 1)
         }
 
         funcParams <- list(session, id)
