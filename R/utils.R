@@ -14,10 +14,6 @@ getSession <- function() {
     ))
   }
 
-  if (inherits(session , "session_proxy")) {
-    warning("You seem to be using shinyjs in Shiny modules, which currently have very limited support")
-  }
-
   session
 }
 
