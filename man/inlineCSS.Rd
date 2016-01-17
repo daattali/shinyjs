@@ -27,9 +27,11 @@ at \href{http://www.w3schools.com/css/}{W3Schools}.
 }
 \examples{
 if (interactive()) {
+  library(shiny)
+
   # Method 1 - passing a string of valid CSS
-  shiny::shinyApp(
-    ui = shiny::fluidPage(
+  shinyApp(
+    ui = fluidPage(
       inlineCSS("#big { font-size:30px; }
                  .red { color: red; border: 1px solid black;}"),
       p(id = "big", "This will be big"),
@@ -40,8 +42,8 @@ if (interactive()) {
 
   # Method 2 - passing a list of CSS selectors/declarations
   # where each declaration is a full declaration block
-  shiny::shinyApp(
-    ui = shiny::fluidPage(
+  shinyApp(
+    ui = fluidPage(
       inlineCSS(list(
         "#big" = "font-size:30px",
         ".red" = "color: red; border: 1px solid black;"
@@ -54,8 +56,8 @@ if (interactive()) {
 
   # Method 3 - passing a list of CSS selectors/declarations
   # where each declaration is a vector of declarations
-  shiny::shinyApp(
-    ui = shiny::fluidPage(
+  shinyApp(
+    ui = fluidPage(
       inlineCSS(list(
         "#big" = "font-size:30px",
         ".red" = c("color: red", "border: 1px solid black")

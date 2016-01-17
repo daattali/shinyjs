@@ -30,14 +30,16 @@
 #' in the app's ui.
 #' @examples
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   library(shiny)
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
-#'       shiny::actionButton("btn", "Click me"),
-#'       shiny::p(id = "element", "Watch what happens to me")
+#'       actionButton("btn", "Click me"),
+#'       p(id = "element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observeEvent(input$btn, {
+#'       observeEvent(input$btn, {
 #'         # Change the following line for more examples
 #'         toggle("element")
 #'       })
@@ -61,14 +63,14 @@
 #' ## toggle can be given an optional `condition` argument, which
 #' ## determines if to show or hide the element
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),
-#'       shiny::checkboxInput("checkbox", "Show the text", TRUE),
-#'       shiny::p(id = "element", "Watch what happens to me")
+#'       checkboxInput("checkbox", "Show the text", TRUE),
+#'       p(id = "element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observe({
+#'       observe({
 #'         toggle(id = "element", condition = input$checkbox)
 #'       })
 #'     }

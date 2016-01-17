@@ -27,6 +27,8 @@ in the app's ui.
 }
 \examples{
 if (interactive()) {
+  library(shiny)
+
   shinyApp(
     ui = fluidPage(
       useShinyjs(),

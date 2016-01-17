@@ -6,7 +6,7 @@ getHelperText <- function() {
         "Selecting 'Bigger text' uses", code("shinyjs::addClass()"),
         "to add a CSS class to the webpage that enlarges the font"),
       tags$li(
-        "Typing text inside the 'Name' field uses", code("shinyjs::enable()"),
+        "Typing text inside the 'Name' field uses", code("shinyjs::toggleState()"),
         "to enable the submit button, and similary to disable the button",
         "when there is no input"),
       tags$li(

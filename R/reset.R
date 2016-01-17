@@ -8,7 +8,7 @@
 #' selectizeInput, radioButtons, dateInput, dateRangeInput,
 #' checkboxInput, checkboxGroupInput.  Buttons are not supported,
 #' meaning that you cannot use this function to reset the value of an
-#' action button back to 0.
+#' action button back to 0. You also cannot use this function on a fileInput.
 #'
 #' @param id The id of the input element to reset or the id of an HTML
 #' tag to reset all input elements inside it.
@@ -18,6 +18,8 @@
 #' in the app's ui.
 #' @examples
 #' if (interactive()) {
+#'   library(shiny)
+#'
 #'   shinyApp(
 #'     ui = fluidPage(
 #'       useShinyjs(),

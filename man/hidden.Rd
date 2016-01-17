@@ -22,25 +22,26 @@ in the app's ui.
 }
 \examples{
 if (interactive()) {
-  shiny::shinyApp(
-    ui = shiny::fluidPage(
+  library(shiny)
+  shinyApp(
+    ui = fluidPage(
       useShinyjs(),  # Set up shinyjs
-      shiny::actionButton("btn", "Click me"),
+      actionButton("btn", "Click me"),
       hidden(
-        shiny::p(id = "element", "I was born invisible")
+        p(id = "element", "I was born invisible")
       )
     ),
     server = function(input, output) {
-      shiny::observeEvent(input$btn, {
+      observeEvent(input$btn, {
         show("element")
       })
     }
   )
 }
 
-hidden(shiny::span(id = "a"), shiny::div(id = "b"))
-hidden(shiny::tagList(shiny::span(id = "a"), shiny::div(id = "b")))
-hidden(list(shiny::span(id = "a"), shiny::div(id = "b")))
+hidden(span(id = "a"), div(id = "b"))
+hidden(tagList(span(id = "a"), div(id = "b")))
+hidden(list(span(id = "a"), div(id = "b")))
 }
 \seealso{
 \code{\link[shinyjs]{useShinyjs}},

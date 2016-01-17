@@ -14,11 +14,7 @@ shinyServer(function(input, output) {
   })
 
   # run the selected expression
-  observe({
-    if (input$submitExpr == 0) {
-      return()
-    }
-
+  observeEvent(input$submitExpr, {
     isolate(
       eval(parse(text = examples[as.numeric(input$expr)]))
     )

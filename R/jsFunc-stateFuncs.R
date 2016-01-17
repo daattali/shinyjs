@@ -24,14 +24,16 @@
 #' in the app's ui.
 #' @examples
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   library(shiny)
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
-#'       shiny::actionButton("btn", "Click me"),
-#'       shiny::textInput("element", "Watch what happens to me")
+#'       actionButton("btn", "Click me"),
+#'       textInput("element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observeEvent(input$btn, {
+#'       observeEvent(input$btn, {
 #'         # Change the following line for more examples
 #'         toggleState("element")
 #'       })
@@ -47,22 +49,22 @@
 #'
 #'   # Similarly, the "element" text input can be changed to many other
 #'   # input tags, such as the following examples
-#'   shiny::actionButton("element", "I'm a button")
-#'   shiny::fileInput("element", "Choose a file")
-#'   shiny::selectInput("element", "I'm a select box", 1:10)
+#'   actionButton("element", "I'm a button")
+#'   fileInput("element", "Choose a file")
+#'   selectInput("element", "I'm a select box", 1:10)
 #' }
 #'
 #' ## toggleState can be given an optional `condition` argument, which
 #' ## determines if to enable or disable the input
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),
-#'       shiny::textInput("text", "Please type at least 3 characters"),
-#'       shiny::actionButton("element", "Submit")
+#'       textInput("text", "Please type at least 3 characters"),
+#'       actionButton("element", "Submit")
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observe({
+#'       observe({
 #'         toggleState(id = "element", condition = nchar(input$text) >= 3)
 #'       })
 #'     }

@@ -14,23 +14,24 @@
 #' @return The tag (or tags) that was given as an argument in a disabled state.
 #' @examples
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   library(shiny)
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
-#'       shiny::actionButton("btn", "Click me"),
+#'       actionButton("btn", "Click me"),
 #'       disabled(
-#'         shiny::textInput("element", NULL, "I was born disabled")
+#'         textInput("element", NULL, "I was born disabled")
 #'       )
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observeEvent(input$btn, {
+#'       observeEvent(input$btn, {
 #'         enable("element")
 #'       })
 #'     }
 #'   )
 #' }
 #'
-#' disabled(shiny::numericInput("num", NULL, 5), shiny::dateInput("date", NULL))
+#' disabled(numericInput("num", NULL, 5), dateInput("date", NULL))
 #' @export
 disabled <- function(...) {
   tags <- list(...)

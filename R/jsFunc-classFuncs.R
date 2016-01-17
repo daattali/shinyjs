@@ -26,16 +26,18 @@
 #' in the app's ui.
 #' @examples
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   library(shiny)
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
 #'       # Add a CSS class for red text colour
 #'       inlineCSS(list(.red = "background: red")),
-#'       shiny::actionButton("btn", "Click me"),
-#'       shiny::p(id = "element", "Watch what happens to me")
+#'       actionButton("btn", "Click me"),
+#'       p(id = "element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observeEvent(input$btn, {
+#'       observeEvent(input$btn, {
 #'         # Change the following line for more examples
 #'         toggleClass("element", "red")
 #'       })
@@ -53,15 +55,15 @@
 #' ## toggleClass can be given an optional `condition` argument, which
 #' ## determines if to add or remove the class
 #' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       useShinyjs(),
 #'       inlineCSS(list(.red = "background: red")),
-#'       shiny::checkboxInput("checkbox", "Make it red"),
-#'       shiny::p(id = "element", "Watch what happens to me")
+#'       checkboxInput("checkbox", "Make it red"),
+#'       p(id = "element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output) {
-#'       shiny::observe({
+#'       observe({
 #'         toggleClass(id = "element", class = "red",
 #'                     condition = input$checkbox)
 #'       })

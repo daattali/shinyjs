@@ -44,12 +44,14 @@ that are supported by JQuery can be used. The full list of events that can be us
 }
 \examples{
 if (interactive()) {
-  shiny::shinyApp(
-    ui = shiny::fluidPage(
+  library(shiny)
+
+  shinyApp(
+    ui = fluidPage(
       useShinyjs(),  # Set up shinyjs
-      shiny::p(id = "date", "Click me to see the date"),
-      shiny::p(id = "disappear", "Move your mouse here to make the text below disappear"),
-      shiny::p(id = "text", "Hello")
+      p(id = "date", "Click me to see the date"),
+      p(id = "disappear", "Move your mouse here to make the text below disappear"),
+      p(id = "text", "Hello")
     ),
     server = function(input, output) {
       onclick("date", info(date()))

@@ -16,11 +16,7 @@ shinyServer(function(input, output, session) {
   # and not in a temporary closure environment so that objectes
   # created in an expression can be accessed later)
   sessionEnv <- environment()
-  observe({
-    if (input$submitExpr == 0) {
-      return(NULL)
-    }
-
+  observeEvent(input$submitExpr, {
     shinyjs::hide("error")
 
     tryCatch(
