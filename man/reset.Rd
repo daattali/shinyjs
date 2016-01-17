@@ -19,7 +19,7 @@ includes: textInput, numericInput, sliderInput, selectInput,
 selectizeInput, radioButtons, dateInput, dateRangeInput,
 checkboxInput, checkboxGroupInput.  Buttons are not supported,
 meaning that you cannot use this function to reset the value of an
-action button back to 0.
+action button back to 0. You also cannot use this function on a fileInput.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
