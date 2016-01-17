@@ -40,7 +40,8 @@ if (interactive()) {
   )
 }
 
-disabled(shiny::numericInput("num", NULL, 5), shiny::dateInput("date", NULL))
+library(shiny)
+disabled(numericInput("num", NULL, 5), dateInput("date", NULL))
 }
 \seealso{
 \code{\link[shinyjs]{useShinyjs}},

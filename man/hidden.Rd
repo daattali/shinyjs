@@ -39,6 +39,7 @@ if (interactive()) {
   )
 }
 
+library(shiny)
 hidden(span(id = "a"), div(id = "b"))
 hidden(tagList(span(id = "a"), div(id = "b")))
 hidden(list(span(id = "a"), div(id = "b")))
