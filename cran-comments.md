@@ -609,3 +609,21 @@ Although, I could not check the vignettes on Windows due to missing https suppor
 
 Best,
 Uwe Ligges
+
+# Version 0.4.0
+
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.2 (local)
+* ubuntu 12.04, R 3.2.2 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2016-01-21
+
+There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer is and what the license is. I know that submitting twice within a month is frowned upon, but the previous submission was because I was told by a CRAN maintainer that I need to update my package to adhere to a new rule, and I want to have this package ready for the Shiny Conference next week
+
+## Reviewer comments
