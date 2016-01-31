@@ -1,4 +1,6 @@
-#shinydevcon: [Presentation slides](https://docs.google.com/presentation/d/1XyBrIA97ZWIkm8NICAyWHo4J9hj_i2-mJmKEq_CR2A8/edit?usp=sharing) and [code used in tutorial]()
+/#shinydevcon: [Presentation slides](https://docs.google.com/presentation/d/1XyBrIA97ZWIkm8NICAyWHo4J9hj_i2-mJmKEq_CR2A8/edit?usp=sharing) and [code used in tutorial]()
+
+
 
 shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
 ===============================================================================
