@@ -1,3 +1,9 @@
+# shinyjs 0.4.1
+
+2016-01-31
+
+- `html()` function: don't attempt to change innerHTML if the element does not exist
+
 # shinyjs 0.4.0
 
 2016-01-16
