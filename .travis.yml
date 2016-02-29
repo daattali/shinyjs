@@ -1,7 +1,8 @@
 language: r
+sudo: false
+cache: packages
 
-# R support in Travis CI currently requires sudo http://docs.travis-ci.com/user/languages/r/
-sudo: true
-
-apt_packages:
- - libv8-dev
+addons:
+ apt:
+  packages:
+    - libv8-dev
