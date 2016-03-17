@@ -1,4 +1,5 @@
-# NOTE: During February/March 2016 I will be extremely busy trying to write my thesis, so please do not send me private emails asking for personal help. If you need help, I recommend you ask on StackOverflow. Help me graduate :)
+NOTE: During February/March 2016 I will be extremely busy trying to write my thesis, so please do not send me private emails asking for personal help. If you need help, I recommend you ask on StackOverflow. Help me graduate :)
+==================================================================================================================================================================================================================================
 
 shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
 ===============================================================================
@@ -47,8 +48,7 @@ with some of the functionality that `shinyjs` makes available.
 allows users to select colours. [Interactive
 demo](http://daattali.com/shiny/colourInput/).
 
-[Presentation slides for
-`shinyjs` talk](http://bit.ly/shinyjs-slides)
+[Presentation slides for `shinyjs` talk](http://bit.ly/shinyjs-slides)
 from the 2016 Shiny Developer Conference.
 
 <h2 id="install">

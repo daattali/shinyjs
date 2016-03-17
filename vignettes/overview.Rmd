@@ -8,10 +8,12 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\usepackage[utf8]{inputenc}
 ---
-  
+
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
+
+# NOTE: During February/March 2016 I will be extremely busy trying to write my thesis, so please do not send me private emails asking for personal help. If you need help, I recommend you ask on StackOverflow. Help me graduate :)
 
 # shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
 
@@ -51,7 +53,7 @@ you play around with some of the functionality that `shinyjs` makes available.
 `shinyjs` also includes a `colourInput` which is an input control that allows
 users to select colours. [Interactive demo](http://daattali.com/shiny/colourInput/).
 
-[Link to presentation slides for `shinyjs`](https://docs.google.com/presentation/d/1XyBrIA97ZWIkm8NICAyWHo4J9hj_i2-mJmKEq_CR2A8/edit?usp=sharing) from the first Shiny Developer Conference (I have nowhere better to post this link).
+[Presentation slides for `shinyjs` talk](http://bit.ly/shinyjs-slides) from the 2016 Shiny Developer Conference.
 
 <h2 id="install">Installation</h2>
 
