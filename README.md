@@ -53,7 +53,7 @@ allows users to select colours. [Interactive
 demo](http://daattali.com/shiny/colourInput/).
 
 You can also [watch a short
-GIF](https://raw.githubusercontent.com/daattali/shinyjs/mastinst/img/colourPickerGadget.gif)
+GIF](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif)
 showcasing the colour picker addin+gadget.
 
 [Presentation slides for `shinyjs` talk](http://bit.ly/shinyjs-slides)
