@@ -33,6 +33,7 @@
 #' no effect on the return value from the input; when the checkbox is checked,
 #' the input will always return the string "transparent".
 #' @seealso \code{\link[shinyjs]{updateColourInput}}
+#' \code{\link[shinyjs]{colourPicker}}
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)

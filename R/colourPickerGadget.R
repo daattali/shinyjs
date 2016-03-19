@@ -1,19 +1,30 @@
-colourPickerGadget <- function(numCols = 1) {
+colourPickerGadget <- function() {
   if (!requireNamespace("rstudioapi", quietly = TRUE)) {
     stop("You must have RStudio v0.99.878 or newer to use the colour picker",
          call. = FALSE)
   }
-  .globals$numCols <- numCols
 
   viewer <- shiny::dialogViewer("Colour Picker", width = 800, height = 700)
   dir <- system.file("gadgets", "colourpicker", package = "shinyjs")
   shiny::runGadget(shiny::shinyAppDir(dir), viewer = viewer, stopOnCancel = FALSE)
 }
 
-#' This is a gadget, you can have in your script: `cols <- colourPicker(3)`
+#' Colour picker gadget
+#'
+#' This gadget lets you choose colours easily. You can select multiple colours,
+#' and you can either choose any RGB colour, or browse through R colours.
+#'
+#' @note This gadget returns a vector of colours that can be assigned to a variable.
+#' If instead you want to get a text representation of the colours that can
+#' embedded into code, use the addin from the RStudio Addins menu.
+#' @return Vector of selected colours
 #' @export
-colourPicker <- function(numCols = 1) {
-  colourPickerGadget(numCols)
+#' @examples
+#' if (interactive()) {
+#'   cols <- colourPicker()
+#' }
+colourPicker <- function() {
+  colourPickerGadget()
 }
 
 colourPickerAddin <- function() {

@@ -8,19 +8,7 @@ shinyServer(function(input, output) {
     selectedNum = NULL
   )
 
-  # This isn't really necessary for the gadget/addin, but it's here in case
-  # this app ever runs as an independent Shiny app
-  if (exists(".globals")) {
-    numCols <- .globals$numCols
-  } else {
-    numCols <- 1
-  }
-
-  # Initial values
-  if (!is.numeric(numCols) || numCols < 1 || length(numCols) > 1) {
-    warning("Invalid number of colours; defaulting to 1")
-    numCols <- 1
-  }
+  numCols <- 1
   values$selectedCols <- rep("#FFFFFF", numCols)
   values$selectedNum <- 1
 

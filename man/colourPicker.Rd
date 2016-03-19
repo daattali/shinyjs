@@ -2,11 +2,25 @@
 % Please edit documentation in R/colourPickerGadget.R
 \name{colourPicker}
 \alias{colourPicker}
-\title{This is a gadget, you can have in your script: `cols <- colourPicker(3)`}
+\title{Colour picker gadget}
 \usage{
-colourPicker(numCols = 1)
+colourPicker()
+}
+\value{
+Vector of selected colours
 }
 \description{
-This is a gadget, you can have in your script: `cols <- colourPicker(3)`
+This gadget lets you choose colours easily. You can select multiple colours,
+and you can either choose any RGB colour, or browse through R colours.
+}
+\note{
+This gadget returns a vector of colours that can be assigned to a variable.
+If instead you want to get a text representation of the colours that can
+embedded into code, use the addin from the RStudio Addins menu.
+}
+\examples{
+if (interactive()) {
+  cols <- colourPicker()
+}
 }
 
