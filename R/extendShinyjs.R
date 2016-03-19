@@ -261,7 +261,7 @@ extendShinyjs <- function(script, text, functions) {
   if (!requireNamespace("V8", quietly = TRUE)) {
     if (missing(functions)) {
       errMsg(paste0("V8 package is required to use `extendShinyjs`. Please install it ",
-                    "with `install.packages(\"V8\")`.\nIf you cannot successfully install",
+                    "with `install.packages(\"V8\")`.\nIf you cannot successfully install ",
                     "V8 on your machine, you need to use the `functions` argument."))
     }
     jsFuncs <- functions
