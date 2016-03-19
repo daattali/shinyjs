@@ -631,6 +631,9 @@ There were no ERRORs or WARNINGs and 1 NOTE that informed me who the maintainer 
 2016-01-21 Kurt Hornik
 
 Thanks, on CRAN now.
+2016-01-21 Kurt Hornik
+
+Thanks, on CRAN now.
 
 # Version 0.5.0
 
@@ -649,3 +652,7 @@ Thanks, on CRAN now.
 R CMD check passed with no errors/warnings/notes
 
 ### Reviewer comments
+
+2016-03-19 Kurt Hornik
+
+Thanks, on CRAN now.
