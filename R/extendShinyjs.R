@@ -268,12 +268,6 @@ extendShinyjs <- function(script, text, functions) {
   }
   # if V8 is installed (preferable method), parse the input for JS functions
   else {
-    if (!missing(functions)) {
-      warning(paste0("shinyjs: Ignoring the `functions` argument to `extendShinyjs()` ",
-                      "because it is not needed when you have the `V8` package installed."),
-              call. = FALSE)
-    }
-
     # create a js context with a `shinyjs` object that user-defined functions
     # can populate
     ct <- V8::new_context(NULL, FALSE, FALSE)

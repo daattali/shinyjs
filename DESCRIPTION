@@ -1,12 +1,13 @@
 Package: shinyjs
 Title: Perform Common JavaScript Operations in Shiny Apps using Plain R Code
-Version: 0.4.1
+Version: 0.5.0
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Perform common JavaScript operations in Shiny applications without
     having to know any JavaScript. Examples include: hiding an element, disabling
     an input, resetting an input back to its original value, delaying code execution
-    by a few seconds, and many more useful functions. 'shinyjs' can also be used to
+    by a few seconds, and many more useful functions. 'shinyjs' also includes
+    a colour picker widget, a colour picker RStudio addin, and can also be used to
     easily run your own custom JavaScript functions from R.
 URL: https://github.com/daattali/shinyjs
 BugReports: https://github.com/daattali/shinyjs/issues
@@ -21,6 +22,7 @@ Imports:
 Suggests:
     knitr (>= 1.7),
     rmarkdown,
+    rstudioapi (>= 0.5),
     testthat (>= 0.9.1),
     V8 (>= 0.6)
 License: MIT + file LICENSE

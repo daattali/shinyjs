@@ -1,9 +1,4 @@
-Name: Colour picker
-Description: Lets you select a colour visually.
+Name: Colour Picker
+Description: Let's you easilt select colours.
 Binding: colourPickerAddin
-Interactive: true
-
-Name: Multiple colour picker
-Description: Lets you select multiple colours visually.
-Binding: multiColourPickerAddin
 Interactive: true
