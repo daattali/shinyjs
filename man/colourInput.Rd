@@ -88,5 +88,6 @@ if (interactive()) {
 }
 \seealso{
 \code{\link[shinyjs]{updateColourInput}}
+\code{\link[shinyjs]{colourPicker}}
 }
 

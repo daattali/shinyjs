@@ -261,19 +261,13 @@ extendShinyjs <- function(script, text, functions) {
   if (!requireNamespace("V8", quietly = TRUE)) {
     if (missing(functions)) {
       errMsg(paste0("V8 package is required to use `extendShinyjs`. Please install it ",
-                    "with `install.packages(\"V8\")`.\nIf you cannot successfully install",
+                    "with `install.packages(\"V8\")`.\nIf you cannot successfully install ",
                     "V8 on your machine, you need to use the `functions` argument."))
     }
     jsFuncs <- functions
   }
   # if V8 is installed (preferable method), parse the input for JS functions
   else {
-    if (!missing(functions)) {
-      warning(paste0("shinyjs: Ignoring the `functions` argument to `extendShinyjs()` ",
-                      "because it is not needed when you have the `V8` package installed."),
-              call. = FALSE)
-    }
-
     # create a js context with a `shinyjs` object that user-defined functions
     # can populate
     ct <- V8::new_context(NULL, FALSE, FALSE)
