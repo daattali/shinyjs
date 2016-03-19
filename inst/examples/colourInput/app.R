@@ -18,11 +18,15 @@ shinyApp(
       p("shinyjs::colourInput() behaves just like any other built-in Shiny input and is trivially easy to use")
     ),
     div(
+      br(),
+      "Related:", "select colours with a",
+      a(href = "https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif",
+        "colour picker RStudio addin/gadget"), "by shinyjs",
+      br(),
       "Created by",
       a("Dean Attali", href = "http://deanattali.com", target = "_blank"),
       HTML("&bull;"),
-      "Code", a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")
-    ),
+      "Code", a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")    ),
     tags$hr(),
 
     div(

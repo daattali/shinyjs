@@ -55,7 +55,7 @@ you play around with some of the functionality that `shinyjs` makes available.
 `shinyjs` also includes a `colourInput` which is an input control that allows
 users to select colours. [Interactive demo](http://daattali.com/shiny/colourInput/).
 
-You can also [watch a short GIF](../inst/img/colourPickerGadget.gif) showcasing the colour picker addin+gadget.
+You can also [watch a short GIF](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif) showcasing the colour picker addin+gadget.
 
 [Presentation slides for `shinyjs` talk](http://bit.ly/shinyjs-slides) from the 2016 Shiny Developer Conference.
 
