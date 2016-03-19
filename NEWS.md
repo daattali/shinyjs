@@ -2,7 +2,7 @@
 
 2016-03-19
 
-- Added an awesome colour picker gadget and addin.  Use `colourPicker(3)` to open a gadget that lets you pick 3 colours, or choose *Colour Picker* from the *Addins* menu to run it.
+- Added an awesome colour picker gadget and addin.  Use `colourPicker()` to open a gadget that lets you pick colours, or choose *Colour Picker* from the *Addins* menu to run it.
 
 # shinyjs 0.4.1
 
