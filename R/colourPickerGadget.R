@@ -69,9 +69,7 @@ col2hex <- function(col) {
   do.call(rgb, as.list(col2rgb(col) / 255))
 }
 
-NUM_CLOSE_COLS <- 10
-
-closest_colour_hex <- function(target, n = NUM_CLOSE_COLS, superset = colours(distinct = TRUE)) {
+closest_colour_hex <- function(target, n = 3, superset = colours(distinct = TRUE)) {
   target <- as.numeric(col2rgb(target))
 
   superset %>%
@@ -103,7 +101,7 @@ getLuminance <- function(colhex) {
   lum
 }
 
-colourPickerGadget <- function(initNum = 1) {
+colourPickerGadget <- function(numCols = 1) {
 
   ui <- miniPage(
     shinyjs::useShinyjs(),
@@ -167,7 +165,7 @@ color: #333; background: #FAFAFA;
                        #aaa div.col {font-size:15px;margin-right:2px;color:black;}
 #aaa div.col.col-dark {color: #ddd;}
 #aaa div.col:hover {box-shadow:0 0 0 1px #fafafa, 0 0 0 3px #BBB;}    
-#aaa div.col.selected {cursor:default;box-shadow:0 0 0 1px #fafafa, 0 0 0 3px black; }
+#aaa div.col.selected {cursor:default;box-shadow:0 0 0 1px #fafafa, 0 0 0 3px #999; }
 
 "),
     gadgetTitleBar(span(strong("Colour Picker"),
@@ -267,11 +265,11 @@ style="
     )
     
     # Initial values
-    if (!is.numeric(initNum) || initNum < 1 || length(initNum) > 1) {
+    if (!is.numeric(numCols) || numCols < 1 || length(numCols) > 1) {
       warning("Invalid number of colours; defaulting to 1")
-      initNum <- 1
+      numCols <- 1
     }
-    values$selectedCols <- rep("#FFFFFF", initNum)
+    values$selectedCols <- rep("#FFFFFF", numCols)
     values$selectedNum <- 1
 
     # User canceled
@@ -410,8 +408,8 @@ style="
   runGadget(ui, server, viewer = viewer, stopOnCancel = FALSE)
 }
 
-colourPicker <- function() {
-  colourPickerGadget()
+colourPicker <- function(numCols = 1) {
+  colourPickerGadget(numCols)
 }
 
 colourPickerAddin <- function() {
