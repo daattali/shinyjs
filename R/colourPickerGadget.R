@@ -14,8 +14,8 @@ text-align: left;
 margin: 0 auto;
 }
 .rcol {
-width: 20px;
-height: 20px;
+width: 25px;
+height: 25px;
 border: 1px solid #DDD;
 cursor: pointer;
 display: inline-block;
@@ -61,54 +61,73 @@ colourPickerGadget <- function() {
 
   ui <- miniPage(
     shinyjs::inlineCSS(css2),
+    shinyjs::inlineCSS("
+                       #gg .form-group, #gg .checkbox {margin-bottom: 0;}
+                       #aaa div {vertical-align: middle; border: 1px solid #eee; font-weight:bold;display:inline-block;width:35px;height:35px;line-height:35px;text-align: center;color:white;-webkit-text-stroke: 2px black; }"),
+    shinyjs::inlineCSS(("#aaa div.selected {box-shadow:0 0 0 1px #fafafa, 0 0 0 3px black; }")),
     gadgetTitleBar(span(strong("Colour Picker"),
-                        span(id = "author", "By", a(href = "http://deanattali.com", "Dean Attali"))),
-                   right = NULL),
+                        span(id = "author", "By", a(href = "http://deanattali.com", "Dean Attali")))),
+    div(
+      id="gg",
+      style="background: #fff; border-bottom: 1px solid #eee;padding:10px;width:100%;overflow-x:auto;overflow-y: hidden",
+      div(
+        style="margin-bottom:5px;",
+        span("Selected colours", style="
+             font-weight: bold;
+             font-size: 16px;
+             ")),
+      div(id="aaa",style="white-space:nowrap;",
+          div("1", style="background:yellow;"),
+          div("2", style="background:purple;"),
+          div("3", style="background:blue;", class = "selected"),
+          div("4", style="background:brown;;"),
+          div("5", style="background:green;"),
+          div("6", style=""),
+          div("7", style="background:black"),
+          div("8", style="background:#111"),
+          div("9", style=""),
+          div("10"),
+          div(icon("plus"), style = "font-size: 22px; color: #333; background: #FAFAFA;-webkit-text-stroke: initial;")
+      ),
+      checkboxInput("returnTypeName", "Use the colour name (eg. Orange) instead of HEX value (eg. #FFA500) when possible", width = "100%")
+    ),
     miniTabstripPanel(
       id = "colourType",
+
+
       miniTabPanel(
         value = "anycolour",
         "Any colour",
-        icon = icon("paint-brush"),
+        icon = icon("globe"),
         miniContentPanel(
           div(
             id = "anycolarea",
-            br(), br(), br(), br(), br(),
-            shinyjs::colourInput("anyColInput", "Select any colour",
-                                 showColour = "both", value = "orange"),
             br(),
-            actionButton("submitAny", strong("Done"), class = "btn-primary")
+            shinyjs::colourInput("anyColInput", "Select any colour",
+                                 showColour = "both", value = "orange")
           )
         )
       ),
       miniTabPanel(
         value = "rcolour",
-        "R colour",
+        "Find R colour",
         icon = icon("search"),
         miniContentPanel(
-          fluidRow(
-            column(
-              6,
-              shinyjs::colourInput("rclosecol", "Show R colours similar to this colour:",
-                                   showColour = "both", value = "orange")
-            ),
-            column(
-              6,
-              selectInput("returnType", "Return value", c('R colour name (eg. "orange")' = 'rcolname',
-                                                          'HEX colour code (eg. "#FFA500")' = 'rcolhex'))
-            )
-          ),
+          shinyjs::colourInput("rclosecol", "Show R colours similar to this colour",
+                               showColour = "both", value = "orange"),
           br(),
           strong("Click a colour to select it"),
-          uiOutput("rclosecols"),
-          tags$hr(),
-          checkboxInput("allRcols", strong("Show all R colours")),
-          conditionalPanel(
-            condition = "input.allRcols",
-            strong("Click a colour to select it"),
-            br(),
-            uiOutput("allcols")
-          )
+          uiOutput("rclosecols")
+        )
+      ),
+      miniTabPanel(
+        value = "rcolour",
+        "All R colours",
+        icon = icon("paint-brush"),
+        miniContentPanel(
+          strong("Click a colour to select it"),
+          br(),
+          uiOutput("allcols")
         )
       )
     )
@@ -204,7 +223,7 @@ colourPickerGadget <- function() {
     })
   }
 
-  viewer <- dialogViewer("Colour Picker", width = 800, height = 500)
+  viewer <- dialogViewer("Colour Picker", width = 800, height = 700)
   runGadget(ui, server, viewer = viewer, stopOnCancel = FALSE)
 }
 
