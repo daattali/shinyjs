@@ -80,19 +80,6 @@ shinyApp(
 
     div(
       class = "section",
-      div(class = "title", "Only show text"),
-      div(class = "output", "Selected colour:",
-          textOutput("valueText", inline = TRUE)),
-      colourInput("colText", NULL, "#ABC123", showColour = "text"),
-      tags$pre(HTML(paste0(
-        'colourInput(<br>',
-        '  "col", NULL, "#ABC123",<br>',
-        '  showColour = "text")'
-      )))
-    ),
-
-    div(
-      class = "section",
       div(class = "title", "Allow \"transparent\""),
       div(class = "output", "Selected colour:",
           textOutput("valueTransparent", inline = TRUE)),
@@ -152,7 +139,6 @@ shinyApp(
     # show the selected colours
     output$valueSimple      <- renderText(input$colSimple)
     output$valueBg          <- renderText(input$colBg)
-    output$valueText        <- renderText(input$colText)
     output$valueTransparent <- renderText(input$colTransparent)
     output$valueUpdate      <- renderText(input$colUpdate)
     output$valueLimited     <- renderText(input$colLimited)
