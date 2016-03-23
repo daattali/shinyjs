@@ -29,7 +29,8 @@ $.extend(colourBinding, {
       allowTransparent : $el.attr('data-allow-transparent'),
       transparentText  : $el.attr('data-transparent-text'),
       palette          : $el.attr('data-palette'),
-      allowedCols      : $el.attr('data-allowed-cols')
+      allowedCols      : $el.attr('data-allowed-cols'),
+      returnName       : $el.attr('data-return-name')
     };
 
     // initialize the colour picker
@@ -55,6 +56,9 @@ $.extend(colourBinding, {
     }
     if (data.hasOwnProperty('transparentText')) {
       $el.colourpicker('settings', { 'transparentText' : data.transparentText });
+    }
+    if (data.hasOwnProperty('returnName')) {
+      $el.colourpicker('settings', { 'returnName' : data.returnName });
     }
     if (data.hasOwnProperty('value')) {
       this.setValue(el, data.value);

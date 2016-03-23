@@ -6,7 +6,7 @@
 \usage{
 colourInput(inputId, label, value = "white", showColour = c("both", "text",
   "background"), palette = c("square", "limited"), allowedCols,
-  allowTransparent = FALSE, transparentText)
+  allowTransparent = FALSE, transparentText, returnName = FALSE)
 }
 \arguments{
 \item{inputId}{The \code{input} slot that will be used to access the value.}
@@ -35,6 +35,9 @@ when \code{allowTransparent} is \code{TRUE}. The default value is
 "Transparent", but you can change it to "None" or any other string. This has
 no effect on the return value from the input; when the checkbox is checked,
 the input will always return the string "transparent".}
+
+\item{returnName}{If \code{TRUE}, then return the name of an R colour instead
+of a HEX value when possible.}
 }
 \description{
 Create an input control to select a colour.
@@ -42,14 +45,15 @@ Create an input control to select a colour.
 \details{
 A colour input allows users to select a colour by clicking on the desired
 colour, or by entering a valid HEX colour in the input box. The input can
-be initialized with either a colour name or a HEX value, but the value
-returned from the input will be an uppercase HEX value in both cases.
+be initialized with either a colour name or a HEX value. The return value is
+a HEX value by default, but you can use the \code{returnName = TRUE} parameter
+to get an R colour name instead (only when an R colour exists for the
+selected colour).
 
 Since most functions in R that accept colours can also accept the value
 "transparent", \code{colourInput} has an option to allow selecting the
 "transparent" colour. When the user checks the checkbox for this special
-colour, the returned value form the input is "transpanrent", otherwise the
-return value is always a HEX value.
+colour, the returned value form the input is "transparent".
 }
 \note{
 Unlike the rest of the \code{shinyjs} functions, this function does
@@ -72,6 +76,7 @@ if (interactive()) {
       selectInput("palette", "Colour palette",
         c("square", "limited")),
       checkboxInput("allowTransparent", "Allow transparent", FALSE),
+      checkboxInput("returnName", "Return R colour name", FALSE),
       actionButton("btn", "Update")
     ),
     server = function(input, output, session) {
@@ -79,7 +84,8 @@ if (interactive()) {
         updateColourInput(session, "col",
           value = input$text, showColour = input$showColour,
           allowTransparent = input$allowTransparent,
-          palette = input$palette)
+          palette = input$palette,
+          returnName = input$returnName)
       })
       output$value <- renderText(input$col)
     }

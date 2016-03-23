@@ -6,7 +6,7 @@
 \usage{
 updateColourInput(session, inputId, label = NULL, value = NULL,
   showColour = NULL, palette = NULL, allowedCols = NULL,
-  allowTransparent = NULL, transparentText = NULL)
+  allowTransparent = NULL, transparentText = NULL, returnName = NULL)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
@@ -29,6 +29,9 @@ user to select the \code{transparent} colour.}
 
 \item{transparentText}{The text to show beside the transparency checkbox
 when \code{allowTransparent} is \code{TRUE}}
+
+\item{returnName}{If \code{TRUE}, then return the name of an R colour instead
+of a HEX value when possible.}
 }
 \description{
 Change the value of a colour input on the client.
@@ -58,13 +61,15 @@ if (interactive()) {
       selectInput("showColour", "Show colour",
         c("both", "text", "background")),
       checkboxInput("allowTransparent", "Allow transparent", FALSE),
+      checkboxInput("returnName", "Return R colour name", FALSE),
       actionButton("btn", "Update")
     ),
     server = function(input, output, session) {
       observeEvent(input$btn, {
         updateColourInput(session, "col",
           value = input$text, showColour = input$showColour,
-          allowTransparent = input$allowTransparent)
+          allowTransparent = input$allowTransparent,
+          returnName = input$returnName)
       })
       output$value <- renderText(input$col)
     }
