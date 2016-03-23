@@ -31,3 +31,20 @@ getLuminance <- function(colhex) {
   lum <- lum[[1]]*0.2126 + lum[[2]]*0.7152 + lum[[3]]*0.0722;
   lum
 }
+
+allcols <- colours(distinct = TRUE)
+rgbVals <- as.vector(col2rgb(allcols)) / 255
+reds <- rgbVals[seq(from = 1, to = length(rgbVals), by = 3)]
+greens <- rgbVals[seq(from = 2, to = length(rgbVals), by = 3)]
+blues <- rgbVals[seq(from = 3, to = length(rgbVals), by = 3)]
+hex <- rgb(reds, greens, blues)
+colsMap <- allcols
+names(colsMap) <- hex
+
+get_name_or_hex <- function(hex) {
+  if (hex %in% names(colsMap)) {
+    unname(colsMap[hex])
+  } else {
+    hex
+  }
+}

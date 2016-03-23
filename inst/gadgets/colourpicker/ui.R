@@ -38,15 +38,6 @@ miniPage(
               a(href = "http://deanattali.com", "Dean Attali")))
   ),
 
-  # Retrieving R names for for selected colours when user is done can take a
-  # second, so this overlay shows a "please wait" message
-  shinyjs::hidden(
-    div(id = "done-overlay",
-        "Converting colours to R names...",
-        icon("spinner", class = "fa-spin")
-    )
-  ),
-
   # Header section - shows the selected colours
   div(
     id = "header-section",

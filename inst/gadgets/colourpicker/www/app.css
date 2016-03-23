@@ -6,19 +6,6 @@ body {
   font-size: 0.8em;
 }
 
-#done-overlay {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #FCFCFC;
-  top: 45px;
-  z-index: 100;
-  color: black;
-  text-align: center;
-  font-size: 30px;
-  padding-top: 130px;
-}
 
 #header-section {
   background: #fff;

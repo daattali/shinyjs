@@ -26,20 +26,11 @@ shinyServer(function(input, output) {
   # User is done selecting colours
   observeEvent(input$done, {
     cols <- values$selectedCols
+    shinyjs::disable(selector = "#cancel, #done")
 
     if (input$returnTypeName) {
-      shinyjs::hide(selector = "#header-section,
-                    .gadget-tabs-container, .gadget-tabs-content-container")
-      shinyjs::show("done-overlay")
-      shinyjs::disable(selector = "#cancel, #done")
-      cols <- lapply(cols, function(col) {
-        closest <- closest_colour_hex(col, n = 1)
-        if (col == col2hex(closest)) {
-          col <- closest
-        }
-        col
-      })
-      cols <- unname(unlist(cols))
+      cols <- lapply(cols, get_name_or_hex)
+      cols <- unlist(cols)
     }
 
     stopApp(cols)
