@@ -27,10 +27,10 @@ Table of contents
 -   [Installation](#install)
 -   [Overview of main functions](#overview-main)
 -   [How to use](#usage)
-    -   [Using shinyjs in interactive R Markdown
-        documents](#usage-interactive)
     -   [Using shinyjs in Shiny Dashboards](#usage-dashboard)
     -   [Using shinyjs with navbarPage layout](#usage-navbarpage)
+    -   [Using shinyjs in interactive R Markdown
+        documents](#usage-interactive)
     -   [Using shinyjs when the user interface is built using an HTML
         file](#usage-html)  
 -   [Basic use case - complete working example](#usecase)
@@ -40,9 +40,10 @@ Table of contents
     -   [Passing arguments from R to JavaScript](#extendshinyjs-args)
     -   [Note about V8 prerequisite](#extendshinyjs-v8)
 -   [FAQ and extra tricks](#faq-tricks)
+-   [Colour Picker input & addin](#colourpicker)
 
 <h2 id="demos">
-Demos
+Live demos
 </h2>
 You can [check out a demo Shiny
 app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
@@ -68,7 +69,7 @@ To install the stable CRAN version:
 
     install.packages("shinyjs")
 
-To install the latest developmental version from GitHub:
+To install the latest development version from GitHub:
 
     install.packages("devtools")
     devtools::install_github("daattali/shinyjs")
@@ -139,10 +140,10 @@ to see some of these in action, or install `shinyjs` and run
 <h2 id="usage">
 How to use
 </h2>
-A typical Shiny app has a UI portion and a server portion. As mentioned
-above, `useShinyjs()` must be called in the Shiny app's UI, and it's
-best to include it near the top as a convention. For example, here is a
-minimal Shiny app that uses `shinyjs`:
+A typical Shiny app has a UI portion and a server portion.
+`useShinyjs()` must be called in the Shiny app's UI, and it's best to
+include it near the top as a convention. Here is a minimal Shiny app
+that uses `shinyjs`:
 
     library(shiny)
     library(shinyjs)
@@ -163,36 +164,13 @@ minimal Shiny app that uses `shinyjs`:
 
 This is how most Shiny apps should initialize `shinyjs`, but there are
 four common scenarios that should be treated a little differently: using
-`shinyjs` in interactive documents, in Shiny dashboards, in Shiny apps
-that use a `navbarPage` layout, or in Shiny apps that manually build the
-user interface with an HTML file instead of using Shiny's UI functions.
-If your Shiny app doesn't fall into any of these categories (most Shiny
-apps don't), then you can skip the next 4 sections that describe how to
-tackle these cases, and scroll down to the [Basic use case](#usecase)
-section.
-
-<h3 id="usage-interactive">
-Using shinyjs in interactive R Markdown documents
-</h3>
-It is possible to embed Shiny components in an R Markdown document,
-resulting in interactive R Markdown documents. More information on how
-to use these documents is available [on the R Markdown
-website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though
-interactive documents don't explicitly specify a UI and a server, using
-`shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the
-`rmd = TRUE` argument). For example, the following code can be used
-inside an R Markdown code chunk (assuming the document is set up as a
-Shiny document as the link above describes):
-
-    library(shinyjs)
-
-    useShinyjs(rmd = TRUE)
-    actionButton("button", "Click me")
-    div(id = "hello", "Hello!")
-
-    observeEvent(input$button, {
-     toggle("hello")
-    })
+`shinyjs` in Shiny dashboards, in Shiny apps that use a `navbarPage`
+layout, in interactive documents, or in Shiny apps that manually build
+the user interface with an HTML file instead of using Shiny's UI
+functions. If your Shiny app doesn't fall into any of these categories
+(most Shiny apps don't), then you can skip the next 4 sections that
+describe how to tackle these cases, and scroll down to the [Basic use
+case](#usecase) section.
 
 <h3 id="usage-dashboard">
 Using shinyjs in Shiny Dashboards
@@ -260,6 +238,29 @@ For example, here is a minimal Shiny app that uses `shinyjs` inside a
     }
 
     shinyApp(ui, server)
+
+<h3 id="usage-interactive">
+Using shinyjs in interactive R Markdown documents
+</h3>
+It is possible to embed Shiny components in an R Markdown document,
+resulting in interactive R Markdown documents. More information on how
+to use these documents is available [on the R Markdown
+website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though
+interactive documents don't explicitly specify a UI and a server, using
+`shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the
+`rmd = TRUE` argument). For example, the following code can be used
+inside an R Markdown code chunk (assuming the document is set up as a
+Shiny document as the link above describes):
+
+    library(shinyjs)
+
+    useShinyjs(rmd = TRUE)
+    actionButton("button", "Click me")
+    div(id = "hello", "Hello!")
+
+    observeEvent(input$button, {
+     toggle("hello")
+    })
 
 <h3 id="usage-html">
 Using shinyjs when the user interface is built using an HTML file
@@ -728,6 +729,17 @@ could be useful. Note that all of these require using `extendShinyjs()`.
     `sliderInput`?](http://stackoverflow.com/a/31066997/3943160)
 -   [How do I call JavaScript code and use the return
     value?](http://stackoverflow.com/a/34728125/3943160)
+
+<h2 id="colourpicker">
+Colour Picker input & addin
+</h2>
+`shinyjs` has a `colourInput()` function that lets you add a colour
+picker widget to Shiny apps. There is also a colour picker RStudio addin
+(accessed through the *Addins* menu) and a gadget (accessed with the
+`colourPicker()` function) that can be used to easily select colours.
+The screenshot below is from the colour picker addin.
+
+![Colour picker screenshot](inst/img/colourpickerscrnshot.png)
 
 Motivation & alternatives using native Shiny
 --------------------------------------------
