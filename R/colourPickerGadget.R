@@ -1,12 +1,10 @@
-
+#' @import shiny
+#' @import miniUI
 colourPickerGadget <- function(numCols = 1) {
   if (!requireNamespace("rstudioapi", quietly = TRUE)) {
     stop("You must have RStudio v0.99.878 or newer to use the colour picker",
          call. = FALSE)
   }
-
-  require(shiny)
-  require(miniUI)
 
   ui <- miniPage(
     shinyjs::useShinyjs(),
