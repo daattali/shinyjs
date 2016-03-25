@@ -6,10 +6,16 @@ colourPickerGadget <- function(numCols = 1) {
          call. = FALSE)
   }
 
+  resourcePath <- system.file("gadgets", "colourpicker", package = "shinyjs")
+  shiny::addResourcePath("cpg", resourcePath)
+
   ui <- miniPage(
     shinyjs::useShinyjs(),
-    shinyjs::extendShinyjs(functions = c(), text = getCpGadgetShinyjsText()),
-    shinyjs::inlineCSS(getCpGadgetCSS()),
+    shinyjs::extendShinyjs(
+      script = file.path(resourcePath, "js", "shinyjs-funcs.js"),
+      functions = c()
+    ),
+    tags$head(includeCSS(file.path(resourcePath, "css", "app.css"))),
 
     gadgetTitleBar(
       span(strong("Colour Picker"),
@@ -91,7 +97,9 @@ colourPickerGadget <- function(numCols = 1) {
         miniContentPanel(
           strong("Click a colour to select it"),
           br(),
-          div(id = "allcols-spinner", icon("spinner", "fa-spin")),
+          img(id = "allcols-spinner",
+              src = file.path("cpg", "img", "ajax-loader.gif")
+          ),
           uiOutput("allColsSection")
         )
       )
