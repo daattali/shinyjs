@@ -1,8 +1,14 @@
+# shinyjs 0.5.2
+
+2016-03-25
+
+- Added `numCols` parameter to the `colourPicker()` gadget
+
 # shinyjs 0.5.1
 
 2016-03-23
 
-- Added `returnName` parameter to `colourInput`, which lets you get an R colour name instead of HEX value as the return value (#62)
+- Added `returnName` parameter to `colourInput()`, which lets you get an R colour name instead of HEX value as the return value (#62)
 
 # shinyjs 0.5.0
 

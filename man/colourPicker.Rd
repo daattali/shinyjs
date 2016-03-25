@@ -4,7 +4,11 @@
 \alias{colourPicker}
 \title{Colour picker gadget}
 \usage{
-colourPicker()
+colourPicker(numCols = 1)
+}
+\arguments{
+\item{numCols}{The number of colours to select when the gadget launches (you
+can add and remove more colours from the app itself too)}
 }
 \value{
 Vector of selected colours
@@ -20,7 +24,7 @@ embedded into code, use the addin from the RStudio Addins menu.
 }
 \examples{
 if (interactive()) {
-  cols <- colourPicker()
+  cols <- colourPicker(3)
 }
 }
 

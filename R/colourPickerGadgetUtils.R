@@ -1,3 +1,91 @@
+# Get the HEX of a colour
+col2hex <- function(col) {
+  do.call(rgb, as.list(col2rgb(col) / 255))
+}
+
+# Get the most similar R colours to a given colour
+closestColHex <- function(target, n = 3, superset = colours(distinct = TRUE)) {
+  target <- as.numeric(col2rgb(target))
+  dist_mat <- col2rgb(superset) - target
+  dist <- apply(dist_mat, 2, function(x) sum(abs(x)))
+  closest <- order(dist)[1:n]
+  superset[closest]
+}
+
+# Determine if a colour is dark or light
+isColDark <- function(colhex) {
+  getLuminance(colhex) <= 0.22
+}
+
+# Calculate the luminance of a colour
+getLuminance <- function(colhex) {
+  colrgb <- col2rgb(colhex)
+  lum <- lapply(colrgb, function(x) {
+    x <- x / 255;
+    if (x <= 0.03928) {
+      x <- x / 12.92
+    } else {
+      x <- ((x + 0.055) / 1.055)^2.4
+    }
+  })
+  lum <- lum[[1]]*0.2126 + lum[[2]]*0.7152 + lum[[3]]*0.0722;
+  lum
+}
+
+createColsMap <- function() {
+  allcols <- colours(distinct = TRUE)
+  rgbVals <- as.vector(col2rgb(allcols)) / 255
+  reds <- rgbVals[seq(from = 1, to = length(rgbVals), by = 3)]
+  greens <- rgbVals[seq(from = 2, to = length(rgbVals), by = 3)]
+  blues <- rgbVals[seq(from = 3, to = length(rgbVals), by = 3)]
+  hex <- rgb(reds, greens, blues)
+  colsMap <- allcols
+  names(colsMap) <- hex
+  colsMap
+}
+
+getColNameOrHex <- function(hex) {
+  if (is.null(.globals$colsMap)) {
+    .globals$colsMap <- createColsMap()
+  }
+
+  if (hex %in% names(.globals$colsMap)) {
+    unname(.globals$colsMap[hex])
+  } else {
+    hex
+  }
+}
+
+getCpGadgetShinyjsText <- function() {
+'
+shinyjs.init = function() {
+  $("#selected-cols-row").on("click", ".col", function(event) {
+  var colnum = $(event.target).data("colnum");
+  Shiny.onInputChange("jsColNum", colnum);
+  });
+
+  $("#rclosecolsSection, #allColsSection").on("click", ".rcol", function(event) {
+  var col = $(event.target).data("col");
+  Shiny.onInputChange("jsCol", [col, Math.random()]);
+  });
+
+  $(document).on("shiny:recalculated", function(event) {
+  if (event.target == $("#allColsSection")[0]) {
+  $("#allcols-spinner").hide();
+  }
+  });
+
+  $(document).keypress(function(event) {
+  if (event.which == 13) {
+  $("#done").click();
+  }
+  });
+};
+'
+}
+
+getCpGadgetCSS <- function() {
+'
 /* General */
 body {
   background: #fcfcfc;
@@ -5,7 +93,6 @@ body {
 #author {
   font-size: 0.8em;
 }
-
 
 #header-section {
   background: #fff;
@@ -156,4 +243,6 @@ body {
   font-size: 60px;
   text-align: center;
   margin-top: 40px;
+}
+'
 }
