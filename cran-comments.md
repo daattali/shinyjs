@@ -656,3 +656,56 @@ R CMD check passed with no errors/warnings/notes
 2016-03-19 Kurt Hornik
 
 Thanks, on CRAN now.
+
+# Version 0.5.2
+
+## Round 1
+
+### Test environments
+
+* Windows 7, R 3.2.4 (local)
+* ubuntu 12.04, R 3.2.3 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+### Submission comments
+
+2016-03-25
+
+Tested on Windows 7 and ubuntu 14.04; no errors, warnings, or notes. Submitting updated version in response to Hadley's testthat upcoming update
+
+### Reviewer comments
+
+2016-03-26 Kurt Hornik
+
+```
+We get
+
+* checking R code for possible problems ... NOTE
+closestColHex: no visible global function definition for ‘colours’
+closestColHex: no visible global function definition for ‘col2rgb’
+col2hex: no visible binding for global variable ‘rgb’
+col2hex: no visible global function definition for ‘col2rgb’
+colourPickerGadget : server: no visible global function definition for
+  ‘colours’
+createColsMap: no visible global function definition for ‘colours’
+createColsMap: no visible global function definition for ‘col2rgb’
+createColsMap: no visible global function definition for ‘rgb’
+getLuminance: no visible global function definition for ‘col2rgb’
+Undefined global functions or variables:
+  col2rgb colours rgb
+Consider adding
+  importFrom("grDevices", "col2rgb", "colours", "rgb")
+to your NAMESPACE file.
+
+Can you pls fix?
+```
+
+## Round 2
+
+### Submission comments
+
+2016-03-26
+
+Fixed all the non-namespaced function calls
+
+### Reviewer comments
