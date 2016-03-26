@@ -76,11 +76,11 @@ body {
   color: #ddd;
 }
 #selected-cols-row .col:hover {
-  box-shadow: 0 0 0 1px #fafafa, 0 0 0 3px #BBB;
+  box-shadow: 0 0 0 1px #fafafa, 0 0 0 3px #AAA;
 }
 #selected-cols-row .col.selected {
   cursor: default;
-  box-shadow: 0 0 0 1px #fafafa, 0 0 0 3px #999;
+  box-shadow: 0 0 0 1px #fafafa, 0 0 0 3px #666;
 }
 
 /* Tab 1 - any colour */

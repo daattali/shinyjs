@@ -737,7 +737,8 @@ Colour Picker input & addin
 picker widget to Shiny apps. There is also a colour picker RStudio addin
 (accessed through the *Addins* menu) and a gadget (accessed with the
 `colourPicker()` function) that can be used to easily select colours.
-The screenshot below is from the colour picker addin.
+The screenshot below is from the colour picker addin. You can also view
+a [short GIF demo](inst/img/colourPickerGadget.gif) of the addin.
 
 ![Colour picker screenshot](inst/img/colourpickerscrnshot.png)
 

@@ -133,7 +133,7 @@ colourPickerGadget <- function(numCols = 1) {
     )
   )
 
-  server <- function(input, output) {
+  server <- function(input, output, session) {
     values <- reactiveValues(
       selectedCols = NULL,
       selectedNum = NULL
@@ -181,6 +181,8 @@ colourPickerGadget <- function(numCols = 1) {
       if (values$selectedNum > length(values$selectedCols)) {
         values$selectedNum <- length(values$selectedCols)
       }
+      shinyjs::updateColourInput(session, "anyColInput",
+                                 value = values$selectedCols[values$selectedNum])
     })
 
     # Render the chosen colours
@@ -206,6 +208,8 @@ colourPickerGadget <- function(numCols = 1) {
     # Receive event from JS: a different colour number was selected
     observeEvent(input$jsColNum, {
       values$selectedNum <- input$jsColNum
+      shinyjs::updateColourInput(session, "anyColInput",
+                                 value = values$selectedCols[values$selectedNum])
     })
 
     # A colour from the "any colour" input is chosen
@@ -213,18 +217,19 @@ colourPickerGadget <- function(numCols = 1) {
       values$selectedCols[values$selectedNum] <- input$anyColInput
     })
 
-    # Receive event from JS: an R colour was selected
+    # Receive event from JS: an R colour was selected from one of the two tabs
     # Because of how Shiny works, the input from JS needs to also contain
     # a dummy random variable, so that when the user chooses the same colour
     # twice, it will register the second time as well
     observeEvent(input$jsCol, {
       values$selectedCols[values$selectedNum] <- input$jsCol[1]
+      shinyjs::updateColourInput(session, "anyColInput", value = input$jsCol[1])
     })
 
     # Render all the R colours
     output$allColsSection <- renderUI({
       lapply(
-        colours(distinct = TRUE),
+        grDevices::colours(distinct = TRUE),
         function(x) {
           actionLink(
             paste0("rcol-", x),
@@ -267,6 +272,6 @@ colourPickerGadget <- function(numCols = 1) {
     })
   }
 
-  viewer <- shiny::dialogViewer("Colour Picker", width = 800, height = 700)
+  viewer <- shiny::dialogViewer("Colour Picker (shinyjs)", width = 800, height = 700)
   shiny::runGadget(shiny::shinyApp(ui, server), viewer = viewer, stopOnCancel = FALSE)
 }
