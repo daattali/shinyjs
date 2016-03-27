@@ -709,3 +709,7 @@ Can you pls fix?
 Fixed all the non-namespaced function calls
 
 ### Reviewer comments
+
+2016-03-27 Uwe Ligges
+
+Thanks, on CRAN now
