@@ -281,8 +281,6 @@ extendShinyjs <- function(script, text, functions) {
 
       tryCatch({
         ct$source(script)
-        shiny::addResourcePath("shinyjs-extend", dirname(script))
-        script <- file.path("shinyjs-extend", basename(script))
       }, error = function(err) {
         errMsg(sprintf("Error parsing the JavaScript file: %s.", err$message))
       })
@@ -310,6 +308,12 @@ extendShinyjs <- function(script, text, functions) {
   lapply(jsFuncs, function(x) {
     assign(x, jsFunc, js)
   })
+
+  # Add the script as a resource
+  if (!missing(script)) {
+    shiny::addResourcePath("shinyjs-extend", dirname(script))
+    script <- file.path("shinyjs-extend", basename(script))
+  }
 
   # set up the message handlers for all functions
   setupJS(jsFuncs, script, text)

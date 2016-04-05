@@ -1,3 +1,9 @@
+# shinyjs 0.5.3
+
+2016-04-05
+
+- Fixed bug with `extendShinyjs()` where it didn't work when using a script and didn't have `V8` installed (#64)
+
 # shinyjs 0.5.2
 
 2016-03-25
