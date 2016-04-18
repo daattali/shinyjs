@@ -1,4 +1,4 @@
-NOTE: During February/March 2016 I will be extremely busy trying to write my thesis, so please do not send me private emails asking for personal help. If you need help, I recommend you ask on StackOverflow. Help me graduate :)
+NOTE: During March/April 2016 I will be extremely busy trying to write my thesis, so please do not send me private emails asking for personal help. If you need help, I recommend you ask on StackOverflow. Help me graduate :)
 ==================================================================================================================================================================================================================================
 
 shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
