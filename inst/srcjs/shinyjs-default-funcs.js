@@ -1,4 +1,4 @@
-// shinyjs 0.5.3 by Dean Attali
+// shinyjs 0.5.4 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -637,7 +637,12 @@ shinyjs = function() {
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      alert(JSON.stringify(params.text, null, 4));
+      if (typeof params.text == "object") {
+        alert(JSON.stringify(params.text, null, 4));
+      } else {
+        alert(params.text);
+      }
+
     },
 
     logjs : function (params) {

@@ -1,3 +1,9 @@
+# shinyjs 0.5.4
+
+2016-04-21
+
+- `info()` fuction: don't include surrounding quotations if not necessary (#59)
+
 # shinyjs 0.5.3
 
 2016-04-05
