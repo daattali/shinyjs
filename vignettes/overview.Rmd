@@ -13,8 +13,6 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
-# NOTE: During February/March 2016 I will be extremely busy trying to write my thesis, so please do not send me private emails asking for personal help. If you need help, I recommend you ask on StackOverflow. Help me graduate :)
-
 # shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
 
 [![Build Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
@@ -156,7 +154,7 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-This is how most Shiny apps should initialize `shinyjs`, but there are four common scenarios that should be treated a little differently: using `shinyjs` in Shiny dashboards, in Shiny apps that use a `navbarPage` layout, in interactive documents, or in Shiny apps that manually build the user interface with an HTML file instead of using Shiny's UI functions. If your Shiny app doesn't fall into any of these categories (most Shiny apps don't), then you can skip the next 4 sections that describe how to tackle these cases, and scroll down to the [Basic use case](#usecase) section.
+This is how most Shiny apps should initialize `shinyjs`, but there a few scenarios that should be treated a little differently: using `shinyjs` in Shiny dashboards, in Shiny apps that use a `navbarPage` layout, in interactive Rmd documents, or in Shiny apps that manually build the user interface with an HTML file or template instead of using Shiny's UI functions. If your Shiny app doesn't fall into any of these categories, then you can skip the next 4 sub-sections that describe how to tackle these cases, and scroll down to the [Basic use case](#usecase) section.
 
 <h3 id="usage-dashboard">Using shinyjs in Shiny Dashboards</h3>
 
@@ -230,9 +228,11 @@ observeEvent(input$button, {
 })
 ```
 
-<h3 id="usage-html">Using shinyjs when the user interface is built using an HTML file</h3>
+<h3 id="usage-html">Using shinyjs when the user interface is built using an HTML file/template</h3>
 
-While most Shiny apps use Shiny's functions to build a user interface to the app, it is possible to build the entire UI with custom HTML, [as RStudio shows in this article](http://shiny.rstudio.com/articles/html-ui.html). Building Shiny apps like this is much more complicated and should only be used if you're very comfortable with HTML. Using `shinyjs` in these apps is possible but it works a little differently since there is no `ui.R` to call `useShinyjs()` from.  There are three simple steps to take in order to use `shinyjs` in these apps:
+While most Shiny apps use Shiny's functions to build a user interface to the app, it is possible to build the UI with an HTML template, [as RStudio shows in this article](http://shiny.rstudio.com/articles/templates.html). In this case, you simply need to add `{{ useShinyjs() }}` somewhere in the template, preferably inside the `<head>...</head>` tags.
+
+A similar way to create your app's UI with HTML is to write it entirely in HTML (without templates), [as RStudio shows in this article](http://shiny.rstudio.com/articles/html-ui.html). Building Shiny apps like this is much more complicated and should only be used if you're very comfortable with HTML. Using `shinyjs` in these apps is possible but it works a little differently since there is no `ui.R` to call `useShinyjs()` from.  There are three simple steps to take in order to use `shinyjs` in these apps:
 
 - create a `global.R` file in the same directory as your `server.R`, and add the following line to the file:
 
@@ -244,7 +244,7 @@ While most Shiny apps use Shiny's functions to build a user interface to the app
         
 - in your server function (the `shinyServer` function) you need to call `useShinyjs(html = TRUE)`
 
-After adding these three lines to your code, you can use all `shinyjs` functions as normal.
+After adding these three lines to your code, you can use all `shinyjs` functions as usual.
 
 
 <h2 id="usecase">Basic use case - complete working example</h2>
