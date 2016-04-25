@@ -731,3 +731,7 @@ Thanks, on CRAN now
 Tested on Windows 7 and ubuntu 14.04; no errors, warnings, or notes
 
 ### Reviewer comments
+
+2016-04-24 Kurt Hornik
+
+Thanks, on CRAN now
