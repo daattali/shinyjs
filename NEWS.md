@@ -2,7 +2,7 @@
 
 2016-04-24
 
-- `info()` fuction: don't include surrounding quotations if not necessary (#59)
+- `info()` function: don't include surrounding quotations if not necessary (#59)
 - added documentation for how to use `shinyjs` in HTML templates 
 
 # shinyjs 0.5.3
