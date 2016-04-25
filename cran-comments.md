@@ -713,3 +713,21 @@ Fixed all the non-namespaced function calls
 2016-03-27 Uwe Ligges
 
 Thanks, on CRAN now
+
+# Version 0.6
+
+## Round 1
+
+### Test environments
+
+* Windows 7, R 3.2.4 (local)
+* ubuntu 12.04, R 3.2.3 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+### Submission comments
+
+2016-04-24
+
+Tested on Windows 7 and ubuntu 14.04; no errors, warnings, or notes
+
+### Reviewer comments
