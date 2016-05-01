@@ -20,7 +20,7 @@ choose colours easily.
 Table of contents
 =================
 
--   [Demos](#demos)
+-   [Demos and tutorials](#demos)
 -   [Installation](#install)
 -   [Overview of main functions](#overview-main)
 -   [How to use](#usage)
@@ -40,22 +40,19 @@ Table of contents
 -   [Colour Picker input & addin](#colourpicker)
 
 <h2 id="demos">
-Live demos
+Demos and tutorials
 </h2>
-You can [check out a demo Shiny
-app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
-with some of the functionality that `shinyjs` makes available.
-
-`shinyjs` also includes a `colourInput` which is an input control that
-allows users to select colours. [Interactive
-demo](http://daattali.com/shiny/colourInput/).
-
-You can also [watch a short
-GIF](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif)
-showcasing the colour picker addin+gadget.
-
-[Presentation slides for `shinyjs` talk](http://bit.ly/shinyjs-slides)
-from the 2016 Shiny Developer Conference.
+-   [Demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets
+    you play around with some of the functionality in `shinyjs`.
+-   `shinyjs` includes a `colourInput` which is an input control that
+    allows users to select colours. [Interactive
+    demo](http://daattali.com/shiny/colourInput/).
+-   [Short
+    GIF ("video")](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif)
+    showcasing the colour picker addin+gadget.
+-   [Video of my `shinyjs` talk](http://bit.ly/shinyjs-2016-shinydevcon)
+    from the 2016 Shiny Developer Conference, and the associated
+    [presentation slides](http://bit.ly/shinyjs-slides).
 
 <h2 id="install">
 Installation
