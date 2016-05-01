@@ -51,8 +51,9 @@ Demos and tutorials
     GIF ("video")](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif)
     showcasing the colour picker addin+gadget.
 -   [Video of my `shinyjs` talk](http://bit.ly/shinyjs-2016-shinydevcon)
-    from the 2016 Shiny Developer Conference, and the associated
-    [presentation slides](http://bit.ly/shinyjs-slides).
+    and the associated [presentation
+    slides](http://bit.ly/shinyjs-slides) from the 2016 Shiny
+    Developer Conference.
 
 <h2 id="install">
 Installation
