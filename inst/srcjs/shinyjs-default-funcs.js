@@ -1,4 +1,4 @@
-// shinyjs 0.6 by Dean Attali
+// shinyjs 0.6.1 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -610,25 +610,23 @@ shinyjs = function() {
 
     html : function (params) {
       var defaultParams = {
-        id : null,
-        html : null,
-        add : false
+        id       : null,
+        html     : null,
+        add      : false,
+        selector : null
       };
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = _jqid(params.id)[0];
+      var $els = _getElements(params);
+      if ($els === null) return;
 
-      if (typeof el === "undefined") {
-        shinyjs.debugMessage("shinyjs: element does not exist");
-        return;
-      }
-
-      if (params.add) {
-        el.innerHTML += params.html;
-      } else {
-        el.innerHTML = params.html;
-      }
-
+      $.each($els, function(idx, node) {
+        if (params.add) {
+          node.innerHTML += params.html;
+        } else {
+          node.innerHTML = params.html;
+        }
+      });
     },
 
     info : function (params) {

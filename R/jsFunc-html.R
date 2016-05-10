@@ -9,6 +9,8 @@
 #' plain text or valid HTML code.
 #' @param add If \code{TRUE}, then append \code{html} to the contents of the element;
 #' otherwise overwrite it. (default: \code{FALSE})
+#' @param selector JQuery selector of the elements to target. Ignored if the \code{id}
+#' argument is given.
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -41,7 +43,7 @@
 #'   html(id = "element", add = TRUE, html = input$btn)
 #' }
 #' @export
-html <- function(id, html, add) {
+html <- function(id, html, add, selector) {
   fxn <- "html"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)

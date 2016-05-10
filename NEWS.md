@@ -1,3 +1,9 @@
+# shinyjs 0.6.1
+
+2016-05-09
+
+- Added `selector` argument to `html()` function
+
 # shinyjs 0.6
 
 2016-04-24
