@@ -7,11 +7,14 @@
 \alias{visibilityFuncs}
 \title{Display/hide an element}
 \usage{
-show(id, anim, animType, time, selector)
+show(id = NULL, anim = FALSE, animType = "slide", time = "0.5",
+  selector = NULL)
 
-hide(id, anim, animType, time, selector)
+hide(id = NULL, anim = FALSE, animType = "slide", time = "0.5",
+  selector = NULL)
 
-toggle(id, anim, animType, time, selector, condition)
+toggle(id = NULL, anim = FALSE, animType = "slide", time = "0.5",
+  selector = NULL, condition = NULL)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

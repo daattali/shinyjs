@@ -81,7 +81,7 @@ NULL
 
 #' @export
 #' @rdname visibilityFuncs
-show <- function(id, anim, animType, time, selector) {
+show <- function(id = NULL, anim = FALSE, animType = "slide", time = "0.5", selector = NULL) {
   fxn <- "show"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)
@@ -89,7 +89,7 @@ show <- function(id, anim, animType, time, selector) {
 
 #' @export
 #' @rdname visibilityFuncs
-hide <- function(id, anim, animType, time, selector) {
+hide <- function(id = NULL, anim = FALSE, animType = "slide", time = "0.5", selector = NULL) {
   fxn <- "hide"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)
@@ -97,7 +97,7 @@ hide <- function(id, anim, animType, time, selector) {
 
 #' @export
 #' @rdname visibilityFuncs
-toggle <- function(id, anim, animType, time, selector, condition) {
+toggle <- function(id = NULL, anim = FALSE, animType = "slide", time = "0.5", selector = NULL, condition = NULL) {
   fxn <- "toggle"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)
