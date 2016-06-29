@@ -75,7 +75,7 @@ NULL
 
 #' @export
 #' @rdname stateFuncs
-enable <- function(id, selector) {
+enable <- function(id = NULL, selector = NULL) {
   fxn <- "enable"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)
@@ -83,7 +83,7 @@ enable <- function(id, selector) {
 
 #' @export
 #' @rdname stateFuncs
-disable <- function(id, selector) {
+disable <- function(id = NULL, selector = NULL) {
   fxn <- "disable"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)
@@ -91,7 +91,7 @@ disable <- function(id, selector) {
 
 #' @export
 #' @rdname stateFuncs
-toggleState <- function(id, condition, selector) {
+toggleState <- function(id = NULL, condition = NULL, selector = NULL) {
   fxn <- "toggleState"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)

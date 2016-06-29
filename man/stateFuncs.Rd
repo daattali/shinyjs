@@ -7,11 +7,11 @@
 \alias{toggleState}
 \title{Enable/disable an input element}
 \usage{
-enable(id, selector)
+enable(id = NULL, selector = NULL)
 
-disable(id, selector)
+disable(id = NULL, selector = NULL)
 
-toggleState(id, condition, selector)
+toggleState(id = NULL, condition = NULL, selector = NULL)
 }
 \arguments{
 \item{id}{The id of the input element/Shiny tag}
