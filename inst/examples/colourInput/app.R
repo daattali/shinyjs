@@ -4,31 +4,22 @@ library(shinyjs)
 shinyApp(
   ui = fluidPage(
     tags$head(includeCSS(file.path("www", "app.css"))),
-    titlePanel(tags$strong("Demo of colourInput"),
-               "Demo of colourInput"
+    div(id = "header",
+        div(id = "title",
+            "colourInput"
+        ),
+        div(id = "subtitle",
+            "An input control that allows users to select colours in Shiny apps (from shinyjs package)"),
+        div(id = "subsubtitle",
+            "By",
+            tags$a(href = "http://deanattali.com/", "Dean Attali"),
+            HTML("&bull;"),
+            "Package available",
+            tags$a(href = "https://github.com/daattali/shinyjs", "on GitHub"),
+            HTML("&bull;"),
+            tags$a(href = "http://daattali.com/shiny/", "More apps"), "by Dean"
+        )
     ),
-    h4(
-      p(
-        tags$strong("colourInput"),
-        "is an input control available in",
-        tags$a("shinyjs", href = "https://github.com/daattali/shinyjs", target = "_blank"),
-        "that allows users to select colours in Shiny apps",
-        HTML("(<a target='_blank' href='http://deanattali.com/2015/06/28/introducing-shinyjs-colourinput/'>announcement blog post</a>)")
-      ),
-      p("shinyjs::colourInput() behaves just like any other built-in Shiny input and is trivially easy to use")
-    ),
-    div(
-      br(),
-      "Related:", "select colours with a",
-      a(href = "https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif",
-        "colour picker RStudio addin/gadget"), "by shinyjs",
-      br(),
-      "Created by",
-      a("Dean Attali", href = "http://deanattali.com", target = "_blank"),
-      HTML("&bull;"),
-      "Code", a("on GitHub", href = "https://github.com/daattali/shiny-server/tree/master/colourInput", target = "_blank")    ),
-    tags$hr(),
-
     div(
       class = "section",
       div(class = "title", "Simple"),

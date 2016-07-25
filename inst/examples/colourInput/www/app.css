@@ -2,6 +2,37 @@ body {
   background-color: #FAFAFA;
 }
 
+#header {
+  text-align: center;
+  color: #fdfdfd;
+  text-shadow: 0 0 1px #000;
+  padding: 20px 0 30px;
+  border-bottom: 1px solid #ddd;
+  margin: 0 -15px 20px;
+  /* background taken from http://uigradients.com/ */
+  background: #FF512F; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #FF512F , #DD2476); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #FF512F , #DD2476); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#title {
+  font-size: 5em;
+  text-shadow: 0 0 5px #000;
+}
+
+#subtitle {
+  font-size: 2em;
+}
+
+#subsubtitle {
+  font-size: 1.3em;
+}
+
+#subsubtitle a {
+  color: #fdfdfd;
+  text-decoration: underline;
+}
+
 pre {
   width: 300px;
 }
