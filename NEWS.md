@@ -1,3 +1,9 @@
+# shinyjs 0.6.2
+
+2016-07-25
+
+- Improved UI of demo shiny apps and added social media meta tags and github fork ribbons
+
 # shinyjs 0.6.1
 
 2016-05-09

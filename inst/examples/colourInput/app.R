@@ -1,9 +1,41 @@
 library(shiny)
 library(shinyjs)
 
+share <- list(
+  title = "colourInput",
+  url = "http://daattali.com/shiny/colourInput/",
+  image = "http://daattali.com/shiny/img/colourinput.png",
+  description = "An input control that allows users to select colours in Shiny apps (from shinyjs package)",
+  twitter_user = "daattali"
+)
+
 shinyApp(
   ui = fluidPage(
-    tags$head(includeCSS(file.path("www", "app.css"))),
+    tags$head(
+      includeCSS(file.path("www", "app.css")),
+      # Favicon
+      tags$link(rel = "shortcut icon", type="image/x-icon", href="http://daattali.com/shiny/img/favicon.ico"),
+      # Facebook OpenGraph tags
+      tags$meta(property = "og:title", content = share$title),
+      tags$meta(property = "og:type", content = "website"),
+      tags$meta(property = "og:url", content = share$url),
+      tags$meta(property = "og:image", content = share$image),
+      tags$meta(property = "og:description", content = share$description),
+
+      # Twitter summary cards
+      tags$meta(name = "twitter:card", content = "summary"),
+      tags$meta(name = "twitter:site", content = paste0("@", share$twitter_user)),
+      tags$meta(name = "twitter:creator", content = paste0("@", share$twitter_user)),
+      tags$meta(name = "twitter:title", content = share$title),
+      tags$meta(name = "twitter:description", content = share$description),
+      tags$meta(name = "twitter:image", content = share$image)
+    ),
+    tags$a(
+      href="https://github.com/daattali/shinyjs",
+      tags$img(style="position: absolute; top: 0; right: 0; border: 0;",
+               src="github-gray-right.png",
+               alt="Fork me on GitHub")
+    ),
     div(id = "header",
         div(id = "title",
             "colourInput"

@@ -3,21 +3,37 @@ library(shiny)
 source("helpers.R")
 
 shinyUI(fluidPage(
-  title = paste0("Experimenting with shinyjs ", as.character(packageVersion("shinyjs"))),
-  tags$head(includeCSS(file.path('www', 'style.css'))),
+  title = paste0("shinyjs package ", as.character(packageVersion("shinyjs"))),
+  tags$head(
+    includeCSS(file.path('www', 'style.css')),
+    # Favicon
+    tags$link(rel = "shortcut icon", type="image/x-icon", href="http://daattali.com/shiny/img/favicon.ico")
+  ),
+  tags$a(
+    href="https://github.com/daattali/shinyjs",
+    tags$img(style="position: absolute; top: 0; right: 0; border: 0;",
+             src="github-green-right.png",
+             alt="Fork me on GitHub")
+  ),
 
   shinyjs::useShinyjs(),
 
-  fluidRow(
-  column(9,
-    h1(id = "page-title", class = "section-title",
-       "Experimenting with", tags$i("shinyjs", as.character(packageVersion("shinyjs"))))
+  div(id = "header",
+      div(id = "title",
+          "shinyjs package"
+      ),
+      div(id = "subtitle",
+          "Easily improve the user interaction and user experience in your Shiny apps in seconds"),
+      div(id = "subsubtitle",
+          "Created by",
+          tags$a(href = "http://deanattali.com/", "Dean Attali"),
+          HTML("&bull;"),
+          "Available",
+          tags$a(href = "https://github.com/daattali/shinyjs", "on GitHub"),
+          HTML("&bull;"),
+          tags$a(href = "http://daattali.com/shiny/", "More apps"), "by Dean"
+      )
   ),
-  column(3,
-    div(id = "author-name",
-          div(a("Dean Attali", href = "http://deanattali.com", target = "_blank")),
-          div("Jan - Apr 2015"))
-  )),
 
   fluidRow(
   column(6, wellPanel(

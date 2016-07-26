@@ -6,28 +6,43 @@
 /* Rules to make the page nicer */
 
 body {
-  padding: 10px 20px;
+  padding: 0 20px;
   background: #fafafa;
   color: #333;
   font-size: 16px;
 }
 
+#header {
+  text-align: center;
+  color: #fdfdfd;
+  text-shadow: 0 0 1px #000;
+  padding: 20px 0 40px;
+  border-bottom: 1px solid #ddd;
+  margin: 0 -35px 30px;
+  background: url('header.png');
+}
+
+#title {
+  font-size: 5em;
+  text-shadow: 0 0 5px #000;
+}
+
+#subtitle {
+  font-size: 2em;
+}
+
+#subsubtitle {
+  font-size: 1.3em;
+}
+
+#subsubtitle a {
+  color: #fdfdfd;
+  text-decoration: underline;
+}
+
 .section-title {
   font-weight: bold;
   margin-top: 0;
-}
-
-#page-title {
-  font-weight: bold;
-  font-size: 40px;
-  margin: 15px 0 30px;
-}
-
-#author-name {
-  font-size: 20px;
-  margin-top: 10px;
-  text-align: right;
-  font-weight: bold;
 }
 
 .well {
