@@ -16,7 +16,7 @@ body {
   text-align: center;
   color: #fdfdfd;
   text-shadow: 0 0 1px #000;
-  padding: 20px 0 40px;
+  padding: 20px 5px 40px;
   border-bottom: 1px solid #ddd;
   margin: 0 -35px 30px;
   background: url('header.png');
@@ -25,10 +25,14 @@ body {
 #title {
   font-size: 5em;
   text-shadow: 0 0 5px #000;
+  line-height: 1.2;
+  margin-bottom: 15px;
 }
 
 #subtitle {
   font-size: 2em;
+  margin-bottom: 15px;
+  line-height: 1.1;
 }
 
 #subsubtitle {
@@ -38,6 +42,33 @@ body {
 #subsubtitle a {
   color: #fdfdfd;
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 979px) {
+  #header {
+    padding: 15px 5px 35px;
+  }
+  #title {
+    font-size: 4em;
+  }
+  #subtitle {
+    font-size: 1.7em;
+  }
+  #subsubtitle {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #title {
+    font-size: 3.5em;
+  }
+  #subtitle {
+    font-size: 1.5em;
+  }
+  #subsubtitle {
+    font-size: 1.1em;
+  }
 }
 
 .section-title {

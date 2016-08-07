@@ -1,5 +1,5 @@
-shinyjs - Easily improve user experience and user interaction in your Shiny apps
-================================================================================
+shinyjs - Easily improve the user interaction and user experience in your Shiny apps in seconds
+===============================================================================================
 
 [![Build
 Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
