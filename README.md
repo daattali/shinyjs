@@ -1,16 +1,19 @@
-shinyjs - Perform common JavaScript operations in Shiny apps using plain R code
-===============================================================================
+shinyjs - Easily improve user experience and user interaction in your Shiny apps
+================================================================================
 
 [![Build
 Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.org/package=shinyjs)
 
+> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
+> the MIT license.*
+
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 applications without having to know any JavaScript. Examples include:
 hiding an element, disabling an input, resetting an input back to its
 original value, delaying code execution by a few seconds, and many more
-useful functions. `shinyjs` can also be used to easily run your own
+useful functions. `shinyjs` can also be used to easily call your own
 custom JavaScript functions from R.
 
 As an extra perk, `shinyjs` also comes with a `colourInput()` Shiny
