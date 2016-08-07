@@ -91,7 +91,7 @@ shinyUI(fluidPage(
       "and a", a(href = "https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif",
                  "colour picker RStudio addin"), "for selecting colours easily.",
       "You can see a simple preview of the colour input here:"),
-    div(style = "max-width: 300px;", colourInput("colourInput", NULL, "#A52A2A")),
+    div(style = "max-width: 300px;", shinyjs::colourInput("colourInput", NULL, "#A52A2A")),
     shiny::hr(),
     tags$em("This demo only allows you to select from one of the given R expressions",
       "and does not allow you to run any arbitrary expression. To have more freedom",
