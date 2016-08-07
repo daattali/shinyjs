@@ -58,7 +58,7 @@ shinyUI(fluidPage(
 
   fluidRow(
   column(6, wellPanel(
-     h1("Choose an R expression", class = "section-title"),
+     h1("Choose a shinyjs function", class = "section-title"),
      div(id = "expr-container",
          selectInput("expr", label = NULL,
                  choices = examplesNamed, selected = 1,
@@ -79,23 +79,24 @@ shinyUI(fluidPage(
     p(
       strong(a("shinyjs", href = "https://github.com/daattali/shinyjs",
                target = "_blank")),
-      span("lets you perform common JavaScript operations in Shiny applications"),
-      span("without having to know any JavaScript.")),
+      span("lets you improve the user experience in your Shiny apps using very simple functions.")),
     p("You can",
       "use the functions provided by", strong("shinyjs"), "as regular intuitive R code.",
       "These functions use JavaScript behind the scenes to let you manipulate the",
-      "content (HTML) on the page.  If you do know JavaScript, you can also use", strong("shinyjs"), "to call",
+      "content (HTML) on the page, but you do not need to know any JavaScript to use shinyjs.",
+      "If you do know JavaScript, you can also use", strong("shinyjs"), "to call",
       "you own JavaScript functions as if they were R code."),
     p("As an extra perk, ", strong("shinyjs"), "also includes a ",
       a(href = "http://daattali.com/shiny/colourInput/", "colourInput() Shiny widget"),
       "and a", a(href = "https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif",
-                 "colour picker RStudio addin+gadget"), "for selecting colours easily."),
+                 "colour picker RStudio addin"), "for selecting colours easily.",
+      "You can see a simple preview of the colour input here:"),
+    div(style = "max-width: 300px;", colourInput("colourInput", NULL, "#A52A2A")),
     shiny::hr(),
-    p("Note: This demo only allows you to select from one of the given R expressions",
+    tags$em("This demo only allows you to select from one of the given R expressions",
       "and does not allow you to run any arbitrary expression. To have more freedom",
-      "in playing with shinyjs or see what else it can do, install",
-      strong("shinyjs"), "and run the sandbox demo using",
-      code("shinyjs::runExample('sandbox')"))
+      "in playing with shinyjs, install", strong("shinyjs"),
+      "and run the sandbox demo using", code("shinyjs::runExample('sandbox')"))
   ))
   )
 ))
