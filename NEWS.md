@@ -1,3 +1,10 @@
+# shinyjs 0.7
+
+2016-08-15
+
+- All the colourpicker/colourInput related functions are now deprecated because I've made a more appropriate package for them [`colourpicker`](https://github.com/daattali/colourpicker) 
+- Use updated colourpicker JS library that fixes bugs with new jquery version
+
 # shinyjs 0.6.2
 
 2016-07-25

@@ -1,6 +1,9 @@
-#' Create a colour input control
+#' Create a colour input control (DEPRECATED)
 #'
-#' Create an input control to select a colour.
+#' Create an input control to select a colour. \cr
+#' \emph{As of August 2016, this function is being deprecated and has moved to
+#' the \code{colourpicker} package. Please use the \code{colourpicker} package
+#' in the future.}
 #'
 #' A colour input allows users to select a colour by clicking on the desired
 #' colour, or by entering a valid HEX colour in the input box. The input can
@@ -77,6 +80,9 @@ colourInput <- function(inputId, label, value = "white",
                         allowedCols,
                         allowTransparent = FALSE, transparentText,
                         returnName = FALSE) {
+  .Deprecated("colourInput()",
+              msg = colourpickerDeprecateMsg("colourInput()"))
+
   # sanitize the arguments
   value <- formatHEX(value)
   showColour <- match.arg(showColour)

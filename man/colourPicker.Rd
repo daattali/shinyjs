@@ -2,7 +2,7 @@
 % Please edit documentation in R/colourPickerGadget.R
 \name{colourPicker}
 \alias{colourPicker}
-\title{Colour picker gadget}
+\title{Colour picker gadget (DEPRECATED)}
 \usage{
 colourPicker(numCols = 1)
 }
@@ -15,7 +15,10 @@ Vector of selected colours
 }
 \description{
 This gadget lets you choose colours easily. You can select multiple colours,
-and you can either choose any RGB colour, or browse through R colours.
+and you can either choose any RGB colour, or browse through R colours. \cr
+\emph{As of August 2016, this function is being deprecated and has moved to
+the \code{colourpicker} package. Please use the \code{colourpicker} package
+in the future.}
 }
 \note{
 This gadget returns a vector of colours that can be assigned to a variable.

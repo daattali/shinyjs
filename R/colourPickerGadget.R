@@ -1,7 +1,10 @@
-#' Colour picker gadget
+#' Colour picker gadget (DEPRECATED)
 #'
 #' This gadget lets you choose colours easily. You can select multiple colours,
-#' and you can either choose any RGB colour, or browse through R colours.
+#' and you can either choose any RGB colour, or browse through R colours. \cr
+#' \emph{As of August 2016, this function is being deprecated and has moved to
+#' the \code{colourpicker} package. Please use the \code{colourpicker} package
+#' in the future.}
 #'
 #' @param numCols The number of colours to select when the gadget launches (you
 #' can add and remove more colours from the app itself too)
@@ -28,6 +31,8 @@ colourPickerAddin <- function() {
 #' @import shiny
 #' @import miniUI
 colourPickerGadget <- function(numCols = 1) {
+  .Deprecated("colourPicker()",
+              msg = colourpickerDeprecateMsg("colourPicker()"))
   if (!requireNamespace("rstudioapi", quietly = TRUE)) {
     stop("You must have RStudio v0.99.878 or newer to use the colour picker",
          call. = FALSE)

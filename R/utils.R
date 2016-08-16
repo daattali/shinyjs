@@ -3,6 +3,13 @@ errMsg <- function(x) {
   stop(sprintf("shinyjs: %s", x), call. = FALSE)
 }
 
+colourpickerDeprecateMsg <- function(x) {
+  paste0(
+    "As of August 2016, '", x, "' has been deprecated and has moved to the ",
+    "'colourpicker' package. Please use the 'colourpicker' package in the future."
+  )
+}
+
 # get the shiny session object
 getSession <- function() {
   session <- shiny::getDefaultReactiveDomain()

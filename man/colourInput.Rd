@@ -2,7 +2,7 @@
 % Please edit documentation in R/colourInput.R
 \name{colourInput}
 \alias{colourInput}
-\title{Create a colour input control}
+\title{Create a colour input control (DEPRECATED)}
 \usage{
 colourInput(inputId, label, value = "white", showColour = c("both", "text",
   "background"), palette = c("square", "limited"), allowedCols,
@@ -40,7 +40,10 @@ the input will always return the string "transparent".}
 of a HEX value when possible.}
 }
 \description{
-Create an input control to select a colour.
+Create an input control to select a colour. \cr
+\emph{As of August 2016, this function is being deprecated and has moved to
+the \code{colourpicker} package. Please use the \code{colourpicker} package
+in the future.}
 }
 \details{
 A colour input allows users to select a colour by clicking on the desired
