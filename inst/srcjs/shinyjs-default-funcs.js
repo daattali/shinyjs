@@ -355,6 +355,16 @@ shinyjs = function() {
           inputType = "Checkbox";
           inputValue = input.prop('checked');
         }
+        // passwordInput
+        else if (input.children("input[type='password']").length > 0) {
+          input = input.children("input[type='password']");
+          inputType = "Password";
+        }
+        // textAreaInput
+        else if (input.children("textarea").length > 0) {
+          input = input.children("textarea");
+          inputType = "TextArea";
+        }
         // if none of the above, no supported Shiny input was found
         else {
           foundInput = false;

@@ -1,9 +1,10 @@
 # shinyjs 0.7
 
-2016-08-15
+2016-08-20
 
 - All the colourpicker/colourInput related functions are now deprecated because I've made a more appropriate package for them [`colourpicker`](https://github.com/daattali/colourpicker) 
 - Use updated colourpicker JS library that fixes bugs with new jquery version
+- Add reset support for `passwordInput` and `textAreaInput` (#78)
 
 # shinyjs 0.6.2
 

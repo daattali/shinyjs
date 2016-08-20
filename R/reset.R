@@ -5,10 +5,11 @@
 #' all inputs within an HTML tag by providing the id of an HTML tag.\cr\cr
 #' Reset can be performed on any traditional Shiny input widget, which
 #' includes: textInput, numericInput, sliderInput, selectInput,
-#' selectizeInput, radioButtons, dateInput, dateRangeInput,
-#' checkboxInput, checkboxGroupInput.  Buttons are not supported,
-#' meaning that you cannot use this function to reset the value of an
-#' action button back to 0. You also cannot use this function on a fileInput.
+#' selectizeInput, radioButtons, dateInput, dateRangeInput, checkboxInput,
+#' checkboxGroupInput, colourInput, passwordInput, textAreaInput. Note that
+#' \code{actionButton} is not supported, meaning that you cannot reset
+#' the value of a button back to 0. You also cannot use this function on
+#' a \code{fileInput}.
 #'
 #' @param id The id of the input element to reset or the id of an HTML
 #' tag to reset all input elements inside it.
@@ -83,6 +84,11 @@ reset <- function(id) {
       function(x) {
         type <- messages[[x]][['type']]
         value <- messages[[x]][['value']]
+
+        # password inputs don't have an updatePasswordInput, they use text
+        if (type == "Password") {
+          type <- "Text"
+        }
 
         updateFunc <- sprintf("update%sInput", type)
 
