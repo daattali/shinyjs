@@ -735,3 +735,23 @@ Tested on Windows 7 and ubuntu 14.04; no errors, warnings, or notes
 2016-04-24 Kurt Hornik
 
 Thanks, on CRAN now
+
+# Version 0.7
+
+## Round 1
+
+### Test environments
+
+* Windows 7, R 3.3.1 (local)
+* ubuntu 12.04, R 3.2.3 (on travis-ci)
+* ubuntu 14.04, R 3.3.1 (on my DigitalOcean droplet)
+
+### Submission comments
+
+2016-08-21
+
+No errors, warnings, or notes
+
+### Reviewer comments
+
+
