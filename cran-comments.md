@@ -754,4 +754,6 @@ No errors, warnings, or notes
 
 ### Reviewer comments
 
+2016-08-21 Duncan Murdoch
 
+Thanks, on CRAN now.
