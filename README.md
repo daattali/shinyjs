@@ -10,10 +10,11 @@ version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.or
 > the MIT license.*
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
-applications without having to know any JavaScript. Examples include:
-hiding an element, disabling an input, resetting an input back to its
-original value, delaying code execution by a few seconds, and many more
-useful functions. `shinyjs` can also be used to easily call your own
+apps that will greatly improve your apps without having to know any
+JavaScript. Examples include: hiding an element, disabling an input,
+resetting an input back to its original value, delaying code execution
+by a few seconds, and many more useful functions for both the end user
+and the developer. `shinyjs` can also be used to easily call your own
 custom JavaScript functions from R.
 
 Table of contents
