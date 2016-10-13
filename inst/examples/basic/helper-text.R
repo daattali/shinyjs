@@ -18,7 +18,7 @@ getHelperText <- function() {
         code("shinyjs::html()"), "to update the HTML in the timestamp when",
         "the link is clicked"),
       tags$li(
-        "Clicking 'Submit' uses", code("shinyjs::info()"), "to show a",
+        "Clicking 'Submit' uses", code("shinyjs::alert()"), "to show a",
         "message to the user")
     ),
     p("These are just a subset of the functions available in shinyjs."),

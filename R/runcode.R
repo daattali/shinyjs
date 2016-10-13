@@ -28,7 +28,7 @@
 #'   shinyApp(
 #'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
-#'       runcodeUI(code = "shinyjs::info('Hello!')")
+#'       runcodeUI(code = "shinyjs::alert('Hello!')")
 #'     ),
 #'     server = function(input, output) {
 #'       runcodeServer()

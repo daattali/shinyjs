@@ -91,8 +91,7 @@ list of the common functions:
 
 -   `disabled` - initialize a Shiny input as disabled.
 
--   `info` - show a message to the user (using JavaScript's `alert`
-    under the hood).
+-   `alert` - show a message to the user.
 
 -   `html` - change the text/HTML of an element (using JavaScript's
     `innerHTML` under the hood).
@@ -443,7 +442,7 @@ argument:
 Simply add the following to the server
 
     observeEvent(input$submit, {
-      shinyjs::info("Thank you!")
+      shinyjs::alert("Thank you!")
     })
 
 **7. Allow the user to reset the form**
@@ -502,7 +501,7 @@ The final code looks like this
         })
         
         observeEvent(input$submit, {
-          shinyjs::info("Thank you!")
+          shinyjs::alert("Thank you!")
         })
         
         observeEvent(input$reset, {

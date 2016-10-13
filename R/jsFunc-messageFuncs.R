@@ -1,6 +1,7 @@
 #' Show a message
 #'
-#' \code{info} shows a message to the user as a simple popup.\cr
+#' \code{alert} (and its alias \code{info}) shows a message to the user as a
+#' simple popup.\cr
 #' \code{logjs} writes a message to the JavaScript console. \code{logjs} is
 #' mainly used for debugging purposes as a way to non-intrusively print
 #' messages, but it is also visible to the user if they choose to inspect the
@@ -22,7 +23,7 @@
 #'     server = function(input, output) {
 #'       observeEvent(input$btn, {
 #'         # Change the following line for more examples
-#'         info(paste0("The date is ", date()))
+#'         alert(paste0("The date is ", date()))
 #'       })
 #'     }
 #'   )
@@ -30,8 +31,8 @@
 #' \dontrun{
 #'   # The shinyjs function call in the above app can be replaced by
 #'   # any of the following examples to produce similar Shiny apps
-#'   info("Hello!")
-#'   info(text = R.Version())
+#'   alert("Hello!")
+#'   alert(text = R.Version())
 #'   logjs(R.Version())
 #' }
 #' @name messageFuncs
@@ -39,11 +40,14 @@ NULL
 
 #' @export
 #' @rdname messageFuncs
-info <- function(text) {
-  fxn <- "info"
+alert <- function(text) {
+  fxn <- "alert"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)
 }
+#' @export
+#' @rdname messageFuncs
+info <- alert
 #' @export
 #' @rdname messageFuncs
 logjs <- function(text) {

@@ -19,8 +19,7 @@ includes: textInput, numericInput, sliderInput, selectInput,
 selectizeInput, radioButtons, dateInput, dateRangeInput, checkboxInput,
 checkboxGroupInput, colourInput, passwordInput, textAreaInput. Note that
 \code{actionButton} is not supported, meaning that you cannot reset
-the value of a button back to 0. You also cannot use this function on
-a \code{fileInput}.
+the value of a button back to 0.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}

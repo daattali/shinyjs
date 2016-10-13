@@ -1,4 +1,4 @@
-// shinyjs 0.7 by Dean Attali
+// shinyjs 0.7.9003 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -639,7 +639,7 @@ shinyjs = function() {
       });
     },
 
-    info : function (params) {
+    alert : function (params) {
       var defaultParams = {
         text : null
       }

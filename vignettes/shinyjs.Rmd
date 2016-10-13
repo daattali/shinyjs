@@ -86,8 +86,7 @@ amount of time.
 
 - `disabled` - initialize a Shiny input as disabled.
 
-- `info` - show a message to the user (using JavaScript's `alert` under the
-hood).
+- `alert` - show a message to the user.
 
 - `html` - change the text/HTML of an element (using JavaScript's `innerHTML`
 under the hood).
@@ -409,7 +408,7 @@ Simply add the following to the server
 
 ```
 observeEvent(input$submit, {
-  shinyjs::info("Thank you!")
+  shinyjs::alert("Thank you!")
 })
 ```
 
@@ -474,7 +473,7 @@ shinyApp(
     })
     
     observeEvent(input$submit, {
-      shinyjs::info("Thank you!")
+      shinyjs::alert("Thank you!")
     })
     
     observeEvent(input$reset, {

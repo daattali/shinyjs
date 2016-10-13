@@ -49,7 +49,7 @@ shinyApp(
     })
 
     observeEvent(input$submit, {
-      info("Thank you!")
+      alert("Thank you!")
     })
 
     observeEvent(input$reset, {

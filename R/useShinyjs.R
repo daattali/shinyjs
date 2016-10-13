@@ -57,8 +57,8 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
 
   # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
-               "addClass", "removeClass", "toggleClass", "html",
-               "onevent", "info", "logjs", "runjs", "reset", "delay")
+               "addClass", "removeClass", "toggleClass", "html", "onevent",
+               "alert", "logjs", "runjs", "reset", "delay")
 
   # grab the file with all the default shinyjs javascript functions
   shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))

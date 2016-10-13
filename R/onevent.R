@@ -37,7 +37,7 @@
 #'       p(id = "text", "Hello")
 #'     ),
 #'     server = function(input, output) {
-#'       onclick("date", info(date()))
+#'       onclick("date", alert(date()))
 #'       onevent("mouseenter", "disappear", hide("text"))
 #'       onevent("mouseleave", "disappear", show("text"))
 #'     }
