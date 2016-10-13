@@ -7,7 +7,7 @@ examples <- c(
   'toggle(id = "test", anim = TRUE, time = 2, animType = "slide")',
   'hide("test")',
   'show("test")',
-  'reset("expr")',
+  'reset("runcode_expr")',
   'info(R.Version())',
   'onclick("btn", info(date()))',
   'toggleState("btn")',

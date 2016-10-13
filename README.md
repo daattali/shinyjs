@@ -120,6 +120,9 @@ list of the common functions:
     information is available in the section "Calling your own JavaScript
     functions from R".
 
+-   `runcodeUI()`+`runcodeServer()` - adds a text input to your app that
+    lets you run arbitrary R code live
+
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/)
 to see some of these in action, or install `shinyjs` and run
 `shinyjs::runExample()` to see more demo apps.

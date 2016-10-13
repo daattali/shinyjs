@@ -38,16 +38,8 @@ shinyUI(fluidPage(
   fluidRow(
   column(6, wellPanel(
      h1("Write an R expression", class = "section-title"),
-     textInput("expr", label = NULL, value = as.character(examples[1])),
-     actionButton("submitExpr", "Run", class = "btn-success"),
-     shinyjs::hidden(
-       div(id = "error", br(),
-           div("Oops, that resulted in an error! Try again."),
-           div("Error: ", br(), span(id = "errorMsg"))
-       )
-     ),
+     runcodeUI(value = as.character(examples[1])),
      shiny::hr(),
-
      h1("Sandbox area", class = "section-title"),
      p(id = "test", "I'm an HTML element with id \"test\""),
      tags$button(

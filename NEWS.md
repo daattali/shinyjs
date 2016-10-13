@@ -1,3 +1,7 @@
+# shinyjs 0.7.xxxx
+
+- added `runcodeUI()` and `runcodeServer()` functions that you can add to your app in order to run arbitrary R code interactively
+
 # shinyjs 0.7
 
 2016-08-20

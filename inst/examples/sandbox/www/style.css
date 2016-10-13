@@ -80,24 +80,15 @@ body {
   background: #FFFFFF;
 }
 
-#expr {
+#runcode_expr {
   height: auto;
   font-size: 22px;
 }
 
-#submitExpr {
+#runcode_run {
   font-weight: bold;
   font-size: 16px;
   padding: 5px 20px;
-}
-
-#error {
-  color: #FF0000;
-  font-weight: bold;
-}
-
-#errorMsg {
-  margin-left: 10px;
 }
 
 #test {
