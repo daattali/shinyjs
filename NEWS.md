@@ -1,7 +1,8 @@
 # shinyjs 0.7.xxxx
 
 - added `runcodeUI()` and `runcodeServer()` functions that you can add to your app in order to run arbitrary R code interactively
-- add `alert()` as an alias for `info()`
+- added `showLog()` function which lets you redirect all JavaScript logging statements to the R console, to make it easier and quicker to debug apps without having to open the JS console
+- added `alert()` as an alias for `info()`
 
 # shinyjs 0.7
 

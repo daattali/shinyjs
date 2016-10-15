@@ -108,9 +108,6 @@ list of the common functions:
 
 -   `inlineCSS` - easily add inline CSS to a Shiny app.
 
--   `logjs` - print a message to the JavaScript console (mainly used for
-    debugging purposes).
-
 -   `runjs` - run arbitrary JavaScript code (not recommended to use this
     in a published Shiny app).
 
@@ -119,8 +116,17 @@ list of the common functions:
     information is available in the section "Calling your own JavaScript
     functions from R".
 
--   `runcodeUI()`+`runcodeServer()` - adds a text input to your app that
+#### Functions that help you develop and debug your app
+
+-   `runcodeUI`+`runcodeServer` - adds a text input to your app that
     lets you run arbitrary R code live
+
+-   `showLog` - print any JavaScript `console.log()` messages in the R
+    console, to make it easier and quicker to debug apps without having
+    to open the JS console
+
+-   `logjs` - print a message to the JavaScript console (mainly used for
+    debugging purposes).
 
 [Check out the demo Shiny app](http://daattali.com/shiny/shinyjs-demo/)
 to see some of these in action, or install `shinyjs` and run

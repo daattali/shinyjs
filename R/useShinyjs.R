@@ -4,17 +4,22 @@
 #' \code{shinyjs} functions to work.\cr\cr
 #' You can call \code{useShinyjs()} from anywhere inside the UI.
 #'
-#' @param rmd Set this to \code{TRUE} only if you are using \code{shinyjs} inside an
-#' interactive R markdown document. If using this option, view the
+#' @param rmd Set this to \code{TRUE} only if you are using \code{shinyjs}
+#' inside an interactive R markdown document. If using this option, view the
 #' \href{https://github.com/daattali/shinyjs}{README} online to learn how to
 #' use shinyjs in R markdown documents.
 #' @param debug Set this to \code{TRUE} if you want to see detailed debugging
 #' statements in the JavaScript console. Can be useful when filing bug reports
 #' to get more information about what is going on.
-#' @param html Set this to \code{TRUE} only if you are using \code{shinyjs} in a Shiny
-#' app that builds the entire user interface with a custom HTML file. If using this
-#' option, view the \href{https://github.com/daattali/shinyjs}{README} online to learn
+#' @param html Set this to \code{TRUE} only if you are using \code{shinyjs} in
+#' a Shiny app that builds the entire user interface with a custom HTML file. If
+#' using this option, view the
+#' \href{https://github.com/daattali/shinyjs}{README} online to learn
 #' how to use shinyjs in these apps.
+#' @param showLog Set this to \code{TRUE} if you want to print all JavaScript
+#' log messages in the R console. This is useful for debugging. If using this
+#' option, you must also call the \code{\link[shinyjs]{showLog}} function in
+#' the server.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
 #' @examples
@@ -38,10 +43,12 @@
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
-useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
+useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
+                       showLog = FALSE) {
   stopifnot(rmd == TRUE || rmd == FALSE)
   stopifnot(debug == TRUE || debug == FALSE)
   stopifnot(html == TRUE || html == FALSE)
+  stopifnot(showLog == TRUE || showLog == FALSE)
 
   # `astext` is FALSE in normal shiny apps where the shinyjs content is returned
   # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive
@@ -69,6 +76,19 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
     initJS <- "shinyjs.debug = true;"
   } else {
     initJS <- "shinyjs.debug = false;"
+  }
+
+  # Capture the console.log function and overwrite it to send the message to R
+  if (showLog) {
+    initJS <- paste0(
+      initJS,
+      '(function(){
+         var oldLog = console.log;
+         console.log = function (message) {
+           Shiny.onInputChange("shinyjs-showLog", message);
+           oldLog.apply(console, arguments);
+        };
+      })();')
   }
 
   # include CSS for hiding elements

@@ -1,15 +1,17 @@
 #' Show a message
 #'
 #' \code{alert} (and its alias \code{info}) shows a message to the user as a
-#' simple popup.\cr
+#' simple popup.\cr\cr
 #' \code{logjs} writes a message to the JavaScript console. \code{logjs} is
 #' mainly used for debugging purposes as a way to non-intrusively print
 #' messages, but it is also visible to the user if they choose to inspect the
-#' console.
+#' console. You can also use the \code{\link[shinyjs]{showLog}} function to
+#' print the JavaScript message directly to the R console.
 #'
 #' @param text The message to show.  Can be either simple text or an R object.
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
-#' \code{\link[shinyjs]{runExample}}
+#' \code{\link[shinyjs]{runExample}},
+#' \code{\link[shinyjs]{showLog}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @examples

@@ -1,4 +1,4 @@
-// shinyjs 0.7.9003 by Dean Attali
+// shinyjs 0.7.9005 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -468,7 +468,7 @@ shinyjs = function() {
     // write a message to the console for debugging purposes if debug mode is on
     debugMessage : function(text) {
       if (shinyjs.debug) {
-        console.log(text);
+        console.info(text);
       }
     },
 

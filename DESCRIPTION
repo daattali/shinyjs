@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 0.7.9004
+Version: 0.7.9005
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Perform common useful JavaScript operations in Shiny apps that will
@@ -16,6 +16,7 @@ Depends:
 Imports:
     digest (>= 0.6.8),
     htmltools (>= 0.2.6),
+    jsonlite,
     miniUI (>= 0.1.1),
     shiny (>= 0.11.1),
     stats
