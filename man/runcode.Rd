@@ -7,7 +7,7 @@
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
 runcodeUI(code = "", type = c("text", "textarea"), width = NULL,
-  height = NULL)
+  height = NULL, includeShinyjs = FALSE)
 
 runcodeServer()
 }
@@ -24,18 +24,27 @@ a single line by appending each R expression with a semicolon.}
 
 \item{height}{The height of the textarea input (only applicable when
 \code{type="textarea"})}
+
+\item{includeShinyjs}{Set this to \code{TRUE} only if your app does not have
+a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}
+in your app, do not use this parameter.}
 }
 \description{
 Sometimes when developing a Shiny app, it's useful to be able to run some R
 code on-demand. This construct provides your app with a text input where you
 can enter any R code and run it immediately.\cr\cr
 This can be useful for testing
-and while developing an app locally, but it \emph{should not be included in
+and while developing an app locally, but it \strong{should not be included in
 an app that is accessible to other people}, as letting others run arbitrary R
 code can open you up to security attacks.\cr\cr
 To use this construct, you must add a call to \code{runcodeUI()} in the UI
 of your app, and a call to \code{runcodeServer()} in the server function. You
-also need to initialize shinyjs with a call to \code{useShinyjs()}.
+also need to initialize shinyjs with a call to \code{useShinyjs()} in the UI.
+}
+\note{
+You can only have one \code{runcode} construct in your shiny app.
+Calling this function multiple times within the same app will result in
+unpredictable behaviour.
 }
 \examples{
 if (interactive()) {
