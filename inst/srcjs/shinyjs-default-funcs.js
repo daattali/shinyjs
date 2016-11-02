@@ -1,4 +1,4 @@
-// shinyjs 0.7.9006 by Dean Attali
+// shinyjs 0.7.9007 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -364,6 +364,10 @@ shinyjs = function() {
         else if (input.children("textarea").length > 0) {
           input = input.children("textarea");
           inputType = "TextArea";
+        }
+        else if (input.find("input[type='file']").length > 0) {
+          input = input.find("input[type='file']");
+          inputType = "File"
         }
         // if none of the above, no supported Shiny input was found
         else {
@@ -745,7 +749,17 @@ shinyjs = function() {
         var value = resettable.attr('data-shinyjs-resettable-value');
         var id = resettable.attr('data-shinyjs-resettable-id');
         if (id !== undefined) {
-          messages[id] = { 'type' : type, 'value' : value };
+          // file inputs need to be reset manually since shiny doesn't have an
+          // update function for them
+          if (type == "File") {
+            id = "#" + id;
+            $(id).val('');
+            $(id + "_progress").css("visibility", "hidden");
+            $(id + "_progress").find(".progress-bar").css("width", "0");
+            $(id).closest(".input-group").find("input[type='text']").val('');
+          } else {
+            messages[id] = { 'type' : type, 'value' : value };
+          }
         }
       }
 

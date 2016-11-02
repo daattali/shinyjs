@@ -8,8 +8,7 @@
 #' selectizeInput, radioButtons, dateInput, dateRangeInput, checkboxInput,
 #' checkboxGroupInput, colourInput, passwordInput, textAreaInput. Note that
 #' \code{actionButton} is not supported, meaning that you cannot reset
-#' the value of a button back to 0. You also cannot use this function on
-#' a \code{fileInput}.
+#' the value of a button back to 0.
 #'
 #' @param id The id of the input element to reset or the id of an HTML
 #' tag to reset all input elements inside it.
