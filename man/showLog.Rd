@@ -19,6 +19,9 @@ need to pass the \code{showLog=TRUE} parameter to \code{useShinyjs()}.
 Due to an issue in shiny (see
 https://github.com/rstudio/shiny/issues/928), duplicated consecutive log
 messages will not get printed in R.
+
+Log messages that cannot be serialized in JavaScript (such as many
+JavaScript Event objects that are cyclic) will not be printed in R.
 }
 \examples{
 if (interactive()) {

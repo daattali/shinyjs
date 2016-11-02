@@ -85,7 +85,9 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
       '(function(){
          var oldLog = console.log;
          console.log = function (message) {
-           Shiny.onInputChange("shinyjs-showLog", message);
+           try {
+             Shiny.onInputChange("shinyjs-showLog", message);
+           } catch(err) {}
            oldLog.apply(console, arguments);
         };
       })();')
