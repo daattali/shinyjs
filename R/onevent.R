@@ -9,7 +9,10 @@
 #' @param event The event that needs to be triggered to run the code. See below
 #' for a list of possible event types.
 #' @param id The id of the element/Shiny tag
-#' @param expr The R expression to run after the event is triggered
+#' @param expr The R expression or function to run after the event is triggered.
+#' If a function with an argument is provided, it will be called with the
+#' JavaScript Event details as its argument. Using a function can be useful
+#' when you want to know for example what key was pressed on a "keypress" event.
 #' @param add If \code{TRUE}, then add \code{expr} to be executed after any
 #' other code that was previously set using \code{onevent} or \code{onclick}; otherwise
 #' \code{expr} will overwrite any previous expressions. Note that this parameter
@@ -33,11 +36,13 @@
 #'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
 #'       p(id = "date", "Click me to see the date"),
+#'       p(id = "coords", "Click me to see the mouse coordinates"),
 #'       p(id = "disappear", "Move your mouse here to make the text below disappear"),
 #'       p(id = "text", "Hello")
 #'     ),
 #'     server = function(input, output) {
 #'       onclick("date", alert(date()))
+#'       onclick("coords", function(event) { alert(event) })
 #'       onevent("mouseenter", "disappear", hide("text"))
 #'       onevent("mouseleave", "disappear", show("text"))
 #'     }
@@ -94,7 +99,22 @@ oneventHelper <- function(event, id, expr, add) {
   # every time the given event occurs
   expr <- deparse(expr)
   shiny::observeEvent(session$input[[shinyInputId]], {
-    eval(parse(text = expr), envir = parentFrame)
+    ret <- eval(parse(text = expr), envir = parentFrame)
+
+    # If a callback function was provided, call it with the event as argument
+    if (is.function(ret)) {
+      if (length(formals(ret)) == 0) {
+        ret()
+      } else {
+        event <- session$input[[shinyInputId]]
+        event[['shinyjsRandom']] <- NULL
+        ret(event)
+      }
+    }
+    # If an expression was provided, evaluate it
+    else {
+      ret
+    }
   })
 
   invisible(NULL)

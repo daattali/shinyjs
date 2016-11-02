@@ -12,7 +12,10 @@ onevent(event, id, expr, add = FALSE)
 \arguments{
 \item{id}{The id of the element/Shiny tag}
 
-\item{expr}{The R expression to run after the event is triggered}
+\item{expr}{The R expression or function to run after the event is triggered.
+If a function with an argument is provided, it will be called with the
+JavaScript Event details as its argument. Using a function can be useful
+when you want to know for example what key was pressed on a "keypress" event.}
 
 \item{add}{If \code{TRUE}, then add \code{expr} to be executed after any
 other code that was previously set using \code{onevent} or \code{onclick}; otherwise
@@ -50,11 +53,13 @@ if (interactive()) {
     ui = fluidPage(
       useShinyjs(),  # Set up shinyjs
       p(id = "date", "Click me to see the date"),
+      p(id = "coords", "Click me to see the mouse coordinates"),
       p(id = "disappear", "Move your mouse here to make the text below disappear"),
       p(id = "text", "Hello")
     ),
     server = function(input, output) {
       onclick("date", alert(date()))
+      onclick("coords", function(event) { alert(event) })
       onevent("mouseenter", "disappear", hide("text"))
       onevent("mouseleave", "disappear", show("text"))
     }

@@ -1,4 +1,4 @@
-// shinyjs 0.7.9005 by Dean Attali
+// shinyjs 0.7.9006 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -432,19 +432,32 @@ shinyjs = function() {
     var attrName = "data-shinyjs-" + params.event;
 
     // if this is the first event handler of this event type we attach to this
-    // element, initialize the data attribute and add the  event handler
+    // element, initialize the data attribute and add the event handler
     var first = !(el[0].hasAttribute(attrName));
     if (first) {
       el.attr(attrName, JSON.stringify(Object()));
 
-      el[params.event](function() {
+      el[params.event](function(event) {
+        // Store a subset of the event properties (many are non-serializeable)
+        var props = ['altKey', 'button', 'buttons', 'clientX', 'clienty',
+          'ctrlKey', 'pageX', 'pageY', 'screenX', 'screenY', 'shiftKey',
+          'which', 'charCode', 'key', 'keyCode'];
+        var eventSimple = {};
+        $.each(props, function(idx, prop) {
+          if (prop in event) {
+            eventSimple[[prop]] = event[[prop]];
+          }
+        });
+        eventSimple.shinyjsRandom = Math.random();
+
         var oldValues = JSON.parse(el.attr(attrName));
         var newValues = Object();
         $.each(oldValues, function(key, value) {
           var newValue = value + 1;
           newValues[key] = newValue;
-          Shiny.onInputChange(key, newValue);
+          Shiny.onInputChange(key, eventSimple);
         });
+
         el.attr(attrName, JSON.stringify(newValues));
       });
     }
