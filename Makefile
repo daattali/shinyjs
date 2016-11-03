@@ -16,6 +16,8 @@ README.md : vignettes/shinyjs.Rmd
 #	echo "Correcting image paths"
 #	sed -i -- 's,../inst,inst,g' vignettes/shinyjs.md
 	Rscript -e 'file <- gsub("\\.\\./inst", "inst", readLines("vignettes/shinyjs.md")); writeLines(file, "vignettes/shinyjs.md")'
+#	echo "Correcting paths to other reference vignettes"
+	Rscript -e 'file <- gsub("\\((.*)\\.([rR]md)","(vignettes/\\1.\\2", readLines("vignettes/shinyjs.md")); writeLines(file, "vignettes/shinyjs.md")'
 #	echo "Copying output to README.md"
 #	cp vignettes/shinyjs.md README.md
 	Rscript -e 'file.copy("vignettes/shinyjs.md", "README.md", overwrite = TRUE)'

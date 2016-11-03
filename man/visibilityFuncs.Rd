@@ -56,12 +56,12 @@ if (interactive()) {
     ui = fluidPage(
       useShinyjs(),  # Set up shinyjs
       actionButton("btn", "Click me"),
-      p(id = "element", "Watch what happens to me")
+      textInput("text", "Text")
     ),
     server = function(input, output) {
       observeEvent(input$btn, {
         # Change the following line for more examples
-        toggle("element")
+        toggle("text")
       })
     }
   )
@@ -69,15 +69,15 @@ if (interactive()) {
 \dontrun{
   # The shinyjs function call in the above app can be replaced by
   # any of the following examples to produce similar Shiny apps
-  toggle(id = "element")
-  delay(1000, toggle(id = "element")) # toggle in 1 second
-  toggle("element", TRUE)
-  toggle("element", TRUE, "fade", 2)
-  toggle(id = "element", time = 1, anim = TRUE, animType = "slide")
-  show("element")
-  show(id = "element", anim = TRUE)
-  hide("element")
-  hide(id = "element", anim = TRUE)
+  toggle(id = "text")
+  delay(1000, toggle(id = "text")) # toggle in 1 second
+  toggle("text", TRUE)
+  toggle("text", TRUE, "fade", 2)
+  toggle(id = "text", time = 1, anim = TRUE, animType = "slide")
+  show("text")
+  show(id = "text", anim = TRUE)
+  hide("text")
+  hide(id = "text", anim = TRUE)
 }
 
 ## toggle can be given an optional `condition` argument, which

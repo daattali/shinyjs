@@ -10,9 +10,7 @@ runjs(code)
 \item{code}{JavaScript code to run.}
 }
 \description{
-Run arbitrary JavaScript code. This is mainly useful when developing and
-debugging a Shiny app, as it is generally considered dangerous to expose
-a way for end users to evaluate arbitrary code.
+Run arbitrary JavaScript code.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}

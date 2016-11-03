@@ -1,8 +1,6 @@
 #' Run JavaScript code
 #'
-#' Run arbitrary JavaScript code. This is mainly useful when developing and
-#' debugging a Shiny app, as it is generally considered dangerous to expose
-#' a way for end users to evaluate arbitrary code.
+#' Run arbitrary JavaScript code.
 #'
 #' @param code JavaScript code to run.
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
