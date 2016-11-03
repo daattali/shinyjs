@@ -13,6 +13,8 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
+# shinyjs example app walk-through
+
 This document provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly.
 
 *You can view the final Shiny app developed in this simple example

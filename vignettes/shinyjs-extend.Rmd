@@ -13,6 +13,8 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
+# extendShinyjs: Calling your own JavaScript functions from R
+
 <h2 id="extendshinyjs-simple">Simple example</h2>
 
 Using `extendShinyjs` is very simple and makes defining and calling JavaScript functions painless. Here is a very basic example of using `extendShinyjs` to define a (fairly useless) function that changes the colour of the page.

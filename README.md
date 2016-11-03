@@ -175,20 +175,22 @@ Here is a minimal Shiny app that uses `shinyjs`:
     library(shinyjs)
 
     ui <- fluidPage(
-      useShinyjs(),
+      useShinyjs(),  # Include shinyjs
+
       actionButton("button", "Click me"),
       textInput("text", "Text")
     )
 
     server <- function(input, output) {
       observeEvent(input$button, {
-        toggle("text")
+        toggle("text")  # toggle is a shinyjs function
       })
     }
 
     shinyApp(ui, server)
 
-This is how most Shiny apps should initialize `shinyjs`.
+This is how most Shiny apps should initialize `shinyjs` - by calling
+`useShinyjs()` near the top of the UI.
 
 However, if you use shinyjs in any of the following cases:
 
@@ -270,11 +272,10 @@ This document is meant to serve as a high overview of shinyjs. There are
 three more documents provided in shinyjs to teach you various aspects of
 the package:
 
--   [*Including shinyjs in different types of
-    apps*](vignettes/./shinyjs-usage.Rmd)
--   [*shinyjs example app walk-through*](vignettes/./shinyjs-example.Rmd)
--   [*extendShinyjs: Calling your own JavaScript functions from
-    R*](vignettes/./shinyjs-extend.Rmd)
+-   [Including shinyjs in different types of apps](vignettes/./shinyjs-usage.Rmd)
+-   [shinyjs example app walk-through](vignettes/./shinyjs-example.Rmd)
+-   [extendShinyjs: Calling your own JavaScript functions from
+    R](vignettes/./shinyjs-extend.Rmd)
 
 If you need help, I strongly suggest browsing the [shinyjs
 tag](http://stackoverflow.com/questions/tagged/shinyjs) on StackOverflow
