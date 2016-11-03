@@ -757,3 +757,21 @@ No errors, warnings, or notes
 2016-08-21 Duncan Murdoch
 
 Thanks, on CRAN now.
+
+# Version 0.8
+
+## Round 1
+
+### Test environments
+
+* Windows 7, R 3.3.1 (local)
+* ubuntu 12.04, R 3.3.1 (on travis-ci)
+* ubuntu 14.04, R 3.3.1 (on my DigitalOcean droplet)
+
+### Submission comments
+
+2016-11-03
+
+No errors, warnings, or notes
+
+### Reviewer comments
