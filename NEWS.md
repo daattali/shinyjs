@@ -1,8 +1,10 @@
-# shinyjs 0.7.xxxx
+# shinyjs 0.8
 
-- `onclick` and `onevent` now support callback functions, and the JavaScript Event object is passed to the callback (#92)
+2016-11-03
+
 - added `runcodeUI()` and `runcodeServer()` functions that you can add to your app in order to run arbitrary R code interactively
 - added `showLog()` function which lets you redirect all JavaScript logging statements to the R console, to make it easier and quicker to debug apps without having to open the JS console (#88)
+- `onclick` and `onevent` now support callback functions, and the JavaScript Event object is passed to the callback (#92)
 - the `reset()` function now works on file inputs
 - added `alert()` as an alias for `info()`
 
