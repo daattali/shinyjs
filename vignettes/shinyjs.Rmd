@@ -159,7 +159,11 @@ There are several questions that pop up very frequently in my email or on StackO
 
 <h2 id="more-resources">More resources</h2>
 
-This document is meant to serve as a high overview of shinyjs. There are three more documents provided in shinyjs to teach you various aspects of the package: [*Including shinyjs in different types of apps*](./shinyjs-usage.Rmd), [*shinyjs example app walk-through*](./shinyjs-example.Rmd), and [*extendShinyjs: Calling your own JavaScript functions from R*](./shinyjs-extend.Rmd).
+This document is meant to serve as a high overview of shinyjs. There are three more documents provided in shinyjs to teach you various aspects of the package:
+
+- [*Including shinyjs in different types of apps*](./shinyjs-usage.Rmd)
+- [*shinyjs example app walk-through*](./shinyjs-example.Rmd)
+- [*extendShinyjs: Calling your own JavaScript functions from R*](./shinyjs-extend.Rmd)
 
 If you need help, I strongly suggest browsing the [shinyjs tag](http://stackoverflow.com/questions/tagged/shinyjs) on StackOverflow or asking your own question there. Of course you can also email me directly if you're in desperate need of help, or [open an issue](https://github.com/daattali/shinyjs/issues) for bugs.
 

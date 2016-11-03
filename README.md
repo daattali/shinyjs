@@ -266,10 +266,13 @@ More resources
 </h2>
 This document is meant to serve as a high overview of shinyjs. There are
 three more documents provided in shinyjs to teach you various aspects of
-the package: [*Including shinyjs in different types of
-apps*](vignettes/./shinyjs-usage.Rmd), [*shinyjs example app
-walk-through*](vignettes/./shinyjs-example.Rmd), and [*extendShinyjs: Calling your
-own JavaScript functions from R*](vignettes/./shinyjs-extend.Rmd).
+the package:
+
+-   [*Including shinyjs in different types of
+    apps*](vignettes/./shinyjs-usage.Rmd)
+-   [*shinyjs example app walk-through*](vignettes/./shinyjs-example.Rmd)
+-   [*extendShinyjs: Calling your own JavaScript functions from
+    R*](vignettes/./shinyjs-extend.Rmd)
 
 If you need help, I strongly suggest browsing the [shinyjs
 tag](http://stackoverflow.com/questions/tagged/shinyjs) on StackOverflow
