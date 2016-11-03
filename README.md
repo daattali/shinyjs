@@ -11,11 +11,13 @@ version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.or
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 apps that will greatly improve your apps without having to know any
-JavaScript. Examples include: hiding an element, disabling an input,
-resetting an input back to its original value, delaying code execution
-by a few seconds, and many more useful functions for both the end user
-and the developer. `shinyjs` can also be used to easily call your own
-custom JavaScript functions from R.
+JavaScript.
+
+Examples include: hiding an element, disabling an input, resetting an
+input back to its original value, delaying code execution by a few
+seconds, and many more useful functions for both the end user and the
+developer. `shinyjs` can also be used to easily call your own custom
+JavaScript functions from R.
 
 Table of contents
 =================
@@ -138,19 +140,19 @@ first call `useShinyjs()` anywhere in the app's UI.**
 <tbody>
 <tr class="odd">
 <td align="left"><code>runcodeUI</code>+<code>runcodeServer</code></td>
-<td align="left">adds a text input to your app that lets you run arbitrary R code live.</td>
+<td align="left">Adds a text input to your app that lets you run arbitrary R code live.</td>
 </tr>
 <tr class="even">
 <td align="left"><code>showLog</code></td>
-<td align="left">print any JavaScript <code>console.log()</code> messages in the R console, to make it easier and quicker to debug apps without having to open the JS console.</td>
+<td align="left">Print any JavaScript <code>console.log()</code> messages in the R console, to make it easier and quicker to debug apps without having to open the JS console.</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>logjs</code></td>
-<td align="left">print a message to the JavaScript console (mainly used for debugging purposes).</td>
+<td align="left">Print a message to the JavaScript console (mainly used for debugging purposes).</td>
 </tr>
 <tr class="even">
 <td align="left"><code>inlineCSS</code></td>
-<td align="left">easily add inline CSS to a Shiny app.</td>
+<td align="left">Easily add inline CSS to a Shiny app.</td>
 </tr>
 </tbody>
 </table>

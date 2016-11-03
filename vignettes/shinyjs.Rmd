@@ -21,7 +21,9 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under the MIT license.*
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny 
-apps that will greatly improve your apps without having to know any JavaScript. Examples include: hiding an element, disabling an input, resetting an input back to its original value, delaying code execution by a few seconds, and many more useful functions for both the end user and the developer. `shinyjs` can also be used to easily call your own custom JavaScript functions from R.
+apps that will greatly improve your apps without having to know any JavaScript.
+
+Examples include: hiding an element, disabling an input, resetting an input back to its original value, delaying code execution by a few seconds, and many more useful functions for both the end user and the developer. `shinyjs` can also be used to easily call your own custom JavaScript functions from R.
 
 # Table of contents
 
@@ -81,10 +83,10 @@ devtools::install_github("daattali/shinyjs")
 
 | Function | Description |
 |---------------------|----------------------------------------------------|
-| `runcodeUI`+`runcodeServer` | adds a text input to your app that lets you run arbitrary R code live. |
-| `showLog` | print any JavaScript `console.log()` messages in the R console, to make it easier and quicker to debug apps without having to open the JS console. |
-| `logjs` | print a message to the JavaScript console (mainly used for debugging purposes). |
-| `inlineCSS` | easily add inline CSS to a Shiny app. |
+| `runcodeUI`+`runcodeServer` | Adds a text input to your app that lets you run arbitrary R code live. |
+| `showLog` | Print any JavaScript `console.log()` messages in the R console, to make it easier and quicker to debug apps without having to open the JS console. |
+| `logjs` | Print a message to the JavaScript console (mainly used for debugging purposes). |
+| `inlineCSS` | Easily add inline CSS to a Shiny app. |
 
 [Check out the shinyjs demo app](http://daattali.com/shiny/shinyjs-demo/) to see
 some of these in action, or install `shinyjs` and run `shinyjs::runExample()`
