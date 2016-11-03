@@ -775,3 +775,7 @@ Thanks, on CRAN now.
 No errors, warnings, or notes
 
 ### Reviewer comments
+
+2016-11-03 Uwe Ligges
+
+Thanks, on CRAN now.
