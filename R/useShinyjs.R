@@ -30,7 +30,7 @@
 #'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
 #'       actionButton("btn", "Click me"),
-#'       p(id = "element", "Watch what happens to me")
+#'       textInput("element", "Watch what happens to me")
 #'     ),
 #'     server = function(input, output) {
 #'       observeEvent(input$btn, {

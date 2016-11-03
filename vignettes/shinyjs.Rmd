@@ -33,6 +33,7 @@ apps that will greatly improve your apps without having to know any JavaScript. 
 - [Calling your own JavaScript functions from R](#extendshinyjs)
 - [FAQ and extra tricks](#faq-tricks)
 - [Colour Picker input & addin](#colourpicker)
+- [More resources](#more-resources)
 
 <h2 id="demos">Demos and tutorials</h2>
 
@@ -60,50 +61,30 @@ devtools::install_github("daattali/shinyjs")
 
 **Note: In order to use any `shinyjs` function in a Shiny app, you must first call `useShinyjs()` anywhere in the app's UI.**
 
-- `show`/`hide`/`toggle` - display or hide an element (optionally with an animation).
-
-- `hidden` - initialize a Shiny tag as invisible (can be shown later with a call
-to `show`).
-
-- `enable`/`disable`/`toggleState` - enable or disable an input element, such
-as a button or a text input.
-
-- `disabled` - initialize a Shiny input as disabled.
-
-- `reset` - reset a Shiny input widget back to its original value.
-
-- `delay` - execute R code (including any `shinyjs` functions) after a specified
-amount of time.
-
-- `alert` - show a message to the user.
-
-- `html` - change the text/HTML of an element.
-
-- `onclick` - run R code when a specific element is clicked. Was originally developed
-with the sole purpose of running a `shinyjs` function when an element is
-clicked, though any R code can be used.
-
-- `onevent` - similar to `onclick`, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc). 
-
-- `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class from
-an element.
-
-- `runjs` - run arbitrary JavaScript code.
-
-- `extendShinyjs` - allows you to write your own JavaScript functions and use
-`shinyjs` to call them as if they were regular R code. More information is
-available in the section "Calling your own JavaScript functions from R" below.
+| Function | Description |
+|---------------------|----------------------------------------------------|
+| `show`/`hide`/`toggle` | Display or hide an element (optionally with an animation). |
+| `hidden` | Initialize a Shiny tag as invisible (can be shown later with a call to `show`). |
+| `enable`/`disable`/`toggleState` | Enable or disable an input element, such as a button or a text input. |
+| `disabled` | Initialize a Shiny input as disabled. |
+| `reset` | Reset a Shiny input widget back to its original value. |
+| `delay` | Execute R code (including any `shinyjs` functions) after a specified amount of time. |
+| `alert` | Show a message to the  |
+| `html` | Change the text/HTML of an element. |
+| `onclick` | Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a `shinyjs` function when an element is clicked, though any R code can be used. |
+| `onevent` | Similar to `onclick`, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc). |
+| `addClass`/`removeClass`/`toggleClass` | add or remove a CSS class from an element. |
+| `runjs` | Run arbitrary JavaScript code. |
+| `extendShinyjs` | Allows you to write your own JavaScript functions and use `shinyjs` to call them as if they were regular R code. More information is available in the section "Calling your own JavaScript functions from R" below. |
 
 ### Functions that help you during Shiny app development
 
-- `runcodeUI`+`runcodeServer` - adds a text input to your app that lets you run arbitrary R code live.
-
-- `showLog` - print any JavaScript `console.log()` messages in the R console, to make it easier and quicker to debug apps without having to open the JS console.
-
-- `logjs` - print a message to the JavaScript console (mainly used for
-debugging purposes).
-
-- `inlineCSS` - easily add inline CSS to a Shiny app.
+| Function | Description |
+|---------------------|----------------------------------------------------|
+| `runcodeUI`+`runcodeServer` | adds a text input to your app that lets you run arbitrary R code live. |
+| `showLog` | print any JavaScript `console.log()` messages in the R console, to make it easier and quicker to debug apps without having to open the JS console. |
+| `logjs` | print a message to the JavaScript console (mainly used for debugging purposes). |
+| `inlineCSS` | easily add inline CSS to a Shiny app. |
 
 [Check out the shinyjs demo app](http://daattali.com/shiny/shinyjs-demo/) to see
 some of these in action, or install `shinyjs` and run `shinyjs::runExample()`
@@ -176,7 +157,7 @@ There are several questions that pop up very frequently in my email or on StackO
 
 ![Colour picker screenshot](../inst/img/colourpickerscrnshot.png)
 
-## More resources
+<h2 id="more-resources">More resources</h2>
 
 This document is meant to serve as a high overview of shinyjs. There are three more documents provided in shinyjs to teach you various aspects of the package: [*Including shinyjs in different types of apps*](./shinyjs-usage.Rmd), [*shinyjs example app walk-through*](./shinyjs-example.Rmd), and [*extendShinyjs: Calling your own JavaScript functions from R*](./shinyjs-extend.Rmd).
 

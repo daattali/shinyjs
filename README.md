@@ -28,6 +28,7 @@ Table of contents
 -   [Calling your own JavaScript functions from R](#extendshinyjs)
 -   [FAQ and extra tricks](#faq-tricks)
 -   [Colour Picker input & addin](#colourpicker)
+-   [More resources](#more-resources)
 
 <h2 id="demos">
 Demos and tutorials
@@ -62,57 +63,97 @@ Overview of main functions
 **Note: In order to use any `shinyjs` function in a Shiny app, you must
 first call `useShinyjs()` anywhere in the app's UI.**
 
--   `show`/`hide`/`toggle` - display or hide an element (optionally with
-    an animation).
-
--   `hidden` - initialize a Shiny tag as invisible (can be shown later
-    with a call to `show`).
-
--   `enable`/`disable`/`toggleState` - enable or disable an input
-    element, such as a button or a text input.
-
--   `disabled` - initialize a Shiny input as disabled.
-
--   `reset` - reset a Shiny input widget back to its original value.
-
--   `delay` - execute R code (including any `shinyjs` functions) after a
-    specified amount of time.
-
--   `alert` - show a message to the user.
-
--   `html` - change the text/HTML of an element.
-
--   `onclick` - run R code when a specific element is clicked. Was
-    originally developed with the sole purpose of running a `shinyjs`
-    function when an element is clicked, though any R code can be used.
-
--   `onevent` - similar to `onclick`, but can be used with many other
-    events instead of click (for example, listen for a key press, mouse
-    hover, etc).
-
--   `addClass`/`removeClass`/`toggleClass` - add or remove a CSS class
-    from an element.
-
--   `runjs` - run arbitrary JavaScript code.
-
--   `extendShinyjs` - allows you to write your own JavaScript functions
-    and use `shinyjs` to call them as if they were regular R code. More
-    information is available in the section "Calling your own JavaScript
-    functions from R" below.
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>show</code>/<code>hide</code>/<code>toggle</code></td>
+<td align="left">Display or hide an element (optionally with an animation).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>hidden</code></td>
+<td align="left">Initialize a Shiny tag as invisible (can be shown later with a call to <code>show</code>).</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>enable</code>/<code>disable</code>/<code>toggleState</code></td>
+<td align="left">Enable or disable an input element, such as a button or a text input.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>disabled</code></td>
+<td align="left">Initialize a Shiny input as disabled.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>reset</code></td>
+<td align="left">Reset a Shiny input widget back to its original value.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>delay</code></td>
+<td align="left">Execute R code (including any <code>shinyjs</code> functions) after a specified amount of time.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>alert</code></td>
+<td align="left">Show a message to the</td>
+</tr>
+<tr class="even">
+<td align="left"><code>html</code></td>
+<td align="left">Change the text/HTML of an element.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>onclick</code></td>
+<td align="left">Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a <code>shinyjs</code> function when an element is clicked, though any R code can be used.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>onevent</code></td>
+<td align="left">Similar to <code>onclick</code>, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc).</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>addClass</code>/<code>removeClass</code>/<code>toggleClass</code></td>
+<td align="left">add or remove a CSS class from an element.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>runjs</code></td>
+<td align="left">Run arbitrary JavaScript code.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>extendShinyjs</code></td>
+<td align="left">Allows you to write your own JavaScript functions and use <code>shinyjs</code> to call them as if they were regular R code. More information is available in the section &quot;Calling your own JavaScript functions from R&quot; below.</td>
+</tr>
+</tbody>
+</table>
 
 ### Functions that help you during Shiny app development
 
--   `runcodeUI`+`runcodeServer` - adds a text input to your app that
-    lets you run arbitrary R code live.
-
--   `showLog` - print any JavaScript `console.log()` messages in the R
-    console, to make it easier and quicker to debug apps without having
-    to open the JS console.
-
--   `logjs` - print a message to the JavaScript console (mainly used for
-    debugging purposes).
-
--   `inlineCSS` - easily add inline CSS to a Shiny app.
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>runcodeUI</code>+<code>runcodeServer</code></td>
+<td align="left">adds a text input to your app that lets you run arbitrary R code live.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>showLog</code></td>
+<td align="left">print any JavaScript <code>console.log()</code> messages in the R console, to make it easier and quicker to debug apps without having to open the JS console.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>logjs</code></td>
+<td align="left">print a message to the JavaScript console (mainly used for debugging purposes).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>inlineCSS</code></td>
+<td align="left">easily add inline CSS to a Shiny app.</td>
+</tr>
+</tbody>
+</table>
 
 [Check out the shinyjs demo
 app](http://daattali.com/shiny/shinyjs-demo/) to see some of these in
@@ -220,9 +261,9 @@ a [short GIF demo](inst/img/colourPickerGadget.gif) of the addin.
 
 ![Colour picker screenshot](inst/img/colourpickerscrnshot.png)
 
+<h2 id="more-resources">
 More resources
---------------
-
+</h2>
 This document is meant to serve as a high overview of shinyjs. There are
 three more documents provided in shinyjs to teach you various aspects of
 the package: [*Including shinyjs in different types of
