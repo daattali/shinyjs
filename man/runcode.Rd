@@ -6,7 +6,7 @@
 \alias{runcodeUI}
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
-runcodeUI(code = "", type = c("text", "textarea"), width = NULL,
+runcodeUI(code = "", type = c("text", "textarea", "ace"), width = NULL,
   height = NULL, includeShinyjs = FALSE)
 
 runcodeServer()
@@ -14,11 +14,12 @@ runcodeServer()
 \arguments{
 \item{code}{The initial R code to show in the text input when the app loads}
 
-\item{type}{One of \code{"text"} (default) or \code{"textarea"}. When using
-a text input, the R code will be limited to be typed within a single line,
+\item{type}{One of \code{"text"} (default), \code{"textarea"}, or \code{"ace"}. 
+When using a text input, the R code will be limited to be typed within a single line,
 and is the recommended option. Textarea should be used if you want to write
 long multi-line R code. Note that you can run multiple expressions even in
-a single line by appending each R expression with a semicolon.}
+a single line by appending each R expression with a semicolon.
+Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 
 \item{width}{The width of the text or textarea input}
 

@@ -24,6 +24,7 @@ Suggests:
     knitr (>= 1.7),
     rmarkdown,
     rstudioapi (>= 0.5),
+    shinyAce,
     testthat (>= 0.9.1),
     V8 (>= 0.6)
 License: MIT + file LICENSE

@@ -16,11 +16,12 @@
 #' unpredictable behaviour.
 #'
 #' @param code The initial R code to show in the text input when the app loads
-#' @param type One of \code{"text"} (default) or \code{"textarea"}. When using
-#' a text input, the R code will be limited to be typed within a single line,
+#' @param type One of \code{"text"} (default), \code{"textarea"}, or \code{"ace"}. 
+#' When using a text input, the R code will be limited to be typed within a single line,
 #' and is the recommended option. Textarea should be used if you want to write
 #' long multi-line R code. Note that you can run multiple expressions even in
 #' a single line by appending each R expression with a semicolon.
+#' Use of the \code{"ace"} option requires the \code{shinyAce} package.
 #' @param width The width of the text or textarea input
 #' @param height The height of the textarea input (only applicable when
 #' \code{type="textarea"})
@@ -47,12 +48,14 @@
 #' @rdname runcode
 #' @export
 runcodeUI <- function(code = "",
-                      type = c("text", "textarea"),
+                      type = c("text", "textarea", "ace"),
                       width = NULL,
                       height = NULL,
                       includeShinyjs = FALSE) {
   type <- match.arg(type)
   placeholder <- "Enter R code"
+	if(type == "ace")
+		require(shinyAce)
 
   shiny::singleton(shiny::tagList(
     if (includeShinyjs)
@@ -67,6 +70,10 @@ runcodeUI <- function(code = "",
         "runcode_expr", label = NULL, value = code,
         width = width, height = height, placeholder = placeholder
       ),
+    if(type == "ace") 
+			shinyAce::aceEditor("runcode_expr", mode='r', value=code,
+				width = width, height = height, 
+				theme = "github", vimKeyBinding=TRUE, fontSize=16, hotkeys=list(runKey="F8|F9|F2|Ctrl-R")),
     shiny::actionButton("runcode_run", "Run", class = "btn-success"),
     shinyjs::hidden(
       shiny::div(
