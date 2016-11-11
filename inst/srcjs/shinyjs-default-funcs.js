@@ -233,7 +233,7 @@ shinyjs = function() {
 
       // enable/disable the container as well as all individual inputs inside
       // (this is needed for grouped inputs such as radio and checkbox groups)
-      var toadd = $el.find("input, button");
+      var toadd = $el.find("input, button, textarea");
       $el = $($el.toArray().concat(toadd.toArray()));
       $el.attr('disabled', (method == "disable"));
       $el.prop('disabled', (method == "disable"));
