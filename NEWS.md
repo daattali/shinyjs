@@ -2,6 +2,7 @@
 
 - added support for shinyAce editor as the input for `runcodeUI()` (still WIP)
 - fixed textArea inputs not getting disabled when disabling a parent element
+- fixed broken `runExample("sandbox")` example
 
 # shinyjs 0.8
 

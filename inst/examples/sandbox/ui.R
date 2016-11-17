@@ -38,7 +38,7 @@ shinyUI(fluidPage(
   fluidRow(
   column(6, wellPanel(
      h1("Write an R expression", class = "section-title"),
-     runcodeUI(value = as.character(examples[1])),
+     shinyjs::runcodeUI(code = as.character(examples[1])),
      shiny::hr(),
      h1("Sandbox area", class = "section-title"),
      p(id = "test", "I'm an HTML element with id \"test\""),
