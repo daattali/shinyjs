@@ -104,6 +104,12 @@ reset <- function(id) {
           value <- as.logical(value)
         }
 
+        if (type == "Date") {
+          if (value == "NA") {
+            value <- NA
+          }
+        }
+
         # most input update functions use 'value' argument, some use 'selected',
         # DateRange uses 'start' and 'end'
         if (type == "CheckboxGroup" ||
@@ -115,6 +121,7 @@ reset <- function(id) {
           funcParams[['value']] <- value
         } else if (type == "DateRange") {
           dates <- unlist(strsplit(value, ","))
+          dates[dates == "NA"] <- NA
           funcParams[['start']] <- dates[1]
           funcParams[['end']] <- dates[2]
         } else {

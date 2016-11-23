@@ -262,9 +262,12 @@ shinyjs = function() {
   // helper function to get the initial date from a bootstrap date element
   // if there is no initial date, return the current date
   var _getInputDate = function(el) {
-    if (el[0].hasAttribute('data-initial-date') &&
-        el.attr('data-initial-date') != "") {
-      return el.attr('data-initial-date');
+    if (el[0].hasAttribute('data-initial-date')) {
+      if (el.attr('data-initial-date') === "") {
+        return 'NA';
+      } else {
+        return el.attr('data-initial-date');
+      }
     }
     var today = new Date();
     var yyyy = today.getFullYear().toString();
