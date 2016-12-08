@@ -5,6 +5,7 @@ shinyjs - Easily improve the user interaction and user experience in your Shiny 
 Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.org/package=shinyjs)
+[![saythanks](http://i.imgur.com/L88apDa.png)](https://saythanks.io/to/daattali)
 
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
 > the MIT license.*
