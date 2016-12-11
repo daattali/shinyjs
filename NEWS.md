@@ -1,6 +1,7 @@
 # shinyjs 0.8.xxxx
 
 - added support for shinyAce editor as the input for `runcodeUI()` (#93)
+- `showLog()` no longer needs to be specified in `useShinyjs()`, and it can be used by just calling it in the server code once (#105)
 - fixed bug where `showLog()` would only show the last message if multiple messages were printed in succession (#99)
 - fixed bug where date inputs could not be reset to empty (#100)
 - fixed textArea inputs not getting disabled when disabling a parent element

@@ -4,7 +4,7 @@
 \alias{useShinyjs}
 \title{Set up a Shiny app to use shinyjs}
 \usage{
-useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE, showLog = FALSE)
+useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE, showLog = NULL)
 }
 \arguments{
 \item{rmd}{Set this to \code{TRUE} only if you are using \code{shinyjs}
@@ -22,10 +22,7 @@ using this option, view the
 \href{https://github.com/daattali/shinyjs}{README} online to learn
 how to use shinyjs in these apps.}
 
-\item{showLog}{Set this to \code{TRUE} if you want to print all JavaScript
-log messages in the R console. This is useful for debugging. If using this
-option, you must also call the \code{\link[shinyjs]{showLog}} function in
-the server.}
+\item{showLog}{Deprecated.}
 }
 \value{
 Scripts that \code{shinyjs} requires that are automatically inserted

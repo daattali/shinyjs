@@ -18,7 +18,7 @@
 #'
 #'   shinyApp(
 #'     ui = fluidPage(
-#'       useShinyjs(showLog = TRUE),  # Set up shinyjs with showLog
+#'       useShinyjs(),
 #'       textInput("text", "Type something")
 #'     ),
 #'     server = function(input, output) {
@@ -33,6 +33,23 @@
 #' @export
 showLog <- function() {
   session <- getSession()
+
+  # Capture the console.log function and overwrite it to send the message to R
+  shiny::insertUI("head", "beforeEnd", {
+    shiny::singleton(shiny::tags$head(shiny::tags$script(
+      '(function(){
+        var oldLog = console.log;
+        var queue = new ShinySenderQueue();
+        console.log = function (message) {
+          try {
+            queue.send("shinyjs-showLog", message);
+          } catch(err) {}
+          oldLog.apply(console, arguments);
+        };
+      })();'
+    )))
+  })
+
   shiny::observeEvent(session$input[['shinyjs-showLog']], {
     message("JAVASCRIPT LOG: ",
             jsonlite::toJSON(session$input[['shinyjs-showLog']],

@@ -16,10 +16,7 @@
 #' using this option, view the
 #' \href{https://github.com/daattali/shinyjs}{README} online to learn
 #' how to use shinyjs in these apps.
-#' @param showLog Set this to \code{TRUE} if you want to print all JavaScript
-#' log messages in the R console. This is useful for debugging. If using this
-#' option, you must also call the \code{\link[shinyjs]{showLog}} function in
-#' the server.
+#' @param showLog Deprecated.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
 #' @examples
@@ -44,11 +41,15 @@
 #' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
 useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
-                       showLog = FALSE) {
+                       showLog = NULL) {
   stopifnot(rmd == TRUE || rmd == FALSE)
   stopifnot(debug == TRUE || debug == FALSE)
   stopifnot(html == TRUE || html == FALSE)
-  stopifnot(showLog == TRUE || showLog == FALSE)
+
+  if (!missing(showLog)) {
+    warning("'showLog' has been deprecated. You do not need to call it anymore.",
+            call. = FALSE)
+  }
 
   # `astext` is FALSE in normal shiny apps where the shinyjs content is returned
   # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive
@@ -76,22 +77,6 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
     initJS <- "shinyjs.debug = true;"
   } else {
     initJS <- "shinyjs.debug = false;"
-  }
-
-  # Capture the console.log function and overwrite it to send the message to R
-  if (showLog) {
-    initJS <- paste0(
-      initJS,
-      '(function(){
-         var oldLog = console.log;
-         var queue = new ShinySenderQueue();
-         console.log = function (message) {
-           try {
-             queue.send("shinyjs-showLog", message);
-           } catch(err) {}
-           oldLog.apply(console, arguments);
-        };
-      })();')
   }
 
   # include CSS for hiding elements

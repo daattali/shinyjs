@@ -29,7 +29,7 @@ if (interactive()) {
 
   shinyApp(
     ui = fluidPage(
-      useShinyjs(showLog = TRUE),  # Set up shinyjs with showLog
+      useShinyjs(),
       textInput("text", "Type something")
     ),
     server = function(input, output) {
