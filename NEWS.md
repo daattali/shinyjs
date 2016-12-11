@@ -1,6 +1,6 @@
 # shinyjs 0.8.xxxx
 
-- added support for shinyAce editor as the input for `runcodeUI()` (still WIP)
+- added support for shinyAce editor as the input for `runcodeUI()` (#93)
 - fixed bug where date inputs could not be reset to empty (#100)
 - fixed textArea inputs not getting disabled when disabling a parent element
 - fixed broken `runExample("sandbox")` example

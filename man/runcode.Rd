@@ -14,17 +14,18 @@ runcodeServer()
 \arguments{
 \item{code}{The initial R code to show in the text input when the app loads}
 
-\item{type}{One of \code{"text"} (default), \code{"textarea"}, or \code{"ace"}. 
+\item{type}{One of \code{"text"} (default), \code{"textarea"}, or \code{"ace"}.
 When using a text input, the R code will be limited to be typed within a single line,
 and is the recommended option. Textarea should be used if you want to write
 long multi-line R code. Note that you can run multiple expressions even in
 a single line by appending each R expression with a semicolon.
 Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 
-\item{width}{The width of the text or textarea input}
+\item{width}{The width of the editable code input (ignored when
+\code{type="ace"})}
 
-\item{height}{The height of the textarea input (only applicable when
-\code{type="textarea"})}
+\item{height}{The height of the editable code input (ignored when
+\code{type="text"})}
 
 \item{includeShinyjs}{Set this to \code{TRUE} only if your app does not have
 a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}

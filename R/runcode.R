@@ -16,15 +16,16 @@
 #' unpredictable behaviour.
 #'
 #' @param code The initial R code to show in the text input when the app loads
-#' @param type One of \code{"text"} (default), \code{"textarea"}, or \code{"ace"}. 
+#' @param type One of \code{"text"} (default), \code{"textarea"}, or \code{"ace"}.
 #' When using a text input, the R code will be limited to be typed within a single line,
 #' and is the recommended option. Textarea should be used if you want to write
 #' long multi-line R code. Note that you can run multiple expressions even in
 #' a single line by appending each R expression with a semicolon.
 #' Use of the \code{"ace"} option requires the \code{shinyAce} package.
-#' @param width The width of the text or textarea input
-#' @param height The height of the textarea input (only applicable when
-#' \code{type="textarea"})
+#' @param width The width of the editable code input (ignored when
+#' \code{type="ace"})
+#' @param height The height of the editable code input (ignored when
+#' \code{type="text"})
 #' @param includeShinyjs Set this to \code{TRUE} only if your app does not have
 #' a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}
 #' in your app, do not use this parameter.
@@ -53,27 +54,30 @@ runcodeUI <- function(code = "",
                       height = NULL,
                       includeShinyjs = FALSE) {
   type <- match.arg(type)
-  placeholder <- "Enter R code"
-	if(type == "ace")
-		require(shinyAce)
 
+	if (type == "ace") {
+	  if (!requireNamespace("shinyAce", quietly = TRUE)) {
+	    errMsg("You need to install the 'shinyAce' package in order to use 'shinyAce' editor.")
+	  }
+	}
+
+  placeholder <- "Enter R code"
   shiny::singleton(shiny::tagList(
     if (includeShinyjs)
       useShinyjs(),
-    if(type == "text")
+    if (type == "text")
       shiny::textInput(
         "runcode_expr", label = NULL, value = code,
         width = width, placeholder = placeholder
       ),
-    if(type == "textarea")
+    if (type == "textarea")
       shiny::textAreaInput(
         "runcode_expr", label = NULL, value = code,
         width = width, height = height, placeholder = placeholder
       ),
-    if(type == "ace") 
-			shinyAce::aceEditor("runcode_expr", mode='r', value=code,
-				width = width, height = height, 
-				theme = "github", vimKeyBinding=TRUE, fontSize=16, hotkeys=list(runKey="F8|F9|F2|Ctrl-R")),
+    if (type == "ace")
+			shinyAce::aceEditor("runcode_expr", mode = 'r', value = code,
+				height = height, theme = "github", fontSize = 16),
     shiny::actionButton("runcode_run", "Run", class = "btn-success"),
     shinyjs::hidden(
       shiny::div(
