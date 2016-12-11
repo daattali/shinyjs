@@ -84,9 +84,10 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
       initJS,
       '(function(){
          var oldLog = console.log;
+         var queue = new ShinySenderQueue();
          console.log = function (message) {
            try {
-             Shiny.onInputChange("shinyjs-showLog", message);
+             queue.send("shinyjs-showLog", message);
            } catch(err) {}
            oldLog.apply(console, arguments);
         };
