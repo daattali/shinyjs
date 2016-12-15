@@ -1,14 +1,13 @@
 shinyjs - Easily improve the user interaction and user experience in your Shiny apps in seconds
 ===============================================================================================
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/daattali)
 [![Build
 Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.org/package=shinyjs)
-[![saythanks](http://i.imgur.com/L88apDa.png)](https://saythanks.io/to/daattali)
 
-> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
-> the MIT license.*
+> *Copyright 2016 [Dean Attali](http://deanattali.com)*
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 apps that will greatly improve your apps without having to know any
@@ -20,6 +19,15 @@ seconds, and many more useful functions for both the end user and the
 developer. `shinyjs` can also be used to easily call your own custom
 JavaScript functions from R.
 
+**shinyjs was developed for non-commerical purposes. For commerical
+usage, please [contact me](http://deanattali.com/aboutme#contact). If
+you find shinyjs useful, please consider supporting its development!**
+
+<p align="center">
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EG5Q5483TTWCN">
+<img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
+</a>
+</p>
 Table of contents
 =================
 
