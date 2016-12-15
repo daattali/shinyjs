@@ -1,7 +1,7 @@
 shinyjs - Easily improve the user interaction and user experience in your Shiny apps in seconds
 ===============================================================================================
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/daattali)
+[![Donate](http://i.imgur.com/vCIGFrH.png)](https://www.paypal.me/daattali)
 [![Build
 Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
 [![CRAN
@@ -24,7 +24,7 @@ usage, please [contact me](http://deanattali.com/aboutme#contact). If
 you find shinyjs useful, please consider supporting its development!**
 
 <p align="center">
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EG5Q5483TTWCN">
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5ETAMYQ3JSPEU">
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
 </a>
 </p>
