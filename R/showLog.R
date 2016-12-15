@@ -34,6 +34,11 @@
 showLog <- function() {
   session <- getSession()
 
+  if (!is.null(attr(session, "shinyjs_showLog"))) {
+    return()
+  }
+  attr(session, "shinyjs_showLog") <- TRUE
+
   # Capture the console.log function and overwrite it to send the message to R
   shiny::insertUI("head", "beforeEnd", {
     shiny::singleton(shiny::tags$head(shiny::tags$script(

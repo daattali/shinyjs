@@ -47,7 +47,7 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
   stopifnot(html == TRUE || html == FALSE)
 
   if (!missing(showLog)) {
-    warning("'showLog' has been deprecated. You do not need to call it anymore.",
+    warning("'useShinyjs(showLog = TRUE)' has been deprecated. You do not need to call it anymore.",
             call. = FALSE)
   }
 
