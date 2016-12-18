@@ -32,8 +32,8 @@ Table of contents
 =================
 
 -   [Demos and tutorials](#demos)
--   [Installation](#install)
 -   [Overview of main functions](#overview-main)
+-   [Installation](#install)
 -   [How to use](#usage)
 -   [Basic use case - complete working example](#usecase)
 -   [Calling your own JavaScript functions from R](#extendshinyjs)
@@ -55,18 +55,6 @@ Demos and tutorials
     (5 min) and the corresponding [presentation
     slides](http://bit.ly/shinyjs-slides-useR2016) from the 2016
     useR Conference.
-
-<h2 id="install">
-Installation
-</h2>
-To install the stable CRAN version:
-
-    install.packages("shinyjs")
-
-To install the latest development version from GitHub:
-
-    install.packages("devtools")
-    devtools::install_github("daattali/shinyjs")
 
 <h2 id="overview-main">
 Overview of main functions
@@ -170,6 +158,18 @@ first call `useShinyjs()` anywhere in the app's UI.**
 app](http://daattali.com/shiny/shinyjs-demo/) to see some of these in
 action, or install `shinyjs` and run `shinyjs::runExample()` to see more
 demos.
+
+<h2 id="install">
+Installation
+</h2>
+To install the stable CRAN version:
+
+    install.packages("shinyjs")
+
+To install the latest development version from GitHub:
+
+    install.packages("devtools")
+    devtools::install_github("daattali/shinyjs")
 
 <h2 id="usage">
 How to use
