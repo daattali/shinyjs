@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: base
 title: shinyjs
 subtitle: Easily improve the user experience in your Shiny apps in seconds
 ---
