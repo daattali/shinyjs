@@ -7,14 +7,21 @@ subtitle: Easily improve the user experience in your Shiny apps in seconds
 <div style="
     text-align: center;
     margin-top: 91px;
-    font-size: 120px;
+
     background: #17baef;
-    font-weight: 800;
+
     font-family: 'Open Sans';
     padding: 100px;
-"><span style="
+"><div style="    font-size: 120px;    font-weight: 800;"><span style="
     color: #074f66;
-">shiny</span><span style="color: #efcd17;">js</span></div>
+  ">shiny</span><span style="color: #efcd17;">js</span></div>
+  <div style="
+    font-size: 30px;
+    color: #fff;
+    text-shadow: 0px 0px 0px black;
+">Easily improve the user experience in your Shiny apps in seconds</div>
+</div>
+
 
 <div>shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps without having to know any JavaScript.</div>
 
