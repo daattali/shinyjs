@@ -2,6 +2,7 @@
 layout: base
 title: shinyjs
 subtitle: Easily improve the user experience in your Shiny apps in seconds
+css: /css/index.css
 ---
 
 <div style="
