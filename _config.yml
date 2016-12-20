@@ -9,7 +9,7 @@
 
 # If you are building a GitHub project page then use these settings:
 url: "http://daattali.github.io/shinyjs"
-baseurl: "/shinyjsl"
+baseurl: "/shinyjs"
 
 # Of course don't forget to change the username and projectname to YOUR username and project
 
