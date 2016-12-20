@@ -7,7 +7,7 @@ css: /css/index.css
 
 <div style="
     text-align: center;
-    margin-top: 91px;
+    margin-top: 90px;
 
     background: #17baef;
 
@@ -23,10 +23,55 @@ css: /css/index.css
 ">Easily improve the user experience in your Shiny apps in seconds</div>
 </div>
 
+<div>
 
-<div>shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps without having to know any JavaScript.</div>
+<div style="
+    text-align: center;
+    color: #074f66;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: arial;
+">What is shinyjs?</div>
+<div style="
+    font-size: 22px;
+    text-align: center;
+    margin-left: auto;
+    font-family: Arial;
+    margin-top: 30px;
+    margin-right: auto;
+">shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps.<span style="
+    margin-top: 4px;
+    display: block;
+    font-style: italic;
+  ">Without having to know any JavaScript.</span></div></div>
+  
+  
+  
+<hr/>
 
-<div>Examples include: hiding an element, disabling an input, resetting an input back to its original value, delaying code execution by a few seconds, and many more useful functions for both the end user and the developer. shinyjs can also be used to easily call your own custom JavaScript functions from R.</div>
+<div id="what-it-does" style="
+    font-family: arial;
+    padding: 0 200px;
+    font-size: 20px;
+    margin-top: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+"><span style="
+    font-size: 30px;
+    color: #074f66;
+    display: block;
+    font-weight: bold;
+    margin-top: 40px;
+">What can shinyjs do?</span><div style="
+    /* width: 500px; */
+    margin-top: 15px;
+    /* margin: 0 auto; */
+    /* text-align: left; */
+">
+  <div style="
+"><i class="fa fa-eye"></i>Hide (or show) an element</div><div><i class="fa fa-ban"></i>Disable (or enable) an input</div><div><i class="fa fa-repeat"></i>Reset an input back to its original value</div><div><i class="fa fa-clock-o"></i>Delay code execution by a few seconds</div><div><i class="fa fa-globe"></i>Easily call your own custom JavaScript functions from R</div><div><i class="fa fa-check"></i>Many useful functions for both the app developer and users</div></div></div>
 
 <div>shinyjs was developed for non-commerical purposes. For commerical usage, please contact me. If you find shinyjs useful, please consider supporting its development!</div>
 
