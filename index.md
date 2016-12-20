@@ -77,18 +77,26 @@ css: /css/index.css
     margin-bottom: 400px;
     margin-top: 50px;
     background: #fff;
-    text-align: center;
+    text-align: left;
     padding: 40px 30px 10px;
-    font-size: 21px;
+    font-size: 18px;
     font-family: arial;
     width: 700px;
     margin-left: auto;
     border-radius: 4px;
     margin-right: auto;
-">shinyjs was developed for non-commerical purposes. For commerical usage, please contact me.<span style="
+">shinyjs was developed for non-commerical purposes. For commerical usage, please <a href="http://deanattali.com/contact">contact me</a>.<span style="
     display: block;
     margin-top: 15px;
 ">If you find shinyjs useful, please consider supporting its development!</span>
+<div style="
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 19px;
+"><i class="fa fa-smile-o" style="
+    font-size: 40px;
+  "></i></div>
+
 <p align="center" style="
     margin-top: 15px;
 ">
