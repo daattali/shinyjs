@@ -73,7 +73,30 @@ css: /css/index.css
   <div style="
 "><i class="fa fa-eye"></i>Hide (or show) an element</div><div><i class="fa fa-ban"></i>Disable (or enable) an input</div><div><i class="fa fa-repeat"></i>Reset an input back to its original value</div><div><i class="fa fa-clock-o"></i>Delay code execution by a few seconds</div><div><i class="fa fa-globe"></i>Easily call your own custom JavaScript functions from R</div><div><i class="fa fa-check"></i>Many useful functions for both the app developer and users</div></div></div>
 
-<div>shinyjs was developed for non-commerical purposes. For commerical usage, please contact me. If you find shinyjs useful, please consider supporting its development!</div>
+<div style="
+    margin-bottom: 400px;
+    margin-top: 50px;
+    background: #fff;
+    text-align: center;
+    padding: 40px 30px 10px;
+    font-size: 21px;
+    font-family: arial;
+    width: 700px;
+    margin-left: auto;
+    border-radius: 4px;
+    margin-right: auto;
+">shinyjs was developed for non-commerical purposes. For commerical usage, please contact me.<span style="
+    display: block;
+    margin-top: 15px;
+">If you find shinyjs useful, please consider supporting its development!</span>
+<p align="center" style="
+    margin-top: 15px;
+">
+  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5ETAMYQ3JSPEU">
+    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif">
+  </a>
+</p>
+</div>
 
 <h2 id="overview-main">Overview of main functions</h2>
 
