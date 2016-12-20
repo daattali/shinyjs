@@ -45,3 +45,11 @@ body {
   background: #eee;
   cursor: default;
 }
+
+hr {
+  margin-top: 50px;
+  margin-bottom: 55px;
+  border: 0;
+  width: 50%;
+  border-top: 3px double #aaa;
+}
