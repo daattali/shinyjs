@@ -1,3 +1,7 @@
+body {
+  background: #f5f5f5;
+}
+
 .navbar-custom {
   background: #17baef;
   border-bottom: 0 none;
@@ -18,4 +22,26 @@
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+#what-it-does div div {
+  display: inline-block;
+  width: 350px;
+  padding: 15px 15px 15px 39px;
+  margin: 0 15px;
+  position: relative;
+  text-align: left;
+  vertical-align: top;
+}
+
+#what-it-does .fa {
+  margin-right: 5px;
+  position: absolute;
+  left: 12px;
+  top: 19px;
+}
+
+#what-it-does div div:hover {
+  background: #eee;
+  cursor: default;
 }
