@@ -1,0 +1,21 @@
+.navbar-custom {
+  background: #17baef;
+  border-bottom: 0 none;
+}
+
+.navbar-custom .navbar-brand, .navbar-custom .nav li a {
+  font-weight: 600;
+  color: #0a7396;
+}
+
+.navbar-custom .nav li a {
+  font-size: 16px;
+}
+
+.navbar-custom.top-nav-short {
+  background: #fff;
+  padding: 20px 0;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
