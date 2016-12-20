@@ -19,7 +19,7 @@ css: /css/index.css
   <div style="
     font-size: 30px;
     color: #fff;
-    text-shadow: 0px 0px 0px black;
+    text-shadow: 0px 0px 0px black; margin-top: 20px;
 ">Easily improve the user experience in your Shiny apps in seconds</div>
 </div>
 
