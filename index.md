@@ -4,6 +4,18 @@ title: shinyjs
 subtitle: Easily improve the user experience in your Shiny apps in seconds
 ---
 
+<div style="
+    text-align: center;
+    margin-top: 91px;
+    font-size: 120px;
+    background: #17baef;
+    font-weight: 800;
+    font-family: 'Open Sans';
+    padding: 100px;
+"><span style="
+    color: #074f66;
+">shiny</span><span style="color: #ecec18;">js</span></div>
+
 <div>shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps without having to know any JavaScript.</div>
 
 <div>Examples include: hiding an element, disabling an input, resetting an input back to its original value, delaying code execution by a few seconds, and many more useful functions for both the end user and the developer. shinyjs can also be used to easily call your own custom JavaScript functions from R.</div>
