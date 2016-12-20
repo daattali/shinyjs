@@ -14,7 +14,7 @@ subtitle: Easily improve the user experience in your Shiny apps in seconds
     padding: 100px;
 "><span style="
     color: #074f66;
-">shiny</span><span style="color: #ecec18;">js</span></div>
+">shiny</span><span style="color: #efcd17;">js</span></div>
 
 <div>shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps without having to know any JavaScript.</div>
 
