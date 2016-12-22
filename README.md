@@ -1,3 +1,7 @@
 http://themes.3rdwavemedia.com/demo/devaid/
 
-http://imgur.com/a/CveHn
+clean up config file
+
+add my name and maybe twitter and maybe github stars
+
+add tutorials

@@ -23,13 +23,12 @@ description: Quickly build a beautiful Jekyll website
 
 # List of links in the navigation bar
 navbar-links:
-  Home: ""
-  Resources:
-    - Getting started: "getstarted"
-    - Featured users: "featured-users"
-    - Project page: "https://github.com/daattali/beautiful-jekyll#readme"
-  About me: "http://deanattali.com"
-  Support me: "http://deanattali.com/aboutme/#feed-meeee"
+  Home: index
+  Overview: overview
+  Quick Start: basic
+  Example: example
+  Extend shinyjs: extend
+  Help: help
 
 # --- Footer options --- #
 
@@ -79,7 +78,6 @@ timezone: "America/Vancouver"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
-paginate: 5
 
 # Default YAML values (more information on Jekyll's site)
 defaults:
@@ -103,3 +101,6 @@ exclude:
   - CNAME
   - LICENSE
   - README.md
+
+gems:
+  - jekyll-paginate

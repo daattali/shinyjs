@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>shinyjs R package - Example</title>
+
+  <meta name="author" content="Dean Attali" />
+  <meta name="description" content="Quickly build a beautiful Jekyll website">
+
+  <link rel="alternate" type="application/rss+xml" title="Beautiful Jekyll - Quickly build a beautiful Jekyll website" href="/shinyjs/feed.xml" />
+  
+  
+    
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    
+      
+  
+  
+    
+      <link rel="stylesheet" href="/shinyjs/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/shinyjs/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/shinyjs/css/main.css" />
+    
+    
+  
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+    
+  
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+  <meta property="og:title" content="Example" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+  
+  <meta property="og:url" content="http://0.0.0.0:4000/example/" />
+  
+  
+  
+  <meta property="og:image" content="http://0.0.0.0:4000" />
+    
+  
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@daattali" />
+  <meta name="twitter:creator" content="@daattali" />
+  <meta name="twitter:title" content="Example" />
+  <meta name="twitter:description" content="This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly. *You can view the final Shiny app developed in this simple example [here](http://daattali.com/shiny/shinyjs-basic/).* Suppose we want to have a simple Shiny app that..." />
+    
+</head>
+
+
+  <body>
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/shinyjs/">
+	      <span class="col-shiny">shiny</span><span class="col-js">JS</span>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/index">Home</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/overview">Overview</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/basic">Quick Start</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/example">Example</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/extend">Extend shinyjs</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/help">Help</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+	
+	
+	
+  </div>
+</nav>  
+
+
+    <div id="page-header">
+  <div id="page-title">Example</div>
+  <div id="page-subtitle">shinyjs example app walk-through</div>
+</div>
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+      <p>This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly.</p>
+
+<p><em>You can view the final Shiny app developed in this simple example
+<a href="http://daattali.com/shiny/shinyjs-basic/">here</a>.</em></p>
+
+<p>Suppose we want to have a simple Shiny app that collects a user’s basic
+information (name, age, company) and submits it, along with the time of
+submission.  Here is a very simple implementation of such an app (nothing
+actually happens when the user “submits”).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shiny)
+shinyApp(
+  ui = fluidPage(
+    div(id = "myapp",
+      h2("shinyjs demo"),
+      textInput("name", "Name", ""),
+      numericInput("age", "Age", 30),
+      textInput("company", "Company", ""),
+      p("Timestamp: ", span(date())),
+      actionButton("submit", "Submit")
+    )
+  ),
+  
+  server = function(input, output) {
+  }
+)
+</code></pre>
+</div>
+
+<p><em>Note that I generally don’t like running Shiny apps like this and prefer to
+declare the UI and server separately, but this style is used here for brevity.</em></p>
+
+<p>Here is what that app would look like</p>
+
+<p><img src="../inst/img/demo-basic-v1.png" alt="Demo app" /></p>
+
+<h3 id="add-shinyjs-features">Add shinyjs features</h3>
+
+<p>Now suppose we want to add a few features to the app to make it a bit more
+user-friendly.  First we need to set up the app to use <code class="highlighter-rouge">shinyjs</code> by making a call to <code class="highlighter-rouge">useShinyjs()</code> in the Shiny app’s UI.</p>
+
+<p>Here are 7 features we’ll add to the app, each followed with the code to
+implement it using <code class="highlighter-rouge">shinyjs</code>:</p>
+
+<p><strong>1. The “Name” field is mandatory and thus the “Submit” button should not be
+enabled if there is no name</strong></p>
+
+<p>In the server portion, add the following code</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>observe({
+  if (is.null(input$name) || input$name == "") {
+    shinyjs::disable("submit")
+  } else {
+    shinyjs::enable("submit")
+  }
+})
+</code></pre>
+</div>
+
+<p>Or instead you can use the <code class="highlighter-rouge">toggleState</code> function and pass it a <code class="highlighter-rouge">condition</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>observe({
+  shinyjs::toggleState("submit", !is.null(input$name) &amp;&amp; input$name != "")
+})
+</code></pre>
+</div>
+
+<p>You can use the optional <code class="highlighter-rouge">condition</code> in some other functions as well, which
+can be very useful to make your code shorter and more understandable.</p>
+
+<p><strong>2. The “Age” and “Company” fields are optional and we want to have the ability
+to hide that section of the form</strong></p>
+
+<p>First, we need to section off the “Age” and “Company” elements into their own
+section, so we surround them with a <code class="highlighter-rouge">div</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>div(id = "advanced",
+  numericInput("age", "Age", 30),
+  textInput("company", "Company", "")
+)
+</code></pre>
+</div>
+
+<p>We also need to add a link in the UI that will be used to hide/show the section</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a(id = "toggleAdvanced", "Show/hide advanced info")
+</code></pre>
+</div>
+
+<p>Lastly, we need to tell Shiny to show/hide the section when the link is clicked
+by adding this code to the server</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>shinyjs::onclick("toggleAdvanced",
+                  shinyjs::toggle(id = "advanced", anim = TRUE))
+</code></pre>
+</div>
+
+<p><strong>3. Similarly, since we don’t really care about “Age” and “Company” too much, we
+want to hide them initially when the form loads</strong></p>
+
+<p>Simply surround the section we want to hide initially with <code class="highlighter-rouge">shinyjs::hidden</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>shinyjs::hidden(
+  div(id = "advanced",
+    ...
+))
+</code></pre>
+</div>
+
+<p><strong>4. The user should be able to update the “Timestamp” in case he spends way too
+long filling out the form (not very realistic here, and the timestamp should
+ideally be determined when the button is clicked, but it’s good enough for
+illustration purposes)</strong></p>
+
+<p>First, we need to add an “Update” link to click on, and we need to give the
+element showing the time an <code class="highlighter-rouge">id</code> so that we can refer to it later when we
+want to change its contents.</p>
+
+<p>To do that, replace <code class="highlighter-rouge">p("Timestamp: ", span(date()))</code> with</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p("Timestamp: ", span(id = "time", date()), a(id = "update", "Update"))
+</code></pre>
+</div>
+
+<p>Now we need to tell Shiny what to do when “Update” is clicked by adding this
+to the server</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>shinyjs::onclick("update", shinyjs::html("time", date()))
+</code></pre>
+</div>
+
+<p><strong>5. Some users may find it hard to read the small text in the app, so there should
+be an option to increase the font size</strong></p>
+
+<p>First, we need to add checkbox to the UI</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>checkboxInput("big", "Bigger text", FALSE)
+</code></pre>
+</div>
+
+<p>In order to make the text bigger, we will use CSS.  So let’s add an appropriate
+CSS rule by adding this code to the UI</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>shinyjs::inlineCSS(list(.big = "font-size: 2em"))
+</code></pre>
+</div>
+
+<p>Lastly, we want the text to be big or small depending on whether the checkbox
+is checked by adding this code to the server</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>observe({
+  if (input$big) {
+    shinyjs::addClass("myapp", "big")
+  } else {
+    shinyjs::removeClass("myapp", "big")
+  }
+})
+</code></pre>
+</div>
+
+<p>Or, again, we can use the <code class="highlighter-rouge">toggleClass</code> function with the <code class="highlighter-rouge">condition</code> argument:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>observe({
+  shinyjs::toggleClass("myapp", "big", input$big)
+})
+</code></pre>
+</div>
+
+<p><strong>6. Give the user a “Thank you” message upon submission</strong></p>
+
+<p>Simply add the following to the server</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>observeEvent(input$submit, {
+  shinyjs::alert("Thank you!")
+})
+</code></pre>
+</div>
+
+<p><strong>7. Allow the user to reset the form</strong></p>
+
+<p>First let’s add a button to the UI</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>actionButton("reset", "Reset form")
+</code></pre>
+</div>
+
+<p>And when the button is clicked, reset the form</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>observeEvent(input$reset, {
+  shinyjs::reset("myapp")
+})
+</code></pre>
+</div>
+
+<h3 id="final-code">Final code</h3>
+
+<p>The final code looks like this</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shiny)
+shinyApp(
+  ui = fluidPage(
+    shinyjs::useShinyjs(),
+    shinyjs::inlineCSS(list(.big = "font-size: 2em")),
+    div(id = "myapp",
+        h2("shinyjs demo"),
+        checkboxInput("big", "Bigger text", FALSE),
+        textInput("name", "Name", ""),
+        a(id = "toggleAdvanced", "Show/hide advanced info", href = "#"),
+        shinyjs::hidden(
+          div(id = "advanced",
+            numericInput("age", "Age", 30),
+            textInput("company", "Company", "")
+          )
+        ),
+        p("Timestamp: ",
+          span(id = "time", date()),
+          a(id = "update", "Update", href = "#")
+        ),
+        actionButton("submit", "Submit"),
+        actionButton("reset", "Reset form")
+    )
+  ),
+  
+  server = function(input, output) {
+    observe({
+      shinyjs::toggleState("submit", !is.null(input$name) &amp;&amp; input$name != "")
+    })
+    
+    shinyjs::onclick("toggleAdvanced",
+                     shinyjs::toggle(id = "advanced", anim = TRUE))    
+    
+    shinyjs::onclick("update", shinyjs::html("time", date()))
+    
+    observe({
+      shinyjs::toggleClass("myapp", "big", input$big)
+    })
+    
+    observeEvent(input$submit, {
+      shinyjs::alert("Thank you!")
+    })
+    
+    observeEvent(input$reset, {
+      shinyjs::reset("myapp")
+    })    
+  }
+)
+</code></pre>
+</div>
+
+<p>You can view the final app <a href="http://daattali.com/shiny/shinyjs-basic/">here</a>.</p>
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div id="footer-awesome">Ready to make your Shiny apps awesome?</div>
+        <code>install.packages("shinyjs")</code>
+        <p class="copyright">
+		      <strong>shinyjs</strong>
+          by
+          <a href="http://deanattali.com">Dean Attali</a>
+		      &nbsp;&bull;&nbsp;
+          <a href="https://github.com/daattali/shinyjs">View on GitHub</a>
+	      </p>
+		    <p class="theme-by">
+		      Theme by
+	  	    <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+	  	  </p>
+        <a href="https://www.paypal.me/daattali">
+          <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/shinyjs/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/shinyjs/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/shinyjs/js/main.js"></script>
+    
+  
+
+
+
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-59820529-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  
+  </body>
+</html>

@@ -1,8 +1,0 @@
-language: r
-sudo: false
-cache: packages
-
-addons:
- apt:
-  packages:
-    - libv8-dev

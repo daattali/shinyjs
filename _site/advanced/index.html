@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>shinyjs R package - Advanced</title>
+
+  <meta name="author" content="Dean Attali" />
+  <meta name="description" content="Quickly build a beautiful Jekyll website">
+
+  <link rel="alternate" type="application/rss+xml" title="Beautiful Jekyll - Quickly build a beautiful Jekyll website" href="/shinyjs/feed.xml" />
+  
+  
+    
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    
+      
+  
+  
+    
+      <link rel="stylesheet" href="/shinyjs/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/shinyjs/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/shinyjs/css/main.css" />
+    
+    
+  
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+    
+  
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+  <meta property="og:title" content="Advanced" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+  
+  <meta property="og:url" content="http://0.0.0.0:4000/advanced/" />
+  
+  
+  
+  <meta property="og:image" content="http://0.0.0.0:4000" />
+    
+  
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@daattali" />
+  <meta name="twitter:creator" content="@daattali" />
+  <meta name="twitter:title" content="Advanced" />
+  <meta name="twitter:description" content="- [Basic use of shinyjs](#usage-basic) - [Using shinyjs in Shiny Dashboards](#usage-dashboard) - [Using shinyjs with navbarPage layout](#usage-navbarpage) - [Using shinyjs in interactive R Markdown documents](#usage-interactive) - [Using shinyjs when the user interface is built using an HTML file](#usage-html) Basic use of shinyjs A typical Shiny app has a UI portion..." />
+    
+</head>
+
+
+  <body>
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/shinyjs/">
+	      <span class="col-shiny">shiny</span><span class="col-js">JS</span>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/index">Home</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/overview">Overview</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/basic">Quick Start</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/example">Example</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/extend">Extend shinyjs</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/shinyjs/help">Help</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+	
+	
+	
+  </div>
+</nav>  
+
+
+    <div id="page-header">
+  <div id="page-title">Advanced</div>
+  <div id="page-subtitle">Including shinyjs in different types of apps</div>
+</div>
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+      <ul>
+  <li><a href="#usage-basic">Basic use of shinyjs</a></li>
+  <li><a href="#usage-dashboard">Using shinyjs in Shiny Dashboards</a></li>
+  <li><a href="#usage-navbarpage">Using shinyjs with navbarPage layout</a></li>
+  <li><a href="#usage-interactive">Using shinyjs in interactive R Markdown documents</a></li>
+  <li><a href="#usage-html">Using shinyjs when the user interface is built using an HTML file</a></li>
+</ul>
+
+<h1 id="usage-basic" class="linked-section">Basic use of shinyjs</h1>
+
+<p>A typical Shiny app has a UI portion and a server portion. Before using most shinyjs functions, you need to call <code class="highlighter-rouge">useShinyjs()</code> in the app’s UI. It’s best to include it near the top as a convention.</p>
+
+<p>Here is a minimal Shiny app that uses <code class="highlighter-rouge">shinyjs</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shiny)
+library(shinyjs)
+
+ui &lt;- fluidPage(
+  useShinyjs(),  # Include shinyjs
+
+  actionButton("button", "Click me"),
+  textInput("text", "Text")
+)
+
+server &lt;- function(input, output) {
+  observeEvent(input$button, {
+    toggle("text")  # toggle is a shinyjs function
+  })
+}
+
+shinyApp(ui, server)
+</code></pre>
+</div>
+
+<p>This is how most Shiny apps should initialize <code class="highlighter-rouge">shinyjs</code> - by calling <code class="highlighter-rouge">useShinyjs()</code> near the top of the UI.</p>
+
+<p>However, if you use shinyjs in any of the following cases:</p>
+
+<ul>
+  <li>In Shiny dashboards (built using the <code class="highlighter-rouge">shinydashboard</code> package)</li>
+  <li>In Shiny apps that use a <code class="highlighter-rouge">navbarPage</code> layout</li>
+  <li>In interactive Rmd documents</li>
+  <li>In Shiny apps that manually build the user interface with an HTML file or template (instead of using Shiny’s UI functions)</li>
+</ul>
+
+<p>Then the following sections will show you how you to include shinyjs.</p>
+
+<h1 id="usage-dashboard" class="linked-section">Using shinyjs in Shiny Dashboards</h1>
+
+<p><code class="highlighter-rouge">shinydashboard</code> is an R package that lets you create nice dashboards with Shiny. Since it has a different structure than typical Shiny apps, it can be unclear where to include the call to <code class="highlighter-rouge">useShinyjs()</code> in these apps. It is recommended to place the call to <code class="highlighter-rouge">useShinyjs()</code> in the beginning of <code class="highlighter-rouge">dashboardBody()</code>. For example, here is a minimal Shiny dashboard that uses <code class="highlighter-rouge">shinyjs</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shiny)
+library(shinydashboard)
+library(shinyjs)
+
+ui &lt;- dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody(
+    useShinyjs(),
+    actionButton("button", "Click me"),
+    div(id = "hello", "Hello!")
+  )
+)
+
+server &lt;- function(input, output) {
+  observeEvent(input$button, {
+    toggle("hello")
+  })
+}
+
+shinyApp(ui, server)
+</code></pre>
+</div>
+
+<h1 id="usage-navbarpage" class="linked-section">Using shinyjs with navbarPage layout</h1>
+
+<p>When creating a Shiny app that uses a <code class="highlighter-rouge">navbarPage</code> layout, the call to <code class="highlighter-rouge">useShinyjs()</code> can be placed inside any of the tabs (since the only real requirement is that it will be present <em>somewhere</em> in the UI). While having <code class="highlighter-rouge">useShinyjs()</code> inside the contents of any tab will work, there is another method that is preferred. You can wrap the <code class="highlighter-rouge">navbarPage</code> in a <code class="highlighter-rouge">tagList</code>, and call <code class="highlighter-rouge">useShinyjs()</code> within the <code class="highlighter-rouge">tagList</code>. This way, <code class="highlighter-rouge">shinyjs</code> gets set up in a way that is independent of each of the tabs. For example, here is a minimal Shiny app that uses <code class="highlighter-rouge">shinyjs</code> inside a <code class="highlighter-rouge">navbarPage</code> layout:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shiny)
+library(shinyjs)
+
+ui &lt;- tagList(
+  useShinyjs(),
+  navbarPage(
+    "shinyjs with navbarPage",
+    tabPanel("tab1",
+             actionButton("button", "Click me"),
+             div(id = "hello", "Hello!")),
+    tabPanel("tab2")
+  )
+)
+
+server &lt;- function(input, output, session) {
+  observeEvent(input$button, {
+    toggle("hello")
+  })
+}
+
+shinyApp(ui, server)
+</code></pre>
+</div>
+
+<h1 id="usage-interactive" class="linked-section">Using shinyjs in interactive R Markdown documents</h1>
+
+<p>It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available <a href="http://rmarkdown.rstudio.com/authoring_shiny.html">on the R Markdown website</a>. Even though interactive documents don’t explicitly specify a UI and a server, using <code class="highlighter-rouge">shinyjs</code> is still easy: simply call <code class="highlighter-rouge">useShinyjs(rmd = TRUE)</code> (note the <code class="highlighter-rouge">rmd = TRUE</code> argument). For example, the following code can be used inside an R Markdown code chunk (assuming the document is set up as a Shiny document as the link above describes):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shinyjs)
+
+useShinyjs(rmd = TRUE)
+actionButton("button", "Click me")
+div(id = "hello", "Hello!")
+
+observeEvent(input$button, {
+ toggle("hello")
+})
+</code></pre>
+</div>
+
+<h1 id="usage-html" class="linked-section">Using shinyjs when the user interface is built using an HTML file/template</h1>
+
+<p>While most Shiny apps use Shiny’s functions to build a user interface to the app, it is possible to build the UI with an HTML template, <a href="http://shiny.rstudio.com/articles/templates.html">as RStudio shows in this article</a>. In this case, you simply need to add `` somewhere in the template, preferably inside the <code class="highlighter-rouge">&lt;head&gt;...&lt;/head&gt;</code> tags.</p>
+
+<p>A similar way to create your app’s UI with HTML is to write it entirely in HTML (without templates), <a href="http://shiny.rstudio.com/articles/html-ui.html">as RStudio shows in this article</a>. Building Shiny apps like this is much more complicated and should only be used if you’re very comfortable with HTML. Using <code class="highlighter-rouge">shinyjs</code> in these apps is possible but it works a little differently since there is no <code class="highlighter-rouge">ui.R</code> to call <code class="highlighter-rouge">useShinyjs()</code> from.  There are three simple steps to take in order to use <code class="highlighter-rouge">shinyjs</code> in these apps:</p>
+
+<ul>
+  <li>
+    <p>create a <code class="highlighter-rouge">global.R</code> file in the same directory as your <code class="highlighter-rouge">server.R</code>, and add the following line to the file:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>in the <code class="highlighter-rouge">index.html</code> file you need to load a special JavaScript file named <code class="highlighter-rouge">shinyjs/inject.js</code>. You do this by adding the following line to the HTML’s <code class="highlighter-rouge">&lt;head&gt;</code> tag:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  `&lt;script src="shinyjs/inject.js"&gt;&lt;/script&gt;`
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>in your server function (the <code class="highlighter-rouge">shinyServer</code> function) you need to call <code class="highlighter-rouge">useShinyjs(html = TRUE)</code></p>
+  </li>
+</ul>
+
+<p>After adding these three lines to your code, you can use all <code class="highlighter-rouge">shinyjs</code> functions as usual.</p>
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div id="footer-awesome">Ready to make your Shiny apps awesome?</div>
+        <code>install.packages("shinyjs")</code>
+        <p class="copyright">
+		      <strong>shinyjs</strong>
+          by
+          <a href="http://deanattali.com">Dean Attali</a>
+		      &nbsp;&bull;&nbsp;
+          <a href="https://github.com/daattali/shinyjs">View on GitHub</a>
+	      </p>
+		    <p class="theme-by">
+		      Theme by
+	  	    <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+	  	  </p>
+        <a href="https://www.paypal.me/daattali">
+          <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/shinyjs/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/shinyjs/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/shinyjs/js/main.js"></script>
+    
+  
+
+
+
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-59820529-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  
+  </body>
+</html>
