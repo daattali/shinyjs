@@ -24,7 +24,7 @@ usage, please [contact me](http://deanattali.com/aboutme#contact). If
 you find shinyjs useful, please consider supporting its development!**
 
 <p align="center">
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5ETAMYQ3JSPEU">
+<a href="https://www.paypal.me/daattali">
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
 </a>
 </p>
