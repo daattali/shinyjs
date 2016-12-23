@@ -29,7 +29,7 @@ getHelperText <- function() {
       a("on GitHub",
         href = "https://github.com/daattali/shinyjs/blob/master/inst/examples/basic/app.R")
     ),
-    a("Visit GitHub to learn more about shinyjs",
-      href = "https://github.com/daattali/shinyjs")
+    a("Visit the shinyjs website to learn more",
+      href = "http://deanattali.com/shinyjs/")
   )
 }
