@@ -186,5 +186,6 @@
   }
   #what-it-does .feature {
     width: 100%;
+    margin: 0;
   }
 }
