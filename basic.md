@@ -11,7 +11,7 @@ You can install the official version from CRAN:
 install.packages("shinyjs")
 ```
 
-Or you can more adventurous and install the latest development version from GitHub:
+Or you can be more adventurous and install the latest development version from GitHub:
 
 ```
 install.packages("devtools")

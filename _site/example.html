@@ -9,9 +9,9 @@
   <title>shinyjs R package - Example</title>
 
   <meta name="author" content="Dean Attali" />
-  <meta name="description" content="Quickly build a beautiful Jekyll website">
+  <meta name="description" content="Easily improve the user experience in your Shiny apps in seconds.">
 
-  <link rel="alternate" type="application/rss+xml" title="Beautiful Jekyll - Quickly build a beautiful Jekyll website" href="/shinyjs/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="shinyjs R package | by Dean Attali - Easily improve the user experience in your Shiny apps in seconds." href="/shinyjs/feed.xml" />
   
   
     
@@ -51,7 +51,7 @@
   <meta property="og:type" content="website" />
   
   
-  <meta property="og:url" content="http://0.0.0.0:4000/example/" />
+  <meta property="og:url" content="http://0.0.0.0:4000/example" />
   
   
   
@@ -60,10 +60,10 @@
   
   <!-- Twitter summary cards -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@daattali" />
-  <meta name="twitter:creator" content="@daattali" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
   <meta name="twitter:title" content="Example" />
-  <meta name="twitter:description" content="This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly. *You can view the final Shiny app developed in this simple example [here](http://daattali.com/shiny/shinyjs-basic/).* Suppose we want to have a simple Shiny app that..." />
+  <meta name="twitter:description" content="This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly. You can view the final Shiny app developed in this simple example [here](http://daattali.com/shiny/shinyjs-basic/). # Example app overview Suppose we want to have a..." />
     
 </head>
 
@@ -87,20 +87,6 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
       
-        
-          <li>
-            
-            
-
-
-
-
-
-<a href="/shinyjs/index">Home</a>
-
-          </li>
-        
-        
         
           <li>
             
@@ -190,8 +176,10 @@
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
       <p>This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly.</p>
 
-<p><em>You can view the final Shiny app developed in this simple example
-<a href="http://daattali.com/shiny/shinyjs-basic/">here</a>.</em></p>
+<p>You can view the final Shiny app developed in this simple example
+<a href="http://daattali.com/shiny/shinyjs-basic/">here</a>.</p>
+
+<h1 id="example-app-overview">Example app overview</h1>
 
 <p>Suppose we want to have a simple Shiny app that collects a user’s basic
 information (name, age, company) and submits it, along with the time of
@@ -217,14 +205,16 @@ shinyApp(
 </code></pre>
 </div>
 
-<p><em>Note that I generally don’t like running Shiny apps like this and prefer to
-declare the UI and server separately, but this style is used here for brevity.</em></p>
+<blockquote>
+  <p>Note that I generally don’t like running Shiny apps like this and prefer to
+declare the UI and server separately, but this style is used here for brevity.</p>
+</blockquote>
 
 <p>Here is what that app would look like</p>
 
-<p><img src="../inst/img/demo-basic-v1.png" alt="Demo app" /></p>
+<p><img src="https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/demo-basic-v1.png" alt="Demo app" /></p>
 
-<h3 id="add-shinyjs-features">Add shinyjs features</h3>
+<h1 id="add-shinyjs-features">Add shinyjs features</h1>
 
 <p>Now suppose we want to add a few features to the app to make it a bit more
 user-friendly.  First we need to set up the app to use <code class="highlighter-rouge">shinyjs</code> by making a call to <code class="highlighter-rouge">useShinyjs()</code> in the Shiny app’s UI.</p>
@@ -382,7 +372,7 @@ is checked by adding this code to the server</p>
 </code></pre>
 </div>
 
-<h3 id="final-code">Final code</h3>
+<h1 id="final-code">Final code</h1>
 
 <p>The final code looks like this</p>
 

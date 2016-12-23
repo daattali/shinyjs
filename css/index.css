@@ -1,13 +1,47 @@
-#what-it-does div div {
-  display: inline-block;
-  width: 350px;
-  padding: 15px 15px 15px 39px;
-  margin: 0 15px;
-  position: relative;
-  text-align: left;
-  vertical-align: top;
+#page-header {
+  padding: 120px 20px 35px;
 }
 
+#what-is-shinyjs {
+  text-align: center;
+  color: #074f66;
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#shinyjs-desc {
+  font-size: 22px;
+  text-align: center;
+  margin: 30px auto 0;
+}
+
+#shinyjs-without {
+  margin-top: 4px;
+  font-style: italic;
+}
+
+#shinyjs-separator {
+  margin: 50px auto;
+  border: 0;
+  width: 50%;
+  border-top: 4px double #aaa;
+}
+
+#what-it-does {
+  padding: 0 20px;
+  font-size: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+#what-it-does-title {
+  font-size: 30px;
+  color: #074f66;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
 #what-it-does .fa {
   margin-right: 5px;
   position: absolute;
@@ -15,15 +49,126 @@
   top: 19px;
 }
 
-#what-it-does div div:hover {
+#what-it-does .feature {
+  display: inline-block;
+  width: 350px;
+  padding: 15px 15px 15px 40px;
+  margin: 0 15px;
+  position: relative;
+  text-align: left;
+  vertical-align: top;
+}
+
+#what-it-does .feature:hover {
   background: #eee;
   cursor: default;
 }
 
-hr {
-  margin-top: 50px;
-  margin-bottom: 55px;
-  border: 0;
-  width: 50%;
-  border-top: 3px double #aaa;
+#license-section {
+  margin: 50px auto;
+  background: #fff;
+  text-align: left;
+  padding: 40px 30px 20px;
+  font-size: 18px;
+  max-width: 700px;
+  border-radius: 4px;
+}
+
+#smiley {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+#tutorial-section {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 15px;
+  background: #fff;
+  margin-top: 65px;
+  border-radius: 4px;
+}
+
+#tutorial-section  iframe {
+  width: 640px;
+  height: 360px;
+}
+
+#tutorial-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+#tutorial-section .nav-pills {
+  margin: 15px 0 20px;
+  font-size: 18px;
+}
+#tutorial-section .nav-pills>li {
+  float: none;
+  display: inline-block;
+}
+#tutorial-section .nav-pills a {
+  color: #17baef;
+  padding: 4px 12px;
+}
+#tutorial-section .nav-pills>li.active>a {
+  background: #074f66;
+  color: white;
+}
+
+@media only screen and (max-width: 767px) {
+  #page-subtitle {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  #what-is-shinyjs {
+    margin-top: 30px;
+    font-size: 24px;
+  }
+  #shinyjs-desc {
+    margin-top: 15px;
+    font-size: 18px;
+  }  
+  #shinyjs-separator {
+    margin: 35px auto 30px;
+  }
+  #what-it-does {
+    margin: 25px auto;
+    font-size: 18px;
+  }
+  #what-it-does-title {
+    font-size: 24px;
+    margin-bottom: 0px;
+  }
+  #what-it-does .feature {
+    padding: 10px 10px 10px 40px;
+    width: 400px;
+  }
+  #what-it-does .fa {
+    top: 16px;
+    left: 17px;
+  }
+  #license-section,
+  #tutorial-section {
+    margin: 30px 15px;
+  }
+  #tutorial-section iframe {
+    width: 100%;
+    height: 300px;
+  }
+  #license-section {
+    padding: 25px 25px 10px;
+    font-size: 18px;
+    margin-bottom: 50px;
+  }
+  #tutorial-title {
+    font-size: 24px;
+  }
+  #tutorial-section .nav-pills {
+    font-size: 16px;
+  }
+  #smiley {
+    margin-top: 5px;
+    font-size: 32px;
+  }
 }

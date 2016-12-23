@@ -6,8 +6,10 @@ subtitle: shinyjs example app walk-through
 
 This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly.
 
-*You can view the final Shiny app developed in this simple example
-[here](http://daattali.com/shiny/shinyjs-basic/).*
+You can view the final Shiny app developed in this simple example
+[here](http://daattali.com/shiny/shinyjs-basic/).
+
+# Example app overview
 
 Suppose we want to have a simple Shiny app that collects a user's basic
 information (name, age, company) and submits it, along with the time of
@@ -33,14 +35,14 @@ shinyApp(
 )
 ```
 
-*Note that I generally don't like running Shiny apps like this and prefer to
-declare the UI and server separately, but this style is used here for brevity.*
+> Note that I generally don't like running Shiny apps like this and prefer to
+declare the UI and server separately, but this style is used here for brevity.
 
 Here is what that app would look like
 
-![Demo app](../inst/img/demo-basic-v1.png)
+![Demo app](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/demo-basic-v1.png)
 
-### Add shinyjs features
+# Add shinyjs features
 
 Now suppose we want to add a few features to the app to make it a bit more
 user-friendly.  First we need to set up the app to use `shinyjs` by making a call to `useShinyjs()` in the Shiny app's UI.
@@ -198,7 +200,7 @@ observeEvent(input$reset, {
 })
 ```
 
-### Final code
+# Final code
 
 The final code looks like this
 

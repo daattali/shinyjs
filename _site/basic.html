@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>shinyjs R package - Getting started</title>
+  <title>shinyjs R package - Quick Start</title>
 
   <meta name="author" content="Dean Attali" />
-  <meta name="description" content="Quickly build a beautiful Jekyll website">
+  <meta name="description" content="Easily improve the user experience in your Shiny apps in seconds.">
 
-  <link rel="alternate" type="application/rss+xml" title="Beautiful Jekyll - Quickly build a beautiful Jekyll website" href="/shinyjs/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="shinyjs R package | by Dean Attali - Easily improve the user experience in your Shiny apps in seconds." href="/shinyjs/feed.xml" />
   
   
     
@@ -45,13 +45,13 @@
 
   <!-- Facebook OpenGraph tags -->
   
-  <meta property="og:title" content="Getting started" />
+  <meta property="og:title" content="Quick Start" />
   
   
   <meta property="og:type" content="website" />
   
   
-  <meta property="og:url" content="http://0.0.0.0:4000/getstarted/" />
+  <meta property="og:url" content="http://0.0.0.0:4000/basic" />
   
   
   
@@ -60,10 +60,10 @@
   
   <!-- Twitter summary cards -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@daattali" />
-  <meta name="twitter:creator" content="@daattali" />
-  <meta name="twitter:title" content="Getting started" />
-  <meta name="twitter:description" content="**Beautiful Jekyll** is a ready-to-use template to make help you create an awesome Jekyll or GitHub Pages website quickly. To learn how you can use **Beautiful Jekyll** to create your website in minutes, go to the [Beautiful Jekyll GitHub page](https://github.com/daattali/beautiful-jekyll#readme). Get Started! ## Overview of steps required There are only..." />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+  <meta name="twitter:title" content="Quick Start" />
+  <meta name="twitter:description" content="# Installation You can install the official version from CRAN: ``` install.packages(&quot;shinyjs&quot;) ``` Or you can be more adventurous and install the latest development version from GitHub: ``` install.packages(&quot;devtools&quot;) devtools::install_github(&quot;daattali/shinyjs&quot;) ``` # Quick Start A typical Shiny app has a UI portion and a server portion. Before using most shinyjs..." />
     
 </head>
 
@@ -87,20 +87,6 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
       
-        
-          <li>
-            
-            
-
-
-
-
-
-<a href="/shinyjs/index">Home</a>
-
-          </li>
-        
-        
         
           <li>
             
@@ -181,51 +167,70 @@
 
 
     <div id="page-header">
-  <div id="page-title">Getting started</div>
-  <div id="page-subtitle">How to use Beautiful Jekyll</div>
+  <div id="page-title">Quick Start</div>
+  <div id="page-subtitle"></div>
 </div>
 
 <div class="container" role="main">
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-      <p><strong>Beautiful Jekyll</strong> is a ready-to-use template to make help you create an awesome Jekyll or GitHub Pages website quickly.</p>
+      <h1 id="installation">Installation</h1>
 
-<p>To learn how you can use <strong>Beautiful Jekyll</strong> to create your website in minutes, go to the <a href="https://github.com/daattali/beautiful-jekyll#readme">Beautiful Jekyll GitHub page</a>.</p>
+<p>You can install the official version from CRAN:</p>
 
-<div class="get-started-wrap">
-  <a class="btn btn-success btn-lg get-started-btn" href="https://github.com/daattali/beautiful-jekyll#readme">Get Started!</a>
+<div class="highlighter-rouge"><pre class="highlight"><code>install.packages("shinyjs")
+</code></pre>
 </div>
+
+<p>Or you can be more adventurous and install the latest development version from GitHub:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>install.packages("devtools")
+devtools::install_github("daattali/shinyjs")
+</code></pre>
+</div>
+
 <p><br /></p>
 
-<h2 id="overview-of-steps-required">Overview of steps required</h2>
+<h1 id="quick-start">Quick Start</h1>
 
-<p>There are only three simple steps, so using <strong>Beautiful Jekyll</strong> is <em>literally</em> as easy as 1-2-3 :)</p>
+<p>A typical Shiny app has a UI portion and a server portion. Before using most shinyjs functions, you need to call <code class="highlighter-rouge">useShinyjs()</code> in the app’s UI. It’s best to include it near the top as a convention.</p>
 
-<p>Here is a 40-second video showing how to get started, with the specific steps below.  For a more complete installation guide, <a href="https://github.com/daattali/beautiful-jekyll#readme">visit the Beautiful Jekyll page</a>.</p>
+<p>Here is a minimal Shiny app that uses <code class="highlighter-rouge">shinyjs</code>:</p>
 
-<p><img src="../img/install-steps.gif" style="width:100%;" alt="Installation steps" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>library(shiny)
+library(shinyjs)
 
-<h3 id="fork-the-beautiful-jekyll-repository">1. Fork the Beautiful Jekyll repository</h3>
+ui &lt;- fluidPage(
+  useShinyjs(),  # Include shinyjs
 
-<p>Fork the <a href="https://github.com/daattali/beautiful-jekyll">repository</a> by clicking the Fork button on the top right corner in GitHub.</p>
+  actionButton("button", "Click me"),
+  textInput("text", "Text")
+)
 
-<h3 id="rename-the-repository-to-yourusernamegithubio">2. Rename the repository to <code class="highlighter-rouge">yourusername.github.io</code></h3>
+server &lt;- function(input, output) {
+  observeEvent(input$button, {
+    toggle("text")  # toggle is a shinyjs function
+  })
+}
 
-<p>This will create a GitHub User page ready with the <strong>Beautiful Jekyll</strong> template that will be available at http://yourusername.github.io (sometimes it takes a few minutes).</p>
-
-<h3 id="customize-settings">3. Customize settings</h3>
-
-<p>Edit the <code class="highlighter-rouge">_config.yml</code> file to change all the settings to reflect your site.  The settings in the file are fairly self-explanatory and I added comments inside the file to help you further.  Every time you make a change to any file, your website will get rebuilt and should be updated at <code class="highlighter-rouge">yourusername.github.io</code> within a minute.</p>
-
-<p>You can now visit your shiny new website, which will be seeded with several sample blog posts and a couple other pages.</p>
-
-<hr />
-
-<p>See how easy that is? I wasn’t lying - it really can be done in two minutes.</p>
-
-<div class="get-started-wrap">
-  <a class="btn btn-success btn-lg get-started-btn" href="https://github.com/daattali/beautiful-jekyll#readme">Get Started!</a>
+shinyApp(ui, server)
+</code></pre>
 </div>
+
+<p>This is how most Shiny apps should initialize <code class="highlighter-rouge">shinyjs</code> - by calling <code class="highlighter-rouge">useShinyjs()</code> near the top of the UI.</p>
+
+<p>However, if you use shinyjs in any of the following cases:</p>
+
+<ul>
+  <li>In Shiny dashboards (built using the <code class="highlighter-rouge">shinydashboard</code> package)</li>
+  <li>In Shiny apps that use a <code class="highlighter-rouge">navbarPage</code> layout</li>
+  <li>In interactive Rmd documents</li>
+  <li>In Shiny apps that manually build the user interface with an HTML file or template (instead of using Shiny’s UI functions)</li>
+</ul>
+
+<p>Then you should read the <a href="/shinyjs/advanced">Advanced help page</a>.</p>
+
+<p>If your Shiny app doesn’t fall into any of these categories, then the above code sample should be enough to get your started with including shinyjs in your app.</p>
 
     </div>
   </div>

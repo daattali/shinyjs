@@ -13,90 +13,77 @@ css: /css/index.css
   <div id="header-btns">
     <a id="header-btn-left" class="btn" href="{{ site.baseurl }}/overview#demo">Demo</a>
     <a id="header-btn-right" class="btn" href="{{ site.baseurl }}/basic">Get Started</a>
-  </div>  
+  </div>
+  <div id="header-credits">
+    <a href="http://deanattali.com">Created by Dean Attali</a>
+    <a href="https://github.com/daattali/shinyjs">View on GitHub</a>
+  </div>
 </div>
 
-<div>
-
-<div style="
-    text-align: center;
-    color: #074f66;
-    margin-top: 50px;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: arial;
-">What is shinyjs?</div>
-<div style="
-    font-size: 22px;
-    text-align: center;
-    margin-left: auto;
-    font-family: Arial;
-    margin-top: 30px;
-    margin-right: auto;
-">shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps.<span style="
-    margin-top: 4px;
-    display: block;
-    font-style: italic;
-  ">Without having to know any JavaScript.</span></div></div>
-  
-  
-  
-<hr/>
-
-<div id="what-it-does" style="
-    font-family: arial;
-    padding: 0 200px;
-    font-size: 20px;
-    margin-top: 0;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-"><span style="
-    font-size: 30px;
-    color: #074f66;
-    display: block;
-    font-weight: bold;
-    margin-top: 40px;
-">What can shinyjs do?</span><div style="
-    /* width: 500px; */
-    margin-top: 15px;
-    /* margin: 0 auto; */
-    /* text-align: left; */
-">
-  <div style="
-"><i class="fa fa-eye"></i>Hide (or show) an element</div><div><i class="fa fa-ban"></i>Disable (or enable) an input</div><div><i class="fa fa-repeat"></i>Reset an input back to its original value</div><div><i class="fa fa-clock-o"></i>Delay code execution by a few seconds</div><div><i class="fa fa-globe"></i>Easily call your own custom JavaScript functions from R</div><div><i class="fa fa-check"></i>Many useful functions for both the app developer and users</div></div></div>
-
-<div style="
-    margin-bottom: 400px;
-    margin-top: 50px;
-    background: #fff;
-    text-align: left;
-    padding: 40px 30px 10px;
-    font-size: 18px;
-    font-family: arial;
-    width: 700px;
-    margin-left: auto;
-    border-radius: 4px;
-    margin-right: auto;
-">shinyjs was developed for non-commerical purposes. For commerical usage, please <a href="http://deanattali.com/contact">contact me</a>.<span style="
-    display: block;
-    margin-top: 15px;
-">If you find shinyjs useful, please consider supporting its development!</span>
-<div style="
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 19px;
-"><i class="fa fa-smile-o" style="
-    font-size: 40px;
-  "></i></div>
-
-<p align="center" style="
-    margin-top: 15px;
-">
-  <a href="https://www.paypal.me/daattali">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif">
-  </a>
-</p>
+<div id="what-is-shinyjs">What is shinyjs?</div>
+<div id="shinyjs-desc">
+  shinyjs lets you perform common useful JavaScript operations in Shiny apps that will greatly improve your apps.
+  <div id="shinyjs-without">
+    Without having to know any JavaScript.
+  </div>
 </div>
 
-Tutorials
+<hr id="shinyjs-separator"/>
+
+<div id="what-it-does">
+  <div id="what-it-does-title">What can shinyjs do?</div>
+  <div class="feature">
+    <i class="fa fa-eye"></i>
+    Hide (or show) an element
+  </div>
+  <div class="feature">
+    <i class="fa fa-ban"></i>
+    Disable (or enable) an input
+  </div>
+  <div class="feature">
+    <i class="fa fa-repeat"></i>
+    Reset an input back to its original value
+  </div>
+  <div class="feature">
+    <i class="fa fa-clock-o"></i>
+    Delay code execution by a few seconds
+  </div>
+  <div class="feature">
+    <i class="fa fa-globe"></i>
+    Easily call your own JavaScript functions from R
+  </div>
+  <div class="feature">
+    <i class="fa fa-check"></i>
+    Many useful functions for both app developers and users
+  </div>
+</div>
+
+<div id="license-section">
+  shinyjs was developed for non-commerical purposes. For commerical usage, please <a href="http://deanattali.com/contact">contact me</a>.
+  <p>If you find shinyjs useful, please consider supporting its development!</p>
+  <div id="smiley"><i class="fa fa-smile-o"></i></div>
+
+  <p align="center">
+    <a href="https://www.paypal.me/daattali">
+      <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif">
+    </a>
+  </p>
+</div>
+
+<div id="tutorial-section">
+
+  <div id="tutorial-title">Tutorial</div>
+
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#short-tutorial">Short - 5 min</a></li>
+    <li><a data-toggle="tab" href="#long-tutorial">Long - 30 min</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="short-tutorial" class="tab-pane fade in active">
+      <iframe src="https://www.youtube.com/embed/FYPd5W75HPE" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="long-tutorial" class="tab-pane fade">
+      <iframe src="https://www.youtube.com/embed/fPY13maWKKE" frameborder="0" allowfullscreen></iframe>  </div>
+  </div>
+</div>
