@@ -117,6 +117,9 @@
 }
 
 @media only screen and (max-width: 767px) {
+  #page-header {
+    padding-top: 80px;
+  }
   #page-subtitle {
     font-size: 24px;
     margin-top: 20px;
@@ -170,5 +173,18 @@
   #smiley {
     margin-top: 5px;
     font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #page-header {
+    padding-top: 70px 10px 35px;
+    font-size: 60px;
+  }
+  #page-subtitle { 
+    line-height: 30px;
+  }
+  #what-it-does .feature {
+    width: 100%;
   }
 }
