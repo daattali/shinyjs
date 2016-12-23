@@ -3,9 +3,8 @@
 #' Add your own JavaScript functions that can be called from R as if they were
 #' regular R functions. This is a more advanced technique and can only
 #' be used if you know JavaScript. See 'Basic Usage' below for more information
-#' or \href{https://github.com/daattali/shinyjs}{view the full README and demos}
-#' to learn more. Note that you have to install the `V8` package in order to
-#' use this function.
+#' or \href{http://deanattali.com/shinyjs}{view the shinyjs webpage}
+#' to learn more.
 #'
 #' @param script Path to a JavaScript file that contains all the functions.
 #' Each function name must begin with `shinyjs.`, for example
@@ -95,6 +94,7 @@
 #' parameter to its corresponding JavaScript function. If the function in R was
 #' called with unnamed arguments, then it will pass an Array of the arguments;
 #' if the R arguments are named then it will pass an Object with key-value pairs.
+#' 
 #' For example, calling \code{js$foo("bar", 5)} in R will call \code{shinyjs.foo(["bar", 5])}
 #' in JS, while calling \code{js$foo(num = 5, id = "bar")} in R will call
 #' \code{shinyjs.foo({num : 5, id : "bar"})} in JS. This means that the
@@ -105,6 +105,7 @@
 #' \code{shinyjs.getParams()} function which serves two purposes. First of all,
 #' it ensures that all arguments are named (even if the R function was called
 #' without names). Secondly, it allows you to define default values for arguments.
+#' 
 #' Here is an example of a JS function that changes the background colour of an
 #' element and uses \code{shinyjs.getParams()}.
 #'
@@ -126,14 +127,14 @@
 #' and \code{js$backgroundCol(id = "test", col = "blue")} and
 #' \code{js$backgroundCol(col = "blue", id = "test")} are all equivalent, and
 #' that if the colour parameter is not provided then "red" will be the default.
+#' 
 #' All the functions provided in \code{shinyjs} make use of \code{shinyjs.getParams},
 #' and it is highly recommended to always use it in your functions as well.
 #' Notice that the order of the arguments in \code{defaultParams} in the
 #' JavaScript function matches the order of the arguments when calling the
-#' function in R with unnamed arguments. This means that \code{js$backgroundCol("blue", "test")}
-#' will not work because the arguments are unnamed and the JS function expects
-#' the id to come before the colour. See the examples below for a shiny app
-#' that uses this JS function.
+#' function in R with unnamed arguments.
+#' 
+#' See the examples below for a shiny app that uses this JS function.
 #' @return Scripts that \code{shinyjs} requires in order to run your JavaScript
 #' functions as if they were R code.
 #' @note You still need to call \code{useShinyjs()} as usual, and the call to

@@ -6,6 +6,7 @@
 - fixed bug where date inputs could not be reset to empty (#100)
 - fixed textArea inputs not getting disabled when disabling a parent element
 - fixed broken `runExample("sandbox")` example
+- added a website for shinyjs: http://deanattali.com/shinyjs
 
 # shinyjs 0.8
 
