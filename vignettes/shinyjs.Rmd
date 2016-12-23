@@ -48,7 +48,7 @@ Examples include: hiding an element, disabling an input, resetting an input back
 
 <h2 id="demos">Demos and tutorials</h2>
 
-- [Demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets
+- [Demo Shiny app](http://deanattali.com/shinyjs/demo) that lets
 you play around with some of the functionality in `shinyjs`.
 - [Video of my shinyjs talk](http://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and the corresponding [presentation slides](http://bit.ly/shinyjs-slides) from the 2016 Shiny Developer Conference.
 - [Video of my shinyjs talk](http://deanattali.com/shinyjs-user-2016/) (5 min) and the corresponding [presentation slides](http://bit.ly/shinyjs-slides-useR2016) from the 2016 useR Conference.
@@ -82,7 +82,7 @@ you play around with some of the functionality in `shinyjs`.
 | `logjs` | Print a message to the JavaScript console (mainly used for debugging purposes). |
 | `inlineCSS` | Easily add inline CSS to a Shiny app. |
 
-[Check out the shinyjs demo app](http://daattali.com/shiny/shinyjs-demo/) to see
+[Check out the shinyjs demo app](http://deanattali.com/shinyjs/demo) to see
 some of these in action, or install `shinyjs` and run `shinyjs::runExample()`
 to see more demos.
 

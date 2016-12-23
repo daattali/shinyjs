@@ -44,8 +44,8 @@ Table of contents
 <h2 id="demos">
 Demos and tutorials
 </h2>
--   [Demo Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets
-    you play around with some of the functionality in `shinyjs`.
+-   [Demo Shiny app](http://deanattali.com/shinyjs/demo) that lets you
+    play around with some of the functionality in `shinyjs`.
 -   [Video of my shinyjs
     talk](http://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and
     the corresponding [presentation
@@ -154,10 +154,9 @@ first call `useShinyjs()` anywhere in the app's UI.**
 </tbody>
 </table>
 
-[Check out the shinyjs demo
-app](http://daattali.com/shiny/shinyjs-demo/) to see some of these in
-action, or install `shinyjs` and run `shinyjs::runExample()` to see more
-demos.
+[Check out the shinyjs demo app](http://deanattali.com/shinyjs/demo) to
+see some of these in action, or install `shinyjs` and run
+`shinyjs::runExample()` to see more demos.
 
 <h2 id="install">
 Installation
