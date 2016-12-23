@@ -178,7 +178,7 @@
 
 @media only screen and (max-width: 450px) {
   #page-header {
-    padding-top: 70px 10px 35px;
+    padding: 70px 10px 35px;
     font-size: 60px;
   }
   #page-subtitle { 
