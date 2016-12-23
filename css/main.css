@@ -347,8 +347,9 @@ footer code {
 }
 
 @media only screen and (max-width: 450px) {
-  #page-header {
-    font-size: 60px;
+  #page-title {
+    font-size: 50px;
+    line-height: 50px;
   }
   #page-subtitle { 
     line-height: 30px;
