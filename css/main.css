@@ -346,6 +346,15 @@ footer code {
   }
 }
 
+@media only screen and (max-width: 450px) {
+  #page-header {
+    font-size: 60px;
+  }
+  #page-subtitle { 
+    line-height: 30px;
+  }
+}
+
 .caption {
   text-align: center;
   font-size: 14px;
