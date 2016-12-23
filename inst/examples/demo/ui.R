@@ -77,7 +77,7 @@ shinyUI(fluidPage(
   column(6, wellPanel(
     h3("What is shinyjs?", class = "section-title"),
     p(
-      strong(a("shinyjs", href = "https://github.com/daattali/shinyjs",
+      strong(a("shinyjs", href = "http://deanattali.com/shinyjs/",
                target = "_blank")),
       span("lets you improve the user experience in your Shiny apps using very simple functions.")),
     p("You can",
