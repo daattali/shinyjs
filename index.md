@@ -11,7 +11,7 @@ css: /css/index.css
   </div>
   <div id="page-subtitle">Easily improve the user experience in your Shiny apps in seconds</div>
   <div id="header-btns">
-    <a id="header-btn-left" class="btn" href="{{ site.baseurl }}/overview#demo">Demo</a>
+    <a id="header-btn-left" class="btn" href="{{ site.baseurl }}/demo">Demo</a>
     <a id="header-btn-right" class="btn" href="{{ site.baseurl }}/basic">Get Started</a>
   </div>
   <div id="header-credits">
