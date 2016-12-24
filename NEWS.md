@@ -5,6 +5,7 @@
 - fixed bug where `showLog()` would only show the last message if multiple messages were printed in succession (#99)
 - fixed bug where date inputs could not be reset to empty (#100)
 - fixed textArea inputs not getting disabled when disabling a parent element
+- add `showElement()`/`hideElement()`/`toggleElement()` and `addCssClass` etc functions as synonyms for functions that are masked by S4 (compromise for #81)
 - fixed broken `runExample("sandbox")` example
 - added a website for shinyjs: http://deanattali.com/shinyjs
 

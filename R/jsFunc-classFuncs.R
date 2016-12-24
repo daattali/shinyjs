@@ -4,6 +4,9 @@
 #' \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
 #' removes a CSS class, \strong{\code{toggleClass}} adds the class if it is
 #' not set and removes the class if it is already set.\cr\cr
+#' \strong{\code{addCssClass}}, \strong{\code{removeCssClass}}, and
+#' \strong{\code{toggleCssClass}} are synonyms that may be safer to use if you're
+#' working with S4 classes (since they don't mask any existing S4 functions).\cr\cr
 #' If \code{condition} is given to \code{toggleClass}, that condition will be used
 #' to determine if to add or remove the class. The class will be added if the
 #' condition evaluates to \code{TRUE} and removed otherwise. If you find
@@ -82,6 +85,13 @@ addClass <- function(id, class, selector) {
 }
 #' @export
 #' @rdname classFuncs
+addCssClass <- function(id, class, selector) {
+  fxn <- "addClass"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+#' @export
+#' @rdname classFuncs
 removeClass <- function(id, class, selector) {
   fxn <- "removeClass"
   params <- as.list(match.call())[-1]
@@ -89,7 +99,21 @@ removeClass <- function(id, class, selector) {
 }
 #' @export
 #' @rdname classFuncs
+removeCssClass <- function(id, class, selector) {
+  fxn <- "removeClass"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+#' @export
+#' @rdname classFuncs
 toggleClass <- function(id, class, condition, selector) {
+  fxn <- "toggleClass"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+#' @export
+#' @rdname classFuncs
+toggleCssClass <- function(id, class, condition, selector) {
   fxn <- "toggleClass"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)

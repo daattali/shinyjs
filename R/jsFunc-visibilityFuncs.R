@@ -4,6 +4,9 @@
 #' \strong{\code{show}} makes an element visible, \strong{\code{hide}} makes
 #' an element invisible, \strong{\code{toggle}} displays the element if it it
 #' hidden and hides it if it is visible.\cr\cr
+#' \strong{\code{showElement}}, \strong{\code{hideElement}}, and
+#' \strong{\code{toggleElement}} are synonyms that may be safer to use if you're
+#' working with S4 classes (since they don't mask any existing S4 functions).\cr\cr
 #' If \code{condition} is given to \code{toggle}, that condition will be used
 #' to determine if to show or hide the element. The element will be shown if the
 #' condition evaluates to \code{TRUE} and hidden otherwise. If you find
@@ -89,6 +92,14 @@ show <- function(id, anim, animType, time, selector) {
 
 #' @export
 #' @rdname visibilityFuncs
+showElement <- function(id, anim, animType, time, selector) {
+  fxn <- "show"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
+#' @export
+#' @rdname visibilityFuncs
 hide <- function(id, anim, animType, time, selector) {
   fxn <- "hide"
   params <- as.list(match.call())[-1]
@@ -97,7 +108,23 @@ hide <- function(id, anim, animType, time, selector) {
 
 #' @export
 #' @rdname visibilityFuncs
+hideElement <- function(id, anim, animType, time, selector) {
+  fxn <- "hide"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
+#' @export
+#' @rdname visibilityFuncs
 toggle <- function(id, anim, animType, time, selector, condition) {
+  fxn <- "toggle"
+  params <- as.list(match.call())[-1]
+  jsFuncHelper(fxn, params)
+}
+
+#' @export
+#' @rdname visibilityFuncs
+toggleElement <- function(id, anim, animType, time, selector, condition) {
   fxn <- "toggle"
   params <- as.list(match.call())[-1]
   jsFuncHelper(fxn, params)

@@ -2,16 +2,25 @@
 % Please edit documentation in R/jsFunc-classFuncs.R
 \name{classFuncs}
 \alias{addClass}
+\alias{addCssClass}
 \alias{classFuncs}
 \alias{removeClass}
+\alias{removeCssClass}
 \alias{toggleClass}
+\alias{toggleCssClass}
 \title{Add/remove CSS class}
 \usage{
 addClass(id, class, selector)
 
+addCssClass(id, class, selector)
+
 removeClass(id, class, selector)
 
+removeCssClass(id, class, selector)
+
 toggleClass(id, class, condition, selector)
+
+toggleCssClass(id, class, condition, selector)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -29,6 +38,9 @@ Add or remove a CSS class from an HTML element.\cr\cr
 \strong{\code{addClass}} adds a CSS class, \strong{\code{removeClass}}
 removes a CSS class, \strong{\code{toggleClass}} adds the class if it is
 not set and removes the class if it is already set.\cr\cr
+\strong{\code{addCssClass}}, \strong{\code{removeCssClass}}, and
+\strong{\code{toggleCssClass}} are synonyms that may be safer to use if you're
+working with S4 classes (since they don't mask any existing S4 functions).\cr\cr
 If \code{condition} is given to \code{toggleClass}, that condition will be used
 to determine if to add or remove the class. The class will be added if the
 condition evaluates to \code{TRUE} and removed otherwise. If you find

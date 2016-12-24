@@ -2,16 +2,25 @@
 % Please edit documentation in R/jsFunc-visibilityFuncs.R
 \name{visibilityFuncs}
 \alias{hide}
+\alias{hideElement}
 \alias{show}
+\alias{showElement}
 \alias{toggle}
+\alias{toggleElement}
 \alias{visibilityFuncs}
 \title{Display/hide an element}
 \usage{
 show(id, anim, animType, time, selector)
 
+showElement(id, anim, animType, time, selector)
+
 hide(id, anim, animType, time, selector)
 
+hideElement(id, anim, animType, time, selector)
+
 toggle(id, anim, animType, time, selector, condition)
+
+toggleElement(id, anim, animType, time, selector, condition)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -34,6 +43,9 @@ Display or hide an HTML element.\cr\cr
 \strong{\code{show}} makes an element visible, \strong{\code{hide}} makes
 an element invisible, \strong{\code{toggle}} displays the element if it it
 hidden and hides it if it is visible.\cr\cr
+\strong{\code{showElement}}, \strong{\code{hideElement}}, and
+\strong{\code{toggleElement}} are synonyms that may be safer to use if you're
+working with S4 classes (since they don't mask any existing S4 functions).\cr\cr
 If \code{condition} is given to \code{toggle}, that condition will be used
 to determine if to show or hide the element. The element will be shown if the
 condition evaluates to \code{TRUE} and hidden otherwise. If you find
