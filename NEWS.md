@@ -1,4 +1,6 @@
-# shinyjs 0.8.xxxx
+# shinyjs 0.9
+
+2016-12-26
 
 - added support for shinyAce editor as the input for `runcodeUI()` (#93)
 - `showLog()` no longer needs to be specified in `useShinyjs()`, and it can be used by just calling it in the server code once (#105)
