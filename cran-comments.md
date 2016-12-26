@@ -779,3 +779,24 @@ No errors, warnings, or notes
 2016-11-03 Uwe Ligges
 
 Thanks, on CRAN now.
+
+# Version 0.9
+
+## Round 1
+
+### Test environments
+
+* Windows 7, R 3.3.1 (local)
+* ubuntu 12.04, R 3.3.1 (on travis-ci)
+
+### Submission comments
+
+2016-12-26
+
+No errors, warnings, or notes
+
+### Reviewer comments
+
+2016-12-26 Kurt Hornik
+
+Thanks, on CRAN now.
