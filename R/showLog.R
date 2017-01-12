@@ -23,6 +23,7 @@
 #'     ),
 #'     server = function(input, output) {
 #'       showLog()
+#'       logjs("App started")
 #'       observe({
 #'         logjs(paste("Length of text:", nchar(input$text)))
 #'       })
@@ -53,7 +54,7 @@ showLog <- function() {
         };
       })();'
     )))
-  })
+  }, immediate = TRUE)
 
   shiny::observeEvent(session$input[['shinyjs-showLog']], {
     message("JAVASCRIPT LOG: ",
