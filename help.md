@@ -26,4 +26,4 @@ If you need help with shinyjs, you can try to get help from the community. I sug
 
 If you still can't get an answer to your question, you can [contact me](http://deanattali.com/contact). However, because of the volume of support emails I receive, I can only provide support for a fee (as part of [my Shiny consulting](http://deanattali.com/shiny/)).
 
-To report a bug or suggest improvements, please [open an issue](https://github.com/daattali/shinyjs/issues) on GitHub. I always strive to make shinyjs as useful and correct as possible!
+To report a bug or suggest improvements, please [open an issue](https://github.com/daattali/shinyjs/issues) on GitHub. I always strive to make shinyjs as useful and correct as possible, so any feedback is appreciated!
