@@ -22,12 +22,8 @@ I also keep a [long list of various Shiny tips & tricks](https://github.com/daat
 
 # Getting help
 
-If you need help with shinyjs, I strongly suggest browsing the [shinyjs tag](http://stackoverflow.com/questions/tagged/shinyjs) on StackOverflow or asking your own question there.
+If you need help with shinyjs, you can try to get help from the community. I suggest browsing the [shinyjs tag](http://stackoverflow.com/questions/tagged/shinyjs) on StackOverflow or asking your own question there. You can also try getting help on the [Shiny Google Group](https://groups.google.com/forum/#!forum/shiny-discuss).
 
-You can also try getting help on the [Shiny Google Group](https://groups.google.com/forum/#!forum/shiny-discuss).
+If you still can't get an answer to your question, you can [contact me](http://deanattali.com/contact). However, because of the volume of support emails I receive, I can only provide support for a fee (as part of [my Shiny consulting](http://deanattali.com/shiny/)).
 
-If you still can't get an answer to your question, you can try [contacting me](http://deanattali.com/contact) (although because of the volume of support emails I get, I can't promise I'll be able to help). If you require advanced support, I'm also [available for consulting](http://deanattali.com/shiny/).
-
-To report a bug or suggest improvements, please [open an issue](https://github.com/daattali/shinyjs/issues) on GitHub. 
-
-I'd like to give special thanks to the Shiny developers, especially Joe Cheng for always answering all my Shiny questions!
+To report a bug or suggest improvements, please [open an issue](https://github.com/daattali/shinyjs/issues) on GitHub. I always strive to make shinyjs as useful and correct as possible!
