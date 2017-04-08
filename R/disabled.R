@@ -39,6 +39,10 @@ disabled <- function(...) {
 
   # recursively add the disabled class to all tags
   if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag")) {
+    # don't do anything if an input has a head tag associated to it
+    if (tags[[1]][['name']] == "head") {
+      return(tags[[1]])
+    }
     tags[[1]] <-
       shiny::tagAppendAttributes(
         tags[[1]],

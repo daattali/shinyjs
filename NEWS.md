@@ -1,5 +1,6 @@
-# shinyjs 0.9.0.9000
+# shinyjs 0.9.0.9xxx
 
+- fixed bug where using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour #120
 - fixed bug where logjs()+showLog() wasn't working when app first runs
 
 # shinyjs 0.9
