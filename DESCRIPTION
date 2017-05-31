@@ -27,7 +27,7 @@ Suggests:
     shinyAce,
     testthat (>= 0.9.1),
     V8 (>= 0.6)
-License: MIT + file LICENSE
+License: AGPL-3
 SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
