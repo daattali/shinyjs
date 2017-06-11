@@ -112,10 +112,14 @@ reset <- function(id) {
 
         # most input update functions use 'value' argument, some use 'selected',
         # DateRange uses 'start' and 'end'
-        if (type == "CheckboxGroup" ||
-            type == "RadioButtons" ||
-            type == "Select") {
-          funcParams[['selected']] <- unlist(strsplit(value, ","))
+        if (type == "RadioButtons") {
+          funcParams[['selected']] <- value
+        } else if (type == "CheckboxGroup" || type == "Select") {
+          if (value == '""') {
+            funcParams[['selected']] <- ""
+          } else {
+            funcParams[['selected']] <- jsonlite::fromJSON(value)
+          }
         } else if (type == "Slider") {
           value <- unlist(strsplit(value, ","))
           funcParams[['value']] <- value

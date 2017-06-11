@@ -309,7 +309,7 @@ shinyjs = function() {
           selectedEls.each(function() {
             selected.push($(this).val());
           });
-          inputValue = selected.join(",");
+          inputValue = JSON.stringify(selected);
         }
         // radioButtons
         else if (input.hasClass("shiny-input-radiogroup")) {
@@ -332,9 +332,8 @@ shinyjs = function() {
           inputValue = input.val();
           if (inputValue === null) {
             inputValue = "";
-          } else if (inputValue instanceof Array) {
-            inputValue = inputValue.join(",");
           }
+          inputValue = JSON.stringify(inputValue);
         }
         // colourInput
         else if (input.children("input.shiny-colour-input").length > 0) {
