@@ -137,6 +137,11 @@ reset <- function(id) {
           updateFunc <- sprintf("update%s", type)
         }
 
+        # for colour inputs, need to use the colourpicker package
+        if (type == "Colour") {
+          updateFunc <- utils::getFromNamespace(updateFunc, "colourpicker")
+        }
+
         # update the input to its original values
         do.call(updateFunc, funcParams)
       }
