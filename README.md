@@ -28,6 +28,7 @@ you find shinyjs useful, please consider supporting its development!**
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
 </a>
 </p>
+
 Table of contents
 =================
 
