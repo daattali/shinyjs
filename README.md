@@ -45,6 +45,7 @@ Table of contents
 <h2 id="demos">
 Demos and tutorials
 </h2>
+
 -   [Demo Shiny app](http://deanattali.com/shinyjs/demo) that lets you
     play around with some of the functionality in `shinyjs`.
 -   [Video of my shinyjs
