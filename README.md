@@ -37,8 +37,9 @@ Table of contents
 <h2 id="demos">
 Live demos
 </h2>
-You can [check out a demo Shiny
-app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
+
+You can [check out a demo
+Shiny app](http://daattali.com/shiny/shinyjs-demo/) that lets you play around
 with some of the functionality that `shinyjs` makes available.
 
 `shinyjs` also includes a `colourInput` which is an input control that
