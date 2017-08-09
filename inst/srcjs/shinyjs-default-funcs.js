@@ -755,7 +755,7 @@ shinyjs = function() {
           // update function for them
           if (type == "File") {
             id = "#" + id;
-            // Replace all periods with \\. to 
+            // escape all dots 
             id = id.replace(/\./g, '\\.');
             $(id).val('');
             $(id + "_progress").css("visibility", "hidden");
