@@ -12,7 +12,7 @@ clean:
 
 README.md : vignettes/shinyjs.Rmd
 #	echo "Rendering the shinyjs vignette"
-	Rscript -e 'rmarkdown::render("vignettes/shinyjs.Rmd", output_format = "md_document")'
+	Rscript -e 'rmarkdown::render("vignettes/shinyjs.Rmd", output_format = "md_document", output_options = list(pandoc_args = c("-t", "commonmark")))'
 #	echo "Correcting image paths"
 #	sed -i -- 's,../inst,inst,g' vignettes/shinyjs.md
 	Rscript -e 'file <- gsub("\\.\\./inst", "inst", readLines("vignettes/shinyjs.md")); writeLines(file, "vignettes/shinyjs.md")'
