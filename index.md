@@ -60,7 +60,7 @@ share-img: http://deanattali.com/shinyjs/img/shinyjs.PNG
 </div>
 
 <div id="license-section">
-  shinyjs was developed for non-commercial purposes. For commercial usage, please <a href="http://deanattali.com/contact">contact me</a>.
+  shinyjs is under the AGPL-3 license. For commercial usage, please <a href="http://deanattali.com/contact">contact me</a>.
   <p>If you find shinyjs useful, please consider supporting its development!</p>
   <div id="smiley"><i class="fa fa-smile-o"></i></div>
 
