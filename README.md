@@ -18,9 +18,9 @@ seconds, and many more useful functions for both the end user and the
 developer. `shinyjs` can also be used to easily call your own custom
 JavaScript functions from R.
 
-**shinyjs was developed for non-commercial purposes. For commercial
-usage, please [contact me](http://deanattali.com/aboutme#contact). If
-you find shinyjs useful, please consider supporting its development\!**
+**shinyjs is under the AGPL-3 license. For a commercial license, please
+[contact me](http://deanattali.com/aboutme#contact). If you find shinyjs
+useful, please consider supporting its development\!**
 
 <p align="center">
 
