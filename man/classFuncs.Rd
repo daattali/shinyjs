@@ -10,17 +10,18 @@
 \alias{toggleCssClass}
 \title{Add/remove CSS class}
 \usage{
-addClass(id, class, selector)
+addClass(id = NULL, class = NULL, selector = NULL)
 
-addCssClass(id, class, selector)
+addCssClass(id = NULL, class = NULL, selector = NULL)
 
-removeClass(id, class, selector)
+removeClass(id = NULL, class = NULL, selector = NULL)
 
-removeCssClass(id, class, selector)
+removeCssClass(id = NULL, class = NULL, selector = NULL)
 
-toggleClass(id, class, condition, selector)
+toggleClass(id = NULL, class = NULL, condition = NULL, selector = NULL)
 
-toggleCssClass(id, class, condition, selector)
+toggleCssClass(id = NULL, class = NULL, condition = NULL,
+  selector = NULL)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

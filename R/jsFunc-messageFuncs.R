@@ -44,7 +44,7 @@ NULL
 #' @rdname messageFuncs
 alert <- function(text) {
   fxn <- "alert"
-  params <- as.list(match.call())[-1]
+  params <- list(text = text)
   jsFuncHelper(fxn, params)
 }
 #' @export
@@ -54,6 +54,6 @@ info <- alert
 #' @rdname messageFuncs
 logjs <- function(text) {
   fxn <- "logjs"
-  params <- as.list(match.call())[-1]
+  params <- list(text = text)
   jsFuncHelper(fxn, params)
 }

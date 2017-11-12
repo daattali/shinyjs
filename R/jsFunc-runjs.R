@@ -25,6 +25,6 @@
 #' @export
 runjs <- function(code) {
   fxn <- "runjs"
-  params <- as.list(match.call())[-1]
+  params <- list(code = code)
   jsFuncHelper(fxn, params)
 }

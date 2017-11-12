@@ -10,27 +10,32 @@
 \alias{toggleElement}
 \title{Display/hide an element}
 \usage{
-show(id, anim, animType, time, selector)
+show(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+  selector = NULL)
 
-showElement(id, anim, animType, time, selector)
+showElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+  selector = NULL)
 
-hide(id, anim, animType, time, selector)
+hide(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+  selector = NULL)
 
-hideElement(id, anim, animType, time, selector)
+hideElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+  selector = NULL)
 
-toggle(id, anim, animType, time, selector, condition)
+toggle(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+  selector = NULL, condition = NULL)
 
-toggleElement(id, anim, animType, time, selector, condition)
+toggleElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+  selector = NULL, condition = NULL)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
 
-\item{anim}{If \code{TRUE} then animate the behaviour (default: \code{FALSE})}
+\item{anim}{If \code{TRUE} then animate the behaviour}
 
-\item{animType}{The type of animation to use, either \code{"slide"} or \code{"fade"}
-(default: \code{"slide"})}
+\item{animType}{The type of animation to use, either \code{"slide"} or \code{"fade"}}
 
-\item{time}{The number of seconds to make the animation last (default: \code{0.5})}
+\item{time}{The number of seconds to make the animation last}
 
 \item{selector}{JQuery selector of the elements to show/hide. Ignored if the
 \code{id} argument is given. For example, to select all span elements with

@@ -33,6 +33,6 @@
 #' @export
 click <- function(id) {
   fxn <- "click"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id)
   jsFuncHelper(fxn, params)
 }

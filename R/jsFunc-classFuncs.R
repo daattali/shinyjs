@@ -83,43 +83,34 @@ NULL
 
 #' @export
 #' @rdname classFuncs
-addClass <- function(id, class, selector) {
+addClass <- function(id = NULL, class = NULL, selector = NULL) {
   fxn <- "addClass"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, class = class, selector = selector)
   jsFuncHelper(fxn, params)
 }
 #' @export
 #' @rdname classFuncs
-addCssClass <- function(id, class, selector) {
-  fxn <- "addClass"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+addCssClass <- addClass
+
 #' @export
 #' @rdname classFuncs
-removeClass <- function(id, class, selector) {
+removeClass <- function(id = NULL, class = NULL, selector = NULL) {
   fxn <- "removeClass"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, class = class, selector = selector)
   jsFuncHelper(fxn, params)
 }
 #' @export
 #' @rdname classFuncs
-removeCssClass <- function(id, class, selector) {
-  fxn <- "removeClass"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+removeCssClass <- removeClass
+
 #' @export
 #' @rdname classFuncs
-toggleClass <- function(id, class, condition, selector) {
+toggleClass <- function(id = NULL, class = NULL, condition = NULL, selector = NULL) {
   fxn <- "toggleClass"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, class = class, condition = condition,
+                 selector = selector)
   jsFuncHelper(fxn, params)
 }
 #' @export
 #' @rdname classFuncs
-toggleCssClass <- function(id, class, condition, selector) {
-  fxn <- "toggleClass"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+toggleCssClass <- toggleClass

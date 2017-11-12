@@ -4,7 +4,7 @@
 \alias{html}
 \title{Change the HTML (or text) inside an element}
 \usage{
-html(id, html, add, selector)
+html(id = NULL, html = NULL, add = FALSE, selector = NULL)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -13,7 +13,7 @@ html(id, html, add, selector)
 plain text or valid HTML code.}
 
 \item{add}{If \code{TRUE}, then append \code{html} to the contents of the element;
-otherwise overwrite it. (default: \code{FALSE})}
+otherwise overwrite it.}
 
 \item{selector}{JQuery selector of the elements to target. Ignored if the \code{id}
 argument is given.}

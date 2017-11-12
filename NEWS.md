@@ -6,6 +6,7 @@
 - added `click()` function that simulates a user clicking on a button
 - Make all colourInput-related function defunct because they are now in the `colourpicker` package
 - Bug fix: `reset()` wasn't working on file inputs with an ID that contained a dot (#140)
+- Moved default values of parameters to the R layer instead of being defined in javascript. This means that RStudio no longer complains of missing arguments and that autocompletion will show default values. (#80)
 
 # shinyjs 0.9
 
