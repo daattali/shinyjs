@@ -84,7 +84,9 @@ oneventHelper <- function(event, id, expr, add) {
   # given expression. To support multiple event handlers, each time this
   # is called, a random number is attached to the Shiny input id
   shinyInputId <- sprintf("shinyjs-%s-%s-input-%s",
-                          id, as.integer(stats::runif(1, 0, 1e9)), event)
+                          id,
+                          as.integer(sample(1e9, 1)),
+                          event)
   shinyInputIdJs <- shinyInputId
   if (inherits(session, "session_proxy")) {
     shinyInputIdJs <- session$ns(shinyInputIdJs)
