@@ -20,3 +20,4 @@ colourPicker(...)
   \item{\bold{colourPicker()}} {Moved to the \code{colourpicker} package.}
 }
 }
+\keyword{internal}
