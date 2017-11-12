@@ -59,4 +59,3 @@ if (interactive()) {
 \code{\link[shinyjs]{useShinyjs}},
 \code{\link[shinyjs]{runExample}}
 }
-

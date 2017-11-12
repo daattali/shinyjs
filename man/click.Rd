@@ -24,12 +24,17 @@ if (interactive()) {
   shinyApp(
     ui = fluidPage(
       useShinyjs(),  # Set up shinyjs
-      actionButton("btn", "Click me"),actionButton("gg","or me")
+      "Count:", textOutput("number", inline = TRUE), br(),
+      actionButton("btn", "Click me"), br(),
+      "The button will be pressed automatically every 3 seconds"
     ),
     server = function(input, output) {
-    observeEvent(input$gg, click('btn'))
-      observeEvent(input$btn, {
-        cat('clicked! ',input$btn)
+      output$number <- renderText({
+        input$btn
+      })
+      observe({
+        click("btn")
+        invalidateLater(3000)
       })
     }
   )

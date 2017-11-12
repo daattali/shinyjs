@@ -20,4 +20,3 @@ from R.
 View the \href{http://deanattali.com/shinyjs}{shinyjs website} for more details
 and to see a demo.
 }
-

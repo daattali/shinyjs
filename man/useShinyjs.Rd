@@ -56,4 +56,3 @@ if (interactive()) {
 \code{\link[shinyjs]{runExample}}
 \code{\link[shinyjs]{extendShinyjs}}
 }
-

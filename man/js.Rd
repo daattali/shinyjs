@@ -15,4 +15,3 @@ Call user-defined JavaScript functions from R
 \code{\link[shinyjs]{extendShinyjs}}
 }
 \keyword{internal}
-

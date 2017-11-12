@@ -2,8 +2,8 @@
 % Please edit documentation in R/runcode.R
 \name{runcode}
 \alias{runcode}
-\alias{runcodeServer}
 \alias{runcodeUI}
+\alias{runcodeServer}
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
 runcodeUI(code = "", type = c("text", "textarea", "ace"), width = NULL,
@@ -66,4 +66,3 @@ if (interactive()) {
 \seealso{
 \code{\link[shinyjs]{useShinyjs}}
 }
-
