@@ -5,6 +5,7 @@
 - fixed bug where logjs()+showLog() wasn't working when app first runs
 - added `click()` function that simulates a user clicking on a button
 - Make all colourInput-related function defunct because they are now in the `colourpicker` package
+- Bug fix: `reset()` wasn't working on file inputs with an ID that contained a dot (#140)
 
 # shinyjs 0.9
 
