@@ -51,6 +51,11 @@ displayed (position, colour, size, etc.).  You can learn the basics
 at \href{http://www.w3schools.com/css/}{W3Schools}.
 }
 \note{
+If you use S4 classes, you should be aware of the fact that both S4 and
+\code{shinyjs} use the \code{removeClass()} function. This means that when using S4,
+it is recommended to use \code{removeCssClass()} from \code{shinyjs}, and to
+use \code{methods::removeClass()} for S4 object.
+
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 in the app's ui.
 }

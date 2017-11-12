@@ -57,6 +57,11 @@ If you want to hide/show an element in a few seconds rather than immediately,
 you can use the \code{\link[shinyjs]{delay}} function.
 }
 \note{
+If you use S4 classes, you should be aware of the fact that both S4 and
+\code{shinyjs} use the \code{show()} function. This means that when using S4,
+it is recommended to use \code{showElement()} from \code{shinyjs}, and to
+use \code{methods::show()} for S4 object.
+
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 in the app's ui.
 }
