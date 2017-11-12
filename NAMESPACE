@@ -3,6 +3,7 @@
 export(addClass)
 export(addCssClass)
 export(alert)
+export(click)
 export(colourInput)
 export(colourPicker)
 export(delay)

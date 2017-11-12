@@ -781,7 +781,19 @@ shinyjs = function() {
       setTimeout(function() {
         Shiny.onInputChange(params.shinyInputId, params.ms);
       }, params.ms);
-   }
+   },
+
+    // click on a button
+    click : function(params) {
+      var defaultParams = {
+        id : null
+      };
+      params = shinyjs.getParams(params, defaultParams);
+
+      var $el = _getElements(params);
+      if ($el === null) return;
+      $el.click();
+    }
   };
 }();
 

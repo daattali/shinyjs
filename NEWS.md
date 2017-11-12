@@ -3,6 +3,7 @@
 - Bug fix: `reset()` wasn't working on checkboxes/select inputs that had comma in the value (#130)
 - fixed bug where using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour (#120)
 - fixed bug where logjs()+showLog() wasn't working when app first runs
+- added `click()` function that simulates a user clicking on a button
 
 # shinyjs 0.9
 
