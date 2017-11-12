@@ -110,26 +110,30 @@ first call `useShinyjs()` anywhere in the app's UI.**
 <td>Show a message to the</td>
 </tr>
 <tr class="even">
+<td><code>click</code></td>
+<td>Simulate a click on a button</td>
+</tr>
+<tr class="odd">
 <td><code>html</code></td>
 <td>Change the text/HTML of an element.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>onclick</code></td>
 <td>Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a <code>shinyjs</code> function when an element is clicked, though any R code can be used.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>onevent</code></td>
 <td>Similar to <code>onclick</code>, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc).</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>addClass</code>/<code>removeClass</code>/<code>toggleClass</code></td>
 <td>add or remove a CSS class from an element.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>runjs</code></td>
 <td>Run arbitrary JavaScript code.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>extendShinyjs</code></td>
 <td>Allows you to write your own JavaScript functions and use <code>shinyjs</code> to call them as if they were regular R code. More information is available in the section &quot;Calling your own JavaScript functions from R&quot; below.</td>
 </tr>
