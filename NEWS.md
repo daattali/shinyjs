@@ -4,6 +4,7 @@
 - fixed bug where using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour (#120)
 - fixed bug where logjs()+showLog() wasn't working when app first runs
 - added `click()` function that simulates a user clicking on a button
+- Make all colourInput-related function defunct because they are now in the `colourpicker` package
 
 # shinyjs 0.9
 

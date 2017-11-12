@@ -39,7 +39,6 @@ useful, please consider supporting its development\!**
   - [Basic use case - complete working example](#usecase)
   - [Calling your own JavaScript functions from R](#extendshinyjs)
   - [FAQ and extra tricks](#faq-tricks)
-  - [Colour Picker input & addin](#colourpicker)
   - [More resources](#more-resources)
 
 <h2 id="demos">
@@ -289,26 +288,6 @@ could be useful. Note that all of these require using `extendShinyjs()`.
     `sliderInput`?](http://stackoverflow.com/a/31066997/3943160)
   - [How do I call JavaScript code and use the return
     value?](http://stackoverflow.com/a/34728125/3943160)
-
-<h2 id="colourpicker">
-
-Colour Picker input & addin
-
-</h2>
-
-**NOTE: As of August 2016, the colour picker functions are deprecated
-and have moved into a separate package
-[`colourpicker`](https://github.com/daattali/colourpicker). Please use
-the `colourpicker` package instead of `shinyjs` in the future.**
-
-`shinyjs` has a `colourInput()` function that lets you add a colour
-picker widget to Shiny apps. There is also a colour picker RStudio addin
-(accessed through the *Addins* menu) and a gadget (accessed with the
-`colourPicker()` function) that can be used to easily select colours.
-The screenshot below is from the colour picker addin. You can also view
-a [short GIF demo](inst/img/colourPickerGadget.gif) of the addin.
-
-![Colour picker screenshot](inst/img/colourpickerscrnshot.png "fig:")
 
 <h2 id="more-resources">
 
