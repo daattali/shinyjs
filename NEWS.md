@@ -7,6 +7,7 @@
 - Make all colourInput-related function defunct because they are now in the `colourpicker` package
 - Bug fix: `reset()` wasn't working on file inputs with an ID that contained a dot (#140)
 - Moved default values of parameters to the R layer instead of being defined in javascript. This means that RStudio no longer complains of missing arguments and that autocompletion will show default values. (#80)
+- Add `asis` parameter to any function that takes an ID. When `asis=TRUE`, the ID will not be namespaced when inside a module (#118)
 
 # shinyjs 0.9
 

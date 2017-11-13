@@ -17,6 +17,8 @@
 #' other code that was previously set using \code{onevent} or \code{onclick}; otherwise
 #' \code{expr} will overwrite any previous expressions. Note that this parameter
 #' works well in web browsers but is buggy when using the RStudio Viewer.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -58,17 +60,17 @@
 
 #' @rdname onevent
 #' @export
-onclick <- function(id, expr, add = FALSE) {
-  oneventHelper("click", id, substitute(expr), add)
+onclick <- function(id, expr, add = FALSE, asis = FALSE) {
+  oneventHelper("click", id, substitute(expr), add, asis = asis)
 }
 
 #' @rdname onevent
 #' @export
-onevent <- function(event, id, expr, add = FALSE) {
-  oneventHelper(event, id, substitute(expr), add)
+onevent <- function(event, id, expr, add = FALSE, asis = FALSE) {
+  oneventHelper(event, id, substitute(expr), add, asis = asis)
 }
 
-oneventHelper <- function(event, id, expr, add) {
+oneventHelper <- function(event, id, expr, add, asis) {
   # evaluate expressions in the caller's environment
   parentFrame <- parent.frame(2)
 
@@ -77,7 +79,9 @@ oneventHelper <- function(event, id, expr, add) {
 
   # Make sure reset works with namespaces (shiny modules)
   if (inherits(session, "session_proxy")) {
-    id <- session$ns(id)
+    if (!asis) {
+      id <- session$ns(id)
+    }
   }
 
   # attach the event callback from JS to call this function to execute the

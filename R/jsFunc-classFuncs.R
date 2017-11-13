@@ -27,6 +27,8 @@
 #' @param selector JQuery selector of the elements to target. Ignored if the \code{id}
 #' argument is given. For example, to add a certain class to all inputs with class x,
 #' use \code{selector = "input.x"}
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
 #' \code{\link[shinyjs]{inlineCSS}},
@@ -83,9 +85,9 @@ NULL
 
 #' @export
 #' @rdname classFuncs
-addClass <- function(id = NULL, class = NULL, selector = NULL) {
+addClass <- function(id = NULL, class = NULL, selector = NULL, asis = FALSE) {
   fxn <- "addClass"
-  params <- list(id = id, class = class, selector = selector)
+  params <- list(id = id, class = class, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 #' @export
@@ -94,9 +96,9 @@ addCssClass <- addClass
 
 #' @export
 #' @rdname classFuncs
-removeClass <- function(id = NULL, class = NULL, selector = NULL) {
+removeClass <- function(id = NULL, class = NULL, selector = NULL, asis = FALSE) {
   fxn <- "removeClass"
-  params <- list(id = id, class = class, selector = selector)
+  params <- list(id = id, class = class, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 #' @export
@@ -105,10 +107,11 @@ removeCssClass <- removeClass
 
 #' @export
 #' @rdname classFuncs
-toggleClass <- function(id = NULL, class = NULL, condition = NULL, selector = NULL) {
+toggleClass <- function(id = NULL, class = NULL, condition = NULL,
+                        selector = NULL, asis = FALSE) {
   fxn <- "toggleClass"
   params <- list(id = id, class = class, condition = condition,
-                 selector = selector)
+                 selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 #' @export

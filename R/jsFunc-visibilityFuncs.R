@@ -29,6 +29,8 @@
 #' \code{id} argument is given. For example, to select all span elements with
 #' class x, use \code{selector = "span.x"}
 #' @param condition An optional argument to \code{toggle}, see 'Details' below.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
 #' \code{\link[shinyjs]{hidden}},
@@ -89,10 +91,10 @@ NULL
 #' @export
 #' @rdname visibilityFuncs
 show <- function(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-                 selector = NULL) {
+                 selector = NULL, asis = FALSE) {
   fxn <- "show"
   params <- list(id = id, anim = anim, animType = animType,
-                 time = time, selector = selector)
+                 time = time, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
@@ -103,10 +105,10 @@ showElement <- show
 #' @export
 #' @rdname visibilityFuncs
 hide <- function(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-                 selector = NULL) {
+                 selector = NULL, asis = FALSE) {
   fxn <- "hide"
   params <- list(id = id, anim = anim, animType = animType,
-                 time = time, selector = selector)
+                 time = time, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
@@ -117,10 +119,11 @@ hideElement <- hide
 #' @export
 #' @rdname visibilityFuncs
 toggle <- function(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-                   selector = NULL, condition = NULL) {
+                   selector = NULL, condition = NULL, asis = FALSE) {
   fxn <- "toggle"
   params <- list(id = id, anim = anim, animType = animType,
-                 time = time, selector = selector, condition = condition)
+                 time = time, selector = selector, condition = condition,
+                 asis = asis)
   jsFuncHelper(fxn, params)
 }
 

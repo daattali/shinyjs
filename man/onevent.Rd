@@ -6,9 +6,9 @@
 \alias{onevent}
 \title{Run R code when an event is triggered on an element}
 \usage{
-onclick(id, expr, add = FALSE)
+onclick(id, expr, add = FALSE, asis = FALSE)
 
-onevent(event, id, expr, add = FALSE)
+onevent(event, id, expr, add = FALSE, asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -22,6 +22,9 @@ when you want to know for example what key was pressed on a "keypress" event.}
 other code that was previously set using \code{onevent} or \code{onclick}; otherwise
 \code{expr} will overwrite any previous expressions. Note that this parameter
 works well in web browsers but is buggy when using the RStudio Viewer.}
+
+\item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
+(instead of adding the namespace prefix to the ID).}
 
 \item{event}{The event that needs to be triggered to run the code. See below
 for a list of possible event types.}
