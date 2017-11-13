@@ -73,7 +73,7 @@ reset <- function(id) {
                                           shinyInputId = shinyInputIdJs))
 
   # listen for a response from javascript
-  shiny::observeEvent(session$input[[shinyInputId]], {
+  shiny::observeEvent(session$input[[shinyInputId]], once = TRUE, {
     messages <- session$input[[shinyInputId]]
 
     # go through each input element that javascript told us about and call

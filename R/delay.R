@@ -54,7 +54,7 @@ delay <- function(ms, expr) {
                                           shinyInputId = shinyInputIdJs))
 
   # listen for a response from javascript when the delay is up
-  shiny::observeEvent(session$input[[shinyInputId]], {
+  shiny::observeEvent(session$input[[shinyInputId]], once = TRUE, {
     expr
   })
 
