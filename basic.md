@@ -52,7 +52,7 @@ However, if you use shinyjs in any of the following cases:
 
 - In Shiny dashboards (built using the `shinydashboard` package)
 - In Shiny apps that use a `navbarPage` layout
-- In interactive Rmd documents
+- In Rmd documents
 - In Shiny apps that manually build the user interface with an HTML file or template (instead of using Shiny's UI functions)
 
 Then you should read the [Advanced help page]({{ site.baseurl }}/advanced).

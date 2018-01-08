@@ -4,7 +4,7 @@ baseurl: "/shinyjs"
 title: shinyjs R package | by Dean Attali
 
 # Short description of your site
-description: Easily improve the user experience in your Shiny apps in seconds.
+description: Easily improve the user experience of your Shiny apps in seconds.
 
 # --- Navigation bar options --- #
 
@@ -13,7 +13,8 @@ navbar-links:
   Overview: overview
   Quick Start: basic
   Example: example
-  Extend shinyjs: extend
+  Advanced: advanced
+  Extend: extend
   Help: help
 
 # --- Footer options --- #
@@ -22,7 +23,7 @@ navbar-links:
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
   name: Dean Attali
-  email: "daattali@gmail.com"
+  email: "dean@attalitech.com"
 
 
 # Fill in your Google Analytics ID to track your website using GA

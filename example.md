@@ -7,7 +7,7 @@ subtitle: shinyjs example app walk-through
 This page provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly.
 
 You can view the final Shiny app developed in this simple example
-[here](http://daattali.com/shiny/shinyjs-basic/).
+[here](https://daattali.com/shiny/shinyjs-basic/).
 
 # Example app overview
 
@@ -255,4 +255,4 @@ shinyApp(
 )
 ```
 
-You can view the final app [here](http://daattali.com/shiny/shinyjs-basic/).
+You can view the final app [here](https://daattali.com/shiny/shinyjs-basic/).

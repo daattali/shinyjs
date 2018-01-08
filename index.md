@@ -1,22 +1,22 @@
 ---
 layout: base
 title: shinyjs
-subtitle: Easily improve the user experience in your Shiny apps in seconds
+subtitle: Easily improve the user experience of your Shiny apps in seconds
 css: /css/index.css
-share-img: http://deanattali.com/shinyjs/img/shinyjs.PNG
+share-img: https://deanattali.com/shinyjs/img/shinyjs.PNG
 ---
 
 <div id="page-header">
   <div id="page-title">
     <span class="col-shiny">shiny</span><span class="col-js">JS</span>
   </div>
-  <div id="page-subtitle">Easily improve the user experience in your Shiny apps in seconds</div>
+  <div id="page-subtitle">Easily improve the user experience of your Shiny apps in seconds</div>
   <div id="header-btns">
     <a id="header-btn-left" class="btn" href="{{ site.baseurl }}/demo">Demo</a>
     <a id="header-btn-right" class="btn" href="{{ site.baseurl }}/basic">Get Started</a>
   </div>
   <div id="header-credits">
-    <a href="http://deanattali.com">Created by Dean Attali</a>
+    <a href="https://deanattali.com">Created by Dean Attali</a>
     <a href="https://github.com/daattali/shinyjs">View on GitHub</a>
   </div>
 </div>
@@ -60,7 +60,7 @@ share-img: http://deanattali.com/shinyjs/img/shinyjs.PNG
 </div>
 
 <div id="license-section">
-  shinyjs is under the AGPL-3 license. For commercial usage, please <a href="http://deanattali.com/contact">contact me</a>.
+  shinyjs is under the AGPL-3 license. For commercial usage, please <a href="https://deanattali.com/contact">contact me</a>.
   <p>If you find shinyjs useful, please consider supporting its development!</p>
   <div id="smiley"><i class="fa fa-smile-o"></i></div>
 

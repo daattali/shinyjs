@@ -3,7 +3,7 @@ layout: page
 title: Overview
 ---
 
-# Functions to improve user experience in your apps
+# Functions to improve user experience of your apps
 
 In order to use any shinyjs function in a Shiny app, you must first call `useShinyjs()` anywhere in the app's UI.
 

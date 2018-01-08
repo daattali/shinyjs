@@ -7,7 +7,9 @@ subtitle: Including shinyjs in different types of apps
 - [Basic use of shinyjs](#usage-basic)
 - [Using shinyjs in Shiny Dashboards](#usage-dashboard)
 - [Using shinyjs with navbarPage layout](#usage-navbarpage)
-- [Using shinyjs in interactive R Markdown documents](#usage-interactive)
+- [Using shinyjs in R Markdown documents](#usage-rmd)
+    - [Rmd documents with Tabbed Sections](#usage-tabbed)
+    - [Rmd documents using `shiny_prerendered` engine](#usage-prerendered)
 - [Using shinyjs when the user interface is built using an HTML file](#usage-html)
 
 <h1 id="usage-basic" class="linked-section">Basic use of shinyjs</h1>
@@ -42,7 +44,7 @@ However, if you use shinyjs in any of the following cases:
 
 - In Shiny dashboards (built using the `shinydashboard` package)
 - In Shiny apps that use a `navbarPage` layout
-- In interactive Rmd documents
+- In Rmd documents
 - In Shiny apps that manually build the user interface with an HTML file or template (instead of using Shiny's UI functions)
 
 Then the following sections will show you how you to include shinyjs.
@@ -103,9 +105,9 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
-<h1 id="usage-interactive" class="linked-section">Using shinyjs in interactive R Markdown documents</h1>
+<h1 id="usage-rmd" class="linked-section">Using shinyjs in R Markdown documents</h1>
 
-It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the document is set up as a Shiny document as the link above describes):
+It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the Rmd document is set up with `runtime: shiny` as the link above describes):
 
 ```
 library(shinyjs)
@@ -118,6 +120,24 @@ observeEvent(input$button, {
  toggle("hello")
 })
 ```
+
+<h2 id="usage-tabbed" class="linked-section">Rmd documents with Tabbed Sections</h2>
+
+If the Rmd file makes use of [Tabbed Sections](http://rmarkdown.rstudio.com/html_document_format.html#tabbed_sections) (using `{.tabset}`), then you should include the call to `useShinyjs(rmd = TRUE)` before the tabset definition, near the beginning of the file.
+
+<h2 id="usage-prerendered" class="linked-section">Rmd documents using `shiny_prerendered` engine</h2>
+
+If you're using the [`shiny_prerendered` Rmd format](http://rmarkdown.rstudio.com/authoring_shiny_prerendered.html), you need to include the following code in the beginning of your Rmd file, just after the YAML header:
+
+````
+```{r, echo=FALSE}
+shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+```
+```{r, context="server"}
+shinyjs::useShinyjs(html = TRUE)
+```
+<script src="shinyjs/inject.js"></script>
+````
 
 <h1 id="usage-html" class="linked-section">Using shinyjs when the user interface is built using an HTML file/template</h1>
 
