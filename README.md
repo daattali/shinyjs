@@ -15,7 +15,7 @@ shinyjs
 Easily improve the user interaction and user experience in your Shiny
 apps in seconds
 
-</p>
+</h4>
 
 <p align="center">
 
@@ -34,7 +34,7 @@ apps in seconds
 <a href="https://deanattali.com/shinyjs/">Official website</a> ·
 Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
 
-</p>
+</h4>
 
 </p>
 

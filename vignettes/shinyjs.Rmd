@@ -20,7 +20,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 
 <h3 align="center">shinyjs</h3>
 
-<h4 align="center">Easily improve the user interaction and user experience in your Shiny apps in seconds</p>
+<h4 align="center">Easily improve the user interaction and user experience in your Shiny apps in seconds</h4>
 
 <p align="center">
 <a href="https://www.paypal.me/daattali">
@@ -39,7 +39,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 &middot;
 Copyright 2016
 <a href="http://deanattali.com">Dean Attali</a>
-</p>
+</h4>
 </p>
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny 
