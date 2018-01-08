@@ -818,3 +818,6 @@ No errors, warnings, or notes
 
 ### Reviewer comments
 
+2018-01-08 Uwe Ligges
+
+Thanks, on CRAN now.
