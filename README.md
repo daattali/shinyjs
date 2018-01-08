@@ -1,5 +1,3 @@
-<p align="center">
-
 <a href="https://deanattali.com/shinyjs/">
 <img src="inst/img/shinyjs-logo-whitebg-small.png" alt="shinyjs" width=285 height=100 />
 </a>
@@ -25,8 +23,6 @@ apps in seconds <br> <a href="https://www.paypal.me/daattali">
 
 <a href="https://deanattali.com/shinyjs/">Official website</a> ·
 Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
-
-</p>
 
 </p>
 

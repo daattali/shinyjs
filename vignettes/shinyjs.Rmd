@@ -13,7 +13,7 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
-<p align="center">
+<div align="center">
 <a href="https://deanattali.com/shinyjs/">
 <img src="../inst/img/shinyjs-logo-whitebg-small.png" alt="shinyjs" width=285 height=100 />
 </a>
@@ -39,7 +39,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 Copyright 2016
 <a href="http://deanattali.com">Dean Attali</a>
 </p>
-</p>
+</div>
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny 
 apps that will greatly improve your apps without having to know any JavaScript.
