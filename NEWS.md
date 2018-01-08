@@ -1,4 +1,6 @@
-# shinyjs 0.9.0.9xxx
+# shinyjs 1.0
+
+2018-01-08
 
 - **BREAKING CHANGE** shiny version 1.0.0 is now required
 - **BREAKING CHANGE** All `colourInput`-related functions are now defunct because they are now in the `colourpicker` package
@@ -8,7 +10,8 @@
 - Bug fix: `logjs()`+`showLog()` wasn't working when app first runs
 - Bug fix: `reset()` wasn't working on file inputs with an ID that contained a dot (#140)
 - Moved default values of parameters to the R layer instead of being defined in javascript. This means that RStudio no longer complains of missing arguments and that autocompletion will show default values. (#80)
-- improve efficiency of delay and reset functions
+- Improve efficiency of `delay()` and `reset()` functions
+- Improve documentation and website (https://deanattali.com/shinyjs)
 
 # shinyjs 0.9
 
