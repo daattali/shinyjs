@@ -300,6 +300,9 @@ footer code {
   display: block;
   width: 450px;
 }
+#page-title img {
+  width: 100%;
+}
 #page-subtitle {
   font-size: 30px;
   color: #fff;
