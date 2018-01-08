@@ -20,10 +20,8 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 
 <h3 align="center">shinyjs</h3>
 
-<p align="center">
-Easily improve the user interaction and user experience in your Shiny apps in seconds
+<p align="center">Easily improve the user interaction and user experience in your Shiny apps in seconds
 <br>
-
 <a href="https://www.paypal.me/daattali">
 <img src="http://i.imgur.com/vCIGFrH.png" alt="Donate" />
 </a>

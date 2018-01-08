@@ -13,9 +13,7 @@ shinyjs
 <p align="center">
 
 Easily improve the user interaction and user experience in your Shiny
-apps in seconds <br>
-
-<a href="https://www.paypal.me/daattali">
+apps in seconds <br> <a href="https://www.paypal.me/daattali">
 <img src="http://i.imgur.com/vCIGFrH.png" alt="Donate" /> </a>
 <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
