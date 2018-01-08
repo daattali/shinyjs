@@ -299,6 +299,8 @@ footer code {
   margin: 0 auto;
   display: block;
   width: 450px;
+  font-size: 120px;
+  font-weight: 800;
 }
 #page-title img {
   width: 100%;
@@ -350,6 +352,8 @@ footer code {
   }
   #page-title {
     width: 295px;
+    font-size: 80px;
+    line-height: 80px;
   }
   #page-subtitle {
     font-size: 24px;
@@ -371,6 +375,8 @@ footer code {
 @media only screen and (max-width: 450px) {
   #page-title {
     width: 190px;
+    font-size: 50px;
+    line-height: 50px;
   }
   #page-subtitle {
     line-height: 30px;
