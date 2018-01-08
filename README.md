@@ -15,18 +15,18 @@ shinyjs
 Easily improve the user interaction and user experience in your Shiny
 apps in seconds <br><br>
 <a href="https://deanattali.com/shinyjs/">Official website</a> ·
-Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
+Copyright 2016 <a href="https://deanattali.com">Dean Attali</a>
 
 </h4>
 
 <p align="center">
 
-<a href="https://www.paypal.me/daattali">
-<img src="http://i.imgur.com/vCIGFrH.png" alt="Donate" /> </a>
+<a href="https://www.paypal.me/daattali/20">
+<img src="https://i.imgur.com/vCIGFrH.png" alt="Donate" /> </a>
 <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
 </a> <a href="https://cran.r-project.org/package=shinyjs">
-<img src="http://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
+<img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
 </a>
 
 </p>
@@ -46,12 +46,12 @@ developer. `shinyjs` can also be used to easily call your own custom
 JavaScript functions from R.
 
 **shinyjs is under the AGPL-3 license. For a commercial license, please
-[contact me](http://deanattali.com/aboutme#contact). If you find shinyjs
+[contact me](https://deanattali.com/contact). If you find shinyjs
 useful, please consider supporting its development\!**
 
 <p align="center">
 
-<a href="https://www.paypal.me/daattali">
+<a href="https://www.paypal.me/daattali/20">
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
 </a>
 
@@ -74,16 +74,17 @@ Demos and tutorials
 
 </h2>
 
-  - [Demo Shiny app](http://deanattali.com/shinyjs/demo) that lets you
+  - [Demo Shiny app](https://deanattali.com/shinyjs/demo) that lets you
     play around with some of the functionality in `shinyjs`.
   - [Video of my shinyjs
-    talk](http://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and
+    talk](https://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and
     the corresponding [presentation
-    slides](http://bit.ly/shinyjs-slides) from the 2016 Shiny Developer
+    slides](https://bit.ly/shinyjs-slides) from the 2016 Shiny Developer
     Conference.
-  - [Video of my shinyjs talk](http://deanattali.com/shinyjs-user-2016/)
-    (5 min) and the corresponding [presentation
-    slides](http://bit.ly/shinyjs-slides-useR2016) from the 2016 useR
+  - [Video of my shinyjs
+    talk](https://deanattali.com/shinyjs-user-2016/) (5 min) and the
+    corresponding [presentation
+    slides](https://bit.ly/shinyjs-slides-useR2016) from the 2016 useR
     Conference.
 
 <h2 id="overview-main">
@@ -199,7 +200,7 @@ first call `useShinyjs()` anywhere in the app's UI.**
 </tbody>
 </table>
 
-[Check out the shinyjs demo app](http://deanattali.com/shinyjs/demo) to
+[Check out the shinyjs demo app](https://deanattali.com/shinyjs/demo) to
 see some of these in action, or install `shinyjs` and run
 `shinyjs::runExample()` to see more demos.
 
@@ -260,7 +261,7 @@ However, if you use shinyjs in any of the following cases:
     file or template (instead of using Shiny's UI functions)
 
 Then you should see the [*Including shinyjs in different types of
-apps*](vignettes/./shinyjs-usage.Rmd) document.
+apps*](https://deanattali.com/shinyjs/advanced) document.
 
 If your Shiny app doesn't fall into any of these categories, then the
 above code sample should be enough to get your started with including
@@ -272,9 +273,10 @@ Basic use case - complete working example
 
 </h2>
 
-See the [*shinyjs example app walk-through*](vignettes/./shinyjs-example.Rmd)
-document for a step-by-step guide on how to add a variety of shinyjs
-features to a simple app in order to make it more user friendly.
+See the [*shinyjs example app
+walk-through*](https://deanattali.com/shinyjs/example) document for a
+step-by-step guide on how to add a variety of shinyjs features to a
+simple app in order to make it more user friendly.
 
 <h2 id="extendshinyjs">
 
@@ -290,7 +292,7 @@ between R and JavaScript.
 
 To learn about this feature and see how useful it can be, see the
 [*extendShinyjs: Calling your own JavaScript functions from
-R*](vignettes/./shinyjs-extend.Rmd) document.
+R*](https://deanattali.com/shinyjs/extend) document.
 
 <h2 id="faq-tricks">
 
@@ -304,17 +306,21 @@ list of a few of these common questions with links to a solution that
 could be useful. Note that all of these require using `extendShinyjs()`.
 
   - [How do I show/hide the `shinydashboard` sidebar
-    programmatically?](http://stackoverflow.com/a/31306707/3943160)
+    programmatically?](https://stackoverflow.com/a/31306707/3943160)
   - [How do I hide/disable a
-    tab?](http://stackoverflow.com/a/31719425/3943160)
+    tab?](https://stackoverflow.com/a/31719425/3943160)
   - [How do I refresh the
-    page?](http://stackoverflow.com/a/34758024/3943160)
+    page?](https://stackoverflow.com/a/34758024/3943160)
   - [How do I call a JavaScript function from a different JavaScript
     library?](https://github.com/timelyportfolio/sweetalertR/issues/1#issuecomment-151685005)
   - [How do I change the values of a
-    `sliderInput`?](http://stackoverflow.com/a/31066997/3943160)
+    `sliderInput`?](https://stackoverflow.com/a/31066997/3943160)
   - [How do I call JavaScript code and use the return
-    value?](http://stackoverflow.com/a/34728125/3943160)
+    value?](https://stackoverflow.com/a/34728125/3943160)
+
+I also keep a long [list of various Shiny tips &
+tricks](https://deanattali.com/blog/advanced-shiny-tips/) for solving
+common Shiny problems, many of which make use of shinyjs.
 
 <h2 id="more-resources">
 
@@ -326,30 +332,36 @@ This document is meant to serve as a high overview of shinyjs. There are
 three more documents provided in shinyjs to teach you various aspects of
 the package:
 
-  - [Including shinyjs in different types of apps](vignettes/./shinyjs-usage.Rmd)
-  - [shinyjs example app walk-through](vignettes/./shinyjs-example.Rmd)
+  - [Including shinyjs in different types of
+    apps](https://deanattali.com/shinyjs/advanced)
+  - [shinyjs example app
+    walk-through](https://deanattali.com/shinyjs/example)
   - [extendShinyjs: Calling your own JavaScript functions from
-    R](vignettes/./shinyjs-extend.Rmd)
+    R](https://deanattali.com/shinyjs/extend)
 
-If you need help, I strongly suggest browsing the [shinyjs
-tag](http://stackoverflow.com/questions/tagged/shinyjs) on StackOverflow
-or asking your own question there. Of course you can also email me
-directly if you're in desperate need of help, or [open an
-issue](https://github.com/daattali/shinyjs/issues) for bugs.
+If you need help with shinyjs, a good place to start is to try to get
+help from the community. I suggest browsing the [shinyjs
+tag](https://stackoverflow.com/tags/shinyjs) on StackOverflow or asking
+your own question there. You can also try getting help on the [RStudio
+Community forums](https://community.rstudio.com/c/shiny).
+
+If you still canâ€™t get an answer to your question, you can [contact
+me](https://deanattali.com/contact). However, because of the high volume
+of support emails I receive daily, I can only provide support for a fee
+(as part of my [Shiny consulting](https://attalitech.com/)).
 
 ## Motivation & alternatives using native Shiny
 
 The initial release of this package was announced [on my
-blog](http://deanattali.com/2015/04/23/shinyjs-r-package/) and discusses
-these topics.
+blog](https://deanattali.com/2015/04/23/shinyjs-r-package/) and
+discusses these topics.
 
 ## Contributions
 
 If you have any suggestions or feedback, I would love to hear about it.
-You can either [message me
-directly](http://deanattali.com/aboutme#contact), [open an
-issue](https://github.com/daattali/shinyjs/issues) if you want to
-request a feature/report a bug, or make a pull request if you can
+You can either [message me directly](https://deanattali.com/contact),
+[open an issue](https://github.com/daattali/shinyjs/issues) if you want
+to request a feature/report a bug, or make a pull request if you can
 contribute.
 
 I'd like to give special thanks to the Shiny developers, especially [Joe
@@ -357,5 +369,5 @@ Cheng](http://www.joecheng.com/) for always answering all my Shiny
 questions.
 
 Lastly, if you find shinyjs useful, please consider [supporting
-me](https://www.paypal.me/daattali/15) for the countless hours I've
+me](https://www.paypal.me/daattali/20) for the countless hours I've
 spent building, documenting, and supporting this package :)
