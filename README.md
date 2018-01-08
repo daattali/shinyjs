@@ -13,7 +13,9 @@ shinyjs
 <h4 align="center">
 
 Easily improve the user interaction and user experience in your Shiny
-apps in seconds
+apps in seconds <br> <a href="https://deanattali.com/shinyjs/">Official
+website</a> · Copyright 2016 <a href="http://deanattali.com">Dean
+Attali</a>
 
 </h4>
 
@@ -29,14 +31,9 @@ apps in seconds
 
 </p>
 
-<h4 align="center">
-
-<a href="https://deanattali.com/shinyjs/">Official website</a> ·
-Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
-
-</h4>
-
 </p>
+
+-----
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 apps that will greatly improve your apps without having to know any
