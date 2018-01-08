@@ -345,7 +345,7 @@ tag](https://stackoverflow.com/tags/shinyjs) on StackOverflow or asking
 your own question there. You can also try getting help on the [RStudio
 Community forums](https://community.rstudio.com/c/shiny).
 
-If you still canâ€™t get an answer to your question, you can [contact
+If you still can't get an answer to your question, you can [contact
 me](https://deanattali.com/contact). However, because of the high volume
 of support emails I receive daily, I can only provide support for a fee
 (as part of my [Shiny consulting](https://attalitech.com/)).
