@@ -3,7 +3,7 @@ layout: base
 title: shinyjs
 subtitle: Easily improve the user experience of your Shiny apps in seconds
 css: /css/index.css
-share-img: https://deanattali.com/shinyjs/img/shinyjs.PNG
+share-img: https://deanattali.com/shinyjs/img/logo-new-transparent.png
 ---
 
 <div id="page-header">
