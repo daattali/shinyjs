@@ -1,12 +1,36 @@
-# shinyjs - Easily improve the user interaction and user experience in your Shiny apps in seconds
+<p align="center">
 
-[![Donate](http://i.imgur.com/vCIGFrH.png)](https://www.paypal.me/daattali)
-[![Build
-Status](https://travis-ci.org/daattali/shinyjs.svg?branch=master)](https://travis-ci.org/daattali/shinyjs)
-[![CRAN
-version](http://www.r-pkg.org/badges/version/shinyjs)](https://cran.r-project.org/package=shinyjs)
+<a href="https://deanattali.com/shinyjs/">
+<img src="inst/img/shinyjs-logo-whitebg-small.png" alt="shinyjs" width=285 height=100 />
+</a>
 
-> *Copyright 2016 [Dean Attali](http://deanattali.com)*
+<h3 align="center">
+
+shinyjs
+
+</h3>
+
+<p align="center">
+
+Easily improve the user interaction and user experience in your Shiny
+apps in seconds <br>
+
+<a href="https://www.paypal.me/daattali">
+<img src="http://i.imgur.com/vCIGFrH.png" alt="Donate" /> </a>
+<a href="https://travis-ci.org/daattali/shinyjs">
+<img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
+</a> <a href="https://cran.r-project.org/package=shinyjs">
+<img src="http://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
+</a>
+
+<br>
+
+<a href="https://deanattali.com/shinyjs/">Official website</a> ·
+Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
+
+</p>
+
+</p>
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny
 apps that will greatly improve your apps without having to know any
