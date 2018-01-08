@@ -800,3 +800,21 @@ No errors, warnings, or notes
 2016-12-26 Kurt Hornik
 
 Thanks, on CRAN now.
+
+# Version 1
+
+## Round 1
+
+### Test environments
+
+* Windows 7, R 3.3.3 (local)
+* ubuntu 12.04, R 3.4.2 (on travis-ci)
+
+### Submission comments
+
+2018-01-08
+
+No errors, warnings, or notes
+
+### Reviewer comments
+
