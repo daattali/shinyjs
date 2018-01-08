@@ -21,7 +21,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 <h3 align="center">shinyjs</h3>
 
 <h4 align="center">Easily improve the user interaction and user experience in your Shiny apps in seconds
-<br>
+<br><br>
 <a href="https://deanattali.com/shinyjs/">Official website</a>
 &middot;
 Copyright 2016

@@ -13,9 +13,9 @@ shinyjs
 <h4 align="center">
 
 Easily improve the user interaction and user experience in your Shiny
-apps in seconds <br> <a href="https://deanattali.com/shinyjs/">Official
-website</a> · Copyright 2016 <a href="http://deanattali.com">Dean
-Attali</a>
+apps in seconds <br><br>
+<a href="https://deanattali.com/shinyjs/">Official website</a> ·
+Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
 
 </h4>
 
