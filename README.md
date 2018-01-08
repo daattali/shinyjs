@@ -1,3 +1,5 @@
+<p align="center">
+
 <a href="https://deanattali.com/shinyjs/">
 <img src="inst/img/shinyjs-logo-whitebg-small.png" alt="shinyjs" width=285 height=100 />
 </a>
@@ -11,7 +13,13 @@ shinyjs
 <p align="center">
 
 Easily improve the user interaction and user experience in your Shiny
-apps in seconds <br> <a href="https://www.paypal.me/daattali">
+apps in seconds
+
+</p>
+
+<p align="center">
+
+<a href="https://www.paypal.me/daattali">
 <img src="http://i.imgur.com/vCIGFrH.png" alt="Donate" /> </a>
 <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
@@ -19,10 +27,14 @@ apps in seconds <br> <a href="https://www.paypal.me/daattali">
 <img src="http://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
 </a>
 
-<br>
+</p>
+
+<p align="center">
 
 <a href="https://deanattali.com/shinyjs/">Official website</a> ·
 Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
+
+</p>
 
 </p>
 

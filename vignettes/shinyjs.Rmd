@@ -13,15 +13,16 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
-<div align="center">
+<p align="center">
 <a href="https://deanattali.com/shinyjs/">
 <img src="../inst/img/shinyjs-logo-whitebg-small.png" alt="shinyjs" width=285 height=100 />
 </a>
 
 <h3 align="center">shinyjs</h3>
 
-<p align="center">Easily improve the user interaction and user experience in your Shiny apps in seconds
-<br>
+<p align="center">Easily improve the user interaction and user experience in your Shiny apps in seconds</p>
+
+<p align="center">
 <a href="https://www.paypal.me/daattali">
 <img src="http://i.imgur.com/vCIGFrH.png" alt="Donate" />
 </a>
@@ -31,15 +32,15 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 <a href="https://cran.r-project.org/package=shinyjs">
 <img src="http://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
 </a>
-    
-<br>
-    
+</p>
+
+<p align="center">
 <a href="https://deanattali.com/shinyjs/">Official website</a>
 &middot;
 Copyright 2016
 <a href="http://deanattali.com">Dean Attali</a>
 </p>
-</div>
+</p>
 
 `shinyjs` lets you perform common useful JavaScript operations in Shiny 
 apps that will greatly improve your apps without having to know any JavaScript.
