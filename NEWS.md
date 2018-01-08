@@ -1,13 +1,13 @@
 # shinyjs 0.9.0.9xxx
 
-- Bug fix: `reset()` wasn't working on checkboxes/select inputs that had comma in the value (#130)
-- fixed bug where using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour (#120)
-- fixed bug where logjs()+showLog() wasn't working when app first runs
-- added `click()` function that simulates a user clicking on a button
-- BREAKING CHANGE: Make all colourInput-related function defunct because they are now in the `colourpicker` package
+- **BREAKING CHANGE** shiny version 1.0.0 is now required
+- **BREAKING CHANGE** All `colourInput`-related functions are now defunct because they are now in the `colourpicker` package
+- Added `click()` function that simulates a user clicking on a button
+- Bug fix: `reset()` wasn't working on checkboxes/select inputs that had a comma in the value (#130)
+- Bug fix: using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour (#120)
+- Bug fix: `logjs()`+`showLog()` wasn't working when app first runs
 - Bug fix: `reset()` wasn't working on file inputs with an ID that contained a dot (#140)
 - Moved default values of parameters to the R layer instead of being defined in javascript. This means that RStudio no longer complains of missing arguments and that autocompletion will show default values. (#80)
-- BREAKING CHANGE shiny version 1.0.0 is now required
 - improve efficiency of delay and reset functions
 
 # shinyjs 0.9
