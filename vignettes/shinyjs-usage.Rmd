@@ -142,15 +142,15 @@ If the Rmd file makes use of [Tabbed Sections](http://rmarkdown.rstudio.com/html
 
 If you're using the [`shiny_prerendered` Rmd format](http://rmarkdown.rstudio.com/authoring_shiny_prerendered.html), you need to include the following code in the beginning of your Rmd file, just after the YAML header:
 
-<pre><code>
-```{r, echo=FALSE}
+````
+\u0060\u0060\u0060{r, echo=FALSE}
 shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
-```
-```{r, context="server"}
+\u0060\u0060\u0060
+\u0060\u0060\u0060{r, context="server"}
 shinyjs::useShinyjs(html = TRUE)
-```
+\u0060\u0060\u0060
 <script src="shinyjs/inject.js"></script>
-</code></pre>
+````
 
 <h2 id="usage-html">Using shinyjs when the user interface is built using an HTML file/template</h2>
 
