@@ -10,7 +10,7 @@ shinyjs
 
 </h3>
 
-<p align="center">
+<h4 align="center">
 
 Easily improve the user interaction and user experience in your Shiny
 apps in seconds
@@ -29,7 +29,7 @@ apps in seconds
 
 </p>
 
-<p align="center">
+<h4 align="center">
 
 <a href="https://deanattali.com/shinyjs/">Official website</a> ·
 Copyright 2016 <a href="http://deanattali.com">Dean Attali</a>
