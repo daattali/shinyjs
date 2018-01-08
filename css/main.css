@@ -125,6 +125,25 @@ img::-moz-selection {
   background-color: #ddd;
 }
 
+.navbar-custom .navbar-brand-logo {
+  padding-top: 0;
+  -webkit-transition: padding .5s ease-in-out;
+  -moz-transition: padding .5s ease-in-out;
+  transition: padding .5s ease-in-out;
+}
+.navbar-custom .navbar-brand-logo img {
+  height: 50px;
+  -webkit-transition: height .5s ease-in-out;
+  -moz-transition: height .5s ease-in-out;
+  transition: height .5s ease-in-out;
+}
+.navbar-custom.top-nav-short .navbar-brand-logo {
+  padding-top: 5px;
+}
+.navbar-custom.top-nav-short .navbar-brand-logo img {
+  height: 40px;
+}
+
 @media only screen and (min-width: 768px) {
   .navbar-custom {
     padding: 15px 0;
@@ -277,8 +296,9 @@ footer code {
   padding: 120px 20px 100px;
 }
 #page-title {
-  font-size: 120px;
-  font-weight: 800;
+  margin: 0 auto;
+  display: block;
+  width: 450px;
 }
 #page-subtitle {
   font-size: 30px;
@@ -291,7 +311,7 @@ footer code {
   margin-top: 35px;
 }
 #header-btns  .btn {
-  padding: 10px 33px; 
+  padding: 10px 33px;
   color: #fff;
   text-transform: uppercase;
   font-size: 20px;
@@ -326,8 +346,7 @@ footer code {
     margin-bottom: 25px;
   }
   #page-title {
-    font-size: 80px;
-    line-height: 80px;
+    width: 295;
   }
   #page-subtitle {
     font-size: 24px;
@@ -348,10 +367,9 @@ footer code {
 
 @media only screen and (max-width: 450px) {
   #page-title {
-    font-size: 50px;
-    line-height: 50px;
+    width: 190px;
   }
-  #page-subtitle { 
+  #page-subtitle {
     line-height: 30px;
   }
 }

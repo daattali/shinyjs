@@ -8,7 +8,7 @@ share-img: https://deanattali.com/shinyjs/img/logo-new-transparent.png
 
 <div id="page-header">
   <div id="page-title">
-    <span class="col-shiny">shiny</span><span class="col-js">JS</span>
+    <img src="img/logo-new-blue.png" />
   </div>
   <div id="page-subtitle">Easily improve the user experience of your Shiny apps in seconds</div>
   <div id="header-btns">
