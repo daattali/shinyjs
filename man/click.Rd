@@ -4,13 +4,10 @@
 \alias{click}
 \title{Click on a Shiny button}
 \usage{
-click(id, asis = FALSE)
+click(id)
 }
 \arguments{
 \item{id}{The id of the button}
-
-\item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
-(instead of adding the namespace prefix to the ID).}
 }
 \description{
 The \code{click()} function can be used to programatically simulate a click

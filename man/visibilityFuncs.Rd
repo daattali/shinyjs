@@ -11,22 +11,22 @@
 \title{Display/hide an element}
 \usage{
 show(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, asis = FALSE)
+  selector = NULL)
 
 showElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, asis = FALSE)
+  selector = NULL)
 
 hide(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, asis = FALSE)
+  selector = NULL)
 
 hideElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, asis = FALSE)
+  selector = NULL)
 
 toggle(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, condition = NULL, asis = FALSE)
+  selector = NULL, condition = NULL)
 
 toggleElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, condition = NULL, asis = FALSE)
+  selector = NULL, condition = NULL)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -40,9 +40,6 @@ toggleElement(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
 \item{selector}{JQuery selector of the elements to show/hide. Ignored if the
 \code{id} argument is given. For example, to select all span elements with
 class x, use \code{selector = "span.x"}}
-
-\item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
-(instead of adding the namespace prefix to the ID).}
 
 \item{condition}{An optional argument to \code{toggle}, see 'Details' below.}
 }

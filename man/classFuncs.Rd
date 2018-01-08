@@ -10,19 +10,18 @@
 \alias{toggleCssClass}
 \title{Add/remove CSS class}
 \usage{
-addClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
+addClass(id = NULL, class = NULL, selector = NULL)
 
-addCssClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
+addCssClass(id = NULL, class = NULL, selector = NULL)
 
-removeClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
+removeClass(id = NULL, class = NULL, selector = NULL)
 
-removeCssClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
+removeCssClass(id = NULL, class = NULL, selector = NULL)
 
-toggleClass(id = NULL, class = NULL, condition = NULL, selector = NULL,
-  asis = FALSE)
+toggleClass(id = NULL, class = NULL, condition = NULL, selector = NULL)
 
 toggleCssClass(id = NULL, class = NULL, condition = NULL,
-  selector = NULL, asis = FALSE)
+  selector = NULL)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -32,9 +31,6 @@ toggleCssClass(id = NULL, class = NULL, condition = NULL,
 \item{selector}{JQuery selector of the elements to target. Ignored if the \code{id}
 argument is given. For example, to add a certain class to all inputs with class x,
 use \code{selector = "input.x"}}
-
-\item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
-(instead of adding the namespace prefix to the ID).}
 
 \item{condition}{An optional argument to \code{toggleClass}, see 'Details' below.}
 }
