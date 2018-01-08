@@ -6,7 +6,7 @@
 \alias{shinyjs-package}
 \title{shinyjs}
 \description{
-Easily improve the user interaction and user experience in your Shiny apps in seconds
+Easily improve the user experience of your Shiny apps in seconds
 }
 \details{
 \code{shinyjs} lets you perform common JavaScript operations that enhance the user experience in

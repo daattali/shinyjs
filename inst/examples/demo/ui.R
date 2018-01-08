@@ -6,7 +6,7 @@ share <- list(
   title = "shinyjs package",
   url = "http://daattali.com/shiny/shinyjs-demo/",
   image = "http://daattali.com/shiny/img/shinyjs.png",
-  description = "Easily improve the user interaction and user experience in your Shiny apps in seconds",
+  description = "Easily improve the user experience of your Shiny apps in seconds",
   twitter_user = "daattali"
 )
 
@@ -44,7 +44,7 @@ shinyUI(fluidPage(
           "shinyjs package"
       ),
       div(id = "subtitle",
-          "Easily improve the user interaction and user experience in your Shiny apps in seconds"),
+          "Easily improve the user experience of your Shiny apps in seconds"),
       div(id = "subsubtitle",
           "Created by",
           tags$a(href = "http://deanattali.com/", "Dean Attali"),

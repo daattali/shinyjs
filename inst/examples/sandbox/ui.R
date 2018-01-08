@@ -23,7 +23,7 @@ shinyUI(fluidPage(
           "shinyjs package"
       ),
       div(id = "subtitle",
-          "Easily improve the user interaction and user experience in your Shiny apps in seconds"),
+          "Easily improve the user experience of your Shiny apps in seconds"),
       div(id = "subsubtitle",
           "Created by",
           tags$a(href = "http://deanattali.com/", "Dean Attali"),
