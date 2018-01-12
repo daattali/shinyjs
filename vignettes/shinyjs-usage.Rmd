@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Including shinyjs in different types of apps}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{Unicode}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, echo = FALSE, message = FALSE}
@@ -145,10 +145,10 @@ If you're using the [`shiny_prerendered` Rmd format](http://rmarkdown.rstudio.co
 ````
 `​``{r, echo=FALSE}
 shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
-```
+```
 `​``{r, context="server"}
 shinyjs::useShinyjs(html = TRUE)
-```
+```
 <script src="shinyjs/inject.js"></script>
 ````
 
