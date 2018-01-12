@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Including shinyjs in different types of apps}
   %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}
+  %\VignetteEncoding{Unicode}
 ---
 
 ```{r setup, echo = FALSE, message = FALSE}
