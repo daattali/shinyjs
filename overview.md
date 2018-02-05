@@ -15,8 +15,8 @@ In order to use any shinyjs function in a Shiny app, you must first call `useShi
 | `disabled` | Initialize a Shiny input as disabled. |
 | `reset` | Reset a Shiny input widget back to its original value. |
 | `delay` | Execute R code (including any `shinyjs` functions) after a specified amount of time. |
-| `alert` | Show a message to the  |
-| `click` | Simulate a click on a button |
+| `alert` | Show a message to the user. |
+| `click` | Simulate a click on a button. |
 | `html` | Change the text/HTML of an element. |
 | `onclick` | Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a `shinyjs` function when an element is clicked, though any R code can be used. |
 | `onevent` | Similar to `onclick`, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc). |
