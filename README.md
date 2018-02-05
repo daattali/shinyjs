@@ -133,11 +133,11 @@ first call `useShinyjs()` anywhere in the app's UI.**
 </tr>
 <tr class="odd">
 <td><code>alert</code></td>
-<td>Show a message to the</td>
+<td>Show a message to the user.</td>
 </tr>
 <tr class="even">
 <td><code>click</code></td>
-<td>Simulate a click on a button</td>
+<td>Simulate a click on a button.</td>
 </tr>
 <tr class="odd">
 <td><code>html</code></td>
