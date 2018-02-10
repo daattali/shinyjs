@@ -48,9 +48,11 @@ shinyjs = function() {
   var _getContainer = function(els) {
     return $.map(els, function(el) {
       el = $(el);
-      var inputContainer = el.closest(".shiny-input-container");
-      if (inputContainer.length > 0) {
-        el = inputContainer;
+      if (el.hasClass("shiny-bound-input")) {
+        var inputContainer = el.closest(".shiny-input-container");
+        if (inputContainer.length > 0) {
+          el = inputContainer;
+        }
       }
       return el;
     });
