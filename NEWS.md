@@ -1,3 +1,7 @@
+# shinyjs 1.0.1.9000
+
+- hide/show: only bubble up the DOM tree to the nearest input container if the current element is an input; fixes #153
+
 # shinyjs 1.0
 
 2018-01-08
