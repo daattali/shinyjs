@@ -1,6 +1,8 @@
-# shinyjs 1.0.1.9000
+# shinyjs 1.0.1.*
 
-- hide/show: only bubble up the DOM tree to the nearest input container if the current element is an input; fixes #153
+- New fearure: `hide()`/`show()`: only bubble up the DOM tree to the nearest input container if the current element is an input; fixes #153
+- New feature: `onevent()` returns the `offsetX` and `offsetY` event properties
+- New feature: `onevent()` accepts a `properties` parameter that allows the user to retrieve additional properties that are not whitelisted by default; fixes #159
 
 # shinyjs 1.0
 

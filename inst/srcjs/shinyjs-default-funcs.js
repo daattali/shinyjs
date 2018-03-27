@@ -413,13 +413,14 @@ shinyjs = function() {
           elementData = _oneventData[id];
         }
         if (elementData !== null) {
-          $.each(elementData, function(event, eventData) {
-            $.each(eventData, function(idx, shinyInputId) {
+          $.each(elementData, function(event, eventDatas) {
+            $.each(eventDatas, function(idx, eventData) {
               _oneventAttach({
-                event : event,
-                id : id,
-                shinyInputId : shinyInputId,
-                add : true
+                event        : event,
+                id           : id,
+                shinyInputId : eventData.shinyInputId,
+                add          : true,
+                customProps  : eventData.customProps
               });
             });
           });
@@ -450,6 +451,7 @@ shinyjs = function() {
         var props = ['altKey', 'button', 'buttons', 'clientX', 'clientY',
           'ctrlKey', 'pageX', 'pageY', 'screenX', 'screenY', 'shiftKey',
           'which', 'charCode', 'key', 'keyCode', 'offsetX', 'offsetY'];
+        props = props.concat(params.customProps);
         var eventSimple = {};
         $.each(props, function(idx, prop) {
           if (prop in event) {
@@ -700,7 +702,8 @@ shinyjs = function() {
         event        : null,
         id           : null,
         shinyInputId : null,
-        add          : false
+        add          : false,
+        customProps  : []
       }
       params = shinyjs.getParams(params, defaultParams);
 
@@ -716,7 +719,10 @@ shinyjs = function() {
         if (!(params.event in elementData) || !params.add) {
           elementData[params.event] = [];
         }
-        elementData[params.event].push(params.shinyInputId);
+        elementData[params.event].push({
+          "shinyInputId" : params.shinyInputId,
+          "customProps"  : params.customProps
+        });
       }
       // if the element does exist, add the event handler
       else {
