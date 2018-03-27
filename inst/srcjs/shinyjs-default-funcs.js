@@ -449,7 +449,7 @@ shinyjs = function() {
         // Store a subset of the event properties (many are non-serializeable)
         var props = ['altKey', 'button', 'buttons', 'clientX', 'clientY',
           'ctrlKey', 'pageX', 'pageY', 'screenX', 'screenY', 'shiftKey',
-          'which', 'charCode', 'key', 'keyCode'];
+          'which', 'charCode', 'key', 'keyCode', 'offsetX', 'offsetY'];
         var eventSimple = {};
         $.each(props, function(idx, prop) {
           if (prop in event) {
