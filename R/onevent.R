@@ -21,6 +21,8 @@
 #' @param properties A list of JavaScript Event properties that should be available
 #' to the argument of the \code{expr} function. See below for more information about
 #' Event properties.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -75,26 +77,29 @@
 
 #' @rdname onevent
 #' @export
-onclick <- function(id, expr, add = FALSE) {
-  oneventHelper("click", id, substitute(expr), add, NULL)
+onclick <- function(id, expr, add = FALSE, asis = FALSE) {
+  oneventHelper("click", id, substitute(expr), add = add,
+                properties = NULL, asis = asis)
 }
 
 #' @rdname onevent
 #' @export
-onevent <- function(event, id, expr, add = FALSE, properties = NULL) {
-  oneventHelper(event, id, substitute(expr), add, properties)
+onevent <- function(event, id, expr, add = FALSE, properties = NULL, asis = FALSE) {
+  oneventHelper(event, id, substitute(expr), add, properties, asis = asis)
 }
 
-oneventHelper <- function(event, id, expr, add, properties) {
+oneventHelper <- function(event, id, expr, add, properties, asis) {
   # evaluate expressions in the caller's environment
   parentFrame <- parent.frame(2)
 
   # get the Shiny session
   session <- getSession()
 
-  # Make sure reset works with namespaces (shiny modules)
+  # Make sure onevent works with namespaces (shiny modules)
   if (inherits(session, "session_proxy")) {
-    id <- session$ns(id)
+    if (!asis) {
+      id <- session$ns(id)
+    }
   }
 
   # attach the event callback from JS to call this function to execute the

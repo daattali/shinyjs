@@ -17,6 +17,8 @@
 #' @param selector Query selector of the elements to target.  Ignored if the \code{id}
 #' argument is given. For example, to disable all text inputs, use
 #' \code{selector = "input[type='text']"}
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{disabled}}
@@ -75,24 +77,24 @@ NULL
 
 #' @export
 #' @rdname stateFuncs
-enable <- function(id = NULL, selector = NULL) {
+enable <- function(id = NULL, selector = NULL, asis = FALSE) {
   fxn <- "enable"
-  params <- list(id = id, selector = selector)
+  params <- list(id = id, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
 #' @export
 #' @rdname stateFuncs
-disable <- function(id = NULL, selector = NULL) {
+disable <- function(id = NULL, selector = NULL, asis = FALSE) {
   fxn <- "disable"
-  params <- list(id = id, selector = selector)
+  params <- list(id = id, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
 #' @export
 #' @rdname stateFuncs
-toggleState <- function(id = NULL, condition = NULL, selector = NULL) {
+toggleState <- function(id = NULL, condition = NULL, selector = NULL, asis = FALSE) {
   fxn <- "toggleState"
-  params <- list(id = id, condition = condition, selector = selector)
+  params <- list(id = id, condition = condition, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }

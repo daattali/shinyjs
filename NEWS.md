@@ -4,6 +4,7 @@
 - New feature: `onevent()` returns the `offsetX` and `offsetY` event properties
 - New feature: `onevent()` accepts a `properties` parameter that allows the user to retrieve additional properties that are not whitelisted by default; fixes #159
 - Fix bug: shinyjs functions used inside a module with a `selector` argument instead of an `id` argument didn't work
+- Add `asis` parameter to any function that takes an ID. When `asis=TRUE`, the ID will not be namespaced when inside a module (#118)
 
 # shinyjs 1.0
 

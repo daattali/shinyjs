@@ -31,7 +31,9 @@ jsFuncHelper <- function(fxn, params) {
   # respect Shiny modules/namespaces
   if (inherits(session , "session_proxy")) {
     if ("id" %in% names(params) && !is.null(params[['id']])) {
-      params[['id']] <- session$ns(params[['id']])
+      if (!"asis" %in% names(params) || !params[['asis']]) {
+        params[['id']] <- session$ns(params[['id']])
+      }
     }
   }
 

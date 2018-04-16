@@ -4,7 +4,8 @@
 \alias{html}
 \title{Change the HTML (or text) inside an element}
 \usage{
-html(id = NULL, html = NULL, add = FALSE, selector = NULL)
+html(id = NULL, html = NULL, add = FALSE, selector = NULL,
+  asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}
@@ -17,6 +18,9 @@ otherwise overwrite it.}
 
 \item{selector}{JQuery selector of the elements to target. Ignored if the \code{id}
 argument is given.}
+
+\item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
+(instead of adding the namespace prefix to the ID).}
 }
 \description{
 Change the text or HTML inside an element.  The given HTML can be any
