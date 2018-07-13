@@ -2,7 +2,8 @@
 #'
 #' This function must be called from a Shiny app's UI in order for all other
 #' \code{shinyjs} functions to work.\cr\cr
-#' You can call \code{useShinyjs()} from anywhere inside the UI.
+#' You can call \code{useShinyjs()} from anywhere inside the UI, as long as the
+#' final app UI contains the result of \code{useShinyjs()}.
 #'
 #' @param rmd Set this to \code{TRUE} only if you are using \code{shinyjs}
 #' inside an interactive R markdown document. If using this option, view the
@@ -18,7 +19,8 @@
 #' how to use shinyjs in these apps.
 #' @param showLog Deprecated.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
-#' to the app's \code{<head>} tag.
+#' to the app's \code{<head>} tag. In order for the scripts to be inserted
+#' correctly, 
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
