@@ -112,8 +112,7 @@ runcodeServer <- function() {
       shiny::isolate(
         session$output$runcode_output <- renderText(
           paste0(capture.output(
-            eval(parse(text = session$input[['runcode_expr']]),
-                 envir = parentFrame)
+            do.call(withAutoprint, list(parse(text=session$input[['runcode_expr']])))
             ),
             collapse="\n"))
       ),
