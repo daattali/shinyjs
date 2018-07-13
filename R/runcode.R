@@ -109,8 +109,12 @@ runcodeServer <- function() {
 
     tryCatch(
       shiny::isolate(
-        session$output$runcode_output <- renderText(paste0(eval(parse(text = session$input[['runcode_expr']]),
-                                             envir = parentFrame), collapse="\n"))
+        session$output$runcode_output <- renderText(
+          paste0(capture.output(
+            eval(parse(text = session$input[['runcode_expr']]),
+                 envir = parentFrame)
+            ),
+            collapse="\n"))
       ),
       error = function(err) {
         shinyjs::html("runcode_errorMsg", as.character(err$message))
