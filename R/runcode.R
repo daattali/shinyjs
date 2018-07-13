@@ -37,7 +37,10 @@
 #'   shinyApp(
 #'     ui = fluidPage(
 #'       useShinyjs(),  # Set up shinyjs
-#'       runcodeUI(code = "shinyjs::alert('Hello!')")
+#'       runcodeUI(code = "shinyjs::alert('Hello!')"),
+#'       shiny::tags$br(),
+#'       shiny::tags$label("Output:"),
+#'       textOutput("runcode_output", container=pre)
 #'     ),
 #'     server = function(input, output) {
 #'       runcodeServer()
@@ -106,7 +109,8 @@ runcodeServer <- function() {
 
     tryCatch(
       shiny::isolate(
-        eval(parse(text = session$input[['runcode_expr']]), envir = parentFrame)
+        session$output$runcode_output <- renderText(paste0(eval(parse(text = session$input[['runcode_expr']]),
+                                             envir = parentFrame), collapse="\n"))
       ),
       error = function(err) {
         shinyjs::html("runcode_errorMsg", as.character(err$message))
