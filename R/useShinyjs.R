@@ -19,8 +19,7 @@
 #' how to use shinyjs in these apps.
 #' @param showLog Deprecated.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
-#' to the app's \code{<head>} tag. In order for the scripts to be inserted
-#' correctly, 
+#' to the app's \code{<head>} tag.
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
