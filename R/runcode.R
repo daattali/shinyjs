@@ -36,6 +36,7 @@
 #'
 #'   shinyApp(
 #'     ui = fluidPage(
+#'       shiny::tags$label("R code to execute:"),
 #'       useShinyjs(),  # Set up shinyjs
 #'       runcodeUI(code = "shinyjs::alert('Hello!')"),
 #'       shiny::tags$br(),
