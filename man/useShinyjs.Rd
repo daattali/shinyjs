@@ -31,7 +31,8 @@ to the app's \code{<head>} tag.
 \description{
 This function must be called from a Shiny app's UI in order for all other
 \code{shinyjs} functions to work.\cr\cr
-You can call \code{useShinyjs()} from anywhere inside the UI.
+You can call \code{useShinyjs()} from anywhere inside the UI, as long as the
+final app UI contains the result of \code{useShinyjs()}.
 }
 \examples{
 if (interactive()) {

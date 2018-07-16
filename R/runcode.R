@@ -11,6 +11,18 @@
 #' of your app, and a call to \code{runcodeServer()} in the server function. You
 #' also need to initialize shinyjs with a call to \code{useShinyjs()} in the UI.
 #'
+#' If a function is provided to the \code{preprocss} argument of
+#' \code{runcodeServer}, this will be called on the user-provided R code before
+#' evaluating it.  This allows, for instance, conversion of non-ASCII open and
+#' closing quote characters (unhelpfully) created by some browsers to standard
+#' ASCII quote characters (see the second example).
+#'
+#' If \code{show_output=TRUE}, the results of executing the R code will be
+#' placed into \code{output$runcode_output} using \code{shiny::renderText} to
+#' allow you to display this, if desired, by adding
+#' \code{textOutput("runcode_output", container=pre)} to the UI of your
+#' app (see the second example).
+#'
 #' @note You can only have one \code{runcode} construct in your shiny app.
 #' Calling this function multiple times within the same app will result in
 #' unpredictable behaviour.
@@ -29,22 +41,51 @@
 #' @param includeShinyjs Set this to \code{TRUE} only if your app does not have
 #' a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}
 #' in your app, do not use this parameter.
+#' @param show_output If \code{TRUE} the results of executing the R code will be
+#' placed into \code{output$runcode_output} using \code{shiny::renderText} to
+#' allow display via adding \code{textOutput("runcode_output", container=pre)}.
+#' @param preprocessor Function accepting a single vector argument, which will
+#' be called on the user-provided R code before evaluating it.
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
 #' @examples
+#'
+#' # One-line of code, no display of output
 #' if (interactive()) {
 #'   library(shiny)
 #'
 #'   shinyApp(
 #'     ui = fluidPage(
+#'       useShinyjs(),  # Set up shinyjs
+#'       runcodeUI(code = "shinyjs::alert('Hello!')")
+#'     ),
+#'     server = function(input, output) {
+#'       runcodeServer()
+#'     }
+#'   )
+#' }
+#'
+#' # Muti-line code - pre-process input to convert non-ASCII character to ASCII
+#' # and then display output as if entered on the console
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(stringi)
+#'
+#'   to_ascii <- function(x) stri_trans_general(x, "Any-Latin; Latin-ASCII")
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
 #'       shiny::tags$label("R code to execute:"),
 #'       useShinyjs(),  # Set up shinyjs
-#'       runcodeUI(code = "shinyjs::alert('Hello!')"),
+#'       runcodeUI(code = "shinyjs::alert('Hello!')\nx <- rnorm(10)\nstem(x)",
+#'                 type = "textarea",
+#'                 height="10em",
+#'                 width="80em"),
 #'       shiny::tags$br(),
 #'       shiny::tags$label("Output:"),
 #'       textOutput("runcode_output", container=pre)
 #'     ),
 #'     server = function(input, output) {
-#'       runcodeServer()
+#'       runcodeServer(show_output=TRUE, preprocess=to_ascii)
 #'     }
 #'   )
 #' }
@@ -98,7 +139,7 @@ runcodeUI <- function(code = "",
 
 #' @rdname runcode
 #' @export
-runcodeServer <- function() {
+runcodeServer <- function(show_output=FALSE, preprocessor=NULL) {
   # evaluate expressions in the caller's environment
   parentFrame <- parent.frame(1)
 
@@ -109,12 +150,22 @@ runcodeServer <- function() {
     shinyjs::hide("runcode_error")
 
     tryCatch(
-      shiny::isolate(
-        session$output$runcode_output <- renderText(
-          paste0(capture.output(
-            do.call(withAutoprint, list(parse(text=session$input[['runcode_expr']])))
-            ),
-            collapse="\n"))
+      shiny::isolate({
+        expr_text <- session$input[['runcode_expr']]
+        if(is.function(preprocessor))
+          expr_text <- preprocessor(expr_text)
+
+        output <- paste0(
+          capture.output(
+            do.call(withAutoprint,
+                    list(parse(text=expr_text)),
+                    envir=parentFrame)
+          ),
+          collapse="\n")
+
+        if(show_output)
+          session$output$runcode_output <- renderText(output)
+      }
       ),
       error = function(err) {
         shinyjs::html("runcode_errorMsg", as.character(err$message))
