@@ -38,9 +38,8 @@
 #' \code{type="ace"})
 #' @param height The height of the editable code input (ignored when
 #' \code{type="text"})
-#' @param includeShinyjs Set this to \code{TRUE} only if your app does not have
-#' a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}
-#' in your app, do not use this parameter.
+#' @param includeShinyjs Deprecated. You should always make sure to initialize
+#' shinyjs using \code{\link[shinyjs]{useShinyjs}}.
 #' @param show_output If \code{TRUE} the results of executing the R code will be
 #' placed into \code{output$runcode_output} using \code{shiny::renderText} to
 #' allow display via adding \code{textOutput("runcode_output", container=pre)}.
@@ -97,7 +96,12 @@ runcodeUI <- function(code = "",
                       type = c("text", "textarea", "ace"),
                       width = NULL,
                       height = NULL,
-                      includeShinyjs = FALSE) {
+                      includeShinyjs = NULL) {
+  if (!missing(includeShinyjs)) {
+    warning("`includeShinyjs` argument is deprecated. You should always make ",
+            "sure to initialize shinyjs using `useShinyjs()`.")
+  }
+
   type <- match.arg(type)
 
 	if (type == "ace") {
@@ -108,8 +112,6 @@ runcodeUI <- function(code = "",
 
   placeholder <- "Enter R code"
   shiny::singleton(shiny::tagList(
-    if (includeShinyjs)
-      useShinyjs(),
     if (type == "text")
       shiny::textInput(
         "runcode_expr", label = NULL, value = code,

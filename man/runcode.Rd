@@ -7,7 +7,7 @@
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
 runcodeUI(code = "", type = c("text", "textarea", "ace"), width = NULL,
-  height = NULL, includeShinyjs = FALSE)
+  height = NULL, includeShinyjs = NULL)
 
 runcodeServer(show_output = FALSE, preprocessor = NULL)
 }
@@ -27,9 +27,8 @@ Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 \item{height}{The height of the editable code input (ignored when
 \code{type="text"})}
 
-\item{includeShinyjs}{Set this to \code{TRUE} only if your app does not have
-a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}
-in your app, do not use this parameter.}
+\item{includeShinyjs}{Deprecated. You should always make sure to initialize
+shinyjs using \code{\link[shinyjs]{useShinyjs}}.}
 
 \item{show_output}{If \code{TRUE} the results of executing the R code will be
 placed into \code{output$runcode_output} using \code{shiny::renderText} to
