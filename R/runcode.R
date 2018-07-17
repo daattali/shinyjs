@@ -157,13 +157,18 @@ runcodeServer <- function(show_output=FALSE, preprocessor=NULL) {
         if(is.function(preprocessor))
           expr_text <- preprocessor(expr_text)
 
+        expr_conn <- textConnection(expr_text)
+
         output <- paste0(
-          capture.output(
-            do.call(withAutoprint,
-                    list(parse(text=expr_text)),
-                    envir=parentFrame)
-          ),
-          collapse="\n")
+            capture.output(
+              do.call(source,
+                      args=list(file=expr_conn, echo=TRUE),
+                      envir=parentFrame)
+            ),
+            "\n"
+        )
+
+
 
         if(show_output)
           session$output$runcode_output <- renderText(output)
