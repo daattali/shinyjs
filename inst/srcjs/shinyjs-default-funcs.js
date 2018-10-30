@@ -20,7 +20,7 @@ shinyjs = function() {
   // get an element by id using JQuery (escape chars that have special
   // selector meaning)
   var _jqid = function(id) {
-    return $("#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" ));
+    return $("#" + id.replace( /(:|\.|\[|\]|,|\s)/g, "\\$1" ));
   };
 
   // listen to DOM changes and whenever there are new nodes added, let all
