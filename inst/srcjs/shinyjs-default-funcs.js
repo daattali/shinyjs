@@ -482,6 +482,39 @@ shinyjs = function() {
     el.attr(attrName, JSON.stringify(attrValue));
   };
 
+  // Some browsers cannot serialize all types of event properties, so whitelist
+  // the specific properties that should be passed to Shiny from javascript events
+  // (this list of properties is based on the list of javascript events in the
+  // shiny documentation)
+  var _onshinyEventsWhitelist = {
+    'shiny:busy'                : [],
+    'shiny:idle'                : [],
+    'shiny:inputchanged'        : ['name', 'value', 'inputType', 'binding', 'el'],
+    'shiny:message'             : ['message'],
+    'shiny:conditional'         : [],
+    'shiny:bound'               : ['binding', 'bindingType'],
+    'shiny:unbound'             : ['binding', 'bindingType'],
+    'shiny:value'               : ['name', 'value', 'binding'],
+    'shiny:error'               : ['name', 'error', 'binding'],
+    'shiny:outputinvalidated'   : ['name', 'binding'],
+    'shiny:recalculating'       : [],
+    'shiny:recalculated'        : [],
+    'shiny:visualchange'        : ['visible', 'binding'],
+    'shiny:updateinput'         : ['message', 'binding'],
+    'shiny:filedownload'        : ['name', 'href']
+  };
+
+  // create a unique id
+  function _guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+  }
+
   return {
 
     // by default, debug mode is off. If shinyjs is initialized with debug mode,
@@ -800,7 +833,59 @@ shinyjs = function() {
       var $el = _getElements(params);
       if ($el === null) return;
       $el.click();
+    },
+
+    // when a shiny javascript event occurs
+    onshiny : function (params) {
+      var defaultParams = {
+        event        : null,
+        id           : null,
+        shinyInputId : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      // Send a message back to R when the shiny event occurs
+      var selector = $(document);
+      if (params.id !== null) {
+        selector = _jqid(params.id);
+      }
+      selector.on(
+        'shiny:' + params.event,
+        function(event) {
+
+          // make sure we don't get into infinite recursion by exiting if the
+          // event is something we created
+          if (event.type === "shiny:inputchanged" &&
+              event.name.indexOf("shinyjs-onshiny-cb") != -1) {
+            return;
+          }
+
+          // Only keep event properties from a whitelist because some properties
+          // cannot be serialized by all browsers
+          var miniEvent = {};
+          $.each(_onshinyEventsWhitelist[event.type], function(idx, prop) {
+            if (prop == "el") {
+              // DOM elements cannot be serialized, but we don't want to throw
+              // them away completely, so just keep the most important attributes
+              miniEvent[prop] = {
+                id : event.el.id,
+                tagName : event.el.tagName,
+                className : event.el.className
+              };
+            } else {
+              miniEvent[prop] = event[prop];
+            }
+          });
+          // Ensure there is some new piece of information so that Shiny will
+          // trigger a new event
+          miniEvent["_rnd"] = _guid();
+
+          // Send to shiny the information about the event
+          Shiny.onInputChange(params.shinyInputId, miniEvent);
+        }
+      );
     }
+
   };
 }();
 
