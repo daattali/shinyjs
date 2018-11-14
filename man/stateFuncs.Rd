@@ -23,7 +23,8 @@ argument is given. For example, to disable all text inputs, use
 \item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
 (instead of adding the namespace prefix to the ID).}
 
-\item{condition}{An optional argument to \code{toggleState}, see 'Details' below.}
+\item{condition}{An optional argument to \code{toggleState}. The element will
+be enabled when the \code{condition} is \code{TRUE}, and disabled otherwise.}
 }
 \description{
 Enable or disable an input element. A disabled element is not usable and

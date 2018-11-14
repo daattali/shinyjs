@@ -13,7 +13,8 @@
 #' then you can use \code{toggleState} instead: \code{toggleState(id, test())}.
 #'
 #' @param id The id of the input element/Shiny tag
-#' @param condition An optional argument to \code{toggleState}, see 'Details' below.
+#' @param condition An optional argument to \code{toggleState}. The element will
+#' be enabled when the \code{condition} is \code{TRUE}, and disabled otherwise.
 #' @param selector Query selector of the elements to target.  Ignored if the \code{id}
 #' argument is given. For example, to disable all text inputs, use
 #' \code{selector = "input[type='text']"}
