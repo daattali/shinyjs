@@ -16,12 +16,19 @@
 #' displayed (position, colour, size, etc.).  You can learn the basics
 #' at \href{http://www.w3schools.com/css/}{W3Schools}.
 #'
+#' @note If you use S4 classes, you should be aware of the fact that both S4 and
+#' \code{shinyjs} use the \code{removeClass()} function. This means that when using S4,
+#' it is recommended to use \code{removeCssClass()} from \code{shinyjs}, and to
+#' use \code{methods::removeClass()} for S4 object.
+#'
 #' @param id The id of the element/Shiny tag
 #' @param class The CSS class to add/remove
 #' @param condition An optional argument to \code{toggleClass}, see 'Details' below.
 #' @param selector JQuery selector of the elements to target. Ignored if the \code{id}
 #' argument is given. For example, to add a certain class to all inputs with class x,
 #' use \code{selector = "input.x"}
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
 #' \code{\link[shinyjs]{inlineCSS}},
@@ -78,43 +85,34 @@ NULL
 
 #' @export
 #' @rdname classFuncs
-addClass <- function(id, class, selector) {
+addClass <- function(id = NULL, class = NULL, selector = NULL, asis = FALSE) {
   fxn <- "addClass"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, class = class, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 #' @export
 #' @rdname classFuncs
-addCssClass <- function(id, class, selector) {
-  fxn <- "addClass"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+addCssClass <- addClass
+
 #' @export
 #' @rdname classFuncs
-removeClass <- function(id, class, selector) {
+removeClass <- function(id = NULL, class = NULL, selector = NULL, asis = FALSE) {
   fxn <- "removeClass"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, class = class, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 #' @export
 #' @rdname classFuncs
-removeCssClass <- function(id, class, selector) {
-  fxn <- "removeClass"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+removeCssClass <- removeClass
+
 #' @export
 #' @rdname classFuncs
-toggleClass <- function(id, class, condition, selector) {
+toggleClass <- function(id = NULL, class = NULL, condition = NULL, selector = NULL, asis = FALSE) {
   fxn <- "toggleClass"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, class = class, condition = condition,
+                 selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 #' @export
 #' @rdname classFuncs
-toggleCssClass <- function(id, class, condition, selector) {
-  fxn <- "toggleClass"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+toggleCssClass <- toggleClass

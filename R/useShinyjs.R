@@ -2,7 +2,8 @@
 #'
 #' This function must be called from a Shiny app's UI in order for all other
 #' \code{shinyjs} functions to work.\cr\cr
-#' You can call \code{useShinyjs()} from anywhere inside the UI.
+#' You can call \code{useShinyjs()} from anywhere inside the UI, as long as the
+#' final app UI contains the result of \code{useShinyjs()}.
 #'
 #' @param rmd Set this to \code{TRUE} only if you are using \code{shinyjs}
 #' inside an interactive R markdown document. If using this option, view the
@@ -66,7 +67,7 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
   # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
                "addClass", "removeClass", "toggleClass", "html", "onevent",
-               "alert", "logjs", "runjs", "reset", "delay")
+               "alert", "logjs", "runjs", "reset", "delay", "click")
 
   # grab the file with all the default shinyjs javascript functions
   shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))

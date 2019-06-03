@@ -2,12 +2,12 @@
 % Please edit documentation in R/runcode.R
 \name{runcode}
 \alias{runcode}
-\alias{runcodeServer}
 \alias{runcodeUI}
+\alias{runcodeServer}
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
 runcodeUI(code = "", type = c("text", "textarea", "ace"), width = NULL,
-  height = NULL, includeShinyjs = FALSE)
+  height = NULL, includeShinyjs = NULL)
 
 runcodeServer()
 }
@@ -27,9 +27,8 @@ Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 \item{height}{The height of the editable code input (ignored when
 \code{type="text"})}
 
-\item{includeShinyjs}{Set this to \code{TRUE} only if your app does not have
-a call to \code{useShinyjs()}. If you are already calling \code{useShinyjs()}
-in your app, do not use this parameter.}
+\item{includeShinyjs}{Deprecated. You should always make sure to initialize
+shinyjs using \code{\link[shinyjs]{useShinyjs}}.}
 }
 \description{
 Sometimes when developing a Shiny app, it's useful to be able to run some R
@@ -66,4 +65,3 @@ if (interactive()) {
 \seealso{
 \code{\link[shinyjs]{useShinyjs}}
 }
-

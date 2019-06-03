@@ -49,4 +49,3 @@ disabled(numericInput("num", NULL, 5), dateInput("date", NULL))
 \code{\link[shinyjs]{enable}},
 \code{\link[shinyjs]{disable}}
 }
-

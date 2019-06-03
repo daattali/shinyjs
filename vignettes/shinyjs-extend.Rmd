@@ -44,7 +44,7 @@ shinyApp(
 
 Running the code above produces this shiny app:
 
-![Extendshinyjs demo](http://deanattali.com/img/blog/shinyjs-improvements/extendshinyjs-demo.gif)
+![Extendshinyjs demo](../inst/img/extendshinyjs-demo.gif)
 
 See how easy that was? All I had to do was make the JavaScript function `shinyjs.pageCol`, pass the JavaScript code as an argument to `extendShinyjs`, and then I can call `js$pageCol()`.
 
@@ -139,6 +139,6 @@ shinyApp(
 
 And the resulting app:
 
-![Extendshinyjs params demo](http://deanattali.com/img/blog/shinyjs-improvements/extendshinyjs-params.gif)
+![Extendshinyjs params demo](../inst/img/extendshinyjs-params.gif)
 
 Note that I chose to define the JS code as a string for illustration purposes, but in reality I would prefer to place the code in a separate file and use the `script` argument instead of `text`.

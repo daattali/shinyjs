@@ -17,33 +17,23 @@ jsFunc <- function(...) {
   regex <- sprintf("^(%s:{2,3})?(%s\\$)?((\\w)+)$", pkgName, extensionName)
   fxn <- as.character(as.list(match.call()[1]))
   fxn <- sub(regex, "\\3", fxn)
-  fxn <- paste0("shinyjs-", fxn)
 
-  # get the Shiny session
-  session <- getSession()
-
-  # call the javascript function
-  session$sendCustomMessage(
-    type = fxn,
-    message = params)
-
-  invisible(NULL)
+  jsFuncHelper(fxn, params)
 }
 
+# similar to jsFunc, but here we already know the function name and parameters
 jsFuncHelper <- function(fxn, params) {
   # get the Shiny session
   session <- getSession()
 
   fxn <- paste0("shinyjs-", fxn)
 
-  # evaluate the parameters in the appropriate environment
-  parentFrame <- parent.frame(2)
-  params <- lapply(params, function(x){ eval(x, envir = parentFrame) })
-
   # respect Shiny modules/namespaces
   if (inherits(session , "session_proxy")) {
-    if ("id" %in% names(params)) {
-      params[['id']] <- session$ns(params[['id']])
+    if ("id" %in% names(params) && !is.null(params[['id']])) {
+      if (!"asis" %in% names(params) || !params[['asis']]) {
+        params[['id']] <- session$ns(params[['id']])
+      }
     }
   }
 

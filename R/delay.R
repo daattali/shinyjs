@@ -40,7 +40,7 @@ delay <- function(ms, expr) {
   hashable <- sprintf("%s_%s_%s_%s",
                       ms,
                       as.integer(Sys.time()),
-                      as.integer(stats::runif(1, 0, 1e9)),
+                      as.integer(sample(1e9, 1)),
                       deparse(substitute(expr)))
   hash <- digest::digest(hashable, algo = "md5")
 
@@ -54,7 +54,7 @@ delay <- function(ms, expr) {
                                           shinyInputId = shinyInputIdJs))
 
   # listen for a response from javascript when the delay is up
-  shiny::observeEvent(session$input[[shinyInputId]], {
+  shiny::observeEvent(session$input[[shinyInputId]], once = TRUE, {
     expr
   })
 

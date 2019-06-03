@@ -6,7 +6,7 @@ share <- list(
   title = "shinyjs package",
   url = "http://daattali.com/shiny/shinyjs-demo/",
   image = "http://daattali.com/shiny/img/shinyjs.png",
-  description = "Easily improve the user interaction and user experience in your Shiny apps in seconds",
+  description = "Easily improve the user experience of your Shiny apps in seconds",
   twitter_user = "daattali"
 )
 
@@ -44,7 +44,7 @@ shinyUI(fluidPage(
           "shinyjs package"
       ),
       div(id = "subtitle",
-          "Easily improve the user interaction and user experience in your Shiny apps in seconds"),
+          "Easily improve the user experience of your Shiny apps in seconds"),
       div(id = "subsubtitle",
           "Created by",
           tags$a(href = "http://deanattali.com/", "Dean Attali"),
@@ -86,12 +86,6 @@ shinyUI(fluidPage(
       "content (HTML) on the page, but you do not need to know any JavaScript to use shinyjs.",
       "If you do know JavaScript, you can also use", strong("shinyjs"), "to call",
       "you own JavaScript functions as if they were R code."),
-    p("As an extra perk, ", strong("shinyjs"), "also includes a ",
-      a(href = "http://daattali.com/shiny/colourInput/", "colourInput() Shiny widget"),
-      "and a", a(href = "https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif",
-                 "colour picker RStudio addin"), "for selecting colours easily.",
-      "You can see a simple preview of the colour input here:"),
-    div(style = "max-width: 300px;", shinyjs::colourInput("colourInput", NULL, "#A52A2A")),
     shiny::hr(),
     tags$em("This demo only allows you to select from one of the given R expressions",
       "and does not allow you to run any arbitrary expression. To have more freedom",

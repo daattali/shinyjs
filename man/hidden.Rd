@@ -50,4 +50,3 @@ hidden(list(span(id = "a"), div(id = "b")))
 \code{\link[shinyjs]{show}},
 \code{\link[shinyjs]{hide}}
 }
-

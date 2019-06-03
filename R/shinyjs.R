@@ -1,6 +1,6 @@
 #' shinyjs
 #'
-#' Easily improve the user interaction and user experience in your Shiny apps in seconds
+#' Easily improve the user experience of your Shiny apps in seconds
 #'
 #' \code{shinyjs} lets you perform common JavaScript operations that enhance the user experience in
 #' applications without having to know any JavaScript. Examples include: hiding an
@@ -14,4 +14,15 @@
 #' and to see a demo.
 #' @docType package
 #' @name shinyjs
+NULL
+
+#' Defunct functions in shinyjs
+#'
+#' \itemize{
+#'   \item{\bold{colourInput()}} {Moved to the \code{colourpicker} package.}
+#'   \item{\bold{updateColourInput()}} {Moved to the \code{colourpicker} package.}
+#'   \item{\bold{colourPicker()}} {Moved to the \code{colourpicker} package.}
+#' }
+#'
+#' @name shinyjs-defunct
 NULL

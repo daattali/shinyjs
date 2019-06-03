@@ -1,8 +1,27 @@
-# shinyjs 0.9.0.9xxx
+# shinyjs 1.0.1.*
 
-- Bug fix: `reset()` wasn't working on checkboxes/select inputs that had comma in the value (#130)
-- fixed bug where using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour (#120)
-- fixed bug where logjs()+showLog() wasn't working when app first runs
+- New fearure: `hide()`/`show()`: only bubble up the DOM tree to the nearest input container if the current element is an input; fixes #153
+- New feature: `onevent()` returns the `offsetX` and `offsetY` event properties
+- New feature: `onevent()` accepts a `properties` parameter that allows the user to retrieve additional properties that are not whitelisted by default; fixes #159
+- Fix bug: shinyjs functions used inside a module with a `selector` argument instead of an `id` argument didn't work
+- Add `asis` parameter to any function that takes an ID. When `asis=TRUE`, the ID will not be namespaced when inside a module (#118)
+- **BREAKING CHANGE** The `includeShinyjs` parameter in `runcodeUI()` is now deprecated
+- Fix bug: shinyjs functions did not work with IDs that had a space in them; fixes #176
+
+# shinyjs 1.0
+
+2018-01-08
+
+- **BREAKING CHANGE** shiny version 1.0.0 is now required
+- **BREAKING CHANGE** All `colourInput`-related functions are now defunct because they are now in the `colourpicker` package
+- Added `click()` function that simulates a user clicking on a button
+- Bug fix: `reset()` wasn't working on checkboxes/select inputs that had a comma in the value (#130)
+- Bug fix: using `disabled()` on certain non-standard inputs (such as `shinyFiles`) had strange behaviour (#120)
+- Bug fix: `logjs()`+`showLog()` wasn't working when app first runs
+- Bug fix: `reset()` wasn't working on file inputs with an ID that contained a dot (#140)
+- Moved default values of parameters to the R layer instead of being defined in javascript. This means that RStudio no longer complains of missing arguments and that autocompletion will show default values. (#80)
+- Improve efficiency of `delay()` and `reset()` functions
+- Improve documentation and website (https://deanattali.com/shinyjs)
 
 # shinyjs 0.9
 

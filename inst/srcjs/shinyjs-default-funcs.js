@@ -1,4 +1,4 @@
-// shinyjs 0.9 by Dean Attali
+// shinyjs 1.0.1.9000 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
@@ -20,7 +20,7 @@ shinyjs = function() {
   // get an element by id using JQuery (escape chars that have special
   // selector meaning)
   var _jqid = function(id) {
-    return $("#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" ));
+    return $("#" + id.replace( /(:|\.|\[|\]|,|\s)/g, "\\$1" ));
   };
 
   // listen to DOM changes and whenever there are new nodes added, let all
@@ -48,9 +48,11 @@ shinyjs = function() {
   var _getContainer = function(els) {
     return $.map(els, function(el) {
       el = $(el);
-      var inputContainer = el.closest(".shiny-input-container");
-      if (inputContainer.length > 0) {
-        el = inputContainer;
+      if (el.hasClass("shiny-bound-input")) {
+        var inputContainer = el.closest(".shiny-input-container");
+        if (inputContainer.length > 0) {
+          el = inputContainer;
+        }
       }
       return el;
     });
@@ -411,13 +413,14 @@ shinyjs = function() {
           elementData = _oneventData[id];
         }
         if (elementData !== null) {
-          $.each(elementData, function(event, eventData) {
-            $.each(eventData, function(idx, shinyInputId) {
+          $.each(elementData, function(event, eventDatas) {
+            $.each(eventDatas, function(idx, eventData) {
               _oneventAttach({
-                event : event,
-                id : id,
-                shinyInputId : shinyInputId,
-                add : true
+                event        : event,
+                id           : id,
+                shinyInputId : eventData.shinyInputId,
+                add          : true,
+                customProps  : eventData.customProps
               });
             });
           });
@@ -445,9 +448,10 @@ shinyjs = function() {
 
       el[params.event](function(event) {
         // Store a subset of the event properties (many are non-serializeable)
-        var props = ['altKey', 'button', 'buttons', 'clientX', 'clienty',
+        var props = ['altKey', 'button', 'buttons', 'clientX', 'clientY',
           'ctrlKey', 'pageX', 'pageY', 'screenX', 'screenY', 'shiftKey',
-          'which', 'charCode', 'key', 'keyCode'];
+          'which', 'charCode', 'key', 'keyCode', 'offsetX', 'offsetY'];
+        props = props.concat(params.customProps);
         var eventSimple = {};
         $.each(props, function(idx, prop) {
           if (prop in event) {
@@ -698,7 +702,8 @@ shinyjs = function() {
         event        : null,
         id           : null,
         shinyInputId : null,
-        add          : false
+        add          : false,
+        customProps  : []
       }
       params = shinyjs.getParams(params, defaultParams);
 
@@ -714,7 +719,10 @@ shinyjs = function() {
         if (!(params.event in elementData) || !params.add) {
           elementData[params.event] = [];
         }
-        elementData[params.event].push(params.shinyInputId);
+        elementData[params.event].push({
+          "shinyInputId" : params.shinyInputId,
+          "customProps"  : params.customProps
+        });
       }
       // if the element does exist, add the event handler
       else {
@@ -754,11 +762,10 @@ shinyjs = function() {
           // file inputs need to be reset manually since shiny doesn't have an
           // update function for them
           if (type == "File") {
-            id = "#" + id;
-            $(id).val('');
-            $(id + "_progress").css("visibility", "hidden");
-            $(id + "_progress").find(".progress-bar").css("width", "0");
-            $(id).closest(".input-group").find("input[type='text']").val('');
+            _jqid(id).val('');
+            _jqid(id + "_progress").css("visibility", "hidden");
+            _jqid(id + "_progress").find(".progress-bar").css("width", "0");
+            _jqid(id).closest(".input-group").find("input[type='text']").val('');
           } else {
             messages[id] = { 'type' : type, 'value' : value };
           }
@@ -769,8 +776,8 @@ shinyjs = function() {
       Shiny.onInputChange(params.shinyInputId, messages);
     },
 
-   // run an R function after an asynchronous delay
-   delay : function(params) {
+    // run an R function after an asynchronous delay
+    delay : function(params) {
       var defaultParams = {
         ms : null,
         shinyInputId : null
@@ -781,7 +788,19 @@ shinyjs = function() {
       setTimeout(function() {
         Shiny.onInputChange(params.shinyInputId, params.ms);
       }, params.ms);
-   }
+    },
+
+    // click on a button
+    click : function(params) {
+      var defaultParams = {
+        id : null
+      };
+      params = shinyjs.getParams(params, defaultParams);
+
+      var $el = _getElements(params);
+      if ($el === null) return;
+      $el.click();
+    }
   };
 }();
 

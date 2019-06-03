@@ -34,6 +34,7 @@ if (interactive()) {
     ),
     server = function(input, output) {
       showLog()
+      logjs("App started")
       observe({
         logjs(paste("Length of text:", nchar(input$text)))
       })
@@ -44,4 +45,3 @@ if (interactive()) {
 \seealso{
 \code{\link[shinyjs]{logjs}}
 }
-

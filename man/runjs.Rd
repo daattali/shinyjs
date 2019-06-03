@@ -36,4 +36,3 @@ if (interactive()) {
 \seealso{
 \code{\link[shinyjs]{useShinyjs}}
 }
-

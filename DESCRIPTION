@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 0.9.0.9002
+Version: 1.0.1.9004
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Perform common useful JavaScript operations in Shiny apps that will
@@ -9,21 +9,18 @@ Description: Perform common useful JavaScript operations in Shiny apps that will
     its original value, delaying code execution by a few seconds, and many more
     useful functions for both the end user and the developer. 'shinyjs' can also
     be used to easily call your own custom JavaScript functions from R.
-URL: http://deanattali.com/shinyjs
+URL: https://deanattali.com/shinyjs
 BugReports: https://github.com/daattali/shinyjs/issues
 Depends:
     R (>= 3.1.0)
 Imports:
     digest (>= 0.6.8),
-    htmltools (>= 0.2.6),
+    htmltools (>= 0.2.9),
     jsonlite,
-    miniUI (>= 0.1.1),
-    shiny (>= 0.11.1),
-    stats
+    shiny (>= 1.0.0)
 Suggests:
     knitr (>= 1.7),
     rmarkdown,
-    rstudioapi (>= 0.5),
     shinyAce,
     testthat (>= 0.9.1),
     V8 (>= 0.6)
@@ -31,4 +28,4 @@ License: AGPL-3
 SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

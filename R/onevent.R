@@ -7,27 +7,46 @@
 #' results in the same behaviour as calling \code{onclick}.
 #'
 #' @param event The event that needs to be triggered to run the code. See below
-#' for a list of possible event types.
+#' for a list of event types.
 #' @param id The id of the element/Shiny tag
 #' @param expr The R expression or function to run after the event is triggered.
 #' If a function with an argument is provided, it will be called with the
-#' JavaScript Event details as its argument. Using a function can be useful
-#' when you want to know for example what key was pressed on a "keypress" event.
+#' JavaScript Event properties as its argument. Using a function can be useful
+#' when you want to know, for example, what key was pressed on a "keypress" event
+#' or the mouse coordinates in a mouse event. See below for a list of properties.
 #' @param add If \code{TRUE}, then add \code{expr} to be executed after any
 #' other code that was previously set using \code{onevent} or \code{onclick}; otherwise
 #' \code{expr} will overwrite any previous expressions. Note that this parameter
 #' works well in web browsers but is buggy when using the RStudio Viewer.
+#' @param properties A list of JavaScript Event properties that should be available
+#' to the argument of the \code{expr} function. See below for more information about
+#' Event properties.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
-#' @section Possible event types:
-#' Any \href{http://api.jquery.com/category/events/mouse-events/}{mouse} or
+#' @section Event types:
+#' Any standard \href{http://api.jquery.com/category/events/mouse-events/}{mouse} or
 #' \href{http://api.jquery.com/category/events/keyboard-events/}{keyboard} events
-#' that are supported by JQuery can be used. The full list of events that can be used is:
+#' that are supported by JQuery can be used. The standard list of events that can be used is:
 #' \code{click}, \code{dblclick}, \code{hover}, \code{mousedown}, \code{mouseenter},
 #' \code{mouseleave}, \code{mousemove}, \code{mouseout}, \code{mouseover}, \code{mouseup},
-#' \code{keydown}, \code{keypress}, \code{keyup}.
+#' \code{keydown}, \code{keypress}, \code{keyup}. You can also use any other non
+#' standard events that your browser supports or with the use of plugins (for
+#' example, there is a \href{https://github.com/jquery/jquery-mousewheel}{mousewheel}
+#' plugin that you can use to listen to mousewheel events).
+#' @section Event properties:
+#' If a function is provided to \code{expr}, the function will receive a list
+#' of JavaScript Event properties describing the current event as an argument.
+#' Different properties are available for different event types. The full list
+#' of porperties that can be returned is: \code{altKey}, \code{button},
+#' \code{buttons}, \code{clientX}, \code{clientY}, \code{ctrlKey}, \code{pageX},
+#' \code{pageY}, \code{screenX}, \code{screenY}, \code{shiftKey}, \code{which},
+#' \code{charCode}, \code{key}, \code{keyCode}, \code{offsetX}, \code{offsetY}.
+#' If you want to retrieve any additional properties that are available in
+#' JavaScript for your event type, you can use the \code{properties} parameter.
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
@@ -58,42 +77,52 @@
 
 #' @rdname onevent
 #' @export
-onclick <- function(id, expr, add = FALSE) {
-  oneventHelper("click", id, substitute(expr), add)
+onclick <- function(id, expr, add = FALSE, asis = FALSE) {
+  oneventHelper("click", id, substitute(expr), add = add,
+                properties = NULL, asis = asis)
 }
 
 #' @rdname onevent
 #' @export
-onevent <- function(event, id, expr, add = FALSE) {
-  oneventHelper(event, id, substitute(expr), add)
+onevent <- function(event, id, expr, add = FALSE, properties = NULL, asis = FALSE) {
+  oneventHelper(event, id, substitute(expr), add, properties, asis = asis)
 }
 
-oneventHelper <- function(event, id, expr, add) {
+oneventHelper <- function(event, id, expr, add, properties, asis) {
   # evaluate expressions in the caller's environment
   parentFrame <- parent.frame(2)
 
   # get the Shiny session
   session <- getSession()
 
-  # Make sure reset works with namespaces (shiny modules)
+  # Make sure onevent works with namespaces (shiny modules)
   if (inherits(session, "session_proxy")) {
-    id <- session$ns(id)
+    if (!asis) {
+      id <- session$ns(id)
+    }
   }
 
   # attach the event callback from JS to call this function to execute the
   # given expression. To support multiple event handlers, each time this
   # is called, a random number is attached to the Shiny input id
   shinyInputId <- sprintf("shinyjs-%s-%s-input-%s",
-                          id, as.integer(stats::runif(1, 0, 1e9)), event)
+                          id,
+                          as.integer(sample(1e9, 1)),
+                          event)
   shinyInputIdJs <- shinyInputId
   if (inherits(session, "session_proxy")) {
     shinyInputIdJs <- session$ns(shinyInputIdJs)
   }
-  session$sendCustomMessage("shinyjs-onevent", list(
-                                            event = event,
-                                            id = id,
-                                            shinyInputId = shinyInputIdJs,
-                                            add = add))
+  session$sendCustomMessage(
+    "shinyjs-onevent",
+    list(
+      event = event,
+      id = id,
+      shinyInputId = shinyInputIdJs,
+      add = add,
+      customProps = properties
+    )
+  )
 
   # save the unevaluated expression so that it won't have a static value
   # every time the given event occurs

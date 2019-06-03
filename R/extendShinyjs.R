@@ -94,7 +94,7 @@
 #' parameter to its corresponding JavaScript function. If the function in R was
 #' called with unnamed arguments, then it will pass an Array of the arguments;
 #' if the R arguments are named then it will pass an Object with key-value pairs.
-#' 
+#'
 #' For example, calling \code{js$foo("bar", 5)} in R will call \code{shinyjs.foo(["bar", 5])}
 #' in JS, while calling \code{js$foo(num = 5, id = "bar")} in R will call
 #' \code{shinyjs.foo({num : 5, id : "bar"})} in JS. This means that the
@@ -105,7 +105,7 @@
 #' \code{shinyjs.getParams()} function which serves two purposes. First of all,
 #' it ensures that all arguments are named (even if the R function was called
 #' without names). Secondly, it allows you to define default values for arguments.
-#' 
+#'
 #' Here is an example of a JS function that changes the background colour of an
 #' element and uses \code{shinyjs.getParams()}.
 #'
@@ -127,13 +127,13 @@
 #' and \code{js$backgroundCol(id = "test", col = "blue")} and
 #' \code{js$backgroundCol(col = "blue", id = "test")} are all equivalent, and
 #' that if the colour parameter is not provided then "red" will be the default.
-#' 
+#'
 #' All the functions provided in \code{shinyjs} make use of \code{shinyjs.getParams},
 #' and it is highly recommended to always use it in your functions as well.
 #' Notice that the order of the arguments in \code{defaultParams} in the
 #' JavaScript function matches the order of the arguments when calling the
 #' function in R with unnamed arguments.
-#' 
+#'
 #' See the examples below for a shiny app that uses this JS function.
 #' @return Scripts that \code{shinyjs} requires in order to run your JavaScript
 #' functions as if they were R code.
@@ -261,9 +261,9 @@ extendShinyjs <- function(script, text, functions) {
   # if V8 is not installed, the user must provide the JS function names
   if (!requireNamespace("V8", quietly = TRUE)) {
     if (missing(functions)) {
-      errMsg(paste0("V8 package is required to use `extendShinyjs`. Please install it ",
-                    "with `install.packages(\"V8\")`.\nIf you cannot successfully install ",
-                    "V8 on your machine, you need to use the `functions` argument."))
+      errMsg(paste0("In order to use the `extendShinyjs()` function, you must either ",
+                    "use the `functions` argument, or install the `V8` package ",
+                    "with `install.packages(\"V8\")`."))
     }
     jsFuncs <- functions
   }
@@ -312,6 +312,9 @@ extendShinyjs <- function(script, text, functions) {
 
   # Add the script as a resource
   if (!missing(script)) {
+    if (!file.exists(script)) {
+      errMsg(sprintf("Could not find JavaScript file `%s`.", script))
+    }
     shiny::addResourcePath("shinyjs-extend", dirname(script))
     script <- file.path("shinyjs-extend", basename(script))
   }

@@ -16,15 +16,21 @@
 #' If you want to hide/show an element in a few seconds rather than immediately,
 #' you can use the \code{\link[shinyjs]{delay}} function.
 #'
+#' @note If you use S4 classes, you should be aware of the fact that both S4 and
+#' \code{shinyjs} use the \code{show()} function. This means that when using S4,
+#' it is recommended to use \code{showElement()} from \code{shinyjs}, and to
+#' use \code{methods::show()} for S4 object.
+#'
 #' @param id The id of the element/Shiny tag
-#' @param anim If \code{TRUE} then animate the behaviour (default: \code{FALSE})
+#' @param anim If \code{TRUE} then animate the behaviour
 #' @param animType The type of animation to use, either \code{"slide"} or \code{"fade"}
-#' (default: \code{"slide"})
-#' @param time The number of seconds to make the animation last (default: \code{0.5})
+#' @param time The number of seconds to make the animation last
 #' @param selector JQuery selector of the elements to show/hide. Ignored if the
 #' \code{id} argument is given. For example, to select all span elements with
 #' class x, use \code{selector = "span.x"}
 #' @param condition An optional argument to \code{toggle}, see 'Details' below.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}},
 #' \code{\link[shinyjs]{hidden}},
@@ -84,48 +90,42 @@ NULL
 
 #' @export
 #' @rdname visibilityFuncs
-show <- function(id, anim, animType, time, selector) {
+show <- function(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+                 selector = NULL, asis = FALSE) {
   fxn <- "show"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, anim = anim, animType = animType,
+                 time = time, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
 #' @export
 #' @rdname visibilityFuncs
-showElement <- function(id, anim, animType, time, selector) {
-  fxn <- "show"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+showElement <- show
 
 #' @export
 #' @rdname visibilityFuncs
-hide <- function(id, anim, animType, time, selector) {
+hide <- function(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+                 selector = NULL, asis = FALSE) {
   fxn <- "hide"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, anim = anim, animType = animType,
+                 time = time, selector = selector, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
 #' @export
 #' @rdname visibilityFuncs
-hideElement <- function(id, anim, animType, time, selector) {
-  fxn <- "hide"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+hideElement <- hide
 
 #' @export
 #' @rdname visibilityFuncs
-toggle <- function(id, anim, animType, time, selector, condition) {
+toggle <- function(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
+                   selector = NULL, condition = NULL, asis = FALSE) {
   fxn <- "toggle"
-  params <- as.list(match.call())[-1]
+  params <- list(id = id, anim = anim, animType = animType,
+                 time = time, selector = selector, condition = condition, asis = asis)
   jsFuncHelper(fxn, params)
 }
 
 #' @export
 #' @rdname visibilityFuncs
-toggleElement <- function(id, anim, animType, time, selector, condition) {
-  fxn <- "toggle"
-  params <- as.list(match.call())[-1]
-  jsFuncHelper(fxn, params)
-}
+toggleElement <- toggle

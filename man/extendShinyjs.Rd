@@ -167,6 +167,7 @@ function in R with unnamed arguments.
 
 See the examples below for a shiny app that uses this JS function.
 }
+
 \examples{
 \dontrun{
   Example 1:
@@ -277,4 +278,3 @@ See the examples below for a shiny app that uses this JS function.
 \seealso{
 \code{\link[shinyjs]{runExample}}
 }
-
