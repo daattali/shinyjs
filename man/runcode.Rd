@@ -6,8 +6,8 @@
 \alias{runcodeServer}
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
-runcodeUI(code = "", type = c("text", "textarea", "ace"), width = NULL,
-  height = NULL, includeShinyjs = NULL)
+runcodeUI(code = "", type = c("text", "textarea", "ace"),
+  width = NULL, height = NULL, includeShinyjs = NULL, id = NULL)
 
 runcodeServer()
 }
@@ -29,6 +29,11 @@ Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 
 \item{includeShinyjs}{Deprecated. You should always make sure to initialize
 shinyjs using \code{\link[shinyjs]{useShinyjs}}.}
+
+\item{id}{an id tag for using runcode inside a Shiny module. 
+Needs to exactly match the id of the enclosing UI module,
+and \code{runcodeServer()} has to be run in the corresponding server module.
+Has no effect if NULL.}
 }
 \description{
 Sometimes when developing a Shiny app, it's useful to be able to run some R
