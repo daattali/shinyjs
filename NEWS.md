@@ -7,6 +7,7 @@
 - Add `asis` parameter to any function that takes an ID. When `asis=TRUE`, the ID will not be namespaced when inside a module (#118)
 - **BREAKING CHANGE** The `includeShinyjs` parameter in `runcodeUI()` is now deprecated
 - Fix bug: shinyjs functions did not work with IDs that had a space in them; fixes #176
+- Fix bug #186: non-selectize select inputs could not be disabled
 
 # shinyjs 1.0
 
