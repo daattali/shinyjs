@@ -28,6 +28,9 @@
 #' \code{type="text"})
 #' @param includeShinyjs Deprecated. You should always make sure to initialize
 #' shinyjs using \code{\link[shinyjs]{useShinyjs}}.
+#' @param id When used inside a shiny module, the module's id needs to be 
+#' provided to \code{runcodeUI}. This argument should remain \code{NULL} 
+#' when not used inside a module.
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
 #' @examples
 #' if (interactive()) {
@@ -51,7 +54,11 @@ runcodeUI <- function(code = "",
                       type = c("text", "textarea", "ace"),
                       width = NULL,
                       height = NULL,
-                      includeShinyjs = NULL) {
+                      includeShinyjs = NULL,
+                      id = NULL) {
+  
+  ns <- shiny::NS(id)
+  
   if (!missing(includeShinyjs)) {
     warning("`includeShinyjs` argument is deprecated. You should always make ",
             "sure to initialize shinyjs using `useShinyjs()`.")
@@ -69,26 +76,27 @@ runcodeUI <- function(code = "",
   shiny::singleton(shiny::tagList(
     if (type == "text")
       shiny::textInput(
-        "runcode_expr", label = NULL, value = code,
+        ns("runcode_expr"), label = NULL, value = code,
         width = width, placeholder = placeholder
       ),
     if (type == "textarea")
       shiny::textAreaInput(
-        "runcode_expr", label = NULL, value = code,
+        ns("runcode_expr"), label = NULL, value = code,
         width = width, height = height, placeholder = placeholder
       ),
     if (type == "ace")
-			shinyAce::aceEditor("runcode_expr", mode = 'r', value = code,
+			shinyAce::aceEditor(ns("runcode_expr"), mode = 'r', value = code,
 				height = height, theme = "github", fontSize = 16),
-    shiny::actionButton("runcode_run", "Run", class = "btn-success"),
+    shiny::actionButton(ns("runcode_run"), "Run", class = "btn-success"),
     shinyjs::hidden(
       shiny::div(
-        id = "runcode_error",
+        id = ns("runcode_error"),
         style = "color: red; font-weight: bold;",
         shiny::div("Oops, that resulted in an error! Try again."),
         shiny::div("Error: ", shiny::br(),
                    shiny::tags$i(shiny::span(
-                     id = "runcode_errorMsg", style = "margin-left: 10px;")))
+                     id = ns("runcode_errorMsg"),
+                     style = "margin-left: 10px;")))
       )
     )
   ))
