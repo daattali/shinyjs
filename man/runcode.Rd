@@ -30,10 +30,9 @@ Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 \item{includeShinyjs}{Deprecated. You should always make sure to initialize
 shinyjs using \code{\link[shinyjs]{useShinyjs}}.}
 
-\item{id}{an id tag for using runcode inside a Shiny module. 
-Needs to exactly match the id of the enclosing UI module,
-and \code{runcodeServer()} has to be run in the corresponding server module.
-Has no effect if NULL.}
+\item{id}{When used inside a shiny module, the module's id needs to be 
+provided to \code{runcodeUI}. This argument should remain \code{NULL} 
+when not used inside a module.}
 }
 \description{
 Sometimes when developing a Shiny app, it's useful to be able to run some R

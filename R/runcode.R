@@ -28,10 +28,9 @@
 #' \code{type="text"})
 #' @param includeShinyjs Deprecated. You should always make sure to initialize
 #' shinyjs using \code{\link[shinyjs]{useShinyjs}}.
-#' @param id an id tag for using runcode inside a Shiny module. 
-#' Needs to exactly match the id of the enclosing UI module,
-#' and \code{runcodeServer()} has to be run in the corresponding server module.
-#' Has no effect if NULL.
+#' @param id When used inside a shiny module, the module's id needs to be 
+#' provided to \code{runcodeUI}. This argument should remain \code{NULL} 
+#' when not used inside a module.
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
 #' @examples
 #' if (interactive()) {
@@ -96,7 +95,8 @@ runcodeUI <- function(code = "",
         shiny::div("Oops, that resulted in an error! Try again."),
         shiny::div("Error: ", shiny::br(),
                    shiny::tags$i(shiny::span(
-                     id = "runcode_errorMsg", style = "margin-left: 10px;")))
+                     id = ns("runcode_errorMsg"),
+                     style = "margin-left: 10px;")))
       )
     )
   ))
