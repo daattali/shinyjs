@@ -405,7 +405,7 @@ shinyjs = function() {
     // shiny event handlers for it, and attach them
     _mutationSubscribers.push(function(node) {
       // check the top node
-      $node = $(node);
+      var $node = $(node);
       var id = $node.attr("id");
       _eventsAttachById(id);
       // check all descendants
