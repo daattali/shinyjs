@@ -404,29 +404,34 @@ shinyjs = function() {
     // just created. If so, find out what events were registered to it and the
     // shiny event handlers for it, and attach them
     _mutationSubscribers.push(function(node) {
+      // check the top node
       $node = $(node);
-      $.each(_oneventData, function(id) {
-        var elementData = null;
-        if ($node.attr("id") == id) {
-          elementData = _oneventData[id];
-        } else if ($node.find("#" + id).length > 0) {
-          elementData = _oneventData[id];
-        }
-        if (elementData !== null) {
-          $.each(elementData, function(event, eventDatas) {
-            $.each(eventDatas, function(idx, eventData) {
-              _oneventAttach({
-                event        : event,
-                id           : id,
-                shinyInputId : eventData.shinyInputId,
-                add          : true,
-                customProps  : eventData.customProps
-              });
-            });
-          });
-        }
+      var id = $node.attr("id");
+      _eventsAttachById(id);
+      // check all descendants
+      $node.find("*").each(function() {
+        var id = $(this).attr("id");
+        _eventsAttachById(id);
       });
     });
+  };
+
+  // Attach all events registered for a given id (if any)
+  var _eventsAttachById = function(id) {
+    var elementData = _oneventData[id];
+    if (elementData !== null) {
+      $.each(elementData, function(event, eventDatas) {
+        $.each(eventDatas, function(idx, eventData) {
+          _oneventAttach({
+            event        : event,
+            id           : id,
+            shinyInputId : eventData.shinyInputId,
+            add          : true,
+            customProps  : eventData.customProps
+          });
+        });
+      });
+    }
   };
 
   // attach an event listener to a DOM element that will trigger a call to Shiny
