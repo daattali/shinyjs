@@ -9,6 +9,7 @@
 - Fix bug: shinyjs functions did not work with IDs that had a space in them; fixes #176
 - Fix bug #186: non-selectize select inputs could not be disabled
 - Added `id` parameter to `runcode()`, allowing it to work inside Shiny modules (#184)
+- Fix bug #198: `click()` wasn't working with download button
 
 # shinyjs 1.0
 

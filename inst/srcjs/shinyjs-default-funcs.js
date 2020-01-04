@@ -804,7 +804,7 @@ shinyjs = function() {
 
       var $el = _getElements(params);
       if ($el === null) return;
-      $el.click();
+      $el[0].click();
     }
   };
 }();
