@@ -3,12 +3,12 @@
 \name{onevent}
 \alias{onevent}
 \alias{onclick}
-\alias{onevent}
 \title{Run R code when an event is triggered on an element}
 \usage{
 onclick(id, expr, add = FALSE, asis = FALSE)
 
-onevent(event, id, expr, add = FALSE, properties = NULL, asis = FALSE)
+onevent(event, id, expr, add = FALSE, properties = NULL,
+  asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

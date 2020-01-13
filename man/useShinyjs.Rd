@@ -4,7 +4,8 @@
 \alias{useShinyjs}
 \title{Set up a Shiny app to use shinyjs}
 \usage{
-useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE, showLog = NULL)
+useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE,
+  showLog = NULL)
 }
 \arguments{
 \item{rmd}{Set this to \code{TRUE} only if you are using \code{shinyjs}

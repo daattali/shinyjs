@@ -11,7 +11,8 @@ enable(id = NULL, selector = NULL, asis = FALSE)
 
 disable(id = NULL, selector = NULL, asis = FALSE)
 
-toggleState(id = NULL, condition = NULL, selector = NULL, asis = FALSE)
+toggleState(id = NULL, condition = NULL, selector = NULL,
+  asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the input element/Shiny tag}
