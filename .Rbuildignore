@@ -3,5 +3,5 @@
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^Makefile$
-^\.github\\
+^\.github$
 ^LICENSE$

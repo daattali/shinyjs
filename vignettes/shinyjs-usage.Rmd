@@ -120,7 +120,7 @@ shinyApp(ui, server)
 
 <h2 id="usage-rmd">Using shinyjs in R Markdown documents</h2>
 
-It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](http://rmarkdown.rstudio.com/authoring_shiny.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the Rmd document is set up with `runtime: shiny` as the link above describes):
+It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](https://bookdown.org/yihui/rmarkdown/shiny-documents.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the Rmd document is set up with `runtime: shiny` as the link above describes):
 
 ```
 library(shinyjs)
@@ -140,7 +140,7 @@ If the Rmd file makes use of [Tabbed Sections](http://rmarkdown.rstudio.com/html
 
 <h3 id="usage-prerendered">Rmd documents using `shiny_prerendered` engine</h3>
 
-If you're using the [`shiny_prerendered` Rmd format](http://rmarkdown.rstudio.com/authoring_shiny_prerendered.html), you need to include the following code in the beginning of your Rmd file, just after the YAML header (you need to remove the spaces between the backticks to make this code work):
+If you're using the [`shiny_prerendered` Rmd format](https://bookdown.org/yihui/rmarkdown/shiny-documents.html), you need to include the following code in the beginning of your Rmd file, just after the YAML header (you need to remove the spaces between the backticks to make this code work):
 
 ````
 ` ` `{r, echo=FALSE}
