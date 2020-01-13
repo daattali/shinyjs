@@ -2,6 +2,8 @@
 
 2020-01-12
 
+This update was 2 years in the making because it required a lot of testing by users to ensure none of these features cause any regression bugs in real apps.
+
 - **BREAKING CHANGE** The `includeShinyjs` parameter in `runcodeUI()` is now deprecated
 - Fix bug: shinyjs functions used inside a module with a `selector` argument instead of an `id` argument didn't work (#175)
 - Fix bug: shinyjs functions did not work with IDs that had a space in them (#176)
