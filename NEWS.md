@@ -1,15 +1,19 @@
-# shinyjs 1.0.1.*
+# shinyjs 1.1
 
-- New fearure: `hide()`/`show()`: only bubble up the DOM tree to the nearest input container if the current element is an input; fixes #153
-- New feature: `onevent()` returns the `offsetX` and `offsetY` event properties
-- New feature: `onevent()` accepts a `properties` parameter that allows the user to retrieve additional properties that are not whitelisted by default; fixes #159
-- Fix bug: shinyjs functions used inside a module with a `selector` argument instead of an `id` argument didn't work
-- Add `asis` parameter to any function that takes an ID. When `asis=TRUE`, the ID will not be namespaced when inside a module (#118)
+2020-01-12
+
 - **BREAKING CHANGE** The `includeShinyjs` parameter in `runcodeUI()` is now deprecated
-- Fix bug: shinyjs functions did not work with IDs that had a space in them; fixes #176
-- Fix bug #186: non-selectize select inputs could not be disabled
-- Added `id` parameter to `runcode()`, allowing it to work inside Shiny modules (#184)
-- Fix bug #198: `click()` wasn't working with download button
+- Fix bug: shinyjs functions used inside a module with a `selector` argument instead of an `id` argument didn't work (#175)
+- Fix bug: shinyjs functions did not work with IDs that had a space in them (#176)
+- Fix bug: non-selectize select inputs could not be disabled (#186)
+- Fix bug: `click()` now works with download buttons (#198)
+- New feature: added `asis` parameter to any function that takes an ID. When `asis=TRUE`, the ID will not be namespaced when inside a module (#118)
+- New feature: added `id` parameter to `runcode()`, allowing it to work inside Shiny modules (#184)
+- New feature: `onevent()` returns the `offsetX` and `offsetY` event properties
+- New feature: `onevent()` accepts a `properties` parameter that allows the user to retrieve additional properties that are not whitelisted by default (#159)
+- New feature: `hide()`/`show()` now only bubble up the DOM tree to the nearest input container if the current element is an input (#153)
+- Documentation: added documentation about `useShinyjs()` side effects and about including `shinyjs` in packages (#182)
+
 
 # shinyjs 1.0
 
