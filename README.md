@@ -93,12 +93,12 @@ Overview of main functions
 </h2>
 
 **Note: In order to use any `shinyjs` function in a Shiny app, you must
-first call `useShinyjs()` anywhere in the app's UI.**
+first call `useShinyjs()` anywhere in the app’s UI.**
 
 <table>
 <colgroup>
-<col width="29%" />
-<col width="70%" />
+<col style="width: 28%" />
+<col style="width: 71%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -128,40 +128,44 @@ first call `useShinyjs()` anywhere in the app's UI.**
 <td>Reset a Shiny input widget back to its original value.</td>
 </tr>
 <tr class="even">
+<td><code>refresh</code></td>
+<td>Refresh the page.</td>
+</tr>
+<tr class="odd">
 <td><code>delay</code></td>
 <td>Execute R code (including any <code>shinyjs</code> functions) after a specified amount of time.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>alert</code></td>
 <td>Show a message to the user.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>click</code></td>
 <td>Simulate a click on a button.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>html</code></td>
 <td>Change the text/HTML of an element.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>onclick</code></td>
 <td>Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a <code>shinyjs</code> function when an element is clicked, though any R code can be used.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>onevent</code></td>
 <td>Similar to <code>onclick</code>, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>addClass</code>/<code>removeClass</code>/<code>toggleClass</code></td>
 <td>add or remove a CSS class from an element.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>runjs</code></td>
 <td>Run arbitrary JavaScript code.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>extendShinyjs</code></td>
-<td>Allows you to write your own JavaScript functions and use <code>shinyjs</code> to call them as if they were regular R code. More information is available in the section &quot;Calling your own JavaScript functions from R&quot; below.</td>
+<td>Allows you to write your own JavaScript functions and use <code>shinyjs</code> to call them as if they were regular R code. More information is available in the section “Calling your own JavaScript functions from R” below.</td>
 </tr>
 </tbody>
 </table>
@@ -170,8 +174,8 @@ first call `useShinyjs()` anywhere in the app's UI.**
 
 <table>
 <colgroup>
-<col width="29%" />
-<col width="70%" />
+<col style="width: 28%" />
+<col style="width: 71%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -225,8 +229,8 @@ How to use
 </h2>
 
 A typical Shiny app has a UI portion and a server portion. Before using
-most shinyjs functions, you need to call `useShinyjs()` in the app's UI.
-It's best to include it near the top as a convention.
+most shinyjs functions, you need to call `useShinyjs()` in the app’s UI.
+It’s best to include it near the top as a convention.
 
 Here is a minimal Shiny app that uses `shinyjs`:
 
@@ -257,12 +261,12 @@ However, if you use shinyjs in any of the following cases:
   - In Shiny apps that use a `navbarPage` layout
   - In Rmd documents
   - In Shiny apps that manually build the user interface with an HTML
-    file or template (instead of using Shiny's UI functions)
+    file or template (instead of using Shiny’s UI functions)
 
 Then you should see the [*Including shinyjs in different types of
 apps*](https://deanattali.com/shinyjs/advanced) document.
 
-If your Shiny app doesn't fall into any of these categories, then the
+If your Shiny app doesn’t fall into any of these categories, then the
 above code sample should be enough to get your started with including
 shinyjs in your app.
 
@@ -300,7 +304,7 @@ FAQ and extra tricks
 </h2>
 
 There are several questions that pop up very frequently in my email or
-on StackOverflow about "How do I use shinyjs to do \_\_\_?" Here is a
+on StackOverflow about “How do I use shinyjs to do \_\_\_?” Here is a
 list of a few of these common questions with links to a solution that
 could be useful. Note that all of these require using `extendShinyjs()`.
 
@@ -344,7 +348,7 @@ tag](https://stackoverflow.com/tags/shinyjs) on StackOverflow or asking
 your own question there. You can also try getting help on the [RStudio
 Community forums](https://community.rstudio.com/c/shiny).
 
-If you still can't get an answer to your question, you can [contact
+If you still can’t get an answer to your question, you can [contact
 me](https://deanattali.com/contact). However, because of the high volume
 of support emails I receive daily, I can only provide support for a fee
 (as part of my [Shiny consulting](http://attalitech.com/)).
@@ -363,10 +367,10 @@ You can either [message me directly](https://deanattali.com/contact),
 to request a feature/report a bug, or make a pull request if you can
 contribute.
 
-I'd like to give special thanks to the Shiny developers, especially [Joe
+I’d like to give special thanks to the Shiny developers, especially [Joe
 Cheng](http://www.joecheng.com/) for always answering all my Shiny
 questions.
 
 Lastly, if you find shinyjs useful, please consider [supporting
-me](https://www.paypal.me/daattali/20) for the countless hours I've
+me](https://www.paypal.me/daattali/20) for the countless hours I’ve
 spent building, documenting, and supporting this package :)
