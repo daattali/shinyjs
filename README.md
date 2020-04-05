@@ -20,8 +20,6 @@ Easily improve the user experience of your Shiny apps in seconds
 
 <p align="center">
 
-<a href="https://www.paypal.me/daattali/20">
-<img src="https://i.imgur.com/vCIGFrH.png" alt="Donate" /> </a>
 <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
 </a> <a href="https://cran.r-project.org/package=shinyjs">
@@ -50,7 +48,7 @@ useful, please consider supporting its development\!**
 
 <p align="center">
 
-<a href="https://www.paypal.me/daattali/20">
+<a href="https://github.com/sponsors/daattali">
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
 </a>
 
@@ -372,5 +370,5 @@ Cheng](http://www.joecheng.com/) for always answering all my Shiny
 questions.
 
 Lastly, if you find shinyjs useful, please consider [supporting
-me](https://www.paypal.me/daattali/20) for the countless hours I’ve
+me](https://github.com/sponsors/daattali) for the countless hours I’ve
 spent building, documenting, and supporting this package :)

@@ -29,9 +29,6 @@ Copyright 2016
 </h4>
 
 <p align="center">
-<a href="https://www.paypal.me/daattali/20">
-<img src="https://i.imgur.com/vCIGFrH.png" alt="Donate" />
-</a>
 <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
 </a>
@@ -52,7 +49,7 @@ Examples include: hiding an element, disabling an input, resetting an input back
 **shinyjs is under the AGPL-3 license. For a commercial license, please [contact me](https://deanattali.com/contact). If you find shinyjs useful, please consider supporting its development!**
 
 <p align="center">
-  <a href="https://www.paypal.me/daattali/20">
+  <a href="https://github.com/sponsors/daattali">
     <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" />
   </a>
 </p>
@@ -210,4 +207,4 @@ If you have any suggestions or feedback, I would love to hear about it. You can 
 
 I'd like to give special thanks to the Shiny developers, especially [Joe Cheng](http://www.joecheng.com/) for always answering all my Shiny questions.
 
-Lastly, if you find shinyjs useful, please consider [supporting me](https://www.paypal.me/daattali/20) for the countless hours I've spent building, documenting, and supporting this package :)
+Lastly, if you find shinyjs useful, please consider [supporting me](https://github.com/sponsors/daattali) for the countless hours I've spent building, documenting, and supporting this package :)
