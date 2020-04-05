@@ -10,23 +10,61 @@
 \alias{toggleElement}
 \title{Display/hide an element}
 \usage{
-show(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, asis = FALSE)
+show(
+  id = NULL,
+  anim = FALSE,
+  animType = "slide",
+  time = 0.5,
+  selector = NULL,
+  asis = FALSE
+)
 
-showElement(id = NULL, anim = FALSE, animType = "slide",
-  time = 0.5, selector = NULL, asis = FALSE)
+showElement(
+  id = NULL,
+  anim = FALSE,
+  animType = "slide",
+  time = 0.5,
+  selector = NULL,
+  asis = FALSE
+)
 
-hide(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, asis = FALSE)
+hide(
+  id = NULL,
+  anim = FALSE,
+  animType = "slide",
+  time = 0.5,
+  selector = NULL,
+  asis = FALSE
+)
 
-hideElement(id = NULL, anim = FALSE, animType = "slide",
-  time = 0.5, selector = NULL, asis = FALSE)
+hideElement(
+  id = NULL,
+  anim = FALSE,
+  animType = "slide",
+  time = 0.5,
+  selector = NULL,
+  asis = FALSE
+)
 
-toggle(id = NULL, anim = FALSE, animType = "slide", time = 0.5,
-  selector = NULL, condition = NULL, asis = FALSE)
+toggle(
+  id = NULL,
+  anim = FALSE,
+  animType = "slide",
+  time = 0.5,
+  selector = NULL,
+  condition = NULL,
+  asis = FALSE
+)
 
-toggleElement(id = NULL, anim = FALSE, animType = "slide",
-  time = 0.5, selector = NULL, condition = NULL, asis = FALSE)
+toggleElement(
+  id = NULL,
+  anim = FALSE,
+  animType = "slide",
+  time = 0.5,
+  selector = NULL,
+  condition = NULL,
+  asis = FALSE
+)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

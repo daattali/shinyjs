@@ -16,14 +16,23 @@ addCssClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
 
 removeClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
 
-removeCssClass(id = NULL, class = NULL, selector = NULL,
-  asis = FALSE)
+removeCssClass(id = NULL, class = NULL, selector = NULL, asis = FALSE)
 
-toggleClass(id = NULL, class = NULL, condition = NULL,
-  selector = NULL, asis = FALSE)
+toggleClass(
+  id = NULL,
+  class = NULL,
+  condition = NULL,
+  selector = NULL,
+  asis = FALSE
+)
 
-toggleCssClass(id = NULL, class = NULL, condition = NULL,
-  selector = NULL, asis = FALSE)
+toggleCssClass(
+  id = NULL,
+  class = NULL,
+  condition = NULL,
+  selector = NULL,
+  asis = FALSE
+)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

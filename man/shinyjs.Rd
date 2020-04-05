@@ -3,7 +3,6 @@
 \docType{package}
 \name{shinyjs}
 \alias{shinyjs}
-\alias{shinyjs-package}
 \title{shinyjs}
 \description{
 Easily improve the user experience of your Shiny apps in seconds

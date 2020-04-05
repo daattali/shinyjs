@@ -4,7 +4,9 @@
 \name{js}
 \alias{js}
 \title{Call user-defined JavaScript functions from R}
-\format{An object of class \code{environment} of length 0.}
+\format{
+An object of class \code{environment} of length 0.
+}
 \usage{
 js
 }

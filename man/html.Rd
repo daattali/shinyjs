@@ -4,8 +4,7 @@
 \alias{html}
 \title{Change the HTML (or text) inside an element}
 \usage{
-html(id = NULL, html = NULL, add = FALSE, selector = NULL,
-  asis = FALSE)
+html(id = NULL, html = NULL, add = FALSE, selector = NULL, asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

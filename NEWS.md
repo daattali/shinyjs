@@ -1,3 +1,9 @@
+# shinyjs 1.1.0.*
+
+TODO date
+
+- New feature: add a `refresh()` function (#205)
+
 # shinyjs 1.1
 
 2020-01-12

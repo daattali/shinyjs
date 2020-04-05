@@ -7,8 +7,7 @@
 \usage{
 onclick(id, expr, add = FALSE, asis = FALSE)
 
-onevent(event, id, expr, add = FALSE, properties = NULL,
-  asis = FALSE)
+onevent(event, id, expr, add = FALSE, properties = NULL, asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the element/Shiny tag}

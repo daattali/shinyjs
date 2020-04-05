@@ -6,8 +6,14 @@
 \alias{runcodeServer}
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
-runcodeUI(code = "", type = c("text", "textarea", "ace"),
-  width = NULL, height = NULL, includeShinyjs = NULL, id = NULL)
+runcodeUI(
+  code = "",
+  type = c("text", "textarea", "ace"),
+  width = NULL,
+  height = NULL,
+  includeShinyjs = NULL,
+  id = NULL
+)
 
 runcodeServer()
 }

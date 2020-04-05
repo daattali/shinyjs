@@ -805,6 +805,16 @@ shinyjs = function() {
       var $el = _getElements(params);
       if ($el === null) return;
       $el[0].click();
+    },
+    
+    // refresh the page
+    refresh : function(params) {
+      var defaultParams = {
+        id : null
+      };
+      params = shinyjs.getParams(params, defaultParams);
+      
+      window.location.reload(false);
     }
   };
 }();
