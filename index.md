@@ -65,7 +65,7 @@ share-img: https://deanattali.com/shinyjs/img/logo-new-transparent.png
   <div id="smiley"><i class="fa fa-smile-o"></i></div>
 
   <p align="center">
-    <a href="https://www.paypal.me/daattali">
+    <a href="https://github.com/sponsors/daattali">
       <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif">
     </a>
   </p>

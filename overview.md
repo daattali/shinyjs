@@ -14,6 +14,7 @@ In order to use any shinyjs function in a Shiny app, you must first call `useShi
 | `enable` / `disable` / `toggleState` | Enable or disable an input element, such as a button or a text input. |
 | `disabled` | Initialize a Shiny input as disabled. |
 | `reset` | Reset a Shiny input widget back to its original value. |
+| `refresh` | Refresh the page. |
 | `delay` | Execute R code (including any `shinyjs` functions) after a specified amount of time. |
 | `alert` | Show a message to the user. |
 | `click` | Simulate a click on a button. |
