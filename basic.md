@@ -14,8 +14,8 @@ install.packages("shinyjs")
 Or you can be more adventurous and install the latest development version from GitHub:
 
 ```
-install.packages("devtools")
-devtools::install_github("daattali/shinyjs")
+install.packages("remotes")
+remotes::install_github("daattali/shinyjs")
 ```
 
 <br/>
