@@ -25,6 +25,12 @@ Easily improve the user experience of your Shiny apps in seconds
 </a> <a href="https://cran.r-project.org/package=shinyjs">
 <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
 </a>
+<a href="https://community.rstudio.com/new-topic?category=shiny&tags=github-actions">
+<img src="https://img.shields.io/badge/community-shiny-blue?style=social&logo=rstudio&logoColor=75AADB" alt="Get Help on RStudio Community" />
+</a>
+<a href="https://stackoverflow.com/questions/ask?tags=r+shiny+shinyjs">
+<img src="https://img.shields.io/badge/StackOverflow-shinyjs-blue?style=social&logo=stackoverflow" alt="Get Help on StackOverflow" />
+</a>
 
 </p>
 
