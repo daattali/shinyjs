@@ -4,4 +4,4 @@
 ^cran-comments\.md$
 ^Makefile$
 ^\.github$
-^LICENSE$
+^LICENSE\.md$
