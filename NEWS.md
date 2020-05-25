@@ -3,6 +3,7 @@
 TODO date
 
 - New feature: add a `refresh()` function (#205)
+- Remove commercial license (it was only used because some companies asked for it, but it ended up being a bigger headache for 99% of the community)
 
 # shinyjs 1.1
 
