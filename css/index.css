@@ -75,6 +75,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
+#license-section img:hover {
+ box-shadow: 0 0 7px rgba(0,0,0,0.2);
+}
+
 #smiley {
   text-align: center;
   margin-top: 20px;
