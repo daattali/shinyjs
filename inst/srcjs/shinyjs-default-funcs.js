@@ -322,7 +322,9 @@ shinyjs = function() {
         else if (input.children(".js-range-slider").length > 0) {
           input = input.children(".js-range-slider");
           inputType = "Slider";
-          inputValue = input.attr('data-from');
+          if (typeof input.attr('data-from') !== "undefined") {
+            inputValue = input.attr('data-from');
+          }
           if (typeof input.attr('data-to') !== "undefined") {
             inputValue = inputValue + "," + input.attr('data-to');
           }
