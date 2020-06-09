@@ -5,6 +5,7 @@ source("helper-text.R")
 
 shinyApp(
   ui = fixedPage(
+    shinydisconnect::disconnectMessage2(),
     useShinyjs(),
     inlineCSS(list(.big = "font-size: 2em",
                    a = "cursor: pointer")),

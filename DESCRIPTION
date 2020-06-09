@@ -24,6 +24,8 @@ Suggests:
     shinyAce,
     testthat (>= 0.9.1),
     V8 (>= 0.6)
+Remotes:
+    daattali/shinydisconnect
 License: MIT + file LICENSE
 SystemRequirements: pandoc with https support
 LazyData: true

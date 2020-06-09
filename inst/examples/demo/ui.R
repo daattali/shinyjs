@@ -10,7 +10,8 @@ share <- list(
   twitter_user = "daattali"
 )
 
-shinyUI(fluidPage(
+fluidPage(
+  shinydisconnect::disconnectMessage2(),
   title = paste0("shinyjs package ", as.character(packageVersion("shinyjs"))),
   tags$head(
     includeCSS(file.path('www', 'style.css')),
@@ -93,4 +94,4 @@ shinyUI(fluidPage(
       "and run the sandbox demo using", code("shinyjs::runExample('sandbox')"))
   ))
   )
-))
+)
