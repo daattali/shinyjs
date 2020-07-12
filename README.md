@@ -71,6 +71,7 @@ development\!**
   - [Calling your own JavaScript functions from R](#extendshinyjs)
   - [FAQ and extra tricks](#faq-tricks)
   - [More resources](#more-resources)
+  - [Support](#support)
 
 <h2 id="demos">
 
@@ -358,7 +359,11 @@ me](https://deanattali.com/contact). However, because of the high volume
 of support emails I receive daily, I can only provide support for a fee
 (as part of my [Shiny consulting](http://attalitech.com/)).
 
-## Support
+<h2 id="support">
+
+Support
+
+</h2>
 
 Free support is available on StackOverflow, RStudio Community, and Twitter. 
 
