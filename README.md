@@ -20,6 +20,9 @@ Easily improve the user experience of your Shiny apps in seconds
 
 <p align="center">
 
+<a href="https://xscode.com/daattali/shinyjs">
+  <img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
+</a>
 <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
 </a> <a href="https://cran.r-project.org/package=shinyjs">
@@ -354,6 +357,12 @@ If you still can’t get an answer to your question, you can [contact
 me](https://deanattali.com/contact). However, because of the high volume
 of support emails I receive daily, I can only provide support for a fee
 (as part of my [Shiny consulting](http://attalitech.com/)).
+
+## Support
+
+Free support is available on StackOverflow, RStudio Community, and Twitter. 
+
+I'm unable to provide free support because of the volume of requests I receive. **If you really wany my personal help, please visit https://xscode.com/daattali/shinyjs to hire my services.**
 
 ## Motivation & alternatives using native Shiny
 
