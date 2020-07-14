@@ -12,6 +12,8 @@
 #'
 #' @param id The id of the input element to reset or the id of an HTML
 #' tag to reset all input elements inside it.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -51,13 +53,13 @@
 #'   )
 #' }
 #' @export
-reset <- function(id) {
+reset <- function(id, asis = FALSE) {
   # get the Shiny session
   session <- getSession()
 
   # Make sure reset works with namespaces (shiny modules)
   nsName <- ""
-  if (inherits(session, "session_proxy")) {
+  if (inherits(session, "session_proxy") && !asis) {
     id <- session$ns(id)
     nsName <- session$ns("")
   }
@@ -97,7 +99,12 @@ reset <- function(id) {
           id <- substring(id, nchar(nsName) + 1)
         }
 
-        funcParams <- list(session, id)
+        if (inherits(session, "session_proxy") && asis) {
+          session_to_reset <- .subset2(session, "parent")
+        } else {
+          session_to_reset <- session
+        }
+        funcParams <- list(session_to_reset, id)
 
         # checkbox values need to be manually converted to TRUE/FALSE
         if (type == "Checkbox") {
