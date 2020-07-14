@@ -21,15 +21,11 @@ Easily improve the user experience of your Shiny apps in seconds
 <p align="center">
 
 <a href="https://xscode.com/daattali/shinyjs">
-  <img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
-</a>
-<a href="https://travis-ci.org/daattali/shinyjs">
+<img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
+</a> <a href="https://travis-ci.org/daattali/shinyjs">
 <img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
 </a> <a href="https://cran.r-project.org/package=shinyjs">
 <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
-</a>
-<a href="https://stackoverflow.com/questions/ask?tags=r+shiny+shinyjs">
-<img src="https://img.shields.io/badge/StackOverflow-shinyjs-blue?style=social&logo=stackoverflow" alt="Get Help on StackOverflow" />
 </a>
 
 </p>
@@ -53,11 +49,11 @@ development\!**
 
 <p align="center">
 
+<a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
+<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 <a style="display: inline-block;" href="https://paypal.me/daattali">
 <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
 </a>
-<a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
-<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 </p>
 
@@ -365,27 +361,27 @@ Support
 
 </h2>
 
-Free support is available on StackOverflow, RStudio Community, and Twitter. 
+Free support is available on
+[StackOverflow](https://stackoverflow.com/questions/ask?tags=r+shiny+shinyjs),
+[RStudio
+Community](https://community.rstudio.com/new-topic?category=shiny&tags=shinyjs),
+and [Twitter](https://twitter.com/hashtag/rstats).
 
-I'm unable to provide free support because of the volume of requests I receive. **If you really wany my personal help, please visit https://xscode.com/daattali/shinyjs to hire my services.**
-
-## Motivation & alternatives using native Shiny
-
-The initial release of this package was announced [on my
-blog](https://deanattali.com/2015/04/23/shinyjs-r-package/) and
-discusses these topics.
+Due to the large volume of requests I receive, I’m unable to provide
+free support. **If you want my personal help, please visit
+<https://xscode.com/daattali/shinyjs> or [contact
+me](https://deanattali.com/contact) to hire my services.**
 
 ## Contributions
 
 If you have any suggestions or feedback, I would love to hear about it.
 You can either [message me directly](https://deanattali.com/contact),
-[open an issue](https://github.com/daattali/shinyjs/issues) if you want
-to request a feature/report a bug, or make a pull request if you can
-contribute.
+[open an issue](https://github.com/daattali/shinyjs/issues) to report a
+bug or suggest a feature, or make a pull request if you can contribute.
 
 I’d like to give special thanks to the Shiny developers, especially [Joe
 Cheng](http://www.joecheng.com/) for always answering all my Shiny
-questions.
+questions in my early days.
 
 Lastly, if you find shinyjs useful, please consider [supporting
 me](https://github.com/sponsors/daattali) for the countless hours I’ve
