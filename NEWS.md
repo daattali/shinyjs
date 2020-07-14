@@ -1,14 +1,12 @@
-# shinyjs 1.1.0.*
+# shinyjs 2.0.0 (Date TBD)
 
-TODO date
-
+- Remove commercial license (it only existed because some big companies asked for it, but it ended up being a bigger headache for 99% of the community)
 - New feature: add a `refresh()` function (#205)
+- New feature: add `asis` parameter to `reset()` function, which works like it does in all other functions that support `asis` (#146)
 - Fix bug: `reset()` didn't work when a sliderInput was initialized with `value=NULL` (#207)
-- Remove commercial license (it was only used because some companies asked for it, but it ended up being a bigger headache for 99% of the community)
+- Semantic versioning will be used moving forward - better late than never
 
-# shinyjs 1.1
-
-2020-01-12
+# shinyjs 1.1 (2020-01-12)
 
 This update was 2 years in the making because it required a lot of testing by users to ensure none of these features cause any regression bugs in real apps.
 
@@ -25,9 +23,7 @@ This update was 2 years in the making because it required a lot of testing by us
 - Documentation: added documentation about `useShinyjs()` side effects and about including `shinyjs` in packages (#182)
 
 
-# shinyjs 1.0
-
-2018-01-08
+# shinyjs 1.0 (2018-01-08)
 
 - **BREAKING CHANGE** shiny version 1.0.0 is now required
 - **BREAKING CHANGE** All `colourInput`-related functions are now defunct because they are now in the `colourpicker` package

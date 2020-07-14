@@ -1,4 +1,4 @@
-// shinyjs 1.0.1.9000 by Dean Attali
+// shinyjs 2.0.0 by Dean Attali
 // Perform common JavaScript operations in Shiny apps using plain R code
 
 shinyjs = function() {
