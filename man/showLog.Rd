@@ -12,14 +12,9 @@ it can be helpful to use \code{console.log()} messages in JavaScript. This
 function allows you to see these messages printed in the R console directly
 rather than having to open the JavaScript console in the browser to view the
 messages.\cr\cr
-This function must be called in a Shiny app's server function, and you also
-need to pass the \code{showLog=TRUE} parameter to \code{useShinyjs()}.
+This function must be called in a Shiny app's server.
 }
 \note{
-Due to an issue in shiny (see
-https://github.com/rstudio/shiny/issues/928), duplicated consecutive log
-messages will not get printed in R.
-
 Log messages that cannot be serialized in JavaScript (such as many
 JavaScript Event objects that are cyclic) will not be printed in R.
 }

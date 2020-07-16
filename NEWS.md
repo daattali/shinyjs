@@ -1,10 +1,12 @@
 # shinyjs 2.0.0 (Date TBD)
 
-- Remove commercial license (it only existed because some big companies asked for it, but it ended up being a bigger headache for 99% of the community)
+- **MAJOR CHANGE** Remove commercial license (it only existed because some big companies asked for it, but it ended up being a bigger headache for 99% of the community)
+- **BREAKING CHANGE** The `showLog` parameter has been removed from `useShinyjs()` (it's been deprecated with a warning message for almost 4 years)
 - New feature: add a `refresh()` function (#205)
 - New feature: add `asis` parameter to `reset()` function, which works like it does in all other functions that support `asis` (#146)
 - Fix bug: `reset()` didn't work when a sliderInput was initialized with `value=NULL` (#207)
-- Semantic versioning will be used moving forward - better late than never
+- Fix bug: `showLog()` was not able to show duplicate consecutive log messages
+- True semantic versioning will be used moving forward - better late than never!
 
 # shinyjs 1.1 (2020-01-12)
 

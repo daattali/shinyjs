@@ -21,7 +21,6 @@
 #' using this option, view the
 #' \href{https://github.com/daattali/shinyjs}{README} online to learn
 #' how to use shinyjs in these apps.
-#' @param showLog Deprecated.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag. A side effect of calling this function is that
 #' a \code{shinyjs} directory is added as a resource path using 
@@ -47,16 +46,10 @@
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
-useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE,
-                       showLog = NULL) {
+useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   stopifnot(rmd == TRUE || rmd == FALSE)
   stopifnot(debug == TRUE || debug == FALSE)
   stopifnot(html == TRUE || html == FALSE)
-
-  if (!missing(showLog)) {
-    warning("'useShinyjs(showLog = TRUE)' has been deprecated. You do not need to call it anymore.",
-            call. = FALSE)
-  }
 
   # `astext` is FALSE in normal shiny apps where the shinyjs content is returned
   # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive

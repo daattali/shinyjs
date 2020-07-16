@@ -837,7 +837,12 @@ ShinySenderQueue.prototype.send = function(name, value) {
     self.timer = null;
     if (self.queue.length) {
       var msg = self.queue.shift();
-      Shiny.onInputChange(msg.name, msg.value);
+      if (typeof Shiny === 'object' && typeof Shiny.compareVersion === 'function' &&
+          Shiny.compareVersion(Shiny.version, '>=', '1.1.0')) {
+        Shiny.setInputValue(msg.name, msg.value, {priority: "event"});
+      } else {
+        Shiny.onInputChange(msg.name, msg.value);
+      }
       self.timer = setTimeout(go, 0);
     } else {
       self.readyToSend = true;
@@ -845,7 +850,12 @@ ShinySenderQueue.prototype.send = function(name, value) {
   }
   if (this.readyToSend) {
     this.readyToSend = false;
-    Shiny.onInputChange(name, value);
+    if (typeof Shiny === 'object' && typeof Shiny.compareVersion === 'function' &&
+        Shiny.compareVersion(Shiny.version, '>=', '1.1.0')) {
+      Shiny.setInputValue(name, value, {priority: "event"});
+    } else {
+      Shiny.onInputChange(name, value);
+    }
     this.timer = setTimeout(go, 0);
   } else {
     this.queue.push({name: name, value: value});

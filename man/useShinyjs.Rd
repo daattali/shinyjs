@@ -4,7 +4,7 @@
 \alias{useShinyjs}
 \title{Set up a Shiny app to use shinyjs}
 \usage{
-useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE, showLog = NULL)
+useShinyjs(rmd = FALSE, debug = FALSE, html = FALSE)
 }
 \arguments{
 \item{rmd}{Set this to \code{TRUE} only if you are using \code{shinyjs}
@@ -21,8 +21,6 @@ a Shiny app that builds the entire user interface with a custom HTML file. If
 using this option, view the
 \href{https://github.com/daattali/shinyjs}{README} online to learn
 how to use shinyjs in these apps.}
-
-\item{showLog}{Deprecated.}
 }
 \value{
 Scripts that \code{shinyjs} requires that are automatically inserted
