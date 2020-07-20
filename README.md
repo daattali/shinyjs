@@ -1,4 +1,4 @@
-[![shinyjs](inst/img/banner.png)](https://deanattali.com/shinyjs/)
+[![shinyjs](inst/img/banner.png)](https://xscode.com/daattali/shinyjs)
 
 <h3 align="center">
 
