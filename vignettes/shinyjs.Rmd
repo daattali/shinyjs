@@ -13,10 +13,8 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
-<p align="center">
-<a href="https://deanattali.com/shinyjs/">
-<img src="../inst/img/shinyjs-logo-whitebg-small.png" alt="shinyjs" width=285 height=100 />
-</a>
+
+[![shinyjs](../inst/img/banner.png)](https://deanattali.com/shinyjs/)
 
 <h3 align="center">shinyjs</h3>
 
