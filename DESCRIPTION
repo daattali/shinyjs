@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 2.0.0
+Version: 1.1.0.9004
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Perform common useful JavaScript operations in Shiny apps that will
@@ -23,10 +23,10 @@ Suggests:
     rmarkdown,
     shinyAce,
     shinydisconnect,
-    testthat (>= 0.9.1),
-    V8 (>= 0.6)
+    testthat (>= 0.9.1)
 License: MIT + file LICENSE
 SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0

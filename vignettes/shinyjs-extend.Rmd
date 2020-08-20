@@ -17,9 +17,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 
 <h2 id="extendshinyjs-simple">Simple example</h2>
 
-Using `extendShinyjs` is very simple and makes defining and calling JavaScript functions painless. Here is a very basic example of using `extendShinyjs` to define a (fairly useless) function that changes the colour of the page.
-
-> Note: All the examples on this page assume that you have the `V8` package installed. If you cannot install `V8`, then you will need to use the `functions` argument of `extendShinyjs` (read more about this argument with `?shinyjs::extendShinyjs`).
+Using `extendShinyjs()` is simple and makes defining and calling JavaScript functions painless. Here is a very basic example of using `extendShinyjs()` to define a (fairly useless) function that changes the colour of the page.
 
 ```
 library(shiny)
@@ -30,7 +28,7 @@ jsCode <- "shinyjs.pageCol = function(params){$('body').css('background', params
 shinyApp(
   ui = fluidPage(
     useShinyjs(),
-    extendShinyjs(text = jsCode),
+    extendShinyjs(text = jsCode, functions = c("pageCol")),
     selectInput("col", "Colour:",
                 c("white", "yellow", "red", "blue", "purple"))
   ),
@@ -46,9 +44,11 @@ Running the code above produces this shiny app:
 
 ![Extendshinyjs demo](../inst/img/extendshinyjs-demo.gif)
 
-See how easy that was? All I had to do was make the JavaScript function `shinyjs.pageCol`, pass the JavaScript code as an argument to `extendShinyjs`, and then I can call `js$pageCol()`.
+See how easy that was? All I had to do was make the JavaScript function `shinyjs.pageCol`, pass the JavaScript code as an argument to `extendShinyjs()`, and then I can call `js$pageCol()`.
 
-That's the basic idea: any JavaScript function named `shinyjs.foo` will be available to call as `js$foo()`. You can either pass the JS code as a string to the `text` argument, or place the JS code in a separate JavaScript file and use the `script` argument to specify where the code can be found. Using a separate file is generally prefered over writing the code inline, but in these examples I will always use the `text` argument to keep it simple.
+That's the basic idea: any JavaScript function named `shinyjs.foo` will be available to call as `js$foo()`. You can either pass the JS code as a string to the `text` argument, or place the JS code in a separate JavaScript file and use the `script` argument to specify where the code can be found. Using a separate file is generally preferred over writing the code inline, but in these examples I will always use the `text` argument to keep it simple.
+
+> Note on using the `script` parameter: The script path is not necessarily a local path to the script file, rather it's a path that must be discoverable by the browser. It either needs to be a public URL, inside a `www` folder, or available via `addResourcePath()`.
 
 <h2 id="extendshinyjs-onload">Running JavaScript code on page load</h2>
 
@@ -66,7 +66,7 @@ shinyjs.init = function() {
 shinyApp(
   ui = fluidPage(
     useShinyjs(),
-    extendShinyjs(text = jscode),
+    extendShinyjs(text = jscode, functions = c()),
     "Press any key"
   ),
   server = function(input, output) {}
@@ -121,16 +121,16 @@ shinyjs.backgroundCol = function(params) {
 shinyApp(
   ui = fluidPage(
     useShinyjs(),
-    extendShinyjs(text = jsCode),
+    extendShinyjs(text = jsCode, functions = c("backgroundCol")),
     p(id = "name", "My name is Dean"),
     p(id = "sport", "I like soccer"),
-    selectInput("col", "Colour:",
-                c("white", "yellow", "red", "blue", "purple")),    
-    textInput("selector", "Element", ""),
-    actionButton("btn", "Go")
+    selectInput("col", "Colour",
+                c("green", "yellow", "red", "blue", "white")),
+    selectInput("selector", "Element", c("sport", "name", "button")),
+    actionButton("button", "Go")
   ),
   server = function(input, output) {
-    observeEvent(input$btn, {
+    observeEvent(input$button, {
       js$backgroundCol(input$selector, input$col)
     })
   }

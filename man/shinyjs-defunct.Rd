@@ -15,9 +15,9 @@ colourPicker(...)
 }
 \description{
 \itemize{
-  \item{\bold{colourInput()}} {Moved to the \code{colourpicker} package.}
-  \item{\bold{updateColourInput()}} {Moved to the \code{colourpicker} package.}
-  \item{\bold{colourPicker()}} {Moved to the \code{colourpicker} package.}
+\item{\bold{colourInput()}} {Moved to the \code{colourpicker} package.}
+\item{\bold{updateColourInput()}} {Moved to the \code{colourpicker} package.}
+\item{\bold{colourPicker()}} {Moved to the \code{colourpicker} package.}
 }
 }
 \keyword{internal}
