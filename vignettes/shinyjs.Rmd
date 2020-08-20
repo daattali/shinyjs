@@ -201,4 +201,5 @@ Due to the large volume of requests I receive, I'm unable to provide free suppor
 <h2 id="sponsors">Sponsors 🏆</h2>
 
 > There are no sponsors yet
+
 [Become the first sponsor for {shinyjs}!](https://github.com/sponsors/daattali)

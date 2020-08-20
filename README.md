@@ -352,5 +352,7 @@ Sponsors 🏆
 
 </h2>
 
-> There are no sponsors yet [Become the first sponsor for
-> {shinyjs}\!](https://github.com/sponsors/daattali)
+> There are no sponsors yet
+
+[Become the first sponsor for
+{shinyjs}\!](https://github.com/sponsors/daattali)
