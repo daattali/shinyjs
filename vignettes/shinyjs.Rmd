@@ -46,11 +46,11 @@ apps that will greatly improve your apps without having to know any JavaScript.
 Examples include: hiding an element, disabling an input, resetting an input back to its original value, delaying code execution by a few seconds, and many more useful functions for both the end user and the developer. {shinyjs} can also be used to easily call your own custom JavaScript functions from R.
 
 **Need Shiny help? [I'm available for consulting](https://attalitech.com/).**<br/>
-**If you find {shinyjs} useful, please consider supporting my work\! ❤**
+**If you find {shinyjs} useful, please consider [supporting my work](https://github.com/sponsors/daattali/sponsorships?tier_id=39852) to unlock rewards\! ❤**
 
 <p align="center">
 
-<a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
+<a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali/sponsorships?tier_id=39852">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 <a style="display: inline-block;" href="https://paypal.me/daattali">
@@ -202,4 +202,4 @@ Due to the large volume of requests I receive, I'm unable to provide free suppor
 
 > There are no sponsors yet
 
-[Become the first sponsor for {shinyjs}!](https://github.com/sponsors/daattali)
+[Become the first sponsor for {shinyjs}!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
