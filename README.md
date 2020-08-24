@@ -355,5 +355,5 @@ Sponsors 🏆
 
 > There are no sponsors yet
 
-[Become the first sponsor for
-{shinyjs}\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+[Become the first sponsor for {shinyjs} and unlock special
+rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
