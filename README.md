@@ -342,10 +342,10 @@ If you need help with {shinyjs}, free support is available on
 Community](https://community.rstudio.com/new-topic?category=shiny&tags=shinyjs),
 and [Twitter](https://twitter.com/hashtag/rstats).
 
-Due to the large volume of requests I receive, I’m unable to provide
-free support. **If you can’t solve your problem and want my personal
-help, please visit <https://xscode.com/daattali/shinyjs> or [contact
-me](https://deanattali.com/contact) to receive help for a fee.**
+**Due to the large volume of requests I receive, I’m unable to provide
+free support. If you can’t solve any issue and require my personal help,
+please visit <https://xscode.com/daattali/shinyjs> or [contact
+me](https://attalitech.com/contact).**
 
 <h2 id="sponsors">
 
