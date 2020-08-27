@@ -334,7 +334,7 @@ Support
 
 This document is only an overview of {shinyjs}. There are more in-depth
 resources available on the [{shinyjs}
-website](https://deanattali.com/shinyjs).
+website](https://deanattali.com/shinyjs/).
 
 If you need help with {shinyjs}, free support is available on
 [StackOverflow](https://stackoverflow.com/questions/ask?tags=r+shiny+shinyjs),

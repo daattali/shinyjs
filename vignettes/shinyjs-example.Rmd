@@ -18,7 +18,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 This document provides a step-by-step guide on how to add a variety of shinyjs features to a simple app in order to make it more user friendly.
 
 *You can view the final Shiny app developed in this simple example
-[here](http://daattali.com/shiny/shinyjs-basic/).*
+[here](https://daattali.com/shiny/shinyjs-basic/).*
 
 Suppose we want to have a simple Shiny app that collects a user's basic
 information (name, age, company) and submits it, along with the time of
@@ -264,4 +264,4 @@ shinyApp(
 )
 ```
 
-You can view the final app [here](http://daattali.com/shiny/shinyjs-basic/).
+You can view the final app [here](https://daattali.com/shiny/shinyjs-basic/).

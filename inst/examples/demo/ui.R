@@ -4,8 +4,8 @@ source("helpers.R")
 
 share <- list(
   title = "shinyjs package",
-  url = "http://daattali.com/shiny/shinyjs-demo/",
-  image = "http://daattali.com/shiny/img/shinyjs.png",
+  url = "https://daattali.com/shiny/shinyjs-demo/",
+  image = "https://daattali.com/shiny/img/shinyjs.png",
   description = "Easily improve the user experience of your Shiny apps in seconds",
   twitter_user = "daattali"
 )
@@ -16,7 +16,7 @@ fluidPage(
   tags$head(
     includeCSS(file.path('www', 'style.css')),
     # Favicon
-    tags$link(rel = "shortcut icon", type="image/x-icon", href="http://daattali.com/shiny/img/favicon.ico"),
+    tags$link(rel = "shortcut icon", type="image/x-icon", href="https://daattali.com/shiny/img/favicon.ico"),
     # Facebook OpenGraph tags
     tags$meta(property = "og:title", content = share$title),
     tags$meta(property = "og:type", content = "website"),
@@ -48,12 +48,12 @@ fluidPage(
           "Easily improve the user experience of your Shiny apps in seconds"),
       div(id = "subsubtitle",
           "Created by",
-          tags$a(href = "http://deanattali.com/", "Dean Attali"),
+          tags$a(href = "https://deanattali.com/", "Dean Attali"),
           HTML("&bull;"),
           "Available",
           tags$a(href = "https://github.com/daattali/shinyjs", "on GitHub"),
           HTML("&bull;"),
-          tags$a(href = "http://daattali.com/shiny/", "More apps"), "by Dean"
+          tags$a(href = "https://daattali.com/shiny/", "More apps"), "by Dean"
       )
   ),
 
@@ -78,7 +78,7 @@ fluidPage(
   column(6, wellPanel(
     h3("What is shinyjs?", class = "section-title"),
     p(
-      strong(a("shinyjs", href = "http://deanattali.com/shinyjs/",
+      strong(a("shinyjs", href = "https://deanattali.com/shinyjs/",
                target = "_blank")),
       span("lets you improve the user experience in your Shiny apps using very simple functions.")),
     p("You can",

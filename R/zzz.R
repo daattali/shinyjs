@@ -6,10 +6,10 @@
   tips <- c(
     "Need shinyjs help? You can ask any Shiny-related question in the RStudio Community forums:\n\thttps://community.rstudio.com/c/shiny",
     "Don't forget that shinyjs can also be used in Rmd documents!",
-    "Watch shinyjs tutorial videos and read the full documentation:\n\thttps://deanattali.com/shinyjs",
+    "Watch shinyjs tutorial videos and read the full documentation:\n\thttps://deanattali.com/shinyjs/",
     "Find out what's new in shinyjs:\n\thttps://github.com/daattali/shinyjs/releases",
     "Answers to common shinyjs questions can be found in the FAQ:\n\thttps://deanattali.com/shinyjs/help",
-    "Need Shiny help? I'm available for consulting:\n\thttp://attalitech.com",
+    "Need Shiny help? I'm available for consulting:\n\thttps://attalitech.com",
     "Use suppressPackageStartupMessages() to eliminate package startup messages.",
     "Stackoverflow is a great place to get help:\n\thttps://stackoverflow.com/tags/shinyjs",
     "Find out advanced usage of shinyjs:\n\thttps://deanattali.com/shinyjs/advanced",

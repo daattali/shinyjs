@@ -16,6 +16,6 @@ delaying code execution by a few seconds, and many more useful functions.
 addin, and can also be used to easily run your own custom JavaScript functions
 from R.
 
-View the \href{http://deanattali.com/shinyjs}{shinyjs website} for more details
+View the \href{https://deanattali.com/shinyjs/}{shinyjs website} for more details
 and to see a demo.
 }

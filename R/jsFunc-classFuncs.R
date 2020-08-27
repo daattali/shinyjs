@@ -14,7 +14,7 @@
 #' then you can use \code{toggleClass} instead: \code{toggleClass(id, cl, test())}.\cr\cr
 #' CSS is a simple way to describe how elements on a web page should be
 #' displayed (position, colour, size, etc.).  You can learn the basics
-#' at \href{http://www.w3schools.com/css/}{W3Schools}.
+#' at \href{https://www.w3schools.com/css/}{W3Schools}.
 #'
 #' @note If you use S4 classes, you should be aware of the fact that both S4 and
 #' \code{shinyjs} use the \code{removeClass()} function. This means that when using S4,

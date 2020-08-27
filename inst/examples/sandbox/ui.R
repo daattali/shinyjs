@@ -7,7 +7,7 @@ shinyUI(fluidPage(
   tags$head(
     includeCSS(file.path('www', 'style.css')),
     # Favicon
-    tags$link(rel = "shortcut icon", type="image/x-icon", href="http://daattali.com/shiny/img/favicon.ico")
+    tags$link(rel = "shortcut icon", type="image/x-icon", href="https://daattali.com/shiny/img/favicon.ico")
   ),
   tags$a(
     href="https://github.com/daattali/shinyjs",
@@ -26,12 +26,12 @@ shinyUI(fluidPage(
           "Easily improve the user experience of your Shiny apps in seconds"),
       div(id = "subsubtitle",
           "Created by",
-          tags$a(href = "http://deanattali.com/", "Dean Attali"),
+          tags$a(href = "https://deanattali.com/", "Dean Attali"),
           HTML("&bull;"),
           "Available",
           tags$a(href = "https://github.com/daattali/shinyjs", "on GitHub"),
           HTML("&bull;"),
-          tags$a(href = "http://daattali.com/shiny/", "More apps"), "by Dean"
+          tags$a(href = "https://daattali.com/shiny/", "More apps"), "by Dean"
       )
   ),
 
@@ -51,7 +51,7 @@ shinyUI(fluidPage(
   column(6, wellPanel(
     h3("What is shinyjs?", class = "section-title"),
     p(
-      strong(a("shinyjs", href = "http://deanattali.com/shinyjs/",
+      strong(a("shinyjs", href = "https://deanattali.com/shinyjs/",
                target = "_blank")),
       span("lets you improve the user experience in your Shiny apps using very simple functions.")),
     p("You can",
@@ -74,7 +74,7 @@ shinyUI(fluidPage(
     ),
 
     p("The functions ending in", code("*Class"), "require basic understading of",
-      a("CSS.", href = "http://www.w3schools.com/css/", target = "_blank"),
+      a("CSS.", href = "https://www.w3schools.com/css/", target = "_blank"),
       "The following CSS rule was added to the app in order for their examples to work:",
       code(".green { color: green }"))
   ))

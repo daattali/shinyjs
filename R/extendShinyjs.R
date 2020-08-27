@@ -3,7 +3,7 @@
 #' Add your own JavaScript functions that can be called from R as if they were
 #' regular R functions. This is a more advanced technique and can only
 #' be used if you know JavaScript. See 'Basic Usage' below for more information
-#' or \href{http://deanattali.com/shinyjs}{view the shinyjs webpage}
+#' or \href{https://deanattali.com/shinyjs/}{view the shinyjs webpage}
 #' to learn more.
 #'
 #' @param script Path to a JavaScript file that contains all the functions.

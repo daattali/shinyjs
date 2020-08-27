@@ -5,7 +5,7 @@
 #' If there are many CSS rules, it is recommended to use an external stylesheet.\cr\cr
 #' CSS is a simple way to describe how elements on a web page should be
 #' displayed (position, colour, size, etc.).  You can learn the basics
-#' at \href{http://www.w3schools.com/css/}{W3Schools}.
+#' at \href{https://www.w3schools.com/css/}{W3Schools}.
 #'
 #' @param rules The CSS rules to add. Can either be a string with valid
 #' CSS code, or a named list of the form

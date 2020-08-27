@@ -46,8 +46,8 @@ in the app's ui.
 }
 \section{Event types}{
 
-Any standard \href{http://api.jquery.com/category/events/mouse-events/}{mouse} or
-\href{http://api.jquery.com/category/events/keyboard-events/}{keyboard} events
+Any standard \href{https://api.jquery.com/category/events/mouse-events/}{mouse} or
+\href{https://api.jquery.com/category/events/keyboard-events/}{keyboard} events
 that are supported by JQuery can be used. The standard list of events that can be used is:
 \code{click}, \code{dblclick}, \code{hover}, \code{mousedown}, \code{mouseenter},
 \code{mouseleave}, \code{mousemove}, \code{mouseout}, \code{mouseover}, \code{mouseup},

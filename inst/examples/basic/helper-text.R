@@ -23,13 +23,13 @@ getHelperText <- function() {
     ),
     p("These are just a subset of the functions available in shinyjs."),
     p("This app is available at",
-      a("http://daattali.com/shiny/shinyjs-basic/",
-        href = "http://daattali.com/shiny/shinyjs-basic/"),
+      a("https://daattali.com/shiny/shinyjs-basic/",
+        href = "https://daattali.com/shiny/shinyjs-basic/"),
       "and the source code is",
       a("on GitHub",
         href = "https://github.com/daattali/shinyjs/blob/master/inst/examples/basic/app.R")
     ),
     a("Visit the shinyjs website to learn more",
-      href = "http://deanattali.com/shinyjs/")
+      href = "https://deanattali.com/shinyjs/")
   )
 }
