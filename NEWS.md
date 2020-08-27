@@ -50,7 +50,7 @@ This update was 2 years in the making because it required a lot of testing by us
 - fixed textArea inputs not getting disabled when disabling a parent element
 - add `showElement()`/`hideElement()`/`toggleElement()` and `addCssClass` etc functions as synonyms for functions that are masked by S4 (compromise for #81)
 - fixed broken `runExample("sandbox")` example
-- added a website for shinyjs: http://deanattali.com/shinyjs
+- added a website for shinyjs: https://deanattali.com/shinyjs/
 
 # shinyjs 0.8
 
@@ -273,7 +273,7 @@ be targeted in batch
 
 2015-06-22
 
-- added a demo app using `colourInput` that's available via `runExample` and [on my shiny server](http://daattali.com/shiny/colourInput/)
+- added a demo app using `colourInput` that's available via `runExample` and [on my shiny server](https://daattali.com/shiny/colourInput/)
 - add a transparency option to `colourInput`
 - complete refactor of `colourInput` using a better library that I modified to work well with shiny inputs
 - including multiple `useShinyjs()` or `extendShinyjs()` will not result in duplicated HTML anymore. This can be useful if the UI is including a few external UI pieces and they independently make a call to `useShinyjs()`.

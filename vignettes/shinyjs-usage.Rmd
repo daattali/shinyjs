@@ -136,7 +136,7 @@ observeEvent(input$button, {
 
 <h3 id="usage-tabbed">Rmd documents with Tabbed Sections</h3>
 
-If the Rmd file makes use of [Tabbed Sections](https://rmarkdown.rstudio.com/html_document_format.html#tabbed_sections) (using `{.tabset}`), then you should include the call to `useShinyjs(rmd = TRUE)` before the tabset definition, near the beginning of the file.
+If the Rmd file makes use of [Tabbed Sections](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed_sections) (using `{.tabset}`), then you should include the call to `useShinyjs(rmd = TRUE)` before the tabset definition, near the beginning of the file.
 
 <h3 id="usage-prerendered">Rmd documents using `shiny_prerendered` engine</h3>
 
