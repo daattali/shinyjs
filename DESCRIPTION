@@ -15,10 +15,10 @@ Depends:
     R (>= 3.1.0)
 Imports:
     digest (>= 0.6.8),
-    htmltools (>= 0.2.9),
     jsonlite,
     shiny (>= 1.0.0)
 Suggests:
+    htmltools (>= 0.2.9),
     knitr (>= 1.7),
     rmarkdown,
     shinyAce,
