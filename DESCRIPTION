@@ -25,7 +25,6 @@ Suggests:
     shinydisconnect,
     testthat (>= 0.9.1)
 License: MIT + file LICENSE
-SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
