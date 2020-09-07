@@ -1,6 +1,5 @@
 .Rproj.user
 .Rhistory
 .RData
-*.Rproj
 inst/doc
 .github/
