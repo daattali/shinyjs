@@ -120,6 +120,9 @@ reset <- function(id, asis = FALSE) {
         # most input update functions use 'value' argument, some use 'selected',
         # DateRange uses 'start' and 'end'
         if (type == "RadioButtons") {
+          if (is.null(value)) {
+            value <- character(0)
+          }
           funcParams[['selected']] <- value
         } else if (type == "CheckboxGroup" || type == "Select") {
           if (value == '""') {
