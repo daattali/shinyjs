@@ -120,7 +120,7 @@ reset <- function(id, asis = FALSE) {
         # most input update functions use 'value' argument, some use 'selected',
         # DateRange uses 'start' and 'end'
         if (type == "RadioButtons") {
-          if (is.null(value)) {
+          if (is.null(value) && utils::packageVersion("shiny") > "1.5.0") {
             value <- character(0)
           }
           funcParams[['selected']] <- value

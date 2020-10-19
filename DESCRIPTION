@@ -16,7 +16,8 @@ Depends:
 Imports:
     digest (>= 0.6.8),
     jsonlite,
-    shiny (>= 1.0.0)
+    shiny (>= 1.0.0),
+    utils
 Suggests:
     htmltools (>= 0.2.9),
     knitr (>= 1.7),
@@ -28,4 +29,4 @@ License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
