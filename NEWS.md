@@ -1,3 +1,7 @@
+# Unreleased version
+
+- Fix bug: `disable()` did not work on nested download buttons (#223)
+
 # shinyjs 2.0.0 (2020-08-24)
 
 - **IMPORTANT CHANGE** Remove commercial license (it only existed because some big companies asked for it, but it ended up being a bigger headache for 99% of the community)
