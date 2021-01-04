@@ -19,9 +19,9 @@
 #'
 #' @section Basic Usage:
 #' Any JavaScript function defined in your script that begins with "`shinyjs.`"
-#' and that's provided in the `functions` argument will be available to run 
+#' and that's provided in the `functions` argument will be available to run
 #' from R using the "`js$`" variable. For example, if you write a JavaScript function
-#' called "`shinyjs.myfunc`" and used `functions = c("myfunc")`, then you can call it 
+#' called "`shinyjs.myfunc`" and used `functions = c("myfunc")`, then you can call it
 #' from R with `js$myfunc()`.
 #'
 #' It's recommended to write JavaScript code in a separate file and provide the
@@ -51,14 +51,14 @@
 #'   }
 #' )
 #' }
-#' 
+#'
 #' You can add more functions to the JavaScript code, but remember that every
 #' function you want to use in R has to have a name beginning with
 #' "`shinyjs.`". See the section on passing arguments and the examples below
 #' for more information on how to write effective functions.
 #'
 #' @section Running JavaScript code on page load:
-#' If there is any JavaScript code that you want to run immediately when the page loads, 
+#' If there is any JavaScript code that you want to run immediately when the page loads,
 #' you can place it inside a \code{shinyjs.init} function. The function \code{shinyjs.init}
 #' will automatically be called when the Shiny app's HTML is initialized. A common
 #' use for this is when registering event handlers or initializing JavaScript objects,
@@ -242,9 +242,43 @@ extendShinyjs <- function(script, text, functions) {
   if (missing(script) && missing(text)) {
     errMsg("extendShinyjs: Either `script` or `text` need to be provided.")
   }
-  
+
   if (missing(functions)) {
     errMsg("extendShinyjs: `functions` argument must be provided.")
+  }
+
+  shinyjsFunctions <- c(
+    "debug",
+    "debugMessage",
+    "getParams",
+    "initShinyjs",
+    "init",
+    "show",
+    "hide",
+    "toggle",
+    "addClass",
+    "removeClass",
+    "toggleClass",
+    "enable",
+    "disable",
+    "toggleState",
+    "html",
+    "alert",
+    "logjs",
+    "runjs",
+    "onevent",
+    "reset",
+    "delay",
+    "click",
+    "refresh"
+  )
+
+  if (any(functions %in% shinyjsFunctions)) {
+    errMsg(paste0(
+      "extendShinyjs: `functions` argument must not contain any of the ",
+      "following function names:\n",
+      paste(shinyjsFunctions, collapse = ", ")
+    ))
   }
 
   jsFuncs <- functions
