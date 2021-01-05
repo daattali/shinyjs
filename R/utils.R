@@ -83,3 +83,25 @@ shinyjsInlineScript <- function(text) {
     shiny::tags$script(shiny::HTML(text))
   }
 }
+
+# names of JS functions defined by shinyjs
+shinyjsFunctionNames <- function(type = c("all", "core")) {
+  type <- match.arg(type)
+
+  # core functions are defined in JS and exported in R
+  jsFuncs <- c(
+    "show", "hide", "toggle", "enable", "disable", "toggleState",
+    "addClass", "removeClass", "toggleClass", "html", "onevent",
+    "alert", "logjs", "runjs", "reset", "delay", "click", "refresh"
+  )
+
+  if (type == "all") {
+    jsFuncs <- c(
+      jsFuncs,
+      # additional functions which are only defined on the JS side
+      "debug", "debugMessage", "getParams", "initShinyjs", "init"
+    )
+  }
+
+  jsFuncs
+}

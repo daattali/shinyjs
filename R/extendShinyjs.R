@@ -247,33 +247,7 @@ extendShinyjs <- function(script, text, functions) {
     errMsg("extendShinyjs: `functions` argument must be provided.")
   }
 
-  shinyjsFunctions <- c(
-    "debug",
-    "debugMessage",
-    "getParams",
-    "initShinyjs",
-    "init",
-    "show",
-    "hide",
-    "toggle",
-    "addClass",
-    "removeClass",
-    "toggleClass",
-    "enable",
-    "disable",
-    "toggleState",
-    "html",
-    "alert",
-    "logjs",
-    "runjs",
-    "onevent",
-    "reset",
-    "delay",
-    "click",
-    "refresh"
-  )
-
-  if (any(functions %in% shinyjsFunctions)) {
+  if (any(functions %in% shinyjsFunctionNames("all"))) {
     errMsg(paste0(
       "extendShinyjs: `functions` argument must not contain any of the ",
       "following function names:\n",
