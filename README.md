@@ -1,5 +1,3 @@
-[![shinyjs](inst/img/banner.png)](https://deanattali.com/shinyjs/)
-
 <h3 align="center">
 
 shinyjs
@@ -16,12 +14,12 @@ Easily improve the user experience of your Shiny apps in seconds
 
 <p align="center">
 
-<a href="https://xscode.com/daattali/shinyjs">
-<img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
-</a> <a href="https://github.com/daattali/shinyjs/actions">
+<a href="https://github.com/daattali/shinyjs/actions">
 <img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R Build Status" />
 </a> <a href="https://cran.r-project.org/package=shinyjs">
 <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
+</a> <a href="https://xscode.com/daattali/shinyjs">
+<img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
 </a>
 
 </p>
@@ -29,6 +27,8 @@ Easily improve the user experience of your Shiny apps in seconds
 </p>
 
 -----
+
+<img src="inst/img/hex.png" width="170" align="right"/>
 
 {shinyjs} lets you perform common useful JavaScript operations in Shiny
 apps that will greatly improve your apps without having to know any
@@ -357,4 +357,3 @@ Sponsors 🏆
 
 [Become the first sponsor for {shinyjs} and unlock special
 rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
-
