@@ -14,7 +14,7 @@ The tag (or tags) that was given as an argument in a hidden state.
 }
 \description{
 Create a Shiny tag that is invisible when the Shiny app starts. The tag can
-be made visible later with \code{shinyjs::toggle} or \code{shinyjs::show}.
+be made visible later with \code{\link[=toggle]{toggle()}} or \code{\link[=show]{show()}}.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -45,8 +45,5 @@ hidden(tagList(span(id = "a"), div(id = "b")))
 hidden(list(span(id = "a"), div(id = "b")))
 }
 \seealso{
-\code{\link[shinyjs]{useShinyjs}},
-\code{\link[shinyjs]{toggle}},
-\code{\link[shinyjs]{show}},
-\code{\link[shinyjs]{hide}}
+\link{useShinyjs}, \code{\link[=toggle]{toggle()}}, \code{\link[=show]{show()}}, \code{\link[=hide]{hide()}}
 }

@@ -15,7 +15,7 @@ The tag (or tags) that was given as an argument in a disabled state.
 }
 \description{
 Create a Shiny input that is disabled when the Shiny app starts. The input can
-be enabled later with \code{shinyjs::toggleState} or \code{shinyjs::enable}.
+be enabled later with \code{\link[=toggleState]{toggleState()}} or \code{\link[=enable]{enable()}}.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -44,8 +44,5 @@ library(shiny)
 disabled(numericInput("num", NULL, 5), dateInput("date", NULL))
 }
 \seealso{
-\code{\link[shinyjs]{useShinyjs}},
-\code{\link[shinyjs]{toggleState}},
-\code{\link[shinyjs]{enable}},
-\code{\link[shinyjs]{disable}}
+\code{\link[=useShinyjs]{useShinyjs()}}, \code{\link[=toggleState]{toggleState()}}, \code{\link[=enable]{enable()}}, \code{\link[=disable]{disable()}}
 }

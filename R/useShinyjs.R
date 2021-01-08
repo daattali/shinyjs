@@ -4,7 +4,7 @@
 #' \code{shinyjs} functions to work.\cr\cr
 #' You can call \code{useShinyjs()} from anywhere inside the UI, as long as the
 #' final app UI contains the result of \code{useShinyjs()}.
-#' 
+#'
 #' If you're a package author and including \code{shinyjs} in a function in your
 #' your package, you need to make sure \code{useShinyjs()} is called either by
 #' the end user's Shiny app or by your function's UI.
@@ -23,8 +23,8 @@
 #' how to use shinyjs in these apps.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag. A side effect of calling this function is that
-#' a \code{shinyjs} directory is added as a resource path using 
-#' \link[shiny]{addResourcePath}.
+#' a \code{shinyjs} directory is added as a resource path using
+#' [shiny::addResourcePath()].
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
