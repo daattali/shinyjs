@@ -99,7 +99,7 @@ shinyjsFunctionNames <- function(type = c("all", "core")) {
     jsFuncs <- c(
       jsFuncs,
       # additional functions which are only defined on the JS side
-      "debug", "debugMessage", "getParams", "initShinyjs", "init"
+      "debug", "debugMessage", "getParams", "initShinyjs"
     )
   }
 
