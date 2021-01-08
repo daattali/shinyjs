@@ -244,7 +244,7 @@ extendShinyjs <- function(script, text, functions) {
   }
 
   if (missing(functions)) {
-    errMsg("extendShinyjs: `functions` argument must be provided.")
+    errMsg("extendShinyjs: `functions` argument must be provided. See the documentation for `?extendShinyjs` for more details.")
   }
 
   isShinyjsFunction <- functions %in% shinyjsFunctionNames("all")

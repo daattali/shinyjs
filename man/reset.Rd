@@ -4,11 +4,12 @@
 \alias{reset}
 \title{Reset input elements to their original values}
 \usage{
-reset(id, asis = FALSE)
+reset(id = "", asis = FALSE)
 }
 \arguments{
 \item{id}{The id of the input element to reset or the id of an HTML
-tag to reset all input elements inside it.}
+tag to reset all inputs inside it. If no id is provided, then
+all inputs on the page are reset.}
 
 \item{asis}{If \code{TRUE}, use the ID as-is even when inside a module
 (instead of adding the namespace prefix to the ID).}

@@ -38,5 +38,5 @@ if (interactive()) {
 }
 }
 \seealso{
-\code{\link[shinyjs]{logjs}}
+\code{\link[=logjs]{logjs()}}
 }

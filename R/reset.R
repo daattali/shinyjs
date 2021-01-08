@@ -11,7 +11,8 @@
 #' the value of a button back to 0.
 #'
 #' @param id The id of the input element to reset or the id of an HTML
-#' tag to reset all input elements inside it.
+#' tag to reset all inputs inside it. If no id is provided, then
+#' all inputs on the page are reset.
 #' @param asis If \code{TRUE}, use the ID as-is even when inside a module
 #' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
@@ -53,13 +54,13 @@
 #'   )
 #' }
 #' @export
-reset <- function(id, asis = FALSE) {
+reset <- function(id = "", asis = FALSE) {
   # get the Shiny session
   session <- getSession()
 
   # Make sure reset works with namespaces (shiny modules)
   nsName <- ""
-  if (inherits(session, "session_proxy") && !asis) {
+  if (id != "" && inherits(session, "session_proxy") && !asis) {
     id <- session$ns(id)
     nsName <- session$ns("")
   }

@@ -748,7 +748,11 @@ shinyjs = function() {
       }
       params = shinyjs.getParams(params, defaultParams);
 
-      var el = _jqid(params.id);
+      if (params.id === "") {
+        var el = $("body");
+      } else {
+        var el = _jqid(params.id);
+      }
 
       // find all the resettable input elements
       var resettables;

@@ -26,7 +26,7 @@
 #'     }
 #'   )
 #' }
-#' @seealso \code{\link[shinyjs]{logjs}}
+#' @seealso [logjs()]
 #' @export
 showLog <- function() {
   session <- getSession()
