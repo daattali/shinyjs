@@ -59,6 +59,7 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 # Table of contents
 
   - [Demos and tutorials](#demos)
+  - [Sponsors 🏆](#sponsors)
   - [Overview of main functions](#overview-main)
   - [Installation](#install)
   - [How to use](#usage)
@@ -66,7 +67,6 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
   - [Calling your own JavaScript functions from R](#extendshinyjs)
   - [FAQ and extra tricks](#faq-tricks)
   - [Support](#support)
-  - [Sponsors 🏆](#sponsors)
 
 <h2 id="demos">
 
@@ -86,6 +86,17 @@ Demos and tutorials
     corresponding [presentation
     slides](https://bit.ly/shinyjs-slides-useR2016) from the 2016 useR
     Conference.
+
+<h2 id="sponsors">
+
+Sponsors 🏆
+
+</h2>
+
+> There are no sponsors yet
+
+[Become the first sponsor for {shinyjs} and unlock special
+rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2 id="overview-main">
 
@@ -347,13 +358,10 @@ free support. If you can’t solve any issue and require my personal help,
 please visit <https://xscode.com/daattali/shinyjs> or [contact
 me](https://attalitech.com/contact).**
 
-<h2 id="sponsors">
+<h2>
 
-Sponsors 🏆
+Credits
 
 </h2>
 
-> There are no sponsors yet
-
-[Become the first sponsor for {shinyjs} and unlock special
-rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+Logo design by [Alfredo Hernández](https://aldomann.com/).
