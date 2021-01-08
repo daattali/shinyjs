@@ -1,5 +1,6 @@
 # Unreleased version
 
+- New feature: you can now reset all inputs on the page by calling `reset()` with no arguments (#222)
 - Fix bug: `disable()` did not work on nested download buttons (#223)
 
 # shinyjs 2.0.0 (2020-08-24)
