@@ -1,8 +1,10 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
 Version: 2.0.0.9000
-Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
-    role = c("aut", "cre"))
+Authors@R: person("Dean", "Attali", 
+    email = "daattali@gmail.com",
+    role = c("aut", "cre"),
+    comment= c(ORCID="0000-0002-5645-3493"))
 Description: Perform common useful JavaScript operations in Shiny apps that will
     greatly improve your apps without having to know any JavaScript. Examples
     include: hiding an element, disabling an input, resetting an input back to
