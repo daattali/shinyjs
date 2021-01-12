@@ -23,13 +23,16 @@ jsFunc <- function(...) {
 
 # similar to jsFunc, but here we already know the function name and parameters
 jsFuncHelper <- function(fxn, params) {
+  # is fxn a function defined by shinyjs (not by the user with extendShinyjs)
+  isShinyjsFunction <- fxn %in% shinyjsFunctionNames("all")
+
   # get the Shiny session
   session <- getSession()
 
   fxn <- paste0("shinyjs-", fxn)
 
-  # respect Shiny modules/namespaces
-  if (inherits(session , "session_proxy")) {
+  # respect Shiny modules/namespaces in shinyjs functions
+  if (inherits(session , "session_proxy") && isShinyjsFunction) {
     if ("id" %in% names(params) && !is.null(params[['id']])) {
       if (!"asis" %in% names(params) || !params[['asis']]) {
         params[['id']] <- session$ns(params[['id']])
