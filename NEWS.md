@@ -2,6 +2,7 @@
 
 - New feature: you can now reset all inputs on the page by calling `reset()` with no arguments (#222)
 - Fix bug: `disable()` did not work on nested download buttons (#223)
+- Fix bug: Don't automatically namespace ID arguments in custom extendShinyjs functions (#229)
 - Fix bug: ensure that `extendShinyjs()` functions don't overwrite native {shinyjs} functions (#230)
 
 # shinyjs 2.0.0 (2020-08-24)
