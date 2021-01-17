@@ -56,6 +56,68 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 
 </p>
 
+> This package is part of a larger ecosystem of packages with a shared
+> vision: solving common Shiny issues and improving Shiny apps with
+> minimal effort, minimal code changes, and straightforward
+> documentation. Other packages for your Shiny apps:
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Description</th>
+<th>Demo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://github.com/daattali/shinyalert">shinyalert</a></td>
+<td>🗯️ Easily create pretty popup messages (modals) in Shiny</td>
+<td><a href="https://daattali.com/shiny/shinyalert-demo/">🔗</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/daattali/shinyscreenshot/">shinyscreenshot</a></td>
+<td>📷 Capture screenshots of entire pages or parts of pages in Shiny apps</td>
+<td><a href="https://daattali.com/shiny/shinyscreenshot-demo/">🔗</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/daattali/timevis/">timevis</a></td>
+<td>📅 Create interactive timeline visualizations in R</td>
+<td><a href="https://daattali.com/shiny/timevis-demo/">🔗</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/daattali/shinycssloaders/">shinycssloaders</a></td>
+<td>⌛ Add loading animations to a Shiny output while it’s recalculating</td>
+<td><a href="https://daattali.com/shiny/shinycssloaders-demo/">🔗</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/daattali/colourpicker/">colourpicker</a></td>
+<td>🎨 A colour picker tool for Shiny and for selecting colours in plots</td>
+<td><a href="https://daattali.com/shiny/colourInput/">🔗</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/daattali/shinybrowser/">shinybrowser</a></td>
+<td>🌐 Find out information about a user’s web browser in Shiny apps</td>
+<td><a href="https://daattali.com/shiny/shinybrowser-demo/">🔗</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/daattali/shinydisconnect/">shinydisconnect</a></td>
+<td>🔌 Show a nice message when a Shiny app disconnects or errors</td>
+<td><a href="https://daattali.com/shiny/shinydisconnect-demo/">🔗</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/daattali/shinyforms/">shinyforms</a></td>
+<td>📝 Easily create questionnaire-type forms with Shiny</td>
+<td>WIP</td>
+</tr>
+</tbody>
+</table>
+
 # Table of contents
 
   - [Demos and tutorials](#demos)
