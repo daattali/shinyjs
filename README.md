@@ -4,6 +4,7 @@ shinyjs
 
 </h3>
 
+
 <h4 align="center">
 
 Easily improve the user experience of your Shiny apps in seconds
