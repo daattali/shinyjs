@@ -21,6 +21,7 @@ In order to use any shinyjs function in a Shiny app, you must first call `useShi
 | `html` | Change the text/HTML of an element. |
 | `onclick` | Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a `shinyjs` function when an element is clicked, though any R code can be used. |
 | `onevent` | Similar to `onclick`, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc). |
+| `removeEvent` | Remove an event that was added to an HTML element with `onclick()` or `onevent()`. |
 | `addClass` / `removeClass` / `toggleClass` | add or remove a CSS class from an element. |
 | `runjs` | Run arbitrary JavaScript code. |
 | `extendShinyjs` | Allows you to write your own JavaScript functions and use `shinyjs` to call them as if they were regular R code. More information is available in the section "Calling your own JavaScript functions from R" below. |
