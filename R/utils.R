@@ -91,7 +91,7 @@ shinyjsFunctionNames <- function(type = c("all", "core")) {
   # core functions are defined in JS and exported in R
   jsFuncs <- c(
     "show", "hide", "toggle", "enable", "disable", "toggleState",
-    "addClass", "removeClass", "toggleClass", "html", "onevent",
+    "addClass", "removeClass", "toggleClass", "html", "onevent", "removeEvent",
     "alert", "logjs", "runjs", "reset", "delay", "click", "refresh"
   )
 

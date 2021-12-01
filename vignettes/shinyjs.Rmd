@@ -53,7 +53,7 @@ Examples include: hiding an element, disabling an input, resetting an input back
 <a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
-<a style="display: inline-block;" href="https://paypal.me/daattali">
+<a style="display: inline-block;" href="https://www.paypal.com/donate/?hosted_button_id=DG8NNBJHRKM46">
 <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
 </a>
 
@@ -115,6 +115,7 @@ you play around with some of the functionality in {shinyjs}.
 | `html` | Change the text/HTML of an element. |
 | `onclick` | Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a {shinyjs} function when an element is clicked, though any R code can be used. |
 | `onevent` | Similar to `onclick`, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc). |
+| `removeEvent` | Remove an event that was added to an HTML element with `onclick()` or `onevent()`. |
 | `addClass`/`removeClass`/`toggleClass` | add or remove a CSS class from an element. |
 | `runjs` | Run arbitrary JavaScript code. |
 | `extendShinyjs` | Allows you to write your own JavaScript functions and use {shinyjs} to call them as if they were regular R code. More information is available in the section "Calling your own JavaScript functions from R" below. |

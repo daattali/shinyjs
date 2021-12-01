@@ -45,5 +45,5 @@ hidden(tagList(span(id = "a"), div(id = "b")))
 hidden(list(span(id = "a"), div(id = "b")))
 }
 \seealso{
-\link{useShinyjs}, \code{\link[=toggle]{toggle()}}, \code{\link[=show]{show()}}, \code{\link[=hide]{hide()}}
+\code{\link[=useShinyjs]{useShinyjs()}}, \code{\link[=toggle]{toggle()}}, \code{\link[=show]{show()}}, \code{\link[=hide]{hide()}}
 }

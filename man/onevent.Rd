@@ -33,12 +33,17 @@ for a list of event types.}
 to the argument of the \code{expr} function. See below for more information about
 Event properties.}
 }
+\value{
+An ID that can be used by \code{\link[shinyjs]{removeEvent}} to remove
+the event listener. See \code{\link[shinyjs]{removeEvent}} for more details.
+}
 \description{
 \code{onclick} runs an R expression (either a \code{shinyjs} function or any other code)
 when an element is clicked.\cr\cr
 \code{onevent} is similar, but can be used when any event is triggered on the element,
 not only a mouse click. See below for a list of possible event types. Using "click"
-results in the same behaviour as calling \code{onclick}.
+results in the same behaviour as calling \code{onclick}.\cr\cr
+This action can be reverted by calling \code{\link[shinyjs]{removeEvent}}.
 }
 \note{
 \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
@@ -62,7 +67,7 @@ plugin that you can use to listen to mousewheel events).
 If a function is provided to \code{expr}, the function will receive a list
 of JavaScript Event properties describing the current event as an argument.
 Different properties are available for different event types. The full list
-of porperties that can be returned is: \code{altKey}, \code{button},
+of properties that can be returned is: \code{altKey}, \code{button},
 \code{buttons}, \code{clientX}, \code{clientY}, \code{ctrlKey}, \code{pageX},
 \code{pageY}, \code{screenX}, \code{screenY}, \code{shiftKey}, \code{which},
 \code{charCode}, \code{key}, \code{keyCode}, \code{offsetX}, \code{offsetY}.
@@ -98,6 +103,7 @@ if (interactive()) {
 }
 }
 \seealso{
+\code{\link[shinyjs]{removeEvent}},
 \code{\link[shinyjs]{useShinyjs}},
 \code{\link[shinyjs]{runExample}}
 }

@@ -462,7 +462,7 @@ shinyjs = function() {
         var eventSimple = {};
         $.each(props, function(idx, prop) {
           if (prop in event) {
-            eventSimple[[prop]] = event[[prop]];
+            eventSimple[prop] = event[prop];
           }
         });
         eventSimple.shinyjsRandom = Math.random();
@@ -734,6 +734,53 @@ shinyjs = function() {
       // if the element does exist, add the event handler
       else {
         _oneventAttach(params);
+      }
+    },
+
+    removeEvent : function (params) {
+      var defaultParams = {
+        event        : null,
+        id           : null
+      }
+      params = shinyjs.getParams(params, defaultParams);
+
+      var el = _jqid(params.id);
+
+      var eventInstance = params.event;
+      var eventType = eventInstance.replace(/(.*)-/,"");
+      var removeAll = (eventInstance == eventType);
+
+      // If the element is not yet in the document, remove it from the onevent queue
+      if (el.length == 0) {
+        if (params.id in _oneventData) {
+          var elementData = _oneventData[params.id];
+          if (removeAll) {
+            delete elementData[eventType];
+          } else {
+            if (eventType in elementData) {
+              var eventDatas = elementData[eventType];
+              var newEvents = eventDatas.filter(function(data) {
+                return data.shinyInputId != eventInstance;
+              });
+              if (newEvents.length == 0) {
+                delete elementData[eventType];
+              } else {
+                elementData[eventType] = newEvents;
+              }
+            }
+          }
+        }
+      } else {
+        var attrName = "data-shinyjs-" + eventType;
+        if (el[0].hasAttribute(attrName)) {
+          if (removeAll) {
+            var attrValue = {};
+          } else {
+            var attrValue = JSON.parse(el.attr(attrName));
+            delete attrValue[eventInstance]
+          }
+          el.attr(attrName, JSON.stringify(attrValue));
+        }
       }
     },
 

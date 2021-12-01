@@ -1,19 +1,12 @@
 <h3 align="center">
-
 shinyjs
-
 </h3>
-
 <h4 align="center">
-
 Easily improve the user experience of your Shiny apps in seconds
 <br><br> <a href="https://deanattali.com/shinyjs/">Official website</a>
 · by <a href="https://deanattali.com">Dean Attali</a>
-
 </h4>
-
 <p align="center">
-
 <a href="https://github.com/daattali/shinyjs/actions">
 <img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R Build Status" />
 </a> <a href="https://cran.r-project.org/package=shinyjs">
@@ -21,12 +14,10 @@ Easily improve the user experience of your Shiny apps in seconds
 </a> <a href="https://xscode.com/daattali/shinyjs">
 <img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
 </a>
-
+</p>
 </p>
 
-</p>
-
------
+------------------------------------------------------------------------
 
 <img src="inst/img/hex.png" width="170" align="right"/>
 
@@ -43,14 +34,14 @@ JavaScript functions from R.
 **Need Shiny help? [I’m available for
 consulting](https://attalitech.com/).**<br/> **If you find {shinyjs}
 useful, please consider [supporting my
-work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
+work](https://github.com/sponsors/daattali) to unlock rewards! ❤**
 
 <p align="center">
 
 <a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
-<a style="display: inline-block;" href="https://paypal.me/daattali">
+<a style="display: inline-block;" href="https://www.paypal.com/donate/?hosted_button_id=DG8NNBJHRKM46">
 <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
 </a>
 
@@ -120,50 +111,44 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 
 # Table of contents
 
-  - [Demos and tutorials](#demos)
-  - [Sponsors 🏆](#sponsors)
-  - [Overview of main functions](#overview-main)
-  - [Installation](#install)
-  - [How to use](#usage)
-  - [Basic use case - complete working example](#usecase)
-  - [Calling your own JavaScript functions from R](#extendshinyjs)
-  - [FAQ and extra tricks](#faq-tricks)
-  - [Support](#support)
+-   [Demos and tutorials](#demos)
+-   [Sponsors 🏆](#sponsors)
+-   [Overview of main functions](#overview-main)
+-   [Installation](#install)
+-   [How to use](#usage)
+-   [Basic use case - complete working example](#usecase)
+-   [Calling your own JavaScript functions from R](#extendshinyjs)
+-   [FAQ and extra tricks](#faq-tricks)
+-   [Support](#support)
 
 <h2 id="demos">
-
 Demos and tutorials
-
 </h2>
 
-  - [Demo Shiny app](https://deanattali.com/shinyjs/demo) that lets you
+-   [Demo Shiny app](https://deanattali.com/shinyjs/demo) that lets you
     play around with some of the functionality in {shinyjs}.
-  - [Video of my {shinyjs}
+-   [Video of my {shinyjs}
     talk](https://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and
     the corresponding [presentation
     slides](https://bit.ly/shinyjs-slides) from the 2016 Shiny Developer
     Conference.
-  - [Video of my {shinyjs}
+-   [Video of my {shinyjs}
     talk](https://deanattali.com/shinyjs-user-2016/) (5 min) and the
     corresponding [presentation
     slides](https://bit.ly/shinyjs-slides-useR2016) from the 2016 useR
     Conference.
 
 <h2 id="sponsors">
-
 Sponsors 🏆
-
 </h2>
 
 > There are no sponsors yet
 
 [Become the first sponsor for {shinyjs} and unlock special
-rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+rewards!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2 id="overview-main">
-
 Overview of main functions
-
 </h2>
 
 **Note: In order to use any {shinyjs} function in a Shiny app, you must
@@ -230,14 +215,18 @@ first call `useShinyjs()` anywhere in the app’s UI.**
 <td>Similar to <code>onclick</code>, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc).</td>
 </tr>
 <tr class="odd">
+<td><code>removeEvent</code></td>
+<td>Remove an event that was added to an HTML element with <code>onclick()</code> or <code>onevent()</code>.</td>
+</tr>
+<tr class="even">
 <td><code>addClass</code>/<code>removeClass</code>/<code>toggleClass</code></td>
 <td>add or remove a CSS class from an element.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>runjs</code></td>
 <td>Run arbitrary JavaScript code.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>extendShinyjs</code></td>
 <td>Allows you to write your own JavaScript functions and use {shinyjs} to call them as if they were regular R code. More information is available in the section “Calling your own JavaScript functions from R” below.</td>
 </tr>
@@ -282,9 +271,7 @@ to see some of these in action, or install {shinyjs} and run
 `shinyjs::runExample()` to see more demos.
 
 <h2 id="install">
-
 Installation
-
 </h2>
 
 To install the stable CRAN version:
@@ -297,9 +284,7 @@ To install the latest development version from GitHub:
     remotes::install_github("daattali/shinyjs")
 
 <h2 id="usage">
-
 How to use
-
 </h2>
 
 A typical Shiny app has a UI portion and a server portion. Before using
@@ -310,20 +295,20 @@ Here is a minimal Shiny app that uses {shinyjs}:
 
     library(shiny)
     library(shinyjs)
-    
+
     ui <- fluidPage(
       useShinyjs(),  # Include shinyjs
-    
+
       actionButton("button", "Click me"),
       textInput("text", "Text")
     )
-    
+
     server <- function(input, output) {
       observeEvent(input$button, {
         toggle("text")  # toggle is a shinyjs function
       })
     }
-    
+
     shinyApp(ui, server)
 
 This is how most Shiny apps should initialize {shinyjs} - by calling
@@ -331,10 +316,10 @@ This is how most Shiny apps should initialize {shinyjs} - by calling
 
 However, if you use {shinyjs} in any of the following cases:
 
-  - In Shiny dashboards (built using the `shinydashboard` package)
-  - In Shiny apps that use a `navbarPage` layout
-  - In Rmd documents
-  - In Shiny apps that manually build the user interface with an HTML
+-   In Shiny dashboards (built using the `shinydashboard` package)
+-   In Shiny apps that use a `navbarPage` layout
+-   In Rmd documents
+-   In Shiny apps that manually build the user interface with an HTML
     file or template (instead of using Shiny’s UI functions)
 
 Then you should see the [*Including {shinyjs} in different types of
@@ -345,9 +330,7 @@ above code sample should be enough to get your started with including
 {shinyjs} in your app.
 
 <h2 id="usecase">
-
 Basic use case - complete working example
-
 </h2>
 
 See the [*{shinyjs} example app
@@ -356,9 +339,7 @@ step-by-step guide on how to add a variety of {shinyjs} features to a
 simple app in order to make it more user friendly.
 
 <h2 id="extendshinyjs">
-
 Calling your own JavaScript functions from R
-
 </h2>
 
 You can also use {shinyjs} to add your own JavaScript functions that can
@@ -372,9 +353,7 @@ To learn about this feature and see how useful it can be, see the
 R*](https://deanattali.com/shinyjs/extend) document.
 
 <h2 id="faq-tricks">
-
 FAQ and extra tricks
-
 </h2>
 
 There are several questions that pop up very frequently in my email or
@@ -382,17 +361,17 @@ on StackOverflow about “How do I use {shinyjs} to do \_\_\_?” Here is a
 list of a few of these common questions with links to a solution that
 could be useful. Note that all of these require using `extendShinyjs()`.
 
-  - [How do I show/hide the `shinydashboard` sidebar
+-   [How do I show/hide the `shinydashboard` sidebar
     programmatically?](https://stackoverflow.com/a/31306707/3943160)
-  - [How do I hide/disable a
+-   [How do I hide/disable a
     tab?](https://stackoverflow.com/a/31719425/3943160)
-  - [How do I refresh the
+-   [How do I refresh the
     page?](https://stackoverflow.com/a/34758024/3943160)
-  - [How do I call a JavaScript function from a different JavaScript
+-   [How do I call a JavaScript function from a different JavaScript
     library?](https://github.com/timelyportfolio/sweetalertR/issues/1#issuecomment-151685005)
-  - [How do I change the values of a
+-   [How do I change the values of a
     `sliderInput`?](https://stackoverflow.com/a/31066997/3943160)
-  - [How do I call JavaScript code and use the return
+-   [How do I call JavaScript code and use the return
     value?](https://stackoverflow.com/a/34728125/3943160)
 
 I also keep a long [list of various Shiny tips &
@@ -400,9 +379,7 @@ tricks](https://deanattali.com/blog/advanced-shiny-tips/) for solving
 common Shiny problems, many of which make use of {shinyjs}.
 
 <h2 id="support">
-
 Support
-
 </h2>
 
 This document is only an overview of {shinyjs}. There are more in-depth
@@ -421,9 +398,7 @@ please visit <https://xscode.com/daattali/shinyjs> or [contact
 me](https://attalitech.com/contact).**
 
 <h2>
-
 Credits
-
 </h2>
 
 Logo design by [Alfredo Hernández](https://aldomann.com/).
