@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 2.0.0.9001
+Version: 2.1.0
 Authors@R: person("Dean", "Attali", 
     email = "daattali@gmail.com",
     role = c("aut", "cre"),
@@ -27,7 +27,6 @@ Suggests:
     shinydisconnect,
     testthat (>= 0.9.1)
 License: MIT + file LICENSE
-LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
