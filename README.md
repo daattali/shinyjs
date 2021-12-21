@@ -130,13 +130,13 @@ Demos and tutorials
 -   [Video of my {shinyjs}
     talk](https://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and
     the corresponding [presentation
-    slides](https://bit.ly/shinyjs-slides) from the 2016 Shiny Developer
-    Conference.
+    slides](https://docs.google.com/presentation/d/1XyBrIA97ZWIkm8NICAyWHo4J9hj_i2-mJmKEq_CR2A8/edit?usp=sharing)
+    from the 2016 Shiny Developer Conference.
 -   [Video of my {shinyjs}
     talk](https://deanattali.com/shinyjs-user-2016/) (5 min) and the
     corresponding [presentation
-    slides](https://bit.ly/shinyjs-slides-useR2016) from the 2016 useR
-    Conference.
+    slides](https://docs.google.com/presentation/d/1owJpLTmfV-53Ca9NJIweBMANsmjaErKXNzw_sCTuBAw/edit?usp=sharing)
+    from the 2016 useR Conference.
 
 <h2 id="sponsors">
 Sponsors 🏆
