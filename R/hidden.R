@@ -33,7 +33,7 @@
 #' hidden(list(span(id = "a"), div(id = "b")))
 #' @export
 hidden <- function(...) {
-  tags <- list(...)
+  tags <- rlang::list2(...)
 
   # recursively add the hidden class to all tags
   if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag")) {

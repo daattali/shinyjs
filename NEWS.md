@@ -1,7 +1,7 @@
 # Unreleased version
 
 - Replace `digest::digest()` with `rlang::hash`, to reduce dependencies and it's faster (#248)
-- 
+- Replace `list(...)` with `rlang::list2(...)` which is more flexible and allows you to use trailing commas without error
 
 # shinyjs 2.1.0 (2021-12-20)
 
