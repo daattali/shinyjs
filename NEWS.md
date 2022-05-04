@@ -1,3 +1,8 @@
+# Unreleased version
+
+- Replace `digest::digest()` with `rlang::hash`, to reduce dependencies and it's faster (#248)
+- 
+
 # shinyjs 2.1.0 (2021-12-20)
 
 - New feature: you can now reset all inputs on the page by calling `reset()` with no arguments (#222)
