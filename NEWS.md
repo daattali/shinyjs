@@ -1,5 +1,6 @@
 # Unreleased version
 
+- Fix bug: `disable()` now works with file inputs (#249)
 - Replace `digest::digest()` with `rlang::hash`, to reduce dependencies and it's faster (#248)
 - Replace `list(...)` with `rlang::list2(...)` which is more flexible and allows you to use trailing commas without error
 

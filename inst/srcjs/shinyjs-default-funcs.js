@@ -232,10 +232,14 @@ shinyjs = function() {
       else if ($el.hasClass("shiny-colour-input")) {
         $el = $(_getContainer($el)[0]);
       }
+      // for file inputs, we want to disable the button as well
+      else if ($el.attr('type') === "file") {
+        $el = $el.closest(".shiny-input-container");
+      }
 
       // enable/disable the container as well as all individual inputs inside
       // (this is needed for grouped inputs such as radio and checkbox groups)
-      var toadd = $el.find("input, button, textarea, select, a[download]");
+      var toadd = $el.find("input, button, textarea, select, a[download], span.btn.btn-file");
       $el = $($el.toArray().concat(toadd.toArray()));
       $el.attr('disabled', (method == "disable"));
       $el.prop('disabled', (method == "disable"));
