@@ -13,8 +13,6 @@ vignette: >
 knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
-[![shinyjs](../inst/img/banner.png)](https://deanattali.com/shinyjs/)
-
 <h3 align="center">shinyjs</h3>
 
 <h4 align="center">Easily improve the user experience of your Shiny apps in seconds
@@ -25,20 +23,22 @@ by <a href="https://deanattali.com">Dean Attali</a>
 </h4>
 
 <p align="center">
-<a href="https://xscode.com/daattali/shinyjs">
-<img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
-</a>
-<a href="https://travis-ci.org/daattali/shinyjs">
-<img src="https://travis-ci.org/daattali/shinyjs.svg?branch=master" alt="Build Status" />
+<a href="https://github.com/daattali/shinyjs/actions">
+<img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R Build Status" />
 </a>
 <a href="https://cran.r-project.org/package=shinyjs">
 <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
+</a>
+<a href="https://xscode.com/daattali/shinyjs">
+<img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
 </a>
 </p>
 
 </p>
 
 ---
+
+<img src="../inst/img/hex.png" width="170" align="right"/>
 
 {shinyjs} lets you perform common useful JavaScript operations in Shiny 
 apps that will greatly improve your apps without having to know any JavaScript.
@@ -53,15 +53,29 @@ Examples include: hiding an element, disabling an input, resetting an input back
 <a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
-<a style="display: inline-block;" href="https://paypal.me/daattali">
+<a style="display: inline-block;" href="https://www.paypal.com/donate/?hosted_button_id=DG8NNBJHRKM46">
 <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
 </a>
 
 </p>
 
+> This package is part of a larger ecosystem of packages with a shared vision: solving common Shiny issues and improving Shiny apps with minimal effort, minimal code changes, and straightforward documentation. Other packages for your Shiny apps:
+
+| Package | Description | Demo |
+|---|---|---|
+| [shinyalert](https://github.com/daattali/shinyalert) | 🗯️ Easily create pretty popup messages (modals) in Shiny | [🔗](https://daattali.com/shiny/shinyalert-demo/) |
+| [shinyscreenshot](https://github.com/daattali/shinyscreenshot/) | 📷 Capture screenshots of entire pages or parts of pages in Shiny apps | [🔗](https://daattali.com/shiny/shinyscreenshot-demo/) |
+| [timevis](https://github.com/daattali/timevis/) | 📅 Create interactive timeline visualizations in R | [🔗](https://daattali.com/shiny/timevis-demo/) |
+| [shinycssloaders](https://github.com/daattali/shinycssloaders/) | ⌛ Add loading animations to a Shiny output while it's recalculating | [🔗](https://daattali.com/shiny/shinycssloaders-demo/) |
+| [colourpicker](https://github.com/daattali/colourpicker/) | 🎨 A colour picker tool for Shiny and for selecting colours in plots | [🔗](https://daattali.com/shiny/colourInput/) |
+| [shinybrowser](https://github.com/daattali/shinybrowser/) | 🌐 Find out information about a user's web browser in Shiny apps | [🔗](https://daattali.com/shiny/shinybrowser-demo/) |
+| [shinydisconnect](https://github.com/daattali/shinydisconnect/) | 🔌 Show a nice message when a Shiny app disconnects or errors | [🔗](https://daattali.com/shiny/shinydisconnect-demo/) |
+| [shinyforms](https://github.com/daattali/shinyforms/) | 📝 Easily create questionnaire-type forms with Shiny | WIP |
+
 # Table of contents
 
 - [Demos and tutorials](#demos)
+- [Sponsors 🏆](#sponsors)
 - [Overview of main functions](#overview-main)
 - [Installation](#install)
 - [How to use](#usage)
@@ -69,14 +83,19 @@ Examples include: hiding an element, disabling an input, resetting an input back
 - [Calling your own JavaScript functions from R](#extendshinyjs)
 - [FAQ and extra tricks](#faq-tricks)
 - [Support](#support)
-- [Sponsors 🏆](#sponsors)
 
 <h2 id="demos">Demos and tutorials</h2>
 
 - [Demo Shiny app](https://deanattali.com/shinyjs/demo) that lets
 you play around with some of the functionality in {shinyjs}.
-- [Video of my {shinyjs} talk](https://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and the corresponding [presentation slides](https://bit.ly/shinyjs-slides) from the 2016 Shiny Developer Conference.
-- [Video of my {shinyjs} talk](https://deanattali.com/shinyjs-user-2016/) (5 min) and the corresponding [presentation slides](https://bit.ly/shinyjs-slides-useR2016) from the 2016 useR Conference.
+- [Video of my {shinyjs} talk](https://deanattali.com/shinyjs-shinydevcon-2016/) (30 min) and the corresponding [presentation slides](https://docs.google.com/presentation/d/1XyBrIA97ZWIkm8NICAyWHo4J9hj_i2-mJmKEq_CR2A8/edit?usp=sharing) from the 2016 Shiny Developer Conference.
+- [Video of my {shinyjs} talk](https://deanattali.com/shinyjs-user-2016/) (5 min) and the corresponding [presentation slides](https://docs.google.com/presentation/d/1owJpLTmfV-53Ca9NJIweBMANsmjaErKXNzw_sCTuBAw/edit?usp=sharing) from the 2016 useR Conference.
+
+<h2 id="sponsors">Sponsors 🏆</h2>
+
+> There are no sponsors yet
+
+[Become the first sponsor for {shinyjs} and unlock special rewards!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2 id="overview-main">Overview of main functions</h2>
 
@@ -96,6 +115,7 @@ you play around with some of the functionality in {shinyjs}.
 | `html` | Change the text/HTML of an element. |
 | `onclick` | Run R code when a specific element is clicked. Was originally developed with the sole purpose of running a {shinyjs} function when an element is clicked, though any R code can be used. |
 | `onevent` | Similar to `onclick`, but can be used with many other events instead of click (for example, listen for a key press, mouse hover, etc). |
+| `removeEvent` | Remove an event that was added to an HTML element with `onclick()` or `onevent()`. |
 | `addClass`/`removeClass`/`toggleClass` | add or remove a CSS class from an element. |
 | `runjs` | Run arbitrary JavaScript code. |
 | `extendShinyjs` | Allows you to write your own JavaScript functions and use {shinyjs} to call them as if they were regular R code. More information is available in the section "Calling your own JavaScript functions from R" below. |
@@ -198,8 +218,6 @@ If you need help with {shinyjs}, free support is available on [StackOverflow](ht
 
 **Due to the large volume of requests I receive, I'm unable to provide free support. If you can't solve any issue and require my personal help, please visit https://xscode.com/daattali/shinyjs or [contact me](https://attalitech.com/contact).**
 
-<h2 id="sponsors">Sponsors 🏆</h2>
+<h2>Credits</h2>
 
-> There are no sponsors yet
-
-[Become the first sponsor for {shinyjs} and unlock special rewards!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+Logo design by [Alfredo Hernández](https://aldomann.com/).

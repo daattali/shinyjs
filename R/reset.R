@@ -11,7 +11,8 @@
 #' the value of a button back to 0.
 #'
 #' @param id The id of the input element to reset or the id of an HTML
-#' tag to reset all input elements inside it.
+#' tag to reset all inputs inside it. If no id is provided, then
+#' all inputs on the page are reset.
 #' @param asis If \code{TRUE}, use the ID as-is even when inside a module
 #' (instead of adding the namespace prefix to the ID).
 #' @seealso \code{\link[shinyjs]{useShinyjs}},
@@ -53,13 +54,13 @@
 #'   )
 #' }
 #' @export
-reset <- function(id, asis = FALSE) {
+reset <- function(id = "", asis = FALSE) {
   # get the Shiny session
   session <- getSession()
 
   # Make sure reset works with namespaces (shiny modules)
   nsName <- ""
-  if (inherits(session, "session_proxy") && !asis) {
+  if (id != "" && inherits(session, "session_proxy") && !asis) {
     id <- session$ns(id)
     nsName <- session$ns("")
   }
@@ -90,8 +91,6 @@ reset <- function(id, asis = FALSE) {
         if (type == "Password") {
           type <- "Text"
         }
-
-        updateFunc <- sprintf("update%sInput", type)
 
         # Make sure reset works with namespecing (shiny modules)
         id <- x
@@ -133,6 +132,14 @@ reset <- function(id, asis = FALSE) {
         } else if (type == "Slider") {
           value <- unlist(strsplit(value, ","))
           funcParams[['value']] <- value
+        } else if (type == "SliderDate") {
+          type <- "Slider"
+          value <- unlist(strsplit(value, ","))
+          funcParams[['value']] <- as.Date(as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01"))
+        } else if (type == "SliderDateTime") {
+          type <- "Slider"
+          value <- unlist(strsplit(value, ","))
+          funcParams[['value']] <- as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01")
         } else if (type == "DateRange") {
           dates <- unlist(strsplit(value, ","))
           dates[dates == "NA"] <- NA
@@ -146,10 +153,12 @@ reset <- function(id, asis = FALSE) {
         if (type == "RadioButtons") {
           updateFunc <- sprintf("update%s", type)
         }
-
         # for colour inputs, need to use the colourpicker package
-        if (type == "Colour") {
+        else if (type == "Colour") {
           updateFunc <- utils::getFromNamespace(updateFunc, "colourpicker")
+        }
+        else {
+          updateFunc <- sprintf("update%sInput", type)
         }
 
         # update the input to its original values

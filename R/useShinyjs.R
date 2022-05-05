@@ -4,7 +4,7 @@
 #' \code{shinyjs} functions to work.\cr\cr
 #' You can call \code{useShinyjs()} from anywhere inside the UI, as long as the
 #' final app UI contains the result of \code{useShinyjs()}.
-#' 
+#'
 #' If you're a package author and including \code{shinyjs} in a function in your
 #' your package, you need to make sure \code{useShinyjs()} is called either by
 #' the end user's Shiny app or by your function's UI.
@@ -23,8 +23,8 @@
 #' how to use shinyjs in these apps.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag. A side effect of calling this function is that
-#' a \code{shinyjs} directory is added as a resource path using 
-#' \link[shiny]{addResourcePath}.
+#' a \code{shinyjs} directory is added as a resource path using
+#' [shiny::addResourcePath()].
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
@@ -64,9 +64,7 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   .globals$inject <- html
 
   # all the default shinyjs methods that should be forwarded to javascript
-  jsFuncs <- c("show", "hide", "toggle", "enable", "disable", "toggleState",
-               "addClass", "removeClass", "toggleClass", "html", "onevent",
-               "alert", "logjs", "runjs", "reset", "delay", "click", "refresh")
+  jsFuncs <- shinyjsFunctionNames("core")
 
   # grab the file with all the default shinyjs javascript functions
   shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
@@ -78,6 +76,9 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   } else {
     initJS <- "shinyjs.debug = false;"
   }
+
+  # Add the shinyjs package version as a debugging tool
+  initJS <- paste0(initJS, "shinyjs.version = '", as.character(utils::packageVersion("shinyjs")), "';")
 
   # include CSS for hiding elements
   initCSS <- inlineCSS(".shinyjs-hide { display: none !important; }")

@@ -1,5 +1,0 @@
-language: r
-sudo: false
-cache: packages
-
-pandoc_version: 2.1

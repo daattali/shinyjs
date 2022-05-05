@@ -1,3 +1,19 @@
+# Unreleased version
+
+- Fix bug: `disable()` now works with file inputs (#249)
+- Added support for `reset()` function to work with dates and date-times in slider inputs (#213)
+- Added `shinyjs.version` JavaScript variable to help troubleshooting
+- Replace `digest::digest()` with `rlang::hash`, to reduce dependencies and it's faster (#248)
+- Replace `list(...)` with `rlang::list2(...)` which is more flexible and allows you to use trailing commas without error
+
+# shinyjs 2.1.0 (2021-12-20)
+
+- New feature: you can now reset all inputs on the page by calling `reset()` with no arguments (#222)
+- New feature: Add a `removeEvent()` function which removes events added to HTML elements with `onclick()` or `onevent()` (#244)
+- Fix bug: `disable()` did not work on nested download buttons (#223)
+- Fix bug: Don't automatically namespace ID arguments in custom extendShinyjs functions (#229)
+- Fix bug: ensure that `extendShinyjs()` functions don't overwrite native {shinyjs} functions (#230)
+
 # shinyjs 2.0.0 (2020-08-24)
 
 - **IMPORTANT CHANGE** Remove commercial license (it only existed because some big companies asked for it, but it ended up being a bigger headache for 99% of the community)

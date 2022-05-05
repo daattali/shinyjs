@@ -42,7 +42,7 @@ delay <- function(ms, expr) {
                       as.integer(Sys.time()),
                       as.integer(sample(1e9, 1)),
                       deparse(substitute(expr)))
-  hash <- digest::digest(hashable, algo = "md5")
+  hash <- rlang::hash(hashable, algo = "md5")
 
   # send a call to JavaScript to let us know when the delay is up
   shinyInputId <- paste0("shinyjs-delay-", hash)

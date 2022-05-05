@@ -4,7 +4,8 @@
 #' when an element is clicked.\cr\cr
 #' \code{onevent} is similar, but can be used when any event is triggered on the element,
 #' not only a mouse click. See below for a list of possible event types. Using "click"
-#' results in the same behaviour as calling \code{onclick}.
+#' results in the same behaviour as calling \code{onclick}.\cr\cr
+#' This action can be reverted by calling \code{\link[shinyjs]{removeEvent}}.
 #'
 #' @param event The event that needs to be triggered to run the code. See below
 #' for a list of event types.
@@ -23,7 +24,10 @@
 #' Event properties.
 #' @param asis If \code{TRUE}, use the ID as-is even when inside a module
 #' (instead of adding the namespace prefix to the ID).
-#' @seealso \code{\link[shinyjs]{useShinyjs}},
+#' @return An ID that can be used by \code{\link[shinyjs]{removeEvent}} to remove
+#' the event listener. See \code{\link[shinyjs]{removeEvent}} for more details.
+#' @seealso \code{\link[shinyjs]{removeEvent}},
+#' \code{\link[shinyjs]{useShinyjs}},
 #' \code{\link[shinyjs]{runExample}}
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
@@ -41,7 +45,7 @@
 #' If a function is provided to \code{expr}, the function will receive a list
 #' of JavaScript Event properties describing the current event as an argument.
 #' Different properties are available for different event types. The full list
-#' of porperties that can be returned is: \code{altKey}, \code{button},
+#' of properties that can be returned is: \code{altKey}, \code{button},
 #' \code{buttons}, \code{clientX}, \code{clientY}, \code{ctrlKey}, \code{pageX},
 #' \code{pageY}, \code{screenX}, \code{screenY}, \code{shiftKey}, \code{which},
 #' \code{charCode}, \code{key}, \code{keyCode}, \code{offsetX}, \code{offsetY}.
@@ -146,5 +150,55 @@ oneventHelper <- function(event, id, expr, add, properties, asis) {
     }
   })
 
-  invisible(NULL)
+  invisible(shinyInputIdJs)
+}
+
+#' Remove an event that was added to an element
+#'
+#' This function can be used to revert the action of
+#' \code{\link[shinyjs]{onclick}} or \code{\link[shinyjs]{onevent}}.
+#' @param event Either an event type (see below for a list of event types) or
+#' an event ID (the return value from
+#' \code{\link[shinyjs]{onclick}} or \code{\link[shinyjs]{onevent}}).
+#' If an event type is provided (eg. "hover"), then all events of this type
+#' attached to the given element will be removed. If an event ID is provided,
+#' then only that specific event will be removed.
+#' See examples for clarification.
+#' @param id The ID of the element/Shiny tag. Must match the ID used in
+#' \code{\link[shinyjs]{onclick}} or \code{\link[shinyjs]{onevent}}.
+#' @param asis If \code{TRUE}, use the ID as-is even when inside a module
+#' (instead of adding the namespace prefix to the ID).
+#' @inheritSection onevent Event types
+#' @seealso \code{\link[shinyjs]{onclick}},
+#' \code{\link[shinyjs]{onevent}}
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
+#'       useShinyjs(),  # Set up shinyjs
+#'       p(id = "myel", "Hover over me to see the date, the time, and a random integer"),
+#'       actionButton("remove_date", "Remove date hover event"),
+#'       actionButton("remove_all", "Remove all hover events")
+#'     ),
+#'     server = function(input, output) {
+#'       onevent("hover", "myel", print(format(Sys.time(), "%H:%M:%S")))
+#'       onevent("hover", "myel", print(sample(100, 1)), add = TRUE)
+#'       date_event_id <- onevent("hover", "myel", print(as.character(Sys.Date())), add = TRUE)
+#'
+#'       observeEvent(input$remove_all, {
+#'         removeEvent("hover", "myel")
+#'       })
+#'       observeEvent(input$remove_date, {
+#'         removeEvent(date_event_id, "myel")
+#'       })
+#'     }
+#'   )
+#' }
+#' @export
+removeEvent <- function(event, id, asis = FALSE) {
+  fxn <- "removeEvent"
+  params <- list(event = event, id = id, asis = asis)
+  jsFuncHelper(fxn, params)
 }

@@ -1,14 +1,11 @@
 #' Initialize a Shiny input as disabled
 #'
 #' Create a Shiny input that is disabled when the Shiny app starts. The input can
-#' be enabled later with \code{shinyjs::toggleState} or \code{shinyjs::enable}.
+#' be enabled later with [toggleState()] or [enable()].
 #'
 #' @param ... Shiny input (or tagList or list of of tags that include inputs) to
 #' disable.
-#' @seealso \code{\link[shinyjs]{useShinyjs}},
-#' \code{\link[shinyjs]{toggleState}},
-#' \code{\link[shinyjs]{enable}},
-#' \code{\link[shinyjs]{disable}}
+#' @seealso [useShinyjs()], [toggleState()], [enable()], [disable()]
 #' @note \code{shinyjs} must be initialized with a call to \code{useShinyjs()}
 #' in the app's ui.
 #' @return The tag (or tags) that was given as an argument in a disabled state.
@@ -35,7 +32,7 @@
 #' disabled(numericInput("num", NULL, 5), dateInput("date", NULL))
 #' @export
 disabled <- function(...) {
-  tags <- list(...)
+  tags <- rlang::list2(...)
 
   # recursively add the disabled class to all tags
   if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag")) {
