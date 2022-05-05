@@ -325,7 +325,13 @@ shinyjs = function() {
         // sliderInput
         else if (input.children(".js-range-slider").length > 0) {
           input = input.children(".js-range-slider");
-          inputType = "Slider";
+          if (input.attr('data-data-type') == 'date') {
+            inputType = "SliderDate";
+          } else if (input.attr('data-data-type') == 'datetime') {
+            inputType = "SliderDateTime";
+          } else {
+            inputType = "Slider";
+          }
           if (typeof input.attr('data-from') !== "undefined") {
             inputValue = input.attr('data-from');
           }

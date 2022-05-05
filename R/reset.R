@@ -92,8 +92,6 @@ reset <- function(id = "", asis = FALSE) {
           type <- "Text"
         }
 
-        updateFunc <- sprintf("update%sInput", type)
-
         # Make sure reset works with namespecing (shiny modules)
         id <- x
         if (substring(id, 1, nchar(nsName)) == nsName) {
@@ -131,6 +129,14 @@ reset <- function(id = "", asis = FALSE) {
         } else if (type == "Slider") {
           value <- unlist(strsplit(value, ","))
           funcParams[['value']] <- value
+        } else if (type == "SliderDate") {
+          type <- "Slider"
+          value <- unlist(strsplit(value, ","))
+          funcParams[['value']] <- as.Date(as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01"))
+        } else if (type == "SliderDateTime") {
+          type <- "Slider"
+          value <- unlist(strsplit(value, ","))
+          funcParams[['value']] <- as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01")
         } else if (type == "DateRange") {
           dates <- unlist(strsplit(value, ","))
           dates[dates == "NA"] <- NA
@@ -144,10 +150,12 @@ reset <- function(id = "", asis = FALSE) {
         if (type == "RadioButtons") {
           updateFunc <- sprintf("update%s", type)
         }
-
         # for colour inputs, need to use the colourpicker package
-        if (type == "Colour") {
+        else if (type == "Colour") {
           updateFunc <- utils::getFromNamespace(updateFunc, "colourpicker")
+        }
+        else {
+          updateFunc <- sprintf("update%sInput", type)
         }
 
         # update the input to its original values
