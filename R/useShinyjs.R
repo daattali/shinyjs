@@ -77,6 +77,9 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
     initJS <- "shinyjs.debug = false;"
   }
 
+  # Add the shinyjs package version as a debugging tool
+  initJS <- paste0(initJS, "shinyjs.version = '", as.character(utils::packageVersion("shinyjs")), "';")
+
   # include CSS for hiding elements
   initCSS <- inlineCSS(".shinyjs-hide { display: none !important; }")
 
