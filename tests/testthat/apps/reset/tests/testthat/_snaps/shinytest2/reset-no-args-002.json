@@ -1,0 +1,19 @@
+{
+  "input": {
+    "date": "2010-05-27",
+    "id": "",
+    "num": 8,
+    "radio": "e",
+    "radio2": "d",
+    "realdate": "2009-05-14",
+    "reset": 0,
+    "slider": 7,
+    "text": "text2"
+  },
+  "output": {
+
+  },
+  "export": {
+
+  }
+}

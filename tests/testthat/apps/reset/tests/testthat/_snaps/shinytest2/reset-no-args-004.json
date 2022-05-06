@@ -1,0 +1,81 @@
+{
+  "input": {
+    "date": "2010-03-10",
+    "id": "all",
+    "num": 5,
+    "radio": "b",
+    "radio2": null,
+    "realdate": "2009-04-02",
+    "reset": 2,
+    "shinyjs-resettable-": {
+      "id": {
+        "type": "Text",
+        "value": "all"
+      },
+      "text": {
+        "type": "Text",
+        "value": "text"
+      },
+      "num": {
+        "type": "Numeric",
+        "value": "5"
+      },
+      "slider": {
+        "type": "Slider",
+        "value": "3"
+      },
+      "realdate": {
+        "type": "Date",
+        "value": "2009-04-02"
+      },
+      "radio": {
+        "type": "RadioButtons",
+        "value": "b"
+      },
+      "radio2": {
+        "type": "RadioButtons"
+      },
+      "date": {
+        "type": "SliderDate",
+        "value": "1268179200000"
+      }
+    },
+    "shinyjs-resettable-all": {
+      "text": {
+        "type": "Text",
+        "value": "text"
+      },
+      "num": {
+        "type": "Numeric",
+        "value": "5"
+      },
+      "slider": {
+        "type": "Slider",
+        "value": "3"
+      },
+      "realdate": {
+        "type": "Date",
+        "value": "2009-04-02"
+      },
+      "radio": {
+        "type": "RadioButtons",
+        "value": "b"
+      },
+      "radio2": {
+        "type": "RadioButtons"
+      },
+      "date": {
+        "type": "SliderDate",
+        "value": "1268179200000"
+      }
+    },
+    "slider": 3,
+    "text": "text"
+  },
+  "output": {
+
+  },
+  "export": {
+
+  }
+}
