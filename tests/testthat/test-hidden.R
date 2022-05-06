@@ -1,5 +1,3 @@
-context("hidden")
-
 getClasses <- function(tag) {
   unlist(strsplit(htmltools::tagGetAttribute(tag, "class"), " "))
 }
