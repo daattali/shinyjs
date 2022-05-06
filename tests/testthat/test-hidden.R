@@ -49,3 +49,8 @@ test_that("hidden works when given tagList", {
   expect_true(clsName %in% getClasses(res[[1]]))
   expect_true(clsName %in% getClasses(res[[2]]))
 })
+
+test_that("hidden can accept a list with trailing comma", {
+  res <- hidden(shiny::tagList(shiny::p("abc"), shiny::span("abc")),)
+  expect_equal(length(res), 2)
+})
