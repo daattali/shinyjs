@@ -4,7 +4,7 @@
 - Fix bug: `reset()` function now works with dates and date-times in slider inputs (#213)
 - New feature: `reset()` function now allows radio buttons to be reset to no choice if they are initializes as `character(0)` (#85)
 - Added `shinyjs.version` JavaScript variable to help troubleshooting
-- Replace `digest::digest()` with `rlang::hash`, to reduce dependencies and it's faster (#248)
+- Replace `digest::digest()` with `rlang::hash()`, to reduce dependencies and it's faster (#248)
 - Replace `list(...)` with `rlang::list2(...)` which is more flexible and allows you to use trailing commas without error
 - Added tests using {shinytest2}
 
