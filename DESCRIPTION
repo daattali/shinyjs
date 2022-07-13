@@ -18,10 +18,10 @@ Depends:
 Imports:
     jsonlite,
     rlang,
+    htmltools (>= 0.5.2),
     shiny (>= 1.0.0),
     utils
 Suggests:
-    htmltools (>= 0.2.9),
     knitr (>= 1.7),
     rmarkdown,
     shinyAce,

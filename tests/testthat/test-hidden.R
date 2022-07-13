@@ -5,7 +5,7 @@ getClasses <- function(tag) {
 clsName <- "shinyjs-hide"
 
 test_that("hidden fails on plain text", {
-  expect_error(hidden("abc"), "Invalid shiny tag")
+  expect_error(hidden("abc"), "must have at least 1 standard tag object")
 })
 
 test_that("hidden works on simple div", {
@@ -24,9 +24,12 @@ test_that("hidden works when div already contains a class", {
 })
 
 test_that("hidden errors when one of multiple tags is not a tag", {
-  expect_error(hidden(shiny::p("abc"), "abc"), "Invalid shiny tag")
-  expect_error(hidden(list(shiny::p("abc"), "abc")), "Invalid shiny tag")
-  expect_error(hidden(shiny::tagList(shiny::p("abc"), "abc")), "Invalid shiny tag")
+  x <- hidden(shiny::p("abc"), "abc")
+  expect_true(clsName %in% getClasses(x[[1]]))
+  x <- hidden(list(shiny::p("abc"), "abc"))
+  expect_true(clsName %in% getClasses(x[[1]]))
+  x <- hidden(shiny::tagList(shiny::p("abc"), "abc"))
+  expect_true(clsName %in% getClasses(x[[1]]))
 })
 
 test_that("hidden works when given multiple tags", {

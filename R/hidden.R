@@ -33,21 +33,10 @@
 #' hidden(list(span(id = "a"), div(id = "b")))
 #' @export
 hidden <- function(...) {
-  tags <- rlang::list2(...)
-
-  # recursively add the hidden class to all tags
-  if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag")) {
-    tags[[1]] <-
-      shiny::tagAppendAttributes(
-        tags[[1]],
-        class = "shinyjs-hide"
-      )
-    return( tags[[1]] )
-  } else if (length(tags) == 1 && is.list(tags[[1]])) {
-    return( lapply(tags[[1]], hidden) )
-  } else if (length(tags) > 1) {
-    return( lapply(tags, hidden) )
-  } else {
-    errMsg("Invalid shiny tags given to `hidden`")
-  }
+  tag <- htmltools::tagList(...)
+  htmltools::tagQuery(tag)$
+    addClass("shinyjs-hide")$
+    find("*")$
+    addClass("shinyjs-hide")$
+    allTags()
 }
