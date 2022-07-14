@@ -54,3 +54,19 @@ test_that("hidden can accept a list with trailing comma", {
   res <- hidden(shiny::tagList(shiny::p("abc"), shiny::span("abc")),)
   expect_equal(length(res), 2)
 })
+
+test_that("hidden on a nested element only hides the top-level element", {
+  res <- hidden(shiny::div("one", shiny::div("two")))
+  exp <- shiny::div("one", class = clsName, shiny::div("two"))
+  expect_identical(res, exp)
+})
+
+test_that("hidden differentiates between list and tagList", {
+  res_list <- hidden(list(shiny::div(), shiny::span()))
+  res_tagList <- hidden(shiny::tagList(shiny::div(), shiny::span()))
+  exp_list <- list(shiny::div(class = clsName), shiny::span(class = clsName))
+  exp_tagList <- shiny::tagList(shiny::div(class = clsName), shiny::span(class = clsName))
+  expect_false(identical(exp_list, exp_tagList))
+  expect_identical(res_list, exp_list)
+  expect_identical(res_tagList, exp_tagList)
+})

@@ -46,6 +46,8 @@ disabled <- function(...) {
         class = "shinyjs-disabled"
       )
     return( tags[[1]] )
+  } else if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag.list")) {
+    return( do.call(shiny::tagList, lapply(tags[[1]], disabled)) )
   } else if (length(tags) == 1 && is.list(tags[[1]])) {
     return( lapply(tags[[1]], disabled) )
   } else if (length(tags) > 1) {

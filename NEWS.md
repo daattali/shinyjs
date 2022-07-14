@@ -1,5 +1,6 @@
 # Unreleased version
 
+- Fix bug: `hidden()` and `disabled()` now return a `tagList()` instead of a `list()` when appropriate
 - Fix bug: `disable()` now works with file inputs (#249)
 - Fix bug: `reset()` function now works with dates and date-times in slider inputs (#213)
 - New feature: `reset()` function now allows radio buttons to be reset to no choice if they are initializes as `character(0)` (#85)
