@@ -1,5 +1,6 @@
 # Unreleased version
 
+- Fix bug: `hidden()` and `disabled()` now work with tags that have a `htmlDependency()` (#252)
 - Fix bug: `hidden()` and `disabled()` now return a `tagList()` instead of a `list()` when appropriate
 - Fix bug: `disable()` now works with file inputs (#249)
 - Fix bug: `reset()` function now works with dates and date-times in slider inputs (#213)

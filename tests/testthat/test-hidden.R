@@ -70,3 +70,15 @@ test_that("hidden differentiates between list and tagList", {
   expect_identical(res_list, exp_list)
   expect_identical(res_tagList, exp_tagList)
 })
+
+test_that("hidden works when htmlDependency is attached", {
+  dep1 <- htmltools::htmlDependency(name = "foo", src = "", version = "1.0")
+  res1 <- hidden(shiny::tagList(shiny::div(), dep1))
+  exp1 <- shiny::tagList(shiny::div(class = clsName), dep1)
+  expect_identical(res1, exp1)
+
+  dep2 <- htmltools::htmlDependency(name = "foo2", src = "", version = "1.0")
+  res2 <- hidden(shiny::tagList(dep1, shiny::div(), dep2))
+  exp2 <- shiny::tagList(dep1, shiny::div(class = clsName), dep2)
+  expect_identical(res2, exp2)
+})
