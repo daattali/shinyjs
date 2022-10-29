@@ -223,14 +223,18 @@ to see some of these in action, or install {shinyjs} and run
 Installation
 </h2>
 
-To install the stable CRAN version:
+**For most users:** To install the stable CRAN version:
 
-    install.packages("shinyjs")
+```r
+install.packages("shinyjs")
+```
 
-To install the latest development version from GitHub:
+**For advanced users:** To install the latest development version from GitHub:
 
-    install.packages("remotes")
-    remotes::install_github("daattali/shinyjs")
+```r
+install.packages("remotes")
+remotes::install_github("daattali/shinyjs")
+```
 
 <h2 id="usage">
 How to use
@@ -342,8 +346,8 @@ Community](https://community.rstudio.com/new-topic?category=shiny&tags=shinyjs),
 and [Twitter](https://twitter.com/hashtag/rstats).
 
 **Due to the large volume of requests I receive, I’m unable to provide
-free support. If you can’t solve any issue and require my personal help,
-please visit <https://xscode.com/daattali/shinyjs> or [contact
+free support. If you can’t solve an issue and require paid help,
+please [contact
 me](https://attalitech.com/contact).**
 
 <h2>
