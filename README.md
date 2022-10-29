@@ -1,23 +1,25 @@
-<h3 align="center">
-shinyjs
-</h3>
-<h4 align="center">
-Easily improve the user experience of your Shiny apps in seconds
-<br><br> <a href="https://deanattali.com/shinyjs/">Official website</a>
-· by <a href="https://deanattali.com">Dean Attali</a>
-</h4>
 <p align="center">
-<a href="https://github.com/daattali/shinyjs/actions">
-<img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R Build Status" />
-</a> <a href="https://cran.r-project.org/package=shinyjs">
-<img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
-</a> <a href="https://xscode.com/daattali/shinyjs">
-<img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="Purchase shinyjs services on xcode" />
-</a>
-</p>
+  <h3 align="center">shinyjs</h3>
+  <h4 align="center">
+    💡 Easily improve the user experience of your Shiny apps in seconds
+    <br><br>
+    <a href="https://deanattali.com/shinyjs/">Official website</a>
+    &middot;
+    by <a href="https://deanattali.com">Dean Attali</a>
+  </h4>
+
+  <p align="center">
+    <a href="https://github.com/daattali/shinyjs/actions">
+      <img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R build status" />
+    </a> 
+    <a href="https://cran.r-project.org/package=shinyjs">
+      <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
+    </a>
+  </p>
+
 </p>
 
-------------------------------------------------------------------------
+---
 
 <img src="inst/img/hex.png" width="170" align="right"/>
 
@@ -31,83 +33,33 @@ seconds, and many more useful functions for both the end user and the
 developer. {shinyjs} can also be used to easily call your own custom
 JavaScript functions from R.
 
-**Need Shiny help? [I’m available for
-consulting](https://attalitech.com/).**<br/> **If you find {shinyjs}
-useful, please consider [supporting my
-work](https://github.com/sponsors/daattali) to unlock rewards! ❤**
+**Need Shiny help? [I'm available for consulting](https://attalitech.com/).**<br/>
+**If you find {shinyjs} useful, please consider [supporting my work](https://github.com/sponsors/daattali)! ❤**
+
 
 <p align="center">
-
-<a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
-<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
-
-<a style="display: inline-block;" href="https://www.paypal.com/donate/?hosted_button_id=DG8NNBJHRKM46">
-<img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
-</a>
-
+  <a style="display: inline-block;" href="https://github.com/sponsors/daattali">
+    <img height="35" src="https://i.imgur.com/034B8vq.png" />
+  </a>
+  <a style="display: inline-block;" href="https://paypal.me/daattali">
+    <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
+  </a>
 </p>
 
-> This package is part of a larger ecosystem of packages with a shared
-> vision: solving common Shiny issues and improving Shiny apps with
-> minimal effort, minimal code changes, and straightforward
-> documentation. Other packages for your Shiny apps:
+> This package is part of a larger ecosystem of packages with a shared vision: solving common Shiny issues and improving Shiny apps with minimal effort, minimal code changes, and clear documentation. Other packages for your Shiny apps:
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Package</th>
-<th>Description</th>
-<th>Demo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/daattali/shinyalert">shinyalert</a></td>
-<td>🗯️ Easily create pretty popup messages (modals) in Shiny</td>
-<td><a href="https://daattali.com/shiny/shinyalert-demo/">🔗</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/daattali/shinyscreenshot/">shinyscreenshot</a></td>
-<td>📷 Capture screenshots of entire pages or parts of pages in Shiny apps</td>
-<td><a href="https://daattali.com/shiny/shinyscreenshot-demo/">🔗</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/daattali/timevis/">timevis</a></td>
-<td>📅 Create interactive timeline visualizations in R</td>
-<td><a href="https://daattali.com/shiny/timevis-demo/">🔗</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/daattali/shinycssloaders/">shinycssloaders</a></td>
-<td>⌛ Add loading animations to a Shiny output while it’s recalculating</td>
-<td><a href="https://daattali.com/shiny/shinycssloaders-demo/">🔗</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/daattali/colourpicker/">colourpicker</a></td>
-<td>🎨 A colour picker tool for Shiny and for selecting colours in plots</td>
-<td><a href="https://daattali.com/shiny/colourInput/">🔗</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/daattali/shinybrowser/">shinybrowser</a></td>
-<td>🌐 Find out information about a user’s web browser in Shiny apps</td>
-<td><a href="https://daattali.com/shiny/shinybrowser-demo/">🔗</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/daattali/shinydisconnect/">shinydisconnect</a></td>
-<td>🔌 Show a nice message when a Shiny app disconnects or errors</td>
-<td><a href="https://daattali.com/shiny/shinydisconnect-demo/">🔗</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/daattali/shinyforms/">shinyforms</a></td>
-<td>📝 Easily create questionnaire-type forms with Shiny</td>
-<td>WIP</td>
-</tr>
-</tbody>
-</table>
+| Package | Description | Demo |
+|---|---|---|
+| [shinyalert](https://deanattali.com/shinyalert/) | 🗯️ Easily create pretty popup messages (modals) in Shiny | [🔗](https://daattali.com/shiny/shinyalert-demo/) |
+| [shinyscreenshot](https://github.com/daattali/shinyscreenshot/) | 📷 Capture screenshots of entire pages or parts of pages in Shiny apps | [🔗](https://daattali.com/shiny/shinyscreenshot-demo/) |
+| [timevis](https://github.com/daattali/timevis/) | 📅 Create interactive timeline visualizations in R | [🔗](https://daattali.com/shiny/timevis-demo/) |
+| [shinycssloaders](https://github.com/daattali/shinycssloaders/) | ⌛ Add loading animations to a Shiny output while it's recalculating | [🔗](https://daattali.com/shiny/shinycssloaders-demo/) |
+| [colourpicker](https://github.com/daattali/colourpicker/) | 🎨 A colour picker tool for Shiny and for selecting colours in plots | [🔗](https://daattali.com/shiny/colourInput/) |
+| [shinybrowser](https://github.com/daattali/shinybrowser/) | 🌐 Find out information about a user's web browser in Shiny apps | [🔗](https://daattali.com/shiny/shinybrowser-demo/) |
+| [shinydisconnect](https://github.com/daattali/shinydisconnect/) | 🔌 Show a nice message when a Shiny app disconnects or errors | [🔗](https://daattali.com/shiny/shinydisconnect-demo/) |
+| [shinytip](https://github.com/daattali/shinytip/) | 💬 Simple flexible tooltips for Shiny apps | WIP |
+| [shinymixpanel](https://github.com/daattali/shinymixpanel/) | 🔍 Track user interactions with Mixpanel in Shiny apps or R scripts | WIP |
+| [shinyforms](https://github.com/daattali/shinyforms/) | 📝 Easily create questionnaire-type forms with Shiny | WIP |
 
 # Table of contents
 
