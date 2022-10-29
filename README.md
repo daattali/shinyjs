@@ -1,22 +1,19 @@
+<h3 align="center">shinyjs</h3>
+<h4 align="center">
+  💡 Easily improve the user experience of your Shiny apps in seconds
+  <br><br>
+  <a href="https://deanattali.com/shinyjs/">Official website</a>
+  &middot;
+  by <a href="https://deanattali.com">Dean Attali</a>
+</h4>
+
 <p align="center">
-  <h3 align="center">shinyjs</h3>
-  <h4 align="center">
-    💡 Easily improve the user experience of your Shiny apps in seconds
-    <br><br>
-    <a href="https://deanattali.com/shinyjs/">Official website</a>
-    &middot;
-    by <a href="https://deanattali.com">Dean Attali</a>
-  </h4>
-
-  <p align="center">
-    <a href="https://github.com/daattali/shinyjs/actions">
-      <img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R build status" />
-    </a> 
-    <a href="https://cran.r-project.org/package=shinyjs">
-      <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
-    </a>
-  </p>
-
+  <a href="https://github.com/daattali/shinyjs/actions">
+    <img src="https://github.com/daattali/shinyjs/workflows/R-CMD-check/badge.svg" alt="R build status" />
+  </a> 
+  <a href="https://cran.r-project.org/package=shinyjs">
+    <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
+  </a>
 </p>
 
 ---
