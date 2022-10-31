@@ -1,6 +1,6 @@
 ---
 title: "Including shinyjs in different types of apps"
-author: "Dean Attali"
+author: "Dean Attali, Pepijn de Vries"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -20,6 +20,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 - [Basic use of shinyjs](#usage-basic)
 - [Using shinyjs in Shiny Dashboards](#usage-dashboard)
 - [Using shinyjs with navbarPage layout](#usage-navbarpage)
+- [Using shinyjs with secure_app](#usage-secureapp)
 - [Using shinyjs in R Markdown documents](#usage-rmd)
     - [Rmd documents with Tabbed Sections](#usage-tabbed)
     - [Rmd documents using `shiny_prerendered` engine](#usage-prerendered)
@@ -57,6 +58,7 @@ However, if you use shinyjs in any of the following cases:
 
 - In Shiny dashboards (built using the `shinydashboard` package)
 - In Shiny apps that use a `navbarPage` layout
+- In Shiny apps that use a `secure_app` (built using the `shinymanager` package)
 - In Rmd documents
 - In Shiny apps that manually build the user interface with an HTML file or template (instead of using Shiny's UI functions)
 
@@ -114,6 +116,34 @@ server <- function(input, output, session) {
     toggle("hello")
   })
 }
+
+shinyApp(ui, server)
+```
+
+<h2 id="usage-secureapp">Using shinyjs with secure_app layout</h2>
+
+When running a shinymanager secure_app, the user is asked for credentials first, before entering the main Shiny app page. The authorisation page
+will not be able to handle `runjs` calls, unless `useShinyjs()` is specifically added to that page as shown in the example below. In the example a
+javascript alert message ("hello world") is opened as soon as the server code starts running. When the call to `useShinyjs()` would have been made
+inside the fluidpage, the javascript message would only be shown after the user credentials (in the example user name and password are both blank)
+are checked.
+
+```
+library(shiny)
+library(shinyjs)
+library(shinymanager)
+
+ui <- fluidPage(
+  "Intentionally left blank"
+)
+
+server <- function(input, output, session) {
+  auth <- secure_server(check_credentials(data.frame(user = "", password = "", stringsAsFactors = F)))
+  
+  runjs("alert('hello world');")
+}
+
+ui <- secure_app(ui, head_auth = useShinyjs())
 
 shinyApp(ui, server)
 ```
