@@ -1,5 +1,6 @@
 # Unreleased version
 
+- **BREAKING CHANGE** The `useShinyjs()` function no longer accepts any parameters. The `rmd` and `html` arguments are not needed (they are now detected automatically). The `debug` argument is now set using R options: `options("shinyjs.debug" = TRUE)`.
 - Fix bug: `hidden()` and `disabled()` now work with tags that have a `htmlDependency()` (#252)
 - Fix bug: `hidden()` and `disabled()` now return a `tagList()` instead of a `list()` when appropriate
 - Fix bug: `disable()` now works with file inputs (#249)

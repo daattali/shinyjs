@@ -9,18 +9,9 @@
 #' your package, you need to make sure \code{useShinyjs()} is called either by
 #' the end user's Shiny app or by your function's UI.
 #'
-#' @param rmd Set this to \code{TRUE} only if you are using \code{shinyjs}
-#' inside an interactive R markdown document. If using this option, view the
-#' \href{https://github.com/daattali/shinyjs}{README} online to learn how to
-#' use shinyjs in R markdown documents.
-#' @param debug Set this to \code{TRUE} if you want to see detailed debugging
-#' statements in the JavaScript console. Can be useful when filing bug reports
-#' to get more information about what is going on.
-#' @param html Set this to \code{TRUE} only if you are using \code{shinyjs} in
-#' a Shiny app that builds the entire user interface with a custom HTML file. If
-#' using this option, view the
-#' \href{https://github.com/daattali/shinyjs}{README} online to learn
-#' how to use shinyjs in these apps.
+#' To enable debug mode for shinyjs, set `options("shinyjs.debug" = TRUE)`.
+#'
+#' @param ... Used to catch deprecated arguments.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
 #' to the app's \code{<head>} tag.
 #' @examples
@@ -44,22 +35,17 @@
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
-useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
-  stopifnot(rmd == TRUE || rmd == FALSE)
-  stopifnot(debug == TRUE || debug == FALSE)
-  stopifnot(html == TRUE || html == FALSE)
-
-  # `astext` is FALSE in normal shiny apps where the shinyjs content is returned
-  # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive
-  # Rmarkdown documents or in Shiny apps where the user builds the entire UI
-  # manually with HTML, because in those cases the content of shinyjs needs to
-  # be returned as plain text that can be added to the HTML
-  .globals$astext <- rmd || html
-
-  # inject is TRUE when the user builds the entire UI manually with HTML,
-  # because in that case the shinyjs content needs to be injected into the page
-  # using JavaScript
-  .globals$inject <- html
+useShinyjs <- function(...) {
+  params <- eval(substitute(alist(...)))
+  if ("rmd" %in% names(params)) {
+    warning("*** Good news! ***\nAs of shinyjs v3 (January 2023), the `rmd` parameter is no longer needed.\nPlease remove it from your code.")
+  }
+  if ("html" %in% names(params)) {
+    warning("*** Good news! ***\nAs of shinyjs v3 (January 2023), the `html` parameter is no longer needed.\nPlease remove it from your code.")
+  }
+  if ("debug" %in% names(params)) {
+    warning("As of shinyjs v3 (January 2023), the `debug` parameter is no longer in use. Instead, use `options(\"shinyjs.debug\" = TRUE)`.")
+  }
 
   # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- shinyjsFunctionNames("core")
