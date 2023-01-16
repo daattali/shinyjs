@@ -6,10 +6,10 @@
 #' or \href{https://deanattali.com/shinyjs/}{view the shinyjs webpage}
 #' to learn more.
 #'
-#' @param script Path to a JavaScript file that contains all the functions.
-#' Each function name must begin with "`shinyjs.`", for example
-#' "`shinyjs.myfunc`". Note that the path to the file must be discoverable by the browser
-#' (meaning that it needs to be in a "www/" directory or available via `addResourcePath()`).
+#' @param script Either a path or an [`htmltools::htmlDependency()`] to a JavaScript file
+#' that contains all the functions. Each function name must begin with "`shinyjs.`", for example
+#' "`shinyjs.myfunc`". Note that if a path is provided, it must be discoverable by the browser
+#' (ie. it needs to be in a "www/" directory or available via `addResourcePath()`).
 #' See 'Basic Usage' below for more details.
 #' @param text Inline JavaScript code to use instead of providing a file.
 #' See 'Basic Usage' below.
@@ -242,9 +242,11 @@ extendShinyjs <- function(script, text, functions) {
   if (missing(script) && missing(text)) {
     errMsg("extendShinyjs: Either `script` or `text` need to be provided.")
   }
-
+  if (!missing(script) && !missing(text)) {
+    errMsg("extendShinyjs: Either `script` or `text` need to be provided, but not both.")
+  }
   if (missing(functions)) {
-    errMsg("extendShinyjs: `functions` argument must be provided. See the documentation for `?extendShinyjs` for more details.")
+    errMsg("extendShinyjs: `functions` argument must be provided.")
   }
 
   isShinyjsFunction <- functions %in% shinyjsFunctionNames("all")
@@ -264,8 +266,30 @@ extendShinyjs <- function(script, text, functions) {
     assign(x, jsFunc, js)
   })
 
-  # set up the message handlers for all functions
-  setupJS(jsFuncs, script, text)
+  jsCodeFuncs <- jsFuncTemplate(jsFuncs)
+
+  if (!missing(text)) {
+    shinyjsContent <- insertHead(
+      shiny::tags$script(shiny::HTML(text)),
+      shiny::tags$script(shiny::HTML(jsCodeFuncs))
+    )
+  } else if (!missing(script)) {
+    if (is.character(script)) {
+      shinyjsContent <- insertHead(
+        shiny::tags$script(src = script),
+        shiny::tags$script(shiny::HTML(jsCodeFuncs))
+      )
+    } else if (inherits(script, "html_dependency")) {
+      shinyjsContent <- insertHead(
+        script,
+        shiny::tags$script(shiny::HTML(jsCodeFuncs))
+      )
+    }
+  }
+
+  shiny::tagList(
+    shinyjsContent
+  )
 }
 
 

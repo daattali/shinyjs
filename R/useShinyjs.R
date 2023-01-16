@@ -65,18 +65,22 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   jsFuncs <- shinyjsFunctionNames("core")
   jsCodeFuncs <- jsFuncTemplate(jsFuncs)
 
-  # JavaScript to include to turn debug mode on/off (used for seeing more messages)
-  if (debug) {
-    initJS <- "shinyjs.debug = true;"
+  jsCodeVersion <- paste0("shinyjs.version = '", as.character(utils::packageVersion("shinyjs")), "';")
+  if (identical(getOption("shinyjs.debug", FALSE), TRUE)) {
+    jsCodeDebug <- "shinyjs.debug = true;"
   } else {
-    initJS <- "shinyjs.debug = false;"
+    jsCodeDebug <- "shinyjs.debug = false;"
   }
 
-  # Add the shinyjs package version as a debugging tool
-  initJS <- paste0(initJS, "shinyjs.version = '", as.character(utils::packageVersion("shinyjs")), "';")
+  jsCode <- paste(
+    jsCodeVersion,
+    jsCodeDebug,
+    jsCodeFuncs,
+    sep = "\n"
+  )
 
   # include CSS for hiding elements
-  initCSS <- ".shinyjs-hide { display: none !important; }"
+  cssCode <- ".shinyjs-hide { display: none !important; }"
 
   shinyjsContent <- htmltools::htmlDependency(
     name = "shinyjs-binding",
@@ -85,8 +89,8 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
     src = "srcjs",
     script = "shinyjs-default-funcs.js",
     head = paste0(
-      "<script>", paste(initJS, jsCodeFuncs, sep = "\n"), "</script>",
-      "<style>", initCSS, "</style>"
+      "<script>", jsCode, "</script>",
+      "<style>", cssCode, "</style>"
     )
   )
 

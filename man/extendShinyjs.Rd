@@ -7,10 +7,10 @@
 extendShinyjs(script, text, functions)
 }
 \arguments{
-\item{script}{Path to a JavaScript file that contains all the functions.
-Each function name must begin with "\code{shinyjs.}", for example
-"\code{shinyjs.myfunc}". Note that the path to the file must be discoverable by the browser
-(meaning that it needs to be in a "www/" directory or available via \code{addResourcePath()}).
+\item{script}{Either a path or an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} to a JavaScript file
+that contains all the functions. Each function name must begin with "\code{shinyjs.}", for example
+"\code{shinyjs.myfunc}". Note that if a path is provided, it must be discoverable by the browser
+(ie. it needs to be in a "www/" directory or available via \code{addResourcePath()}).
 See 'Basic Usage' below for more details.}
 
 \item{text}{Inline JavaScript code to use instead of providing a file.
