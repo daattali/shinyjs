@@ -11,6 +11,7 @@
 - Added tests using {shinytest2}
 - Officially removed all `colourInput()` related functions, after 5 years of being defunct (they exist in the {colourpicker} package)
 - Replaced `addResourcePath()` with `htmlDependency()` which is more robust and useful for package developers (#260)
+- New feature: When using `extendShinyjs()`, the `path` can now be a `htmltools::htmlDependency()` (#254)
 
 # shinyjs 2.1.0 (2021-12-20)
 

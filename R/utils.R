@@ -82,8 +82,12 @@ insertHead <- function(...) {
 shinyjsInlcudeScript <- function(script) {
   if (missing(script) || is.null(script)) {
     return(NULL)
-  } else {
+  } else if (is.character(script)) {
     shiny::tags$script(src = script)
+  } else if (inherits(script, "html_dependency")) {
+    script
+  } else {
+    stop("`script` must be either a URL or an `htmltools::htmlDependency()`", call. = FALSE)
   }
 }
 
