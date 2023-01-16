@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="shared/jquery.js" type="text/javascript"></script>
+  <script src="shared/shiny.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="shared/shiny.css"/>
+</head>
+
+<body>
+
+  <button class="btn btn-default action-button shinyjs-disabled" id="disabled" type="button">this is disabled</button>
+  <button class="btn btn-default action-button" id="toggle" type="button">toggle</button>
+  <p>
+    <label>num</label><br />
+    <input type="number" name="num" value="5" />
+  </p>
+  <div id="square" class="shiny-text-output"></div>
+  <p>
+    <label>Colour</label><br />
+    <select name="col">
+      <option value="red">red</option>
+      <option value="white">white</option>
+      <option value="yellow">yellow</option>
+      <option value="blue">blue</option>
+    </select>
+  </p>
+</body>
+</html>

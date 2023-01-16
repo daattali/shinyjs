@@ -1,0 +1,25 @@
+---
+title: Prerendered test
+output: html_document
+runtime: shiny_prerendered
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(shinyjs)
+
+useShinyjs()
+disabled(actionButton("disabled", "this is disabled"))
+actionButton("toggle", "toggle")
+numericInput("num", "num", 5)
+textOutput("square")
+```
+
+```{r, context="server"}
+observeEvent(input$toggle, {
+  shinyjs::toggle("square")
+})
+
+output$square <- renderText({
+  input$num ^ 2
+})
+```

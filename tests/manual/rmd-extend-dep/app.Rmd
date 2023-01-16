@@ -1,0 +1,37 @@
+---
+title: Rmd extendShinyjs(htmlDependency)
+output: html_document
+runtime: shiny
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(shinyjs)
+
+useShinyjs()
+
+dep <- htmltools::htmlDependency(
+  name = "test",
+  version = "1.0",
+  package = "shinyjs",
+  src = "tests",
+  script = "pagecol.js"
+)
+extendShinyjs(script = dep, functions = "pageCol")
+
+disabled(actionButton("disabled", "this is disabled"))
+actionButton("toggle", "toggle")
+numericInput("num", "num", 5)
+textOutput("square")
+selectInput("col", "Colour:", c("red", "white", "yellow", "blue"))
+
+observeEvent(input$toggle, {
+  toggle("square")
+})
+
+output$square <- renderText({
+  input$num ^ 2
+})
+
+observeEvent(input$col, {
+  js$pageCol(input$col)
+})

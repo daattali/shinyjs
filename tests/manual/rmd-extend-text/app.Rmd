@@ -1,0 +1,31 @@
+---
+title: Rmd extendShinyjs(text)
+output: html_document
+runtime: shiny
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(shinyjs)
+
+useShinyjs()
+
+jscode <- "shinyjs.pageCol = function(params) { $('body').css('background', params); }"
+extendShinyjs(text = jscode, functions = "pageCol")
+
+disabled(actionButton("disabled", "this is disabled"))
+actionButton("toggle", "toggle")
+numericInput("num", "num", 5)
+textOutput("square")
+selectInput("col", "Colour:", c("red", "white", "yellow", "blue"))
+
+observeEvent(input$toggle, {
+  toggle("square")
+})
+
+output$square <- renderText({
+  input$num ^ 2
+})
+
+observeEvent(input$col, {
+  js$pageCol(input$col)
+})
