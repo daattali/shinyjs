@@ -13,9 +13,9 @@
 #' \code{list(selector = declarations)}, where \code{selector} is a valid
 #' CSS selector and \code{declarations} is a string or vector of declarations.
 #' See examples for clarification.
-#' @param .human_readable Logical indicating whether the CSS rules should include
-#' whitespace so they are human readable, which is useful for debugging.
-#' Defaults to FALSE.
+#' @param minify If `TRUE`, the CSS rules will be condensed as much as possible
+#' to save on bandwidth. If `FALSE`, whitespace is added to make the CSS more
+#' human-readable, which is easier for debugging.
 #'
 #' @return Inline CSS code that is automatically inserted to the app's
 #'
@@ -64,63 +64,51 @@
 #'     server = function(input, output) {}
 #'   )
 #'
-#'   # By default, generates minimized CSS rules
-#'   rulesTxt <-
-#'       inlineCSS(
-#'         list(
+#'   # Use `minify = FALSE` to result in more human-readable CSS
+#'   shinyApp(
+#'     ui = fluidPage(
+#'       inlineCSS(list(
 #'         "#big" = "font-size:30px",
 #'         ".red" = c("color: red", "border: 1px solid black")
-#'         ),
-#'        .human_readable=FALSE
-#'      )
-#'   print(rulesTxt)
-#'
-#'   # Use `.human_readable` argument to include whitespace for readability
-#'   rulesTxtReadable <-
-#'       inlineCSS(
-#'         list(
-#'         "#big" = "font-size:30px",
-#'         ".red" = c("color: red", "border: 1px solid black")
-#'         ),
-#'        .human_readable=TRUE
-#'      )
-#'   print(rulesTxtReadable)
-#'
+#'       ), minify = FALSE),
+#'       p(id = "big", "This will be big"),
+#'       p(class = "red", "This will be red and bordered")
+#'     ),
+#'     server = function(input, output) {}
+#'   )
 #' }
 #' @export
-inlineCSS <- function (rules, .human_readable=TRUE)
+inlineCSS <- function (rules, minify = TRUE)
 {
-  if(.human_readable)
-  {
-    .space <- " "
-    .indent <- "    "
-    .cr <- "\n"
-    .collapse <- paste0(";",.cr)
+  if (minify) {
+    space <- ""
+    indent <- ""
+    cr <- ""
+    collapse <- ";"
+  } else {
+    space <- " "
+    indent <- "  "
+    cr <- "\n"
+    collapse <- paste0(";", cr)
   }
-  else
-  {
-    .space <- ""
-    .indent <- ""
-    .cr <- ""
-    .collapse <- ";"
-  }
-
-
   if (is.list(rules)) {
-    rules <- paste(
-      lapply(
-        names(rules),
-        function(x) {
-          paste0(
-            .cr,
-            x, .space, "{", .cr,
-            paste(.indent, rules[[x]], collapse = .collapse),
-            .cr,
-            "}")
-        }
-      ),
-    .cr,
-    collapse = "")
+    rules <-
+      paste0(
+        lapply(
+          names(rules),
+          function(x) {
+            paste0(
+              cr,
+              x, space, "{", cr,
+              paste0(indent, rules[[x]], collapse = collapse),
+              cr,
+              "}"
+            )
+          }
+        ),
+        cr,
+        collapse = ""
+      )
   }
-  shinyjs:::insertHead(shiny::tags$style(shiny::HTML(rules)))
+  insertHead(shiny::tags$style(shiny::HTML(rules)))
 }
