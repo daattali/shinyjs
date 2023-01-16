@@ -24,9 +24,7 @@ how to use shinyjs in these apps.}
 }
 \value{
 Scripts that \code{shinyjs} requires that are automatically inserted
-to the app's \code{<head>} tag. A side effect of calling this function is that
-a \code{shinyjs} directory is added as a resource path using
-\code{\link[shiny:resourcePaths]{shiny::addResourcePath()}}.
+to the app's \code{<head>} tag.
 }
 \description{
 This function must be called from a Shiny app's UI in order for all other

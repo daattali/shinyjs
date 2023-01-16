@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 2.1.0.9000
+Version: 2.1.0.9001
 Authors@R: person("Dean", "Attali", 
     email = "daattali@gmail.com",
     role = c("aut", "cre"),
@@ -21,7 +21,7 @@ Imports:
     shiny (>= 1.0.0),
     utils
 Suggests:
-    htmltools (>= 0.2.9),
+    htmltools (>= 0.3.5),
     knitr (>= 1.7),
     rmarkdown,
     shinyAce,
@@ -31,5 +31,5 @@ Suggests:
 License: MIT + file LICENSE
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8

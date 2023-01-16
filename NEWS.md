@@ -10,6 +10,7 @@
 - Replace `list(...)` with `rlang::list2(...)` which is more flexible and allows you to use trailing commas without error
 - Added tests using {shinytest2}
 - Officially removed all `colourInput()` related functions, after 5 years of being defunct (they exist in the {colourpicker} package)
+- Replaced `addResourcePath()` with `htmlDependency()` which is more robust and useful for package developers (#260)
 
 # shinyjs 2.1.0 (2021-12-20)
 

@@ -22,9 +22,7 @@
 #' \href{https://github.com/daattali/shinyjs}{README} online to learn
 #' how to use shinyjs in these apps.
 #' @return Scripts that \code{shinyjs} requires that are automatically inserted
-#' to the app's \code{<head>} tag. A side effect of calling this function is that
-#' a \code{shinyjs} directory is added as a resource path using
-#' [shiny::addResourcePath()].
+#' to the app's \code{<head>} tag.
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
@@ -65,10 +63,7 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
 
   # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- shinyjsFunctionNames("core")
-
-  # grab the file with all the default shinyjs javascript functions
-  shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
-  jsFile <- file.path("shinyjs", "shinyjs-default-funcs.js")
+  jsCodeFuncs <- jsFuncTemplate(jsFuncs)
 
   # JavaScript to include to turn debug mode on/off (used for seeing more messages)
   if (debug) {
@@ -81,8 +76,21 @@ useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
   initJS <- paste0(initJS, "shinyjs.version = '", as.character(utils::packageVersion("shinyjs")), "';")
 
   # include CSS for hiding elements
-  initCSS <- inlineCSS(".shinyjs-hide { display: none !important; }")
+  initCSS <- ".shinyjs-hide { display: none !important; }"
 
-  # set up the message handlers and add some initial JS and CSS
-  setupJS(jsFuncs, jsFile, initJS, initCSS)
+  shinyjsContent <- htmltools::htmlDependency(
+    name = "shinyjs-binding",
+    version = as.character(utils::packageVersion("shinyjs")),
+    package = "shinyjs",
+    src = "srcjs",
+    script = "shinyjs-default-funcs.js",
+    head = paste0(
+      "<script>", paste(initJS, jsCodeFuncs, sep = "\n"), "</script>",
+      "<style>", initCSS, "</style>"
+    )
+  )
+
+  shiny::tagList(
+    shinyjsContent
+  )
 }

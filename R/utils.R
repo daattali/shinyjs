@@ -17,6 +17,18 @@ getSession <- function() {
   session
 }
 
+jsFuncTemplate <- function(funcs) {
+  tpl <- paste0(
+    "Shiny.addCustomMessageHandler('shinyjs-%s', function(params) {",
+    " shinyjs.debugMessage('shinyjs: calling function \"%s\" with parameters:');",
+    " shinyjs.debugMessage(params);",
+    " shinyjs.%s(params);",
+    "});")
+  controllers <- lapply(funcs, function(x) { sprintf(tpl, x, x, x) })
+  controllers <- paste(controllers, collapse = "\n")
+  controllers
+}
+
 # set up some javascript functions to work with shinyjs and any other resources
 setupJS <- function(jsFuncs, script, text, ...) {
   # add a shiny message handler binding for each supported method
