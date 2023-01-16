@@ -1,6 +1,5 @@
+library(shiny)
 library(shinyjs)
-
-to_posix <- function(s) as.POSIXct(s, format = "%Y-%m-%d %H:%M:%S", tz = "UTC")
 
 ui <- fluidPage(
   useShinyjs(),
