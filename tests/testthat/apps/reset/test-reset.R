@@ -10,7 +10,10 @@ test_that("{shinytest2} recording: reset elements works", {
     realdate = "2009-05-14",
     radio = "e",
     radio2 = "d",
-    date = "2010-05-27"
+    date = "2010-05-27",
+    date2 = c("2010-05-20", "2010-07-16"),
+    datetime = "1279274400000",
+    datetime2 = c("1275292800000", "1283932800000")
   )
   driver$expect_values()
   driver$click("reset")

@@ -1,6 +1,15 @@
 {
   "input": {
     "date": "2010-03-10",
+    "date2": [
+      "2010-04-10",
+      "2010-07-10"
+    ],
+    "datetime": "2010-04-09T14:00:00Z",
+    "datetime2": [
+      "2010-03-09T19:00:00Z",
+      "2010-07-16T22:00:00Z"
+    ],
     "id": "num",
     "num": 5,
     "radio": "b",
@@ -34,6 +43,18 @@
       "date": {
         "type": "SliderDate",
         "value": "1268179200000"
+      },
+      "date2": {
+        "type": "SliderDate",
+        "value": "1270857600000,1278720000000"
+      },
+      "datetime": {
+        "type": "SliderDateTime",
+        "value": "1270821600000"
+      },
+      "datetime2": {
+        "type": "SliderDateTime",
+        "value": "1268161200000,1279317600000"
       }
     },
     "shinyjs-resettable-num": {
