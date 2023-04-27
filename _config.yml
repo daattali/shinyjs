@@ -27,7 +27,7 @@ author:
 
 
 # Fill in your Google Analytics ID to track your website using GA
-google_analytics: "UA-59820529-1"
+gtag: "G-XMGXH0P9Q0"
 
 timezone: "America/Toronto"
 markdown: kramdown
