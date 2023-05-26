@@ -3,7 +3,7 @@
 #' Enable or disable an input element. A disabled element is not usable and
 #' not clickable, while an enabled element (default) can receive user input.
 #' Any shiny input tag can be used with these functions.\cr\cr
-#' \strong{\code{enable}} enables an input, \strong{\code{disable}} disabled
+#' \strong{\code{enable}} enables an input, \strong{\code{disable}} disables
 #' an input,\strong{\code{toggleState}} enables an input if it is disabled
 #' and disables an input if it is already enabled.\cr\cr
 #' If \code{condition} is given to \code{toggleState}, that condition will be used
