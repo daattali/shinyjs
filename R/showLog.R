@@ -31,6 +31,11 @@
 showLog <- function() {
   session <- getSession()
 
+  if (is.null(session$userData$.shinyjs_added) || !session$userData$.shinyjs_added) {
+    shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs(force = TRUE))
+    session$userData$.shinyjs_added <- TRUE
+  }
+
   if (!is.null(attr(session, "shinyjs_showLog"))) {
     return()
   }

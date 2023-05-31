@@ -40,6 +40,11 @@ jsFuncHelper <- function(fxn, params) {
     }
   }
 
+  if (is.null(session$userData$.shinyjs_added) || !session$userData$.shinyjs_added) {
+    shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs(force = TRUE))
+    session$userData$.shinyjs_added <- TRUE
+  }
+
   # call the javascript function
   session$sendCustomMessage(
     type = fxn,

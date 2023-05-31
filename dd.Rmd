@@ -1,0 +1,24 @@
+---
+title: "Hello Prerendered Shiny"
+output: html_document
+runtime: shiny_prerendered
+---
+
+```{r, echo=FALSE}
+shinyjs::useShinyjs()
+sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+plotOutput("distPlot")
+#shinyjs::disabled(textInput("aaa","vvv","ggg"))
+actionButton("gg","ff")
+```
+
+```{r, context="server"}
+
+observeEvent(input$gg, shinyjs::toggle("distPlot"))
+
+output$distPlot <- renderPlot({
+  x <- faithful[, 2]  # Old Faithful Geyser data
+  bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  hist(x, breaks = bins, col = 'darkgray', border = 'white')
+})
+```

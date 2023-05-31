@@ -99,6 +99,11 @@ oneventHelper <- function(event, id, expr, add, properties, asis) {
   # get the Shiny session
   session <- getSession()
 
+  if (is.null(session$userData$.shinyjs_added) || !session$userData$.shinyjs_added) {
+    shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs(force = TRUE))
+    session$userData$.shinyjs_added <- TRUE
+  }
+
   # Make sure onevent works with namespaces (shiny modules)
   if (inherits(session, "session_proxy")) {
     if (!asis) {

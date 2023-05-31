@@ -44,6 +44,11 @@ delay <- function(ms, expr) {
                       deparse(substitute(expr)))
   hash <- rlang::hash(hashable)
 
+  if (is.null(session$userData$.shinyjs_added) || !session$userData$.shinyjs_added) {
+    shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs(force = TRUE))
+    session$userData$.shinyjs_added <- TRUE
+  }
+
   # send a call to JavaScript to let us know when the delay is up
   shinyInputId <- paste0("shinyjs-delay-", hash)
   shinyInputIdJs <- shinyInputId

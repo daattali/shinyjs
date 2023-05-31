@@ -42,6 +42,7 @@ hidden <- function(...) {
         tags[[1]],
         class = "shinyjs-hide"
       )
+    tags[[1]] <- htmltools::attachDependencies(tags[[1]], useShinyjs(force = TRUE), append = TRUE)
     return( tags[[1]] )
   } else if (length(tags) == 1 && inherits(tags[[1]], "html_dependency")) {
     return( tags[[1]] )

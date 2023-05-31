@@ -46,22 +46,19 @@
 #' @seealso \code{\link[shinyjs]{runExample}}
 #' \code{\link[shinyjs]{extendShinyjs}}
 #' @export
-useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE) {
-  stopifnot(rmd == TRUE || rmd == FALSE)
-  stopifnot(debug == TRUE || debug == FALSE)
-  stopifnot(html == TRUE || html == FALSE)
+useShinyjs <- function(rmd = FALSE, debug = FALSE, html = FALSE, force = FALSE) {
+  stopifnot(identical(force, TRUE) || identical(force, FALSE))
 
-  # `astext` is FALSE in normal shiny apps where the shinyjs content is returned
-  # as a shiny tag that gets rendered by the Shiny UI, and TRUE in interactive
-  # Rmarkdown documents or in Shiny apps where the user builds the entire UI
-  # manually with HTML, because in those cases the content of shinyjs needs to
-  # be returned as plain text that can be added to the HTML
-  .globals$astext <- rmd || html
+  if (!force) {
+    errMsg(paste0("*** Good news! ***\n\n",
+                  "As of {shinyjs} v4.0 (January 2023), you no longer need to call `useShinyjs()`.\n",
+                  "Please remove this line from your code.\n",
+                  "If you really want to pre-load {shinyjs}, use `useShinyjs(force = TRUE)`.\n",
+                  "IMPORTANT: If using the `reset()` function, you need to call `initReset()` in the UI."))
+  }
 
-  # inject is TRUE when the user builds the entire UI manually with HTML,
-  # because in that case the shinyjs content needs to be injected into the page
-  # using JavaScript
-  .globals$inject <- html
+  # TODO debug becomes an option instead of a parameter
+
 
   # all the default shinyjs methods that should be forwarded to javascript
   jsFuncs <- shinyjsFunctionNames("core")

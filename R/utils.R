@@ -33,8 +33,8 @@ setupJS <- function(jsFuncs, script, text, ...) {
 
   # ensure the same scripts don't get added to the HTML twice
   shinyjsContent <-
-    shiny::singleton(
-      insertHead(
+    #shiny::singleton(
+      tagList(
         # add the message handlers
         shiny::tags$script(shiny::HTML(controllers)),
         # add the actual javascript code
@@ -43,25 +43,20 @@ setupJS <- function(jsFuncs, script, text, ...) {
         # add any extra tags
         ...
       )
-    )
 
-  # inject the content via JavaScript if necessary
-  if (!is.null(.globals$inject) && .globals$inject) {
-    shinyjsContent <- as.character(shinyjsContent)
-    session <- getSession()
-    session$sendCustomMessage('shinyjs-inject', shinyjsContent)
-  } else {
-    shinyjsContent
-  }
+  shinyjsContent
 }
 
 # insert content into the <head> tag of the document if this is a proper HTML
 # Shiny app, but if it's inside an interactive Rmarkdown document then don't
 # use <head> as it won't work
 insertHead <- function(...) {
-  if (is.null(.globals$astext) || .globals$astext) {
+  runtime <- knitr::opts_knit$get("rmarkdown.runtime")
+  if (!is.null(runtime) && runtime == "shiny") {
+    # we're inside an Rmd document
     shiny::tagList(...)
   } else {
+    # we're in a shiny app
     shiny::tags$head(...)
   }
 }

@@ -64,6 +64,10 @@ reset <- function(id = "", asis = FALSE) {
     id <- session$ns(id)
     nsName <- session$ns("")
   }
+  if (is.null(session$userData$.shinyjs_added) || !session$userData$.shinyjs_added) {
+    shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs(force = TRUE))
+    session$userData$.shinyjs_added <- TRUE
+  }
 
   # send a call to JavaScript to figure out what elements to reset and what
   # values to reset them to

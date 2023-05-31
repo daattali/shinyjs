@@ -58,7 +58,7 @@ test_that("hidden can accept a list with trailing comma", {
 test_that("hidden on a nested element only hides the top-level element", {
   res <- hidden(shiny::div("one", shiny::div("two")))
   exp <- shiny::div("one", class = clsName, shiny::div("two"))
-  expect_identical(res, exp)
+  expect_identical(as.character(res), as.character(exp))
 })
 
 test_that("hidden differentiates between list and tagList", {
@@ -66,19 +66,23 @@ test_that("hidden differentiates between list and tagList", {
   res_tagList <- hidden(shiny::tagList(shiny::div(), shiny::span()))
   exp_list <- list(shiny::div(class = clsName), shiny::span(class = clsName))
   exp_tagList <- shiny::tagList(shiny::div(class = clsName), shiny::span(class = clsName))
-  expect_false(identical(exp_list, exp_tagList))
-  expect_identical(res_list, exp_list)
-  expect_identical(res_tagList, exp_tagList)
+  expect_false(identical(as.character(exp_list), as.character(exp_tagList)))
+  expect_identical(as.character(res_list), as.character(exp_list))
+  expect_identical(as.character(res_tagList), as.character(exp_tagList))
 })
 
 test_that("hidden works when htmlDependency is attached", {
   dep1 <- htmltools::htmlDependency(name = "foo", src = "", version = "1.0")
   res1 <- hidden(shiny::tagList(shiny::div(), dep1))
   exp1 <- shiny::tagList(shiny::div(class = clsName), dep1)
-  expect_identical(res1, exp1)
+  expect_identical(as.character(res1), as.character(exp1))
 
   dep2 <- htmltools::htmlDependency(name = "foo2", src = "", version = "1.0")
   res2 <- hidden(shiny::tagList(dep1, shiny::div(), dep2))
   exp2 <- shiny::tagList(dep1, shiny::div(class = clsName), dep2)
-  expect_identical(res2, exp2)
+  expect_identical(as.character(res2), as.character(exp2))
+})
+
+test_that("hidden sets the shinyjs dependency", {
+
 })
