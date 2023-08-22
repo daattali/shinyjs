@@ -430,20 +430,20 @@ shinyjs = function() {
 
   // Attach all events registered for a given id (if any)
   var _eventsAttachById = function(id) {
+    if (typeof id === 'undefined') return;
     var elementData = _oneventData[id];
-    if (elementData !== null) {
-      $.each(elementData, function(event, eventDatas) {
-        $.each(eventDatas, function(idx, eventData) {
-          _oneventAttach({
-            event        : event,
-            id           : id,
-            shinyInputId : eventData.shinyInputId,
-            add          : true,
-            customProps  : eventData.customProps
-          });
+    if (typeof elementData === 'undefined' || elementData === null) return;
+    $.each(elementData, function(event, eventDatas) {
+      $.each(eventDatas, function(idx, eventData) {
+        _oneventAttach({
+          event        : event,
+          id           : id,
+          shinyInputId : eventData.shinyInputId,
+          add          : true,
+          customProps  : eventData.customProps
         });
       });
-    }
+    });
   };
 
   // attach an event listener to a DOM element that will trigger a call to Shiny
