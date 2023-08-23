@@ -433,17 +433,27 @@ shinyjs = function() {
     if (typeof id === 'undefined') return;
     var elementData = _oneventData[id];
     if (typeof elementData === 'undefined' || elementData === null) return;
-    $.each(elementData, function(event, eventDatas) {
-      $.each(eventDatas, function(idx, eventData) {
-        _oneventAttach({
-          event        : event,
-          id           : id,
-          shinyInputId : eventData.shinyInputId,
-          add          : true,
-          customProps  : eventData.customProps
+
+    var attachAllElements = function() {
+      $.each(elementData, function(event, eventDatas) {
+        $.each(eventDatas, function(idx, eventData) {
+          _oneventAttach({
+            event        : event,
+            id           : id,
+            shinyInputId : eventData.shinyInputId,
+            add          : true,
+            customProps  : eventData.customProps
+          });
         });
       });
-    });
+    }
+
+    if (typeof Shiny === 'object' && typeof Shiny.compareVersion === 'function' &&
+        Shiny.compareVersion(Shiny.version, '>=', '1.7.5')) {
+      Shiny.shinyapp.taskQueue.enqueue(() =>  attachAllElements());
+    } else {
+      attachAllElements();
+    }
   };
 
   // attach an event listener to a DOM element that will trigger a call to Shiny
