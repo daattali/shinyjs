@@ -4,7 +4,7 @@
 \alias{inlineCSS}
 \title{Add inline CSS}
 \usage{
-inlineCSS(rules, .human_readable = TRUE)
+inlineCSS(rules, minify = TRUE)
 }
 \arguments{
 \item{rules}{The CSS rules to add. Can either be a string with valid
@@ -13,9 +13,9 @@ CSS code, or a named list of the form
 CSS selector and \code{declarations} is a string or vector of declarations.
 See examples for clarification.}
 
-\item{.human_readable}{Logical indicating whether the CSS rules should include
-whitespace so they are human readable, which is useful for debugging.
-Defaults to FALSE.}
+\item{minify}{If \code{TRUE}, the CSS rules will be condensed as much as possible
+to save on bandwidth. If \code{FALSE}, whitespace is added to make the CSS more
+human-readable, which is easier for debugging.}
 }
 \value{
 Inline CSS code that is automatically inserted to the app's
@@ -74,27 +74,17 @@ if (interactive()) {
     server = function(input, output) {}
   )
 
-  # By default, generates minimized CSS rules
-  rulesTxt <-
-      inlineCSS(
-        list(
+  # Use `minify = FALSE` to result in more human-readable CSS
+  shinyApp(
+    ui = fluidPage(
+      inlineCSS(list(
         "#big" = "font-size:30px",
         ".red" = c("color: red", "border: 1px solid black")
-        ),
-       .human_readable=FALSE
-     )
-  print(rulesTxt)
-
-  # Use `.human_readable` argument to include whitespace for readability
-  rulesTxtReadable <-
-      inlineCSS(
-        list(
-        "#big" = "font-size:30px",
-        ".red" = c("color: red", "border: 1px solid black")
-        ),
-       .human_readable=TRUE
-     )
-  print(rulesTxtReadable)
-
+      ), minify = FALSE),
+      p(id = "big", "This will be big"),
+      p(class = "red", "This will be red and bordered")
+    ),
+    server = function(input, output) {}
+  )
 }
 }

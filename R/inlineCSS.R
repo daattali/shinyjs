@@ -78,8 +78,7 @@
 #'   )
 #' }
 #' @export
-inlineCSS <- function (rules, minify = TRUE)
-{
+inlineCSS <- function (rules, minify = TRUE) {
   if (minify) {
     space <- ""
     indent <- ""
