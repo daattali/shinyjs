@@ -355,3 +355,4 @@ Credits
 </h2>
 
 Logo design by [Alfredo Hernández](https://aldomann.com/).
+
