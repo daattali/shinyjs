@@ -2,7 +2,7 @@
 % Please edit documentation in R/runExample.R
 \name{runExample}
 \alias{runExample}
-\title{Run shinyjs examples}
+\title{Run shinyjs examples [DEPRECATED]}
 \usage{
 runExample(example)
 }
@@ -15,7 +15,11 @@ easily use \code{shinyjs} in an app.\cr\cr
 Run without any arguments to see a list of available example apps.
 The "demo" example is also
 \href{https://daattali.com/shiny/shinyjs-demo/}{available online}
-to experiment with.
+to experiment with.\cr\cr
+\strong{Deprecation Notice:} This function is no longer required since Shiny version
+1.8.1 (March 2024). This function will be removed in a future release of \{shinyjs\}.
+You can use \code{shiny::runExample("demo", package = "shinyjs")} instead of
+\code{shinyjs::runExample("demo")}.
 }
 \examples{
 ## Only run this example in interactive R sessions
