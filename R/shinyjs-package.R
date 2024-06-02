@@ -3,11 +3,10 @@
 
 #' Defunct functions in shinyjs
 #'
-#' \itemize{
-#'   \item{\bold{colourInput()}} {Moved to the \code{colourpicker} package.}
-#'   \item{\bold{updateColourInput()}} {Moved to the \code{colourpicker} package.}
-#'   \item{\bold{colourPicker()}} {Moved to the \code{colourpicker} package.}
-#' }
+#' - **colourInput()** Moved to the \{colourpicker\} package
+#' - **updateColourInput()** Moved to the \{colourpicker\} package
+#' - **colourPicker()** Moved to the \{colourpicker\} package
+#' - **runExample()** Use `shiny::runExample(package = "shinyjs")`
 #'
 #' @name shinyjs-defunct
 NULL

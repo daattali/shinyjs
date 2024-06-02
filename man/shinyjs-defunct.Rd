@@ -5,8 +5,9 @@
 \title{Defunct functions in shinyjs}
 \description{
 \itemize{
-\item{\bold{colourInput()}} {Moved to the \code{colourpicker} package.}
-\item{\bold{updateColourInput()}} {Moved to the \code{colourpicker} package.}
-\item{\bold{colourPicker()}} {Moved to the \code{colourpicker} package.}
+\item \strong{colourInput()} Moved to the \{colourpicker\} package
+\item \strong{updateColourInput()} Moved to the \{colourpicker\} package
+\item \strong{colourPicker()} Moved to the \{colourpicker\} package
+\item \strong{runExample()} Use \code{shiny::runExample(package = "shinyjs")}
 }
 }
