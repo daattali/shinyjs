@@ -14,7 +14,7 @@
   <a href="https://cran.r-project.org/package=shinyjs">
     <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
   </a>
-  <a href="https://paypal.me/daattali">
+  <a href="https://paypal.me/daattali/20">
     <img src="http://i.imgur.com/vCIGFrH.png" />
   </a>
 </p>
