@@ -39,7 +39,7 @@ JavaScript functions from R.
     <img height="35" src="https://i.imgur.com/034B8vq.png" />
   </a>
   <a style="display: inline-block;" href="https://paypal.me/daattali">
-    <img height="35" src="http://i.imgur.com/vCIGFrH.png" />
+    <img height="25" src="http://i.imgur.com/vCIGFrH.png" />
   </a>
 </p>
 
