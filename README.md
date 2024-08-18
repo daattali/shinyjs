@@ -14,6 +14,9 @@
   <a href="https://cran.r-project.org/package=shinyjs">
     <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
   </a>
+  <a href="https://paypal.me/daattali">
+    <img src="http://i.imgur.com/vCIGFrH.png" />
+  </a>
 </p>
 
 ---
@@ -37,9 +40,6 @@ JavaScript functions from R.
 <p align="center">
   <a style="display: inline-block;" href="https://github.com/sponsors/daattali">
     <img height="35" src="https://i.imgur.com/034B8vq.png" />
-  </a>
-  <a style="display: inline-block;" href="https://paypal.me/daattali">
-    <img height="25" src="http://i.imgur.com/vCIGFrH.png" />
   </a>
 </p>
 
