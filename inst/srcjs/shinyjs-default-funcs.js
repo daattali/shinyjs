@@ -43,8 +43,8 @@ shinyjs = function() {
     }
   };
 
-  // if the given HTML tag is a shiny input, return the input container.
-  // otherwise, return the original tag
+  // if the given HTML tag is a shiny input or is wrapped in a {shinycssloaders} spinner,
+  // return the container. Otherwise, return the original tag
   var _getContainer = function(els) {
     return $.map(els, function(el) {
       el = $(el);
@@ -52,6 +52,11 @@ shinyjs = function() {
         var inputContainer = el.closest(".shiny-input-container");
         if (inputContainer.length > 0) {
           el = inputContainer;
+        }
+      } else if (el.hasClass("shiny-bound-output")) {
+        let outputContainer = el.closest(".shiny-spinner-output-container");
+        if (outputContainer.length > 0) {
+          el = outputContainer;
         }
       }
       return el;
