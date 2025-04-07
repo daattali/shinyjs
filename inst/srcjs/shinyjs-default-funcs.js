@@ -379,7 +379,7 @@ shinyjs = function() {
         // passwordInput
         else if (input.children("input[type='password']").length > 0) {
           input = input.children("input[type='password']");
-          inputType = "Password";
+          inputType = "Text";
         }
         // textAreaInput
         else if (input.children("textarea").length > 0) {

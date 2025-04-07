@@ -87,11 +87,6 @@ reset <- function(id = "", asis = FALSE) {
         type <- messages[[x]][['type']]
         value <- messages[[x]][['value']]
 
-        # password inputs don't have an updatePasswordInput, they use text
-        if (type == "Password") {
-          type <- "Text"
-        }
-
         # Make sure reset works with namespacing (shiny modules)
         id <- x
         if (substring(id, 1, nchar(nsName)) == nsName) {
