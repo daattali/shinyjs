@@ -15,7 +15,7 @@
     <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
   </a>
   <a href="https://paypal.me/daattali/20">
-    <img src="http://i.imgur.com/vCIGFrH.png" />
+    <img src="https://i.imgur.com/vCIGFrH.png" />
   </a>
 </p>
 
