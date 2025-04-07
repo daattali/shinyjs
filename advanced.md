@@ -9,7 +9,6 @@ subtitle: Including shinyjs in different types of apps
 - [Using shinyjs with navbarPage layout](#usage-navbarpage)
 - [Using shinyjs in R Markdown documents](#usage-rmd)
     - [Rmd documents with Tabbed Sections](#usage-tabbed)
-    - [Rmd documents using `shiny_prerendered` engine](#usage-prerendered)
 - [Using shinyjs when the user interface is built using an HTML file](#usage-html)
 
 <h1 id="usage-basic" class="linked-section">Basic use of shinyjs</h1>
@@ -107,12 +106,12 @@ shinyApp(ui, server)
 
 <h1 id="usage-rmd" class="linked-section">Using shinyjs in R Markdown documents</h1>
 
-It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](https://rmarkdown.rstudio.com/authoring_shiny.html). Even though interactive documents don't explicitly specify a UI and a server, using `shinyjs` is still easy: simply call `useShinyjs(rmd = TRUE)` (note the `rmd = TRUE` argument). For example, the following code can be used inside an R Markdown code chunk (assuming the Rmd document is set up with `runtime: shiny` as the link above describes):
+It is possible to embed Shiny components in an R Markdown document, resulting in interactive R Markdown documents. More information on how to use these documents is available [on the R Markdown website](https://bookdown.org/yihui/rmarkdown/shiny-documents.html). Even though interactive documents don't explicitly specify a UI and a server, all you need to do is call `useShinyjs()`. For example, the following code can be used inside an R Markdown code chunk (assuming the Rmd document is set up with `runtime: shiny` as the link above describes):
 
 ```
 library(shinyjs)
 
-useShinyjs(rmd = TRUE)
+useShinyjs()
 actionButton("button", "Click me")
 div(id = "hello", "Hello!")
 
@@ -123,36 +122,10 @@ observeEvent(input$button, {
 
 <h2 id="usage-tabbed" class="linked-section">Rmd documents with Tabbed Sections</h2>
 
-If the Rmd file makes use of [Tabbed Sections](https://rmarkdown.rstudio.com/html_document_format.html#tabbed_sections) (using `{.tabset}`), then you should include the call to `useShinyjs(rmd = TRUE)` before the tabset definition, near the beginning of the file.
-
-<h2 id="usage-prerendered" class="linked-section">Rmd documents using `shiny_prerendered` engine</h2>
-
-If you're using the [`shiny_prerendered` Rmd format](https://rmarkdown.rstudio.com/authoring_shiny_prerendered.html), you need to include the following code in the beginning of your Rmd file, just after the YAML header:
-
-````
-```{r, echo=FALSE}
-shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
-```
-```{r, context="server"}
-shinyjs::useShinyjs(html = TRUE)
-```
-<script src="shinyjs/inject.js"></script>
-````
+If the Rmd file makes use of [Tabbed Sections](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed-sections) (using `{.tabset}`), then you should include the call to `useShinyjs()` before the tabset definition, near the beginning of the file.
 
 <h1 id="usage-html" class="linked-section">Using shinyjs when the user interface is built using an HTML file/template</h1>
 
 While most Shiny apps use Shiny's functions to build a user interface to the app, it is possible to build the UI with an HTML template, [as RStudio shows in this article](https://shiny.rstudio.com/articles/templates.html). In this case, you simply need to add `{{ useShinyjs() }}` somewhere in the template, preferably inside the `<head>...</head>` tags.
 
-A similar way to create your app's UI with HTML is to write it entirely in HTML (without templates), [as RStudio shows in this article](https://shiny.rstudio.com/articles/html-ui.html). Building Shiny apps like this is much more complicated and should only be used if you're very comfortable with HTML. Using `shinyjs` in these apps is possible but it works a little differently since there is no `ui.R` to call `useShinyjs()` from.  There are three simple steps to take in order to use `shinyjs` in these apps:
-
-- create a `global.R` file in the same directory as your `server.R`, and add the following line to the file:
-
-        shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
-        
-- in the `index.html` file you need to load a special JavaScript file named `shinyjs/inject.js`. You do this by adding the following line to the HTML's `<head>` tag:
-
-        `<script src="shinyjs/inject.js"></script>`
-        
-- in your server function (the `shinyServer` function) you need to call `useShinyjs(html = TRUE)`
-
-After adding these three lines to your code, you can use all `shinyjs` functions as usual.
+A similar way to create your app's UI with HTML is to write it entirely in HTML (without templates), [as RStudio shows in this article](https://shiny.rstudio.com/articles/html-ui.html). Building Shiny apps like this is much more complicated and should only be used if you're very comfortable with HTML. Using `shinyjs` in these apps is possible but it works a little differently since there is no `ui.R` to call `useShinyjs()` from. In this case, you need to call `insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs())` in the server. If you wish to use `extendShinyjs()`, then a similar line needs to be added in the server.
