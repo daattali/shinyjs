@@ -24,7 +24,7 @@ In order to use any shinyjs function in a Shiny app, you must first call `useShi
 | `removeEvent` | Remove an event that was added to an HTML element with `onclick()` or `onevent()`. |
 | `addClass` / `removeClass` / `toggleClass` | Add or remove a CSS class from an element. |
 | `runjs` | Run arbitrary JavaScript code. |
-| `extendShinyjs` | Allows you to write your own JavaScript functions and use `shinyjs` to call them as if they were regular R code. More information is available in the [Extend shinyjs page]({{ site.baseurl }}/extend) |
+| `extendShinyjs` | Allows you to write your own JavaScript functions and use `shinyjs` to call them as if they were regular R code. More information is available in the [*Extend shinyjs* page]({{ site.baseurl }}/extend) |
 
 <br/>
 
