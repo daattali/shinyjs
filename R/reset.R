@@ -92,7 +92,7 @@ reset <- function(id = "", asis = FALSE) {
           type <- "Text"
         }
 
-        # Make sure reset works with namespecing (shiny modules)
+        # Make sure reset works with namespacing (shiny modules)
         id <- x
         if (substring(id, 1, nchar(nsName)) == nsName) {
           id <- substring(id, nchar(nsName) + 1)
@@ -149,6 +149,8 @@ reset <- function(id = "", asis = FALSE) {
           funcParams[['value']] <- value
         }
 
+        updateFunc <- sprintf("update%sInput", type)
+
         # radio buttons don't follow the regular shiny input naming conventions
         if (type == "RadioButtons") {
           updateFunc <- sprintf("update%s", type)
@@ -156,9 +158,6 @@ reset <- function(id = "", asis = FALSE) {
         # for colour inputs, need to use the colourpicker package
         else if (type == "Colour") {
           updateFunc <- utils::getFromNamespace(updateFunc, "colourpicker")
-        }
-        else {
-          updateFunc <- sprintf("update%sInput", type)
         }
 
         # update the input to its original values
