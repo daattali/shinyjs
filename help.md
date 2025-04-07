@@ -31,6 +31,6 @@ Community forums](https://community.rstudio.com/c/shiny).
 If you still can't get an answer to your question, you can [contact
 me](https://deanattali.com/contact). However, because of the high volume
 of support emails I receive daily, I can only provide support for a fee
-(as part of my [Shiny consulting](http://attalitech.com/)).
+(as part of my [Shiny consulting](https://attalitech.com/)).
 
 To report a bug or suggest improvements, please [open an issue](https://github.com/daattali/shinyjs/issues) on GitHub. I always strive to make shinyjs as useful and correct as possible, so any feedback is appreciated!
