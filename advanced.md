@@ -126,6 +126,8 @@ If the Rmd file makes use of [Tabbed Sections](https://bookdown.org/yihui/rmarkd
 
 <h1 id="usage-html" class="linked-section">Using shinyjs when the user interface is built using an HTML file/template</h1>
 
+{% raw %}
 While most Shiny apps use Shiny's functions to build a user interface to the app, it is possible to build the UI with an HTML template, [as RStudio shows in this article](https://shiny.rstudio.com/articles/templates.html). In this case, you simply need to add `{{ useShinyjs() }}` somewhere in the template, preferably inside the `<head>...</head>` tags.
+{% endraw %}
 
 A similar way to create your app's UI with HTML is to write it entirely in HTML (without templates), [as RStudio shows in this article](https://shiny.rstudio.com/articles/html-ui.html). Building Shiny apps like this is much more complicated and should only be used if you're very comfortable with HTML. Using `shinyjs` in these apps is possible but it works a little differently since there is no `ui.R` to call `useShinyjs()` from. In this case, you need to call `insertUI("head", "beforeEnd", immediate = TRUE, ui = useShinyjs())` in the server. If you wish to use `extendShinyjs()`, then a similar line needs to be added in the server.
