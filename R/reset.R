@@ -84,9 +84,6 @@ reset <- function(id = "", asis = FALSE) {
     lapply(
       names(messages),
       function(x) {
-        type <- messages[[x]][['type']]
-        value <- messages[[x]][['value']]
-
         # Make sure reset works with namespacing (shiny modules)
         id <- x
         if (substring(id, 1, nchar(nsName)) == nsName) {
@@ -100,11 +97,13 @@ reset <- function(id = "", asis = FALSE) {
         }
         funcParams <- list(session_to_reset, id)
 
+        type <- messages[[x]][['type']]
+        value <- messages[[x]][['value']]
+
         # checkbox values need to be manually converted to TRUE/FALSE
         if (type == "Checkbox") {
           value <- as.logical(value)
         }
-
         if (type == "Date") {
           if (value == "NA") {
             value <- NA
@@ -144,16 +143,7 @@ reset <- function(id = "", asis = FALSE) {
           funcParams[['value']] <- value
         }
 
-        updateFunc <- sprintf("update%sInput", type)
-
-        # radio buttons don't follow the regular shiny input naming conventions
-        if (type == "RadioButtons") {
-          updateFunc <- sprintf("update%s", type)
-        }
-        # for colour inputs, need to use the colourpicker package
-        else if (type == "Colour") {
-          updateFunc <- utils::getFromNamespace(updateFunc, "colourpicker")
-        }
+        updateFunc <- getUpdateFunc(type)
 
         # update the input to its original values
         do.call(updateFunc, funcParams)
@@ -162,4 +152,23 @@ reset <- function(id = "", asis = FALSE) {
   })
 
   invisible(NULL)
+}
+
+getUpdateFunc <- function(type) {
+  updateFunc <- sprintf("update%sInput", type)
+  updateFuncAlt <- sprintf("update%s", type)
+  pkg <- ""
+
+  if (type == "RadioButtons") {
+    updateFunc <- updateFuncAlt
+  }
+  else if (type == "Colour") {
+    pkg <- "colourpicker"
+  }
+
+  if (pkg != "") {
+    updateFunc <- utils::getFromNamespace(updateFunc, pkg)
+  }
+
+  updateFunc
 }
