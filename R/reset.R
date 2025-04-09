@@ -3,10 +3,8 @@
 #' Reset any input element back to its original value. You can either reset
 #' one specific input at a time by providing the id of a shiny input, or reset
 #' all inputs within an HTML tag by providing the id of an HTML tag.\cr\cr
-#' Reset can be performed on any traditional Shiny input widget, which
-#' includes: textInput, numericInput, sliderInput, selectInput,
-#' selectizeInput, radioButtons, dateInput, dateRangeInput, checkboxInput,
-#' checkboxGroupInput, colourInput, passwordInput, textAreaInput. Note that
+#' Reset can be performed on any traditional Shiny inputs, as well as many
+#' inputs from the {colourpicker} and {shinyWidgets} packages. Note that
 #' \code{actionButton} is not supported, meaning that you cannot reset
 #' the value of a button back to 0.
 #'
@@ -95,7 +93,7 @@ reset <- function(id = "", asis = FALSE) {
         } else {
           session_to_reset <- session
         }
-        funcParams <- list(session_to_reset, id)
+        funcParams <- list(session = session_to_reset, id)
 
         type <- messages[[x]][['type']]
         value <- messages[[x]][['value']]
@@ -110,8 +108,8 @@ reset <- function(id = "", asis = FALSE) {
           }
         }
 
-        # most input update functions use 'value' argument, some use 'selected',
-        # DateRange uses 'start' and 'end'
+        # most input update functions use 'value' argument, but some require special handling
+
         if (type == "RadioButtons") {
           if (is.null(value) && utils::packageVersion("shiny") > "1.5.0") {
             value <- character(0)
@@ -124,22 +122,22 @@ reset <- function(id = "", asis = FALSE) {
             funcParams[['selected']] <- jsonlite::fromJSON(value)
           }
         } else if (type == "Slider") {
-          value <- unlist(strsplit(value, ","))
-          funcParams[['value']] <- value
+          funcParams[['value']] <- strToVec(value)
         } else if (type == "SliderDate") {
           type <- "Slider"
-          value <- unlist(strsplit(value, ","))
+          value <- strToVec(value)
           funcParams[['value']] <- as.Date(as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01"))
         } else if (type == "SliderDateTime") {
           type <- "Slider"
-          value <- unlist(strsplit(value, ","))
+          value <- strToVec(value)
           funcParams[['value']] <- as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01")
         } else if (type == "DateRange") {
-          dates <- unlist(strsplit(value, ","))
+          dates <- strToVec(value)
           dates[dates == "NA"] <- NA
           funcParams[['start']] <- dates[1]
           funcParams[['end']] <- dates[2]
-        } else {
+        }
+        else {
           funcParams[['value']] <- value
         }
 
@@ -154,18 +152,25 @@ reset <- function(id = "", asis = FALSE) {
   invisible(NULL)
 }
 
-getUpdateFunc <- function(type) {
-  updateFunc <- sprintf("update%sInput", type)
-  updateFuncAlt <- sprintf("update%s", type)
-  pkg <- ""
+strToVec <- function(str, sep = ",") {
+  unlist(strsplit(str, sep))
+}
 
-  if (type == "RadioButtons") {
-    updateFunc <- updateFuncAlt
+getUpdateFunc <- function(type) {
+
+  # get the name of the function
+  inputsShortUpdateName <- c("RadioButtons")
+  if (type %in% inputsShortUpdateName) {
+    updateFunc <- sprintf("update%s", type)
+  } else {
+    updateFunc <- sprintf("update%sInput", type)
   }
-  else if (type == "Colour") {
+
+  # get the package it's from
+  pkg <- ""
+  if (type == "Colour") {
     pkg <- "colourpicker"
   }
-
   if (pkg != "") {
     updateFunc <- utils::getFromNamespace(updateFunc, pkg)
   }
