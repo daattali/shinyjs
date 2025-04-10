@@ -3,6 +3,7 @@
 - **BREAKING CHANGE** The `useShinyjs()` function no longer accepts any parameters. The `rmd` and `html` arguments are not needed (they are now detected automatically). The `debug` argument is now set using R options: `options("shinyjs.debug" = TRUE)`.
 - **DEPRECATION NOTICE** The `runExample()` function is no longer required since {shiny} version 1.8.1 (March 2024). You can now use `shiny::runExample("demo", package = "shinyjs")` instead of `shinyjs::runExample("demo")`.
 - Fix bug: `hide()` now works with spinners from {shinycssloaders} (#276)
+- Add support for many {shinyWidgets} inputs to work with `reset()`, `show()`/`hide()`, `enable()`/`disable()` 
 - Fix bug: `hidden()` and `disabled()` now work with tags that have a `htmlDependency()` (#252)
 - Fix bug: `hidden()` and `disabled()` now return a `tagList()` instead of a `list()` when appropriate
 - Fix bug: `disable()` now works with file inputs (#249)
