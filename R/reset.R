@@ -137,6 +137,30 @@ reset <- function(id = "", asis = FALSE) {
           funcParams[['start']] <- dates[1]
           funcParams[['end']] <- dates[2]
         }
+
+        # {shinyWidgets} inputs
+        else if (type == "CalendarPro") {
+          funcParams[['value']] <- strToVec(value, " ")
+        } else if (type == "NoUiSlider") {
+          funcParams[['value']] <- strToVec(value)
+        } else if (type == "NumericRange") {
+          funcParams[['value']] <- strToVec(value)
+        } else if (type == "RadioGroupButtons") {
+          funcParams[['selected']] <- value
+        } else if (type == "SliderText") {
+          funcParams[['selected']] <- strToVec(value)
+        } else if (type == "SlimSelect") {
+          funcParams[['selected']] <- strToVec(value)
+        } else if (type == "Spectrum") {
+          funcParams[['selected']] <- value
+        } else if (type == "VirtualSelect") {
+          if (is.null(value)) {
+            funcParams[['selected']] <- ""
+          } else {
+            funcParams[['selected']] <- strToVec(value)
+          }
+        }
+
         else {
           funcParams[['value']] <- value
         }
@@ -159,7 +183,7 @@ strToVec <- function(str, sep = ",") {
 getUpdateFunc <- function(type) {
 
   # get the name of the function
-  inputsShortUpdateName <- c("RadioButtons")
+  inputsShortUpdateName <- c("RadioButtons", "CalendarPro", "ColorPickr", "RadioGroupButtons", "SlimSelect", "VirtualSelect")
   if (type %in% inputsShortUpdateName) {
     updateFunc <- sprintf("update%s", type)
   } else {
@@ -168,8 +192,11 @@ getUpdateFunc <- function(type) {
 
   # get the package it's from
   pkg <- ""
+  shinyWidgetsInputs <- c("CalendarPro", "ColorPickr", "Knob", "NoUiSlider", "NumericRange", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "Time", "VirtualSelect")
   if (type == "Colour") {
     pkg <- "colourpicker"
+  } else if (type %in% shinyWidgetsInputs) {
+    pkg <- "shinyWidgets"
   }
   if (pkg != "") {
     updateFunc <- utils::getFromNamespace(updateFunc, pkg)

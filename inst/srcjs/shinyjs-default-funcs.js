@@ -299,8 +299,109 @@ shinyjs = function() {
             inputValue = null,
             inputId = null;
 
+        // --- {shinyWidgets} inputs ---
+
+        // calendarProInput
+        if (input.children(".calendar-pro-element").length > 0) {
+          input = input.children("input");
+          inputType = "CalendarPro";
+          inputId = inputContainer.attr('id');
+        }
+        // colorPickr
+        else if (input.children(".pickr-color-container").length > 0) {
+          input = input.children(".pickr-color-container");
+          inputType = "ColorPickr";
+          inputValue = JSON.parse(input.children("script")[0].textContent).options.default;
+        }
+        // knobInput
+        else if (input.children(".knob-input").length > 0) {
+          input = input.children(".knob-input");
+          inputType = "Knob";
+          inputValue = input.data('value');
+        }
+        // noUiSliderInput
+        else if (input.find(".sw-no-ui-slider").length > 0) {
+          input = input.find(".sw-no-ui-slider");
+          inputType = "NoUiSlider";
+          inputValue = JSON.parse(inputContainer.find("script")[0].textContent).start;
+        }
+        // numericInputIcon
+        else if (input.find('.numeric-input-icon').length > 0) {
+          input = input.find('.numeric-input-icon');
+          inputType = "Numeric";
+        }
+        // numericRangeInput
+        else if (input.hasClass("shiny-numeric-range-input")) {
+          inputType = "NumericRange";
+          inputValue = Array.from(input.find("input[type=number")).map(
+            input => parseFloat(input.value));
+        }
+        // radioGroupButtons
+        else if (input.hasClass("shiny-input-radiogroup") &&
+                 input.find('.btn-group-container-sw').length > 0 &&
+                 input.find('.radio-group-buttons').length > 0) {
+                   input = input.find('.radio-group-buttons');
+                   inputType = "RadioGroupButtons";
+                   inputValue = input.find("input[type='radio']:checked").val();
+                 }
+        // searchInput
+        else if (input.find(".search-text").length > 0) {
+          input = input.find(".search-text input[type='text']");
+          inputType = "Text";
+        }
+        // sliderTextInput
+        else if (input.children(".js-range-slider.sw-slider-text").length > 0) {
+          input = input.children(".js-range-slider.sw-slider-text");
+          inputType = "SliderText";
+          let allVals = input.data('swvalues');
+          inputValue = allVals[input.data('from')];
+          if (typeof input.data('to') !== "undefined") {
+            inputValue = inputValue + "," + allVals[input.data('to')];
+          }
+        }
+        // slimSelectInput
+        else if (input.children(".slim-select").length > 0) {
+          input = input.children(".slim-select");
+          inputType = "SlimSelect";
+          let values = JSON.parse(input.children("script")[0].textContent).selected;
+          if (values.length <= 1) {
+            inputValue = values;
+          } else {
+            inputValue = values.join(",");
+          }
+        }
+        // spectrumInput
+        else if (input.children(".sw-spectrum").length > 0) {
+          input = input.children(".sw-spectrum");
+          inputType = "Spectrum"
+          inputValue = input.data('color');
+        }
+        // textInputIcon
+        else if (input.find(".text-input-icon").length > 0) {
+          input = input.find("input[type='text'].text-input-icon");
+          inputType = "Text";
+        }
+        // timeInput
+        else if (input.children(".sw-time-input").length > 0) {
+          input = input.children(".sw-time-input");
+          inputType = "Time";
+        }
+        // virtualSelectInput
+        else if (input.children(".virtual-select").length > 0) {
+          input = input.children(".virtual-select");
+          inputType = "VirtualSelect";
+          let initParams = JSON.parse(inputContainer.find("script")[0].textContent);
+          if (typeof initParams.config.selectedValue === "undefined") {
+            inputValue = initParams.options.choices[0];
+          } else {
+            inputValue = initParams.config.selectedValue;
+          }
+        }
+
+        // --- Native shiny inputs ---
+
         // dateInput
-        if (input.hasClass("shiny-date-input")) {
+        else if (input.hasClass("shiny-date-input")) {
           input = input.children("input");
           inputType = "Date";
           inputValue = _getInputDate(input);
@@ -390,6 +491,7 @@ shinyjs = function() {
           input = input.find("input[type='file']");
           inputType = "File"
         }
+
         // if none of the above, no supported Shiny input was found
         else {
           foundInput = false;
