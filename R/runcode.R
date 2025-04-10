@@ -21,14 +21,13 @@
 #' and is the recommended option. Textarea should be used if you want to write
 #' long multi-line R code. Note that you can run multiple expressions even in
 #' a single line by appending each R expression with a semicolon.
-#' Use of the \code{"ace"} option requires the \code{shinyAce} package.
+#' Use of the \code{"ace"} editor requires the \code{shinyAce} package.
 #' @param width The width of the editable code input (ignored when
 #' \code{type="ace"})
 #' @param height The height of the editable code input (ignored when
 #' \code{type="text"})
-#' @param id When used inside a shiny module, the module's id needs to be
-#' provided to \code{runcodeUI}. This argument should remain \code{NULL}
-#' when not used inside a module.
+#' @param ns When used inside a shiny module, the module's \code{\link[shiny]{NS}}
+#' needs to be provided. This argument should remain \code{NULL} when not used inside a module.
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
 #' @examples
 #' if (interactive()) {
@@ -52,10 +51,7 @@ runcodeUI <- function(code = "",
                       type = c("text", "textarea", "ace"),
                       width = NULL,
                       height = NULL,
-                      id = NULL) {
-
-  ns <- shiny::NS(id)
-
+                      ns = shiny::NS(NULL)) {
   type <- match.arg(type)
 
 	if (type == "ace") {

@@ -11,7 +11,7 @@ runcodeUI(
   type = c("text", "textarea", "ace"),
   width = NULL,
   height = NULL,
-  id = NULL
+  ns = shiny::NS(NULL)
 )
 
 runcodeServer()
@@ -24,7 +24,7 @@ When using a text input, the R code will be limited to be typed within a single 
 and is the recommended option. Textarea should be used if you want to write
 long multi-line R code. Note that you can run multiple expressions even in
 a single line by appending each R expression with a semicolon.
-Use of the \code{"ace"} option requires the \code{shinyAce} package.}
+Use of the \code{"ace"} editor requires the \code{shinyAce} package.}
 
 \item{width}{The width of the editable code input (ignored when
 \code{type="ace"})}
@@ -32,9 +32,8 @@ Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 \item{height}{The height of the editable code input (ignored when
 \code{type="text"})}
 
-\item{id}{When used inside a shiny module, the module's id needs to be
-provided to \code{runcodeUI}. This argument should remain \code{NULL}
-when not used inside a module.}
+\item{ns}{When used inside a shiny module, the module's \code{\link[shiny]{NS}}
+needs to be provided. This argument should remain \code{NULL} when not used inside a module.}
 }
 \description{
 Sometimes when developing a Shiny app, it's useful to be able to run some R
