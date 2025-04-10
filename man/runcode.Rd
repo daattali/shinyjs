@@ -11,7 +11,6 @@ runcodeUI(
   type = c("text", "textarea", "ace"),
   width = NULL,
   height = NULL,
-  includeShinyjs = NULL,
   id = NULL
 )
 
@@ -32,9 +31,6 @@ Use of the \code{"ace"} option requires the \code{shinyAce} package.}
 
 \item{height}{The height of the editable code input (ignored when
 \code{type="text"})}
-
-\item{includeShinyjs}{Deprecated. You should always make sure to initialize
-shinyjs using \code{\link[shinyjs]{useShinyjs}}.}
 
 \item{id}{When used inside a shiny module, the module's id needs to be
 provided to \code{runcodeUI}. This argument should remain \code{NULL}

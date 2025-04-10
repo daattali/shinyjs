@@ -26,10 +26,8 @@
 #' \code{type="ace"})
 #' @param height The height of the editable code input (ignored when
 #' \code{type="text"})
-#' @param includeShinyjs Deprecated. You should always make sure to initialize
-#' shinyjs using \code{\link[shinyjs]{useShinyjs}}.
-#' @param id When used inside a shiny module, the module's id needs to be 
-#' provided to \code{runcodeUI}. This argument should remain \code{NULL} 
+#' @param id When used inside a shiny module, the module's id needs to be
+#' provided to \code{runcodeUI}. This argument should remain \code{NULL}
 #' when not used inside a module.
 #' @seealso \code{\link[shinyjs]{useShinyjs}}
 #' @examples
@@ -54,15 +52,9 @@ runcodeUI <- function(code = "",
                       type = c("text", "textarea", "ace"),
                       width = NULL,
                       height = NULL,
-                      includeShinyjs = NULL,
                       id = NULL) {
-  
+
   ns <- shiny::NS(id)
-  
-  if (!missing(includeShinyjs)) {
-    warning("`includeShinyjs` argument is deprecated. You should always make ",
-            "sure to initialize shinyjs using `useShinyjs()`.")
-  }
 
   type <- match.arg(type)
 
