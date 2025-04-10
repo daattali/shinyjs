@@ -18,10 +18,8 @@ all inputs on the page are reset.}
 Reset any input element back to its original value. You can either reset
 one specific input at a time by providing the id of a shiny input, or reset
 all inputs within an HTML tag by providing the id of an HTML tag.\cr\cr
-Reset can be performed on any traditional Shiny input widget, which
-includes: textInput, numericInput, sliderInput, selectInput,
-selectizeInput, radioButtons, dateInput, dateRangeInput, checkboxInput,
-checkboxGroupInput, colourInput, passwordInput, textAreaInput. Note that
+Reset can be performed on any traditional Shiny inputs, as well as many
+inputs from the {colourpicker} and {shinyWidgets} packages. Note that
 \code{actionButton} is not supported, meaning that you cannot reset
 the value of a button back to 0.
 }
