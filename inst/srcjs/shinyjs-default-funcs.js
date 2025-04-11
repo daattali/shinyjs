@@ -301,8 +301,18 @@ shinyjs = function() {
 
         // --- {shinyWidgets} inputs ---
 
+        // airDatepickerInput / airMonthpickerInput / airYearpickerInput
+        if (input.find(".sw-air-picker").length > 0) {
+          input = input.find(".sw-air-picker");
+          inputType = "AirDate";
+          let value = JSON.parse(inputContainer.children("script")[0].textContent).value;
+          if (typeof value === "undefined") {
+            value = "";
+          }
+          inputValue = value;
+        }
         // calendarProInput
-        if (input.children(".calendar-pro-element").length > 0) {
+        else if (input.children(".calendar-pro-element").length > 0) {
           input = input.children("input");
           inputType = "CalendarPro";
           inputId = inputContainer.attr('id');

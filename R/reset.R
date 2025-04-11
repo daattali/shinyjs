@@ -100,7 +100,7 @@ reset <- function(id = "", asis = FALSE) {
 
         # list of inputs that can have multiple values and need the value parsed from a
         # comma-separated list to a vector
-        inputsStrToVec <- c("Slider", "SliderDate", "SliderDateTime", "DateRange", "NoUiSlider", "NumericRange", "SliderText", "SlimSelect", "VirtualSelect")
+        inputsStrToVec <- c("Slider", "SliderDate", "SliderDateTime", "DateRange", "AirDate", "NoUiSlider", "NumericRange", "SliderText", "SlimSelect", "VirtualSelect")
 
         if (type %in% inputsStrToVec) {
           value <- strToVec(value)
@@ -110,6 +110,8 @@ reset <- function(id = "", asis = FALSE) {
         inputsParamSelected <- c("RadioButtons", "CheckboxGroup", "Select", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "VirtualSelect")
         # list of inputs that don't use 'selected' or 'value' arguments
         inputsParamOther <- c("DateRange")
+
+        # some inputs need custom ways to extract the value
 
         # native shiny inputs
         if (type == "Checkbox") {
@@ -183,7 +185,7 @@ getUpdateFunc <- function(type) {
   }
 
   # list of inputs whose update function is taken from {shinyWidgets}
-  shinyWidgetsInputs <- c("CalendarPro", "ColorPickr", "Knob", "NoUiSlider", "NumericRange", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "Time", "VirtualSelect")
+  shinyWidgetsInputs <- c("AirDate", "CalendarPro", "ColorPickr", "Knob", "NoUiSlider", "NumericRange", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "Time", "VirtualSelect")
 
   if (type == "Colour") {
     pkg <- "colourpicker"
