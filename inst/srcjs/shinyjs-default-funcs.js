@@ -363,11 +363,20 @@ shinyjs = function() {
         else if (input.children(".slim-select").length > 0) {
           input = input.children(".slim-select");
           inputType = "SlimSelect";
-          let values = JSON.parse(input.children("script")[0].textContent).selected;
-          if (values.length <= 1) {
-            inputValue = values;
+          let initParams = JSON.parse(input.children("script")[0].textContent);
+          if (typeof initParams.selected === "undefined") {
+            if (input.is('[multiple]')) {
+              inputValue = "";
+            } else {
+              inputValue = initParams.data[0].value;
+            }
           } else {
-            inputValue = values.join(",");
+            let selected = initParams.selected;
+            if (selected.length <= 1) {
+              inputValue = selected;
+            } else {
+              inputValue = selected.join(",");
+            }
           }
         }
         // spectrumInput
@@ -392,7 +401,13 @@ shinyjs = function() {
           inputType = "VirtualSelect";
           let initParams = JSON.parse(inputContainer.find("script")[0].textContent);
           if (typeof initParams.config.selectedValue === "undefined") {
-            inputValue = initParams.options.choices[0];
+            if (initParams.config.multiple) {
+              inputValue = "";
+            } else if (Array.isArray(initParams.options.choices)) {
+              inputValue = initParams.options.choices[0];
+            } else {
+              inputValue = initParams.options.choices.value[0];
+            }
           } else {
             inputValue = initParams.config.selectedValue;
           }
