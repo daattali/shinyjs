@@ -98,70 +98,58 @@ reset <- function(id = "", asis = FALSE) {
         type <- messages[[x]][['type']]
         value <- messages[[x]][['value']]
 
-        # checkbox values need to be manually converted to TRUE/FALSE
+        # list of inputs that can have multiple values and need the value parsed from a
+        # comma-separated list to a vector
+        inputsStrToVec <- c("Slider", "SliderDate", "SliderDateTime", "DateRange", "NoUiSlider", "NumericRange", "SliderText", "SlimSelect", "VirtualSelect")
+
+        if (type %in% inputsStrToVec) {
+          value <- strToVec(value)
+        }
+
+        # list of inputs that use a 'selected' instead of 'value' argument
+        inputsParamSelected <- c("RadioButtons", "CheckboxGroup", "Select", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "VirtualSelect")
+        # list of inputs that don't use 'selected' or 'value' arguments
+        inputsParamOther <- c("DateRange")
+
+        # native shiny inputs
         if (type == "Checkbox") {
           value <- as.logical(value)
-        }
-        if (type == "Date") {
+        } else if (type == "Date") {
           if (value == "NA") {
             value <- NA
           }
-        }
-
-        # most input update functions use 'value' argument, but some require special handling
-
-        if (type == "RadioButtons") {
+        } else if (type == "RadioButtons" || type == "RadioGroupButtons") {
           if (is.null(value) && utils::packageVersion("shiny") > "1.5.0") {
             value <- character(0)
           }
-          funcParams[['selected']] <- value
         } else if (type == "CheckboxGroup" || type == "Select") {
           if (value == '""') {
-            funcParams[['selected']] <- ""
+            value <- ""
           } else {
-            funcParams[['selected']] <- jsonlite::fromJSON(value)
+            value <- jsonlite::fromJSON(value)
           }
-        } else if (type == "Slider") {
-          funcParams[['value']] <- strToVec(value)
         } else if (type == "SliderDate") {
           type <- "Slider"
-          value <- strToVec(value)
-          funcParams[['value']] <- as.Date(as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01"))
+          value <- as.Date(as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01"))
         } else if (type == "SliderDateTime") {
           type <- "Slider"
-          value <- strToVec(value)
-          funcParams[['value']] <- as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01")
+          value <- as.POSIXct(as.numeric(value) / 1000, origin = "1970-01-01")
         } else if (type == "DateRange") {
-          dates <- strToVec(value)
-          dates[dates == "NA"] <- NA
-          funcParams[['start']] <- dates[1]
-          funcParams[['end']] <- dates[2]
+          value[value == "NA"] <- NA
+          funcParams[['start']] <- value[1]
+          funcParams[['end']] <- value[2]
         }
 
         # {shinyWidgets} inputs
         else if (type == "CalendarPro") {
-          funcParams[['value']] <- strToVec(value, " ")
-        } else if (type == "NoUiSlider") {
-          funcParams[['value']] <- strToVec(value)
-        } else if (type == "NumericRange") {
-          funcParams[['value']] <- strToVec(value)
-        } else if (type == "RadioGroupButtons") {
-          funcParams[['selected']] <- value
-        } else if (type == "SliderText") {
-          funcParams[['selected']] <- strToVec(value)
-        } else if (type == "SlimSelect") {
-          funcParams[['selected']] <- strToVec(value)
-        } else if (type == "Spectrum") {
-          funcParams[['selected']] <- value
-        } else if (type == "VirtualSelect") {
-          if (is.null(value)) {
-            funcParams[['selected']] <- ""
-          } else {
-            funcParams[['selected']] <- strToVec(value)
-          }
+          value <- strToVec(value, " ")
         }
 
-        else {
+        if (type %in% inputsParamSelected) {
+          funcParams[['selected']] <- value
+        } else if (type %in% inputsParamOther) {
+          # assume the correct argument was already added above
+        } else {
           funcParams[['value']] <- value
         }
 
@@ -177,30 +165,34 @@ reset <- function(id = "", asis = FALSE) {
 }
 
 strToVec <- function(str, sep = ",") {
+  if (is.null(str) || str == "") {
+    return("")
+  }
   unlist(strsplit(str, sep))
 }
 
 getUpdateFunc <- function(type) {
 
-  # get the name of the function
+  # list of inputs whose update function doesn't include the word "Input" at the end
   inputsShortUpdateName <- c("RadioButtons", "CalendarPro", "ColorPickr", "RadioGroupButtons", "SlimSelect", "VirtualSelect")
+
   if (type %in% inputsShortUpdateName) {
-    updateFunc <- sprintf("update%s", type)
+    updateFuncName <- sprintf("update%s", type)
   } else {
-    updateFunc <- sprintf("update%sInput", type)
+    updateFuncName <- sprintf("update%sInput", type)
   }
 
-  # get the package it's from
-  pkg <- ""
+  # list of inputs whose update function is taken from {shinyWidgets}
   shinyWidgetsInputs <- c("CalendarPro", "ColorPickr", "Knob", "NoUiSlider", "NumericRange", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "Time", "VirtualSelect")
+
   if (type == "Colour") {
     pkg <- "colourpicker"
   } else if (type %in% shinyWidgetsInputs) {
     pkg <- "shinyWidgets"
+  } else {
+    pkg <- "shiny"
   }
-  if (pkg != "") {
-    updateFunc <- utils::getFromNamespace(updateFunc, pkg)
-  }
+  updateFunc <- utils::getFromNamespace(updateFuncName, pkg)
 
   updateFunc
 }
