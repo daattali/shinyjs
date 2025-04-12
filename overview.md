@@ -32,7 +32,7 @@ In order to use any shinyjs function in a Shiny app, you must first call `useShi
 
 | Function | Description |
 |---------------------|----------------------------------------------------|
-| `runcodeUI` + `runcodeServer` | Adds a text input to your app that lets you run arbitrary R code live. |
+| `runcode` | Adds a text input to your app that lets you run arbitrary R code live. |
 | `showLog` | Print any JavaScript `console.log()` messages in the R console, to make it easier and quicker to debug apps without having to open the JS console. |
 | `logjs` | Print a message to the JavaScript console (mainly used for debugging purposes). |
 | `inlineCSS` | Easily add inline CSS to a Shiny app. |
