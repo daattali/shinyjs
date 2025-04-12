@@ -22,3 +22,23 @@
   tip <- sample(tips, 1)
   packageStartupMessage(tip)
 }
+
+.onLoad <- function(libname, pkgname) {
+  shiny::registerInputHandler("shinyjspkg", function(data, ...) {
+    session <- getSession()
+    ns <- data$ns
+    code <- data$code
+    shinyjs::hide(paste0(ns, "runcode_error"))
+    tryCatch(
+      eval(parse(text = code)),
+      error = function(err) {
+        shinyjs::html(paste0(ns, "runcode_errorMsg"), as.character(err$message))
+        shinyjs::show(paste0(ns, "runcode_error"), anim = TRUE, animType = "fade")
+      }
+    )
+  }, force = TRUE)
+}
+
+.onUnload <- function(libpath) {
+  shiny::removeInputHandler("shinyjspkg")
+}

@@ -197,7 +197,7 @@ first call `useShinyjs()` anywhere in the app’s UI.**
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>runcodeUI</code>+<code>runcodeServer</code></td>
+<td><code>runcode</code></td>
 <td>Adds a text input to your app that lets you run arbitrary R code live.</td>
 </tr>
 <tr class="even">

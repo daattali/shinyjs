@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 2.1.0.9010
+Version: 2.1.0.9011
 Authors@R: person("Dean", "Attali", 
     email = "daattali@gmail.com",
     role = c("aut", "cre"),

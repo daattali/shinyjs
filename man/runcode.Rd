@@ -2,19 +2,15 @@
 % Please edit documentation in R/runcode.R
 \name{runcode}
 \alias{runcode}
-\alias{runcodeUI}
-\alias{runcodeServer}
 \title{Construct to let you run arbitrary R code live in a Shiny app}
 \usage{
-runcodeUI(
+runcode(
   code = "",
   type = c("text", "textarea", "ace"),
   width = NULL,
   height = NULL,
   ns = shiny::NS(NULL)
 )
-
-runcodeServer()
 }
 \arguments{
 \item{code}{The initial R code to show in the text input when the app loads}
@@ -32,8 +28,7 @@ Use of the \code{"ace"} editor requires the \code{shinyAce} package.}
 \item{height}{The height of the editable code input (ignored when
 \code{type="text"})}
 
-\item{ns}{When used inside a shiny module, the module's \code{\link[shiny]{NS}}
-needs to be provided. This argument should remain \code{NULL} when not used inside a module.}
+\item{ns}{The \code{\link[shiny:NS]{namespace}} object of the current module if inside a Shiny module.}
 }
 \description{
 Sometimes when developing a Shiny app, it's useful to be able to run some R
@@ -43,14 +38,12 @@ This can be useful for testing
 and while developing an app locally, but it \strong{should not be included in
 an app that is accessible to other people}, as letting others run arbitrary R
 code can open you up to security attacks.\cr\cr
-To use this construct, you must add a call to \code{runcodeUI()} in the UI
-of your app, and a call to \code{runcodeServer()} in the server function. You
-also need to initialize shinyjs with a call to \code{useShinyjs()} in the UI.
+To use this construct, you must add a call to \code{runcode()} in the UI
+of your app, and initialize shinyjs with a call to \code{useShinyjs()}.
 }
 \note{
-You can only have one \code{runcode} construct in your shiny app.
-Calling this function multiple times within the same app will result in
-unpredictable behaviour.
+You can only have one \code{runcode} construct in your shiny app, do not
+call it more than once in the UI.
 }
 \examples{
 if (interactive()) {
@@ -59,11 +52,9 @@ if (interactive()) {
   shinyApp(
     ui = fluidPage(
       useShinyjs(),  # Set up shinyjs
-      runcodeUI(code = "shinyjs::alert('Hello!')")
+      runcode(code = "shinyjs::alert('Hello!')")
     ),
-    server = function(input, output) {
-      runcodeServer()
-    }
+    server = function(input, output) {}
   )
 }
 }

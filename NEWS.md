@@ -2,9 +2,11 @@
 
 - **BREAKING CHANGE** The `useShinyjs()` function no longer accepts any parameters. The `rmd` and `html` arguments are not needed (they are now detected automatically). The `debug` argument is now set using R options: `options("shinyjs.debug" = TRUE)`.
 - **BREAKING CHANGE** Replace the `id` argument of `runcodeUI()` with `ns`, to be more consistent with other shiny UI functions that operate within modules
+- **DEPRECATION NOTICE** The `runcodeUI()` and `runcodeServer()` functions are deprecated. Instead, use only `runcode()` in the UI (you don't need to call a server function) (#261)
 - **DEPRECATION NOTICE** The `runExample()` function is no longer required since {shiny} version 1.8.1 (March 2024). You can now use `shiny::runExample("demo", package = "shinyjs")` instead of `shinyjs::runExample("demo")`.
 - Fix bug: `hide()` now works with spinners from {shinycssloaders} (#276)
-- Add support for many {shinyWidgets} inputs to work with `reset()`, `show()`/`hide()`, `enable()`/`disable()` 
+- Add support for {shinyWidgets} inputs to work with `reset()`
+- New feature: If you previously used `runcodeUI()`+`runcodeServer()`, you no longer need to call the server function. You can only call it in the UI. Also, the name of the UI function changed from `runcodeUI()` to simply `runcode()`. (#261)
 - Fix bug: `hidden()` and `disabled()` now work with tags that have a `htmlDependency()` (#252)
 - Fix bug: `hidden()` and `disabled()` now return a `tagList()` instead of a `list()` when appropriate
 - Fix bug: `disable()` now works with file inputs (#249)
