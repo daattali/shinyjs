@@ -107,7 +107,7 @@ reset <- function(id = "", asis = FALSE) {
         }
 
         # list of inputs that use a 'selected' instead of 'value' argument
-        inputsParamSelected <- c("RadioButtons", "CheckboxGroup", "Select", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "VirtualSelect")
+        inputsParamSelected <- c("RadioButtons", "CheckboxGroup", "Select", "CheckboxGroupButtons", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "VirtualSelect")
         # list of inputs that don't use 'selected' or 'value' arguments
         inputsParamOther <- c("DateRange")
 
@@ -124,7 +124,7 @@ reset <- function(id = "", asis = FALSE) {
           if (is.null(value) && utils::packageVersion("shiny") > "1.5.0") {
             value <- character(0)
           }
-        } else if (type == "CheckboxGroup" || type == "Select") {
+        } else if (type == "CheckboxGroup" || type == "Select" || type == "CheckboxGroupButtons") {
           if (value == '""') {
             value <- ""
           } else {
@@ -176,7 +176,7 @@ strToVec <- function(str, sep = ",") {
 getUpdateFunc <- function(type) {
 
   # list of inputs whose update function doesn't include the word "Input" at the end
-  inputsShortUpdateName <- c("RadioButtons", "CalendarPro", "ColorPickr", "RadioGroupButtons", "SlimSelect", "VirtualSelect")
+  inputsShortUpdateName <- c("RadioButtons", "CalendarPro", "CheckboxGroupButtons", "ColorPickr", "RadioGroupButtons", "SlimSelect", "VirtualSelect")
 
   if (type %in% inputsShortUpdateName) {
     updateFuncName <- sprintf("update%s", type)
@@ -185,7 +185,7 @@ getUpdateFunc <- function(type) {
   }
 
   # list of inputs whose update function is taken from {shinyWidgets}
-  shinyWidgetsInputs <- c("AirDate", "CalendarPro", "ColorPickr", "Knob", "NoUiSlider", "NumericRange", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "Time", "VirtualSelect")
+  shinyWidgetsInputs <- c("AirDate", "CalendarPro", "CheckboxGroupButtons", "ColorPickr", "Knob", "NoUiSlider", "NumericRange", "RadioGroupButtons", "SliderText", "SlimSelect", "Spectrum", "Time", "VirtualSelect")
 
   if (type == "Colour") {
     pkg <- "colourpicker"

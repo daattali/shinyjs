@@ -441,6 +441,12 @@ shinyjs = function() {
         // checkboxGroupInput
         else if (input.hasClass("shiny-input-checkboxgroup")) {
           inputType = "CheckboxGroup";
+
+          if (input.children(".checkbox-group-buttons").length > 0) {
+            input = input.children(".checkbox-group-buttons"); // shinyWidgets::checkboxGroupButtons
+            inputType = "CheckboxGroupButtons";
+          }
+
           var selected = [];
           var selectedEls = input.find("input[type='checkbox']:checked");
           selectedEls.each(function() {
