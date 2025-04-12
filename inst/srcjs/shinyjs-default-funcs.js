@@ -405,6 +405,16 @@ shinyjs = function() {
           input = input.children(".sw-time-input");
           inputType = "Time";
         }
+        // treeInput
+        else if (input.children(".tree-widget").length > 0) {
+          input = input.children(".tree-widget");
+          inputType = "Tree";
+          let values = JSON.parse(input.children("script")[0].textContent).values;
+          if (typeof values === "undefined") {
+            values = "";
+          }
+          inputValue = values;
+        }
         // virtualSelectInput
         else if (input.children(".virtual-select").length > 0) {
           input = input.children(".virtual-select");
