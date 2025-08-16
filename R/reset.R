@@ -4,7 +4,7 @@
 #' one specific input at a time by providing the id of a shiny input, or reset
 #' all inputs within an HTML tag by providing the id of an HTML tag.\cr\cr
 #' Reset can be performed on any traditional Shiny inputs, as well as inputs
-#' from the {colourpicker} and {shinyWidgets} packages. Note that
+#' from the \{colourpicker\} and \{shinyWidgets\} packages. Note that
 #' \code{actionButton} is not supported, meaning that you cannot reset
 #' the value of a button back to 0.
 #'

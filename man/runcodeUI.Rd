@@ -6,6 +6,9 @@
 \usage{
 runcodeUI(...)
 }
+\arguments{
+\item{...}{All parameters acceptd by \code{\link[=runcode]{runcode()}}}
+}
 \description{
 Deprecated - use \code{runcode()} instead
 }

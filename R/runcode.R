@@ -79,7 +79,7 @@ runcode <- function(code = "",
 
   shiny::tagList(
     codeTag,
-    shiny::tags$button("Run", onclick = HTML(callback), class = "btn btn-success action-button"),
+    shiny::tags$button("Run", onclick = shiny::HTML(callback), class = "btn btn-success action-button"),
     shinyjs::hidden(
       shiny::div(
         id = ns(paste0("runcode_error")),
@@ -95,7 +95,7 @@ runcode <- function(code = "",
 }
 
 #' Deprecated - use `runcode()` instead
-#' @inheritParams runcode
+#' @param ... All parameters acceptd by [shinyjs::runcode()]
 #' @export
 runcodeUI <- function(...) {
   warning("shinyjs: `runcodeUI()` is now deprecated in favour of `runcode()`")
