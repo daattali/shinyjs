@@ -6,6 +6,7 @@
 - **DEPRECATION NOTICE** The `runExample()` function is no longer required since {shiny} version 1.8.1 (March 2024). You can now use `shiny::runExample("demo", package = "shinyjs")` instead of `shinyjs::runExample("demo")`.
 - Fix bug: `hide()` now works with spinners from {shinycssloaders} (#276)
 - Add support for {shinyWidgets} inputs to work with `reset()`
+- Fix bug: `hidden()` works on tags that contain a `<head>`, such as {shinyFiles} (#278)
 - New feature: If you previously used `runcodeUI()`+`runcodeServer()`, you no longer need to call the server function. You can only call it in the UI. Also, the name of the UI function changed from `runcodeUI()` to simply `runcode()`. (#261)
 - Fix bug: `hidden()` and `disabled()` now work with tags that have a `htmlDependency()` (#252)
 - Fix bug: `hidden()` and `disabled()` now return a `tagList()` instead of a `list()` when appropriate

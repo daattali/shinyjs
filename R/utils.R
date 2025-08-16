@@ -17,6 +17,38 @@ getSession <- function() {
   session
 }
 
+# Given a Shiny tag, add a class to all tags inside it
+addClassEverywhere <- function(cls, name, ...) {
+  addClassRecursive <- function(...) {
+    tags <- rlang::list2(...)
+
+    # recursively add the class to all tags
+    if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag")) {
+      # don't do anything if an input has a head tag associated to it
+      if (tags[[1]][['name']] == "head") {
+        return(tags[[1]])
+      }
+      tags[[1]] <-
+        shiny::tagAppendAttributes(
+          tags[[1]],
+          class = cls
+        )
+      return( tags[[1]] )
+    } else if (length(tags) == 1 && inherits(tags[[1]], "html_dependency")) {
+      return( tags[[1]] )
+    } else if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag.list")) {
+      return( do.call(shiny::tagList, lapply(tags[[1]], addClassRecursive)) )
+    } else if (length(tags) == 1 && is.list(tags[[1]])) {
+      return( lapply(tags[[1]], addClassRecursive) )
+    } else if (length(tags) > 1) {
+      return( lapply(tags, addClassRecursive) )
+    } else {
+      errMsg(paste0("Invalid shiny tags given to `", name, "`"))
+    }
+  }
+  addClassRecursive(...)
+}
+
 jsFuncTemplate <- function(funcs) {
   tpl <- paste0(
     "Shiny.addCustomMessageHandler('shinyjs-%s', function(params) {",

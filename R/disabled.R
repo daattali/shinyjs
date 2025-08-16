@@ -32,29 +32,5 @@
 #' disabled(numericInput("num", NULL, 5), dateInput("date", NULL))
 #' @export
 disabled <- function(...) {
-  tags <- rlang::list2(...)
-
-  # recursively add the disabled class to all tags
-  if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag")) {
-    # don't do anything if an input has a head tag associated to it
-    if (tags[[1]][['name']] == "head") {
-      return(tags[[1]])
-    }
-    tags[[1]] <-
-      shiny::tagAppendAttributes(
-        tags[[1]],
-        class = "shinyjs-disabled"
-      )
-    return( tags[[1]] )
-  } else if (length(tags) == 1 && inherits(tags[[1]], "html_dependency")) {
-    return( tags[[1]] )
-  } else if (length(tags) == 1 && inherits(tags[[1]], "shiny.tag.list")) {
-    return( do.call(shiny::tagList, lapply(tags[[1]], disabled)) )
-  } else if (length(tags) == 1 && is.list(tags[[1]])) {
-    return( lapply(tags[[1]], disabled) )
-  } else if (length(tags) > 1) {
-    return( lapply(tags, disabled) )
-  } else {
-    errMsg("Invalid shiny tags given to `disabled`")
-  }
+  addClassEverywhere("shinyjs-disabled", "disabled", ...)
 }
