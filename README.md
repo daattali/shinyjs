@@ -14,7 +14,7 @@
   <a href="https://cran.r-project.org/package=shinyjs">
     <img src="https://www.r-pkg.org/badges/version/shinyjs" alt="CRAN version" />
   </a>
-  <a href="https://paypal.me/daattali/20">
+  <a href="https://www.paypal.com/paypalme/daattali/20">
     <img src="https://i.imgur.com/vCIGFrH.png" />
   </a>
 </p>
@@ -342,7 +342,7 @@ website](https://deanattali.com/shinyjs/).
 If you need help with {shinyjs}, free support is available on
 [StackOverflow](https://stackoverflow.com/questions/ask?tags=r+shiny+shinyjs),
 [RStudio
-Community](https://community.rstudio.com/new-topic?category=shiny&tags=shinyjs),
+Community](https://forum.posit.co/new-topic?category=shiny&tags=shinyjs),
 and [Twitter](https://twitter.com/hashtag/rstats).
 
 **Due to the large volume of requests I receive, I’m unable to provide
