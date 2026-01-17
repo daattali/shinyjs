@@ -1,6 +1,6 @@
 Package: shinyjs
 Title: Easily Improve the User Experience of Your Shiny Apps in Seconds
-Version: 2.1.0
+Version: 2.1.1
 Authors@R: person("Dean", "Attali", 
     email = "daattali@gmail.com",
     role = c("aut", "cre"),
@@ -29,5 +29,5 @@ Suggests:
 License: MIT + file LICENSE
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.3
 Encoding: UTF-8
