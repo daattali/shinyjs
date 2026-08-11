@@ -23,6 +23,10 @@
 - New feature: When using `extendShinyjs()`, the `path` can now be a `htmltools::htmlDependency()` (#254)
 - Remove `includeShinyjs` parameter in `runcodeUI()` after 5 years of being deprecated
 
+# shinyjs 2.1.1 (2026-01-15)
+
+- Small formatting changes to documentation for CRAN requirements 
+
 # shinyjs 2.1.0 (2021-12-20)
 
 - New feature: you can now reset all inputs on the page by calling `reset()` with no arguments (#222)
