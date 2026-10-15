@@ -1,0 +1,25 @@
+test_that("input events can be removed by instance and type", {
+  driver <- shinytest2::AppDriver$new(".", expect_values_screenshot_args = FALSE)
+  on.exit(driver$stop())
+  driver$wait_for_js("$('#m-status').text() === 'ready'")
+
+  driver$run_js("document.getElementById('m-field').click()")
+  driver$wait_for_js("$('#m-first').text() === '1' && $('#m-second').text() === '1'")
+  driver$run_js("document.getElementById('m-plain').click()")
+  driver$wait_for_js("$('#m-plain_count').text() === '1'")
+
+  driver$click("m-remove_one")
+  driver$wait_for_js("$('#m-status').text() === 'removed one'")
+  driver$run_js("document.getElementById('m-field').click()")
+  driver$wait_for_js("$('#m-second').text() === '2'")
+  expect_equal(driver$get_value(output = "m-first"), "1")
+
+  driver$click("m-remove_all")
+  driver$wait_for_js("$('#m-status').text() === 'removed all'")
+  driver$run_js("document.getElementById('m-field').click(); document.getElementById('m-plain').click()")
+  driver$click("m-checkpoint")
+  driver$wait_for_js("$('#m-checked').text() === '1'")
+  expect_equal(driver$get_value(output = "m-first"), "1")
+  expect_equal(driver$get_value(output = "m-second"), "2")
+  expect_equal(driver$get_value(output = "m-plain_count"), "1")
+})

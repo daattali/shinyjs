@@ -939,6 +939,8 @@ shinyjs = function() {
           }
         }
       } else {
+        // Match the container used when attaching events to Shiny inputs.
+        el = $(_getContainer(el)[0]);
         var attrName = "data-shinyjs-" + eventType;
         if (el[0].hasAttribute(attrName)) {
           if (removeAll) {
