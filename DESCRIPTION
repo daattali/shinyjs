@@ -17,12 +17,12 @@ Depends:
     R (>= 3.1.0)
 Imports:
     jsonlite,
+    knitr (>= 1.7),
     rlang,
     shiny (>= 1.0.0),
     utils
 Suggests:
     htmltools (>= 0.3.5),
-    knitr (>= 1.7),
     rmarkdown,
     shinyAce,
     shinydisconnect,
